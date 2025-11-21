@@ -1,0 +1,333 @@
+\chapter{Zero temperature Greens function in frequency domain}
+
+\label{appx-spectral-func}
+The impurity retarded Green's function (assuming the Hamiltonian to be time-independent, which it is) is defined as
+\begin{equation}\begin{aligned}
+	G_{dd}^\sigma(t) = -i\theta(t) \left<\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\}  \right>
+\end{aligned}\end{equation}
+where the average \(\left< \right>\) is over a canonical ensemble at temperature \(T\), and \(\mathcal{O}_\sigma = c_{d\sigma} + S_d^- c_{0\overline\sigma} + S_d^z c_{0\sigma}\) is the excitation whose spectral function we are interested in. The excitations defined in \(\mathcal{O}\) incorporates both single-particle excitations brought about by the hybridisation as well as two-particle spin excitations brought about by the spin-exchange term. What follows is a standard calculation where we write the Green's function in the Lehmann-Kallen representation. The ensemble average for an arbitrary operator \(\hat M\) can be written in terms of the exact eigenstates of the fixed point Hamiltonian:
+\begin{equation}\begin{aligned}
+	H^* \ket{n} &= E_n^* \ket{n}, ~ ~ ~\left<\hat M \right> &\equiv \frac{1}{Z}\sum_n \bra{n} \hat M \ket{n} e^{-\beta E_n^*}
+\end{aligned}\end{equation}
+where \(Z = \sum_n e^{-\beta E_n^*}\) is the fixed point partition function and \(\left\{ \ket{n} \right\} \) is the set of eigenfunctions of the fixed point Hamiltonian. We can therefore write
+\begin{equation}\begin{aligned}
+	&\left<\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\}  \right> \\
+	&= \frac{1}{Z}\sum_{m}e^{-\beta E_m}\bra{m}\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\} \ket{m}\\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\bra{m}\left( \mathcal{O}_{\sigma}(t)\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} + \mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}\mathcal{O}_{\sigma}(t)\right) \ket{m} && \left[\sum_n \ket{n}\bra{n} = 1\right]  \\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\bra{m}\left( e^{iH^* t}\mathcal{O}_{\sigma}e^{-iH^* t}\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} + \mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}e^{iH^* t}\mathcal{O}_{\sigma}e^{-iH^* t}\right) \ket{m}\\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\left( e^{i\left( E_m - E_n \right)  t}\bra{m}\mathcal{O}_{\sigma}\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} \ket{m} + e^{i\left( E_n - E_m \right)  t}\bra{m}\mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}\mathcal{O}_{\sigma} \ket{m}\right)\\
+	&= \frac{1}{Z}\sum_{m,n}e^{i\left( E_m - E_n \right)  t}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\\
+\end{aligned}\end{equation}
+The time-domain impurity Green's function can thus be written as (this is the so-called Lehmann-Kallen representation)
+\begin{equation}\begin{aligned}
+	G_{dd}^\sigma = -i\theta(t)\frac{1}{Z}\sum_{m,n}e^{i\left( E_m - E_n \right)  t}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\\
+\end{aligned}\end{equation}
+We are interested in the frequency domain form.
+\begin{equation}\begin{aligned}
+	G_{d d}^\sigma(\omega) &= \int_{-\infty}^\infty dt e^{i \omega t}G_{d d}^\sigma(t) \\
+			       &= \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\left(-i\right)\int_{-\infty}^\infty dt \theta(t)e^{i\left( \omega + E_m - E_n \right)t}
+\end{aligned}\end{equation}
+To evaluate the time-integral, we will use the integral representation of the Heaviside function:
+\begin{equation}\begin{aligned}
+	\theta(t) = \frac{1}{2\pi i}\lim_{\eta \to 0^+} \int_{-\infty}^\infty \frac{1}{x- i\eta}e^{ixt}dx
+\end{aligned}\end{equation}
+With this definition, the integral in \(G_{dd}^\sigma(\omega)\) becomes
+\begin{equation}\begin{aligned}
+	\left(-i\right)\int_{-\infty}^\infty dt \theta(t)e^{i\left( \omega + E_m - E_n \right)t} &= \left(-i\right)\frac{1}{2\pi i}\lim_{\eta \to 0^+} \int_{-\infty}^\infty dx\frac{1}{x- i\eta}\int_{-\infty}^\infty dt e^{i\left( \omega + E_m - E_n + x\right)t} \\
+									     &=\left(-i\right)\frac{1}{2\pi i}\lim_{\eta \to 0^+} \int_{-\infty}^\infty dx\frac{1}{x- i\eta} 2\pi \delta\left( \omega + E_m - E_n + x\right) \\
+									     &=\left(-i\right)\frac{1}{i}\lim_{\eta \to 0^+} \frac{-1}{\omega + E_m - E_n- i\eta} \\
+									     &=\frac{1}{\omega + E_m - E_n} \\
+\end{aligned}\end{equation}
+The frequency-domain Green's function is thus
+\begin{equation}\begin{aligned}
+	G_{d d}^\sigma(\omega) = \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\frac{1}{\omega + E_m - E_n}
+\end{aligned}\end{equation}
+The zero temperature Green's function is obtained by taking the limit of \(\beta \to \infty\). In both the partition function as well as inside the summation, the only term that will survive is the exponential of the ground state energy \(E_0\).
+\begin{equation*}\begin{aligned}
+	Z \equiv \sum_m e^{-\beta E_m} \implies \lim_{\beta \to \infty}Z = d_0 e^{-\beta E_0}, && E_0 \equiv \text{min}\left\{ E_n \right\} 
+\end{aligned}\end{equation*}
+where \(d_0\) is the degeneracy of the ground state. The Greens function then simplifies to
+\begin{equation}\begin{aligned}
+	\label{Gf_lk}
+	G_{d d}^\sigma(\omega, \beta \to \infty) &= \frac{1}{d_0e^{-\beta E_0}}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left[e^{-\beta E_m}\delta_{E_m, E_0} + e^{-\beta E_n}\delta_{E_n, E_0}\right]\frac{1}{\omega + E_m - E_n}\\
+						 &= \frac{1}{d_0}\sum_{n,0}\left[||\bra{0}\mathcal{O}_{\sigma}\ket{n}||^2\frac{1}{\omega + E_0 - E_n} + ||\bra{n}\mathcal{O}_{\sigma}\ket{0}||^2\frac{1}{\omega - E_0 + E_n}\right]\\
+\end{aligned}\end{equation}
+The label 0 sums over all states \(\ket{0}\) with energy \(E_0\). The spectral function is the imaginary part of this Green's function. To extract the imaginary part, we insert an infinitesimal imaginary part in the denominator:
+\begin{equation}\begin{aligned}
+	G_{d d}^\sigma(\omega, \eta) = \frac{1}{d_0}\lim_{\eta \to 0^-}\sum_{n,0}\left[||\bra{0}\mathcal{O}_{\sigma}\ket{n}||^2\frac{1}{\omega + E_0 - E_n + i\eta} + ||\bra{n}\mathcal{O}_{\sigma}\ket{0}||^2\frac{1}{\omega - E_0 + E_n + i\eta}\right]\\
+\end{aligned}\end{equation}
+The spectral function at zero temperature can then be written as
+\begin{equation}\begin{aligned}
+	\mathcal{A(\omega)} &= -\frac{1}{\pi}\text{ Im }\left[G_{dd}^\sigma\left( \omega \right) \right] \\
+			    &= \frac{1}{d_0}\frac{1}{\pi}\text{ Im }\left[\lim_{\eta \to 0^-}\sum_{n,0}\left(\frac{-i\eta ||\bra{0}\mathcal{O}_{\sigma}\ket{n}||^2}{\left(\omega + E_0 - E_n\right)^2 + \eta^2} + \frac{-i\eta ||\bra{n}\mathcal{O}_{\sigma}\ket{0}||^2}{\left(\omega - E_0 + E_n\right)^2 + \eta^2}\right)\right]\\
+			    &= \frac{1}{d_0}\frac{1}{\pi}\sum_{n,0}\left[||\bra{0}\mathcal{O}_{\sigma}\ket{n}||^2\pi\delta\left(\omega + E_0 - E_n\right) + ||\bra{n}\mathcal{O}_{\sigma}\ket{0}||^2\pi\delta\left(\omega - E_0 + E_n\right)\right]\\
+			    &= \frac{1}{d_0}\sum_{n,0}\left[||\bra{0}\mathcal{O}_{\sigma}\ket{n}||^2\delta\left(\omega + E_0 - E_n\right) + ||\bra{n}\mathcal{O}_{\sigma}\ket{0}||^2\delta\left(\omega - E_0 + E_n\right)\right]\\
+\end{aligned}\end{equation}
+
+\chapter{Some analytic results for the Hubbard dimer and the Hubbard model}
+\section{Spectrum of the Hubbard dimer}
+Here we document the spectrum of the Hubbard dimer Hamiltonian in eqs.~\ref{hubb_dimer}.
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	eigenstate & symbol & eigenvalue \\
+	\hline
+	$\ket{0,0}$ & $\ket{0}$ & \( \frac{U^H}{2}\)\\
+	$ \frac{1}{\sqrt 2}\left(\ket{\sigma,0} \pm \ket{0,\sigma}\right)$ & $\ket{0\sigma_\pm}$ & \(\mp t^H\)\\
+	$\ket{\sigma,\sigma}$ & $\ket{\sigma\sigma}$ & \( -\frac{U^H}{2}\)\\
+	$ \frac{1}{\sqrt 2}\left(\ket{\uparrow,\downarrow} + \ket{\downarrow,\uparrow}\right)$ & $\ket{ST}$ & \( -\frac{U^H}{2}\)\\
+	$ \frac{1}{\sqrt 2}\left(\ket{2,0} - \ket{0,2}\right)$ & $\ket{CS}$ & \( \frac{U^H}{2}\)\\
+	$a_1(U^H, t^H) \frac{1}{\sqrt 2}\left(\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}\right) + a_2(U^H, t^H)\frac{1}{\sqrt 2}\left(\ket{2,0} + \ket{0,2}\right)$ & $\ket{-}$ & \(-\frac{1}{2}\Delta(U^H, t^H)\)\\
+	$-a_2(U^H, t^H) \frac{1}{\sqrt 2}\left(\ket{\uparrow,\downarrow} - \ket{\downarrow,\uparrow}\right) + a_1(U^H, t^H)\frac{1}{\sqrt 2}\left(\ket{2,0} + \ket{0,2}\right)$ & $\ket{+}$ & \(\frac{1}{2}\Delta(U^H, t^H)\)\\
+	$ \frac{1}{\sqrt 2}\left(\ket{\sigma,2} \pm \ket{2,\sigma}\right)$ & $\ket{2\sigma_\pm}$ & \(\pm t^H\)\\
+	$\ket{2,2}$ & $\ket{4}$ & \( \frac{U^H}{2}\)\\
+\hline
+	\end{tabular}
+	\captionof{table}{Spectrum of Hubbard dimer at half-filling}
+	\label{hubb_dim_spectrum}
+\end{center}
+
+\section{Greens function of Hubbard model in the atomic limit}
+\label{atomic limit}
+The atomic limit is described by the Hamiltonian \(H = -\frac{U}{2}\sum_i\left(\hat n_{i \uparrow} - \hat n_{i \downarrow}\right)^2\). Since the Hamiltonian has decoupled into \(\sum_i \equiv N\) single-site Hamiltonians, we can easily write down the retarded Greens function for a single site by identifying the ground state configuration of a site. The ground states are of course \(\ket{\Psi}_i = \ket{\uparrow},\ket{\downarrow}\), in the absence of any symmetry-breaking. The finite temperature retarded Greens function in the time domain is given by
+\begin{equation}\begin{aligned}
+	G_{i,\sigma}(T,t) = -i\theta(t) \frac{1}{Z}\sum_n e^{-\beta E_n} \braket{n | \left\{c_{i\sigma}(t),c^\dagger_{i\sigma}\right\} | n}
+\end{aligned}\end{equation}
+where \(n\) labels the eigenstates of the \(H\). At \(T \to 0\), only the ground states will survive in the exponential and the partition function \(Z\), such that the formula then reduces to
+\begin{equation}\begin{aligned}
+G_{i,\sigma}(T \to 0,t) = -i\theta(t)\braket{GS | \left\{c_{i\sigma}(t),c^\dagger_{i\sigma}\right\} | GS}
+\end{aligned}\end{equation}
+Since the Hamiltonian is simple, we can compute the time-dependent operator \(c_{i\sigma}(t) = e^{iH t} c_{i\sigma} e^{-iHt}\). Using the BCH lemma, we have
+\begin{equation}\begin{aligned}
+	e^{iH t} c_{i\sigma} e^{-iHt} = \sum_{n=0}^\infty \left(it\right)^n \frac{1}{n!}\left[H,c_{i\sigma}\right]_n
+\end{aligned}\end{equation}
+where \(\left[H,c_{i\sigma}\right]_n = \left[H,\left[H,c_{i\sigma}\right]_{n-1}\right],\left[H,c_{i\sigma}\right]_0=c_{i\sigma}\). The first two non-trivial commutators are
+\begin{equation}\begin{aligned}
+	\left[H, c_{i\sigma}\right]_1 = -U \tau_{i\overline\sigma}c_{i\sigma},~ ~\text{and} ~~\left[H, c_{i\sigma}\right]_2 = \frac{1}{4}U^2 c_{i\sigma}~,
+\end{aligned}\end{equation}
+such that
+\begin{equation}\begin{aligned}
+	e^{iH t} c_{i\sigma} e^{-iHt} =& \left[c_{i\sigma} + \frac{i^2 t^2}{2!}\frac{U^2}{2^2} c_{i\sigma} + \frac{i^4 t^4}{4!}\frac{U^4}{2^4} c_{i\sigma} + \ldots\right] + \left[- \frac{it}{1!}U\tau_{i\overline\sigma}c_{i\sigma} - \frac{i^3 t^3}{3!}\frac{U^3}{4}\tau_{i\overline\sigma}c_{i\sigma} + \ldots \right]\\
+				       &= c_{i\sigma} \left[\cos\left(Ut/2\right) - 2i\tau_{i\overline\sigma}\sin \left(Ut/2\right) \right] 
+\end{aligned}\end{equation}
+Using this, we can write
+\begin{equation}\begin{aligned}
+	\left\{c_{i\sigma}(t),c^\dagger_{i\sigma}\right\} = \left\{c_{i\sigma},c^\dagger_{i\sigma}\right\} \left[\cos\left(Ut/2\right) - 2i\tau_{i\overline\sigma}\sin \left(Ut/2\right) \right] = \left[\cos\left(Ut/2\right) - 2i\tau_{i\overline\sigma}\sin \left(Ut/2\right) \right]
+\end{aligned}\end{equation}
+and the Greens function becomes
+\begin{equation}\begin{aligned}
+	G_{i,\sigma}(T \to 0,t) = -i\theta(t) \braket{GS | \left[\cos\left(Ut/2\right) - 2i\tau_{i\overline\sigma}\sin \left(Ut/2\right) \right] | GS} = -i\theta(t)\left[\cos \frac{Ut}{2} - 2i\sin \frac{Ut}{2} \left<\tau_{i\overline\sigma} \right>\right]
+\end{aligned}\end{equation}
+We now Fourier transform to frequency domain:
+\begin{equation}\begin{aligned}
+	G_{i,\sigma}(\omega) = -i\int_{0}^\infty \mathrm{dt} e^{i\omega t}\left[\cos \frac{Ut}{2} - 2i\sin \frac{Ut}{2} \left<\tau_{i\overline\sigma} \right>\right] = \frac{1 + \left<\tau_{i\overline\sigma }\right>}{\omega - \frac{U}{2}} + \frac{1 - \left<\tau_{i\overline\sigma}\right>}{\omega + \frac{U}{2}}
+\end{aligned}\end{equation}
+The spin-total Greens function for the site \(i\) is
+\begin{equation}\begin{aligned}
+	\label{atomic_limit_gf}
+	G_{i}(\omega) = \sum_\sigma G_{i,\sigma}(\omega) = \frac{1 + \left<\tau_{i }\right>}{\omega - \frac{U}{2}} + \frac{1 - \left<\tau_{i}\right>}{\omega + \frac{U}{2}}
+\end{aligned}\end{equation}
+At half-filling, we have \(\tau_i = 1\).
+\section{Local Greens function for the Hubbard dimer}
+From the spectral representation, we have the following expression for the local Greens function for the Hubbard dimer at site $0$:
+\begin{equation}\begin{aligned}
+	G_{D,00}^\sigma(\omega) = \frac{1}{Z}\sum_{m,n}||\bra{m}c_{i\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\frac{1}{\omega + E_m - E_n}
+\end{aligned}\end{equation}
+$m,n$ sum over the exact eigenstates. $E_m, E_n$ are the corresponding energies. We are interested in teh $T \to 0$ Greens function. In that limit, all exponentials except that for the ground state $E_{gs}$ will die out. The exponential inside the summation will then cancel the exponential in the partition function.
+\begin{equation}\begin{aligned}
+	G_{D,00}^\sigma(\omega, T \to 0) &= \sum_{n}\left[||\bra{GS}c_{i\sigma}\ket{n}||^2\frac{1}{\omega + E_{GS} - E_n} + ||\bra{n}c_{i\sigma}\ket{GS}||^2\frac{1}{\omega + E_n - E_{GS}}\right]\\
+					&= \sum_{n}\left[||\bra{n}c^\dagger_{i\sigma}\ket{GS}||^2\frac{1}{\omega + E_{GS} - E_n} + ||\bra{n}c_{i\sigma}\ket{GS}||^2\frac{1}{\omega + E_n - E_{GS}}\right]\\
+\end{aligned}\end{equation}
+
+The ground state $\ket{GS}$ is just the state $\ket{-}$ in the table \ref{hubb_dim_spectrum}. We will choose to look at $\sigma = \uparrow`$. Then,
+\begin{equation}\begin{aligned}
+	c_{1\uparrow}\ket{-} &= \frac{a_1}{\sqrt 2}\ket{0, \downarrow} + \frac{a_2}{\sqrt 2}\ket{\downarrow,0}\\
+	c^\dagger_{1\uparrow}\ket{-} &= -\frac{a_1}{\sqrt 2}\ket{2, \uparrow} + \frac{a_2}{\sqrt 2}\ket{\uparrow,2}\\
+\end{aligned}\end{equation}
+The set of states $\ket{n}$ that give non-zero inner product $\ket{GS}$ are therefore
+\begin{equation}\begin{aligned}
+	\left\{ \ket{n} \right\} &= \ket{0\downarrow_\pm}\\
+	||\bra{n}c_{\uparrow\sigma}\ket{GS}||^2 &= \frac{1}{4}\left(a_2 \pm a_1 \right)^2 = \frac{1}{4}\left(1 \pm 2a_1a_2\right)\\
+	\left\{ E_n \right\} &= \mp t
+\end{aligned}\end{equation}
+for the second inner product, and
+\begin{equation}\begin{aligned}
+	\left\{\ket{n}\right\} &= \ket{2\uparrow_\pm}\\
+	||\bra{n}c^\dagger_{\uparrow\sigma}\ket{GS}||^2 &= \frac{1}{4}\left( a_2 \mp a_1 \right)^2 = \frac{1}{4}\left(1 \mp 2a_1a_2\right)\\
+	\left\{ E_n \right\} &= \pm t
+\end{aligned}\end{equation}
+for the first. The Greens function is therefore
+\begin{equation}\begin{aligned}
+	\label{dimer_local_G}
+	G_{D,00}^\uparrow(\omega, T \to 0) &= \left( \frac{1}{2} + \frac{2t}{\Delta} \right) \frac{\omega}{\omega^2 - \left(t - \frac{\Delta}{2}\right) ^2} + \left( \frac{1}{2} - \frac{2t}{\Delta} \right) \frac{\omega}{\omega^2 - \left(t + \frac{\Delta}{2}\right) ^2} = G_{D,00}^\downarrow(\omega, T \to 0)~.
+\end{aligned}\end{equation}
+In the atomic limit $(t=0)$, the Greens function simplifies to
+\begin{equation}\begin{aligned}
+	G_{D,00}^\uparrow(\omega, T \to 0) \bigg\vert_\text{atomic} = \frac{\omega}{\omega^2 - \frac{1}{4}U^2}
+\end{aligned}\end{equation}
+In the atomic limit, the singly-occupied state has zero energy:
+\begin{equation}\begin{aligned}
+	E_1(t=0) = \bra{1,0}\left(U \tau_{0 \uparrow}\tau_{0 \downarrow} + U \tau_{1 \uparrow}\tau_{1 \downarrow}\right) \ket{1,0} = 0
+\end{aligned}\end{equation}
+We can write the atomic limit Greens function in terms of this energy and the self energy:
+\begin{equation}\begin{aligned}
+	G_{D,00}^\uparrow(\omega, T \to 0) \bigg\vert_\text{atomic} = \frac{1}{\omega - E_1(t=0) - \Sigma(t=0)} = \frac{1}{\omega - 0 -\frac{U^2}{4\omega}}
+\end{aligned}\end{equation}
+The self energy in the atomic limit can be read off as 
+\begin{equation}\begin{aligned}
+	\label{dimer_selfenergy}
+\Sigma(t=0) = \frac{U^2}{4\omega}
+\end{aligned}\end{equation}
+The site local spectral function can also be calculated from the local Greens function:
+\begin{eqnarray}
+A(0\uparrow, \omega) &=& - \frac{1}{\pi}\text{Im }G_{D,00}^\uparrow(\omega)\nonumber\\
+			     &=& \left( \frac{1}{4} - \frac{t}{\Delta} \right)\left[\delta(\omega - \frac{1}{2}\Delta - t) + \delta(\omega + \frac{1}{2}\Delta + t)\right]\nonumber\\ 
+			     &&+ \left( \frac{1}{4} + \frac{t}{\Delta} \right) \left[\delta(\omega - \frac{1}{2}\Delta + t) + \delta(\omega + \frac{1}{2}\Delta - t)\right]\\ 
+			     &=& A(0\downarrow, \omega)~.\nonumber
+\end{eqnarray}
+Finally, the inter-site Greens function for the Hubbard dimer is given by
+\begin{equation}
+\label{dimer_intersite_G}
+G_{D,01}^\uparrow(\omega, T \to 0) = \left( \frac{1}{2} + \frac{2t}{\Delta} \right) \frac{t - \frac{\Delta}{2}}{\omega^2 - \left(t - \frac{\Delta}{2}\right)^2} + \left( \frac{1}{2} - \frac{2t}{\Delta} \right) \frac{t + \frac{\Delta}{2}}{\omega^2 - \left(t + \frac{\Delta}{2}\right)^2} = G_{D,01}^\downarrow(\omega, T \to 0)~.
+\end{equation}
+Using the diagonal and off-diagonal real space Greens functions, we can now compute the momentum-space Greens functions. The two momentum states are $ka = 0, \pi$. By Fourier transforming, these two Greens functions can be written as
+\begin{equation}\begin{aligned}
+	\label{Gk0}
+	G(k=0, \sigma) = \sum_r e^{ikr} G(r, \sigma) = G(r=0, \sigma) + G(r=a, \sigma) = \frac{1/2 + 2t/\Delta}{\omega -t + \Delta/2} + \frac{1/2 - 2t/\Delta}{\omega - t - \Delta/2}\\
+	G(k=\pi, \sigma) = \sum_r e^{ikr} G(r, \sigma) = G(r=0, \sigma) - G(r=a, \sigma) = \frac{1/2 + 2t/\Delta}{\omega + t - \Delta/2} + \frac{1/2 - 2t/\Delta}{\omega + t + \Delta/2}\\
+\end{aligned}\end{equation}
+
+\section{Contributions of various excitations to the site local spectral function}
+The site local spectral function is
+\begin{equation}\begin{aligned}
+	A(0\uparrow, \omega) = \left( \frac{1}{4} - \frac{t}{\Delta} \right)\left[\delta(\omega - \frac{\Delta}{2} - t) + \delta(\omega + \frac{\Delta}{2} + t)\right]\nonumber + \left( \frac{1}{4} + \frac{t}{\Delta} \right) \left[\delta(\omega - \frac{\Delta}{2} + t) + \delta(\omega + \frac{\Delta}{2} - t)\right]
+\end{aligned}\end{equation}
+If the eigenstates of the $N=1, S^z = - \frac{1}{2}$ sector are $\ket{1 \pm \downarrow}$ and those of $N=3, S^z = \frac{1}{2}$ sector are $\ket{3 \pm \uparrow}$, this spectral function originates from the expression:
+\begin{equation}\begin{aligned}
+	A(0\uparrow, \omega) =& \braket{1 \downarrow_- | c_{0 \uparrow} | \text{GS}} \delta\left(\omega + \frac{\Delta}{2} + t\right) + \braket{2 \uparrow_+ | c^\dagger_{0 \uparrow} | \text{GS}}\delta\left(\omega - \frac{\Delta}{2} - t\right) \\
+			      &+ \braket{1 \downarrow_+ | c_{0 \uparrow} | \text{GS}}\delta\left(\omega + \frac{\Delta}{2} - t\right) + \braket{2 \uparrow_- | c^\dagger_{0 \uparrow} | \text{GS}}\delta(\omega - \frac{\Delta}{2} + t)
+\end{aligned}\end{equation}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{dimer-peaks.png}
+	\caption{Position, weight and nature of each of the peaks in the Hubbard dimer site local spectral function}
+\end{figure}
+
+\chapter{Simple results for the Greens functions}
+\section{Relation between single-particle Greens function and the Greens operator $(T=0)$}
+ The single-particle Greens function is defined as the solution of the equation:
+ \begin{equation}\begin{aligned}
+	 \left(i\partial_t - H(\vec r)\right)G(\vec r,\vec r^\prime, t) = \delta(\vec r - \vec r^\prime)
+ \end{aligned}\end{equation}
+ and is given by the expression
+ \begin{equation}\begin{aligned}
+	 G(\vec r,\vec r^\prime, t) = -i \theta(t) \left< \left\{ c(\vec r, t) c^\dagger(\vec r^\prime, 0)\right\} \right>
+ \end{aligned}\end{equation}
+ This solution can be written in the Lehmann-Kallen representation  and at $T=0$ as
+ \begin{equation}\begin{aligned}
+	 G(\vec r \sigma, \vec r^\prime \sigma, \omega) = \sum_{n}\left[\frac{\bra{GS}c({\vec r,\sigma})\ket{n}\bra{n}c^\dagger(\vec r^\prime,\sigma)\ket{GS}}{\omega + E_{GS} - E_n} + \frac{\bra{GS}c^\dagger(\vec r^\prime,\sigma)\ket{n}\bra{n}c({\vec r,\sigma})\ket{GS}}{\omega + E_n - E_{GS}}\right]
+ \end{aligned}\end{equation}
+ The sum is over the exact eigenstates of the Hamiltonian. In what follows, we will represent $\vec r,\sigma \equiv \nu$ and $\vec r^\prime,\sigma \equiv \nu^\prime$.
+ \begin{equation}\begin{aligned}
+	 G(\nu, \nu^\prime, \omega) &= \sum_{n}\left[\frac{\bra{GS}c(\nu)\ket{n}\bra{n}c^\dagger(\nu^\prime)\ket{GS}}{\omega + E_{GS} - E_n} + \frac{\bra{GS}c^\dagger(\nu^\prime)\ket{n}\bra{n}c(\nu)\ket{GS}}{\omega + E_n - E_{GS}}\right]\\
+							&= \bra{GS}c(\nu)\frac{1}{\omega + E_{GS} - H}c^\dagger(\nu^\prime)\ket{GS} + \bra{GS}c^\dagger(\nu^\prime)\frac{1}{\omega + H - E_{GS}}c(\nu)\ket{GS}\\
+ \end{aligned}\end{equation}
+ If we now define a Greens operator
+ \begin{equation}\begin{aligned}
+	 \label{inv_G_func}
+	 \mathcal{G}(\omega, H) = \frac{1}{\omega - (H - E_\text{GS})}
+ \end{aligned}\end{equation}
+ we can write the single-particle Greens function as a sum of the matrix elements of this operator:
+ \begin{equation}\begin{aligned}
+	 \label{G_mat_el}
+	 G(\nu, \nu^\prime, \omega) = \bra{\nu} \mathcal{G}(\omega, H) \ket{\nu^\prime} - \bra{\overline{\nu^\prime}} \mathcal{G}(-\omega, H) \ket{\overline\nu} = \mathcal{G}(\omega, H)_{\nu,\nu^\prime} - \mathcal{G}(-\omega, H)_{\overline{\nu^\prime}, \overline\nu}
+ \end{aligned}\end{equation}
+ where we have defined the states $\ket{\nu} \equiv c^\dagger(\nu)\ket{GS}$ and $\ket{\overline\nu} \equiv c(\nu)\ket{GS}$. The two matrix elements can also be represented in their individual spectral representations:
+ \begin{equation}\begin{aligned}
+	 \label{G_mat_spec}
+ 	\mathcal{G}(\omega, H)_{\nu,\nu^\prime} = \sum_{n}\frac{\bra{GS}c(\nu)\ket{n}\bra{n}c^\dagger(\nu^\prime)\ket{GS}}{\omega + E_{GS} - E_n}\\
+	\mathcal{G}(\omega, H)_{\overline{\nu^\prime}, \overline\nu} = \sum_{n}\frac{\bra{GS}c^\dagger(\nu^\prime)\ket{n}\bra{n}c(\nu)\ket{GS}}{\omega + E_\text{GS} - E_n}
+ \end{aligned}\end{equation}
+ 
+\section{Writing single-particle excitations of ground state in terms of $N=3, S^z = \frac{1}{2}$ eigenstates}
+The excited state $c^\dagger_{0\uparrow}\ket{\text{GS}}$ can actually be written in terms of the $N=3$, $S^z = + \frac{1}{2}$ eigenstates $\ket{3\pm\uparrow}$ defined in table \ref{hubb_dim_spectrum}.
+\begin{equation}\begin{aligned}
+	\ket{3\pm \uparrow} = \frac{1}{\sqrt 2}\left(\ket{\uparrow, 2} \pm \ket{2, \uparrow}\right), && H^D \ket{3\pm \uparrow} = \pm t\ket{3\pm \uparrow}
+\end{aligned}\end{equation}
+In terms of these eigenstates, we can write
+\begin{equation}\begin{aligned}
+	c^\dagger_{0\uparrow}\ket{\text{GS}} 
+	&= c^\dagger_{0\uparrow}\left[a_1 \ket{SS} + a_2 \ket{CT}\right] \\
+	&= a_2 \frac{1}{\sqrt 2}\ket{\uparrow,2} - a_1 \frac{1}{\sqrt 2}\ket{2, \uparrow}\\
+	&= \left(x + y\right) \frac{1}{\sqrt 2}\ket{\uparrow,2} + \left(x - y\right) \frac{1}{\sqrt 2}\ket{2, \uparrow}\\
+	&=x\ket{3+ \uparrow} + y\ket{3- \uparrow}
+\end{aligned}\end{equation}
+where $x + y \equiv a_2$ and $x-y \equiv -a_1$. Similarly, for the other site excitation, we can write
+\begin{equation}\begin{aligned}
+	c^\dagger_{1\uparrow}\ket{\text{GS}} 
+	&= c^\dagger_{1\uparrow}\left[a_1 \ket{SS} + a_2 \ket{CT}\right] \\
+	&= a_2 \frac{1}{\sqrt 2}\ket{2, \uparrow} - a_1 \frac{1}{\sqrt 2}\ket{\uparrow, 2}\\
+	&=  \left(x + y\right) \frac{1}{\sqrt 2}\ket{2, \uparrow} + \left(x - y\right) \frac{1}{\sqrt 2}\ket{\uparrow, 2}\\
+	&=x\ket{3+ \uparrow} - y\ket{3- \uparrow}
+\end{aligned}\end{equation}
+Solving for $x$ and $y$ gives
+\begin{equation}\begin{aligned}
+	x = \frac{a_2 - a_1}{2}, && y = \frac{a_2 + a_1}{2}
+\end{aligned}\end{equation}
+Similarly, we can also write the single-hole excitation $c_{0 \uparrow}\ket{GS}$ in terms of the $N=1, S^z = -\frac{1}{2}$ eigenstates, $\ket{1\pm \downarrow}$:
+\begin{equation}\begin{aligned}
+	\ket{1\pm \downarrow} = \frac{1}{\sqrt 2}\left(\ket{\downarrow, 0} \pm \ket{0, \downarrow}\right), && H^D \ket{1\pm \downarrow} = \mp t\ket{1\pm \downarrow}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}
+	c_{0 \uparrow}\ket{GS} = a_1 \frac{1}{\sqrt 2}\ket{0, \downarrow} + a_2 \frac{1}{\sqrt 2}\ket{\downarrow, 0} = y\ket{1+ \downarrow} + x\ket{1- \downarrow}\\
+	c_{1 \uparrow}\ket{GS} = a_1 \frac{1}{\sqrt 2}\ket{\downarrow, 0} + a_2 \frac{1}{\sqrt 2}\ket{0, \downarrow} = y\ket{1+ \downarrow} - x\ket{1- \downarrow}\\
+\end{aligned}\end{equation}
+
+\section{Matrix elements of $G^{-1}$ between single-particle momentum excitations, for the Hubbard dimer}
+\begin{equation}\begin{aligned}
+	G^{-1} \equiv \omega + E_\text{GS} - H_D
+\end{aligned}\end{equation}
+The particle excitation momentum space kets are $\ket{k_0} = \frac{1}{\sqrt 2}\left(\ket{0} + \ket{1}\right) ,\ket{k_\pi} = \frac{1}{\sqrt 2}\left(\ket{0} - \ket{1}\right)$. Therefore,
+\begin{equation}\begin{aligned}
+	\left(G^{-1}\right)_{k_0 k_0} &= \frac{1}{2}\left(\bra{0} + \bra{1}\right)\left(\omega + E_\text{GS} - H_D\right)\left(\ket{0} + \ket{1}\right)\\
+				      &= \frac{1}{2}\left(2x\bra{+}\right)\left(\omega + E_\text{GS} - H_D\right)\left(2x\ket{+}\right)\\
+				      &= 2x^2\left(\omega + E_\text{GS} - t\right)\\
+\end{aligned}\end{equation}
+At the final step, we used $\braket{+,+} = 1$ and $\braket{+|H_D|+} = t$.
+
+\chapter{Topological interpretation of the Wilson ratio}
+From the Friedel sum rule\cite{langer1961friedel}, we can relate the phase shift \(\delta(0)\) due to scattering (at the Fermi surface) off a local impurity to the number of electrons bound in the potential well produced by that impurity:
+\begin{equation}\begin{aligned}
+\widetilde N = \frac{1}{2\pi i}\text{Tr }\ln S(0) = \int_\Gamma dz\partial_z \frac{1}{2\pi i}\text{Tr }\ln S(0)
+\end{aligned}\end{equation}
+From the optical theorem, we can write
+\begin{equation}\begin{aligned}
+	S = 1 + TG_0 = \frac{G}{G_0} && \left[G = G_0 + G_0 T G_0\right]
+\end{aligned}\end{equation}
+This allows us to write \cite{anirbanurg1}
+\begin{equation}\begin{aligned}
+\widetilde N = \int_\Gamma dz\partial_z \frac{1}{2\pi i}\text{Tr }\ln \frac{G}{G_0}
+\end{aligned}\end{equation}
+Since \(\text{Tr }\ln \hat O = \sum_\lambda \ln O_\lambda = \ln \prod_\lambda O_\lambda = \ln \text{Det} \hat O\), we get
+\begin{equation}\begin{aligned}
+\widetilde N &= \int_\Gamma dz\partial_z \frac{1}{2\pi i}\ln \text{Det } \frac{G}{G_0}\\
+      &= -\int_\Gamma dz\partial_z \frac{1}{2\pi i}\ln \frac{\text{Det } G_0}{\text{Det } G}\\
+      &\equiv -\int_\Gamma dz\partial_z \frac{1}{2\pi i}\ln D\\
+      &= -\int_{\Gamma(D)}\frac{dD}{D}
+\end{aligned}\end{equation}
+From the work of Seki and Yunoki \cite{seki2017topological}, we know that this quantity is essentially the winding number of the curve \(\Gamma(D)\) in the complex plane spanned by the real and imaginary parts of \(D\), and is equal to the change in Luttinger's volume \(V_L\) at \(T=0\).
+\begin{equation}\begin{aligned}
+\widetilde N &= -\int_{\Gamma(D)}\frac{dD}{D} = -\Delta V_L
+\end{aligned}\end{equation}
+The incoming electrons can have \(\sigma = \uparrow,\downarrow\).
+Since the impurity singlet ground state is rotationally invariant, we have \(\delta_\uparrow = \delta_\downarrow = \delta(0)\).
+\begin{equation}\begin{aligned}
+\widetilde N &= \frac{1}{\pi}\sum_\sigma\delta_\sigma(0)\\
+\implies \delta(0) &= \frac{\pi}{2}\widetilde N = -\frac{\pi}{2}\Delta V_L
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}
+\label{wilson_luttinger}
+R &= 1 + \sin^2 \left(\frac{\pi}{2}\widetilde N\right)\\
+  &= 1 + \sin^2 \left(\frac{\pi}{2}\Delta V_L\right)
+\end{aligned}\end{equation}
+We note that this connection between \(R\) and \(\Delta V_L\) has not been obtained in the existing literature thus far. In the unitary limit, \(\delta(0) = \frac{\pi}{2}\), giving \(\Delta V_L = -1 = -\tilde N\) \cite{martin1982fermi} (i.e., one electronic state from the impurity has been absorbed into the Luttinger volume of the conduction bath), such that \(R = 2\) in this limit. In this way, we see that a change in the topological quantum number \(\tilde N\) causes the well known renormalisation of the Wilson ratio R from its non-interacting value \((1)\) to the value \((2)\) obtained for the local Fermi liquid \cite{nozieres1974fermi}.

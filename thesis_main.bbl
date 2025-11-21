@@ -1,0 +1,784 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global/global}
+  \entry{Smith2021Chap}{incollection}{}{}
+    \name{author}{1}{}{%
+      {{hash=SJA}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={John\bibnamedelima A.},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \name{editor}{2}{}{%
+      {{hash=BL}{%
+         family={Brown},
+         familyi={B\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GK}{%
+         family={Green},
+         familyi={G\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{SJA1}
+    \strng{fullhash}{SJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Handbook of Nanoscience and Engineering}
+    \field{isbn}{978-3-030-12345-6}
+    \field{pages}{345\bibrangedash 378}
+    \field{title}{Advanced methods in quantum transport}
+    \list{location}{1}{%
+      {Cham, Switzerland}%
+    }
+    \field{year}{2021}
+  \endentry
+
+  \entry{Jones2018Sec}{inbook}{}{}
+    \name{author}{1}{}{%
+      {{hash=JER}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Emily\bibnamedelima R.},
+         giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \strng{namehash}{JER1}
+    \strng{fullhash}{JER1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Classical Mechanics — Third Edition}
+    \field{chapter}{12}
+    \field{pages}{289\bibrangedash 320}
+    \field{title}{Section on non‐linear oscillators}
+    \list{location}{1}{%
+      {Cambridge, UK}%
+    }
+    \field{year}{2018}
+  \endentry
+
+  \entry{Lee2019Conf}{inproceedings}{}{}
+    \name{author}{2}{}{%
+      {{hash=LM}{%
+         family={Lee},
+         familyi={L\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ZQ}{%
+         family={Zhao},
+         familyi={Z\bibinitperiod},
+         given={Qin},
+         giveni={Q\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LMZQ1}
+    \strng{fullhash}{LMZQ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 2019 IEEE International Conference on Electromagnetics and Applications (ICEA2019)}
+    \verb{doi}
+    \verb 10.1109/ICEA2019.12345
+    \endverb
+    \field{pages}{112–117}
+    \field{title}{Experimental characterization of metamaterial cloaking at microwave frequencies}
+    \list{location}{1}{%
+      {Tokyo, Japan}%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{Garcia2022Master}{thesis}{}{}
+    \name{author}{1}{}{%
+      {{hash=GMT}{%
+         family={Garcia},
+         familyi={G\bibinitperiod},
+         given={Maria\bibnamedelima T.},
+         giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GMT1}
+    \strng{fullhash}{GMT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Monte Carlo simulations of lattice gauge theories}
+    \list{institution}{1}{%
+      {Imperial College London}%
+    }
+    \field{type}{mathesis}
+    \field{year}{2022}
+  \endentry
+
+  \entry{Nguyen2020PhD}{thesis}{}{}
+    \name{author}{1}{}{%
+      {{hash=NAH}{%
+         family={Nguyen},
+         familyi={N\bibinitperiod},
+         given={Anh\bibnamedelima H.},
+         giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{NAH1}
+    \strng{fullhash}{NAH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.13140/RG.2.2.12345.67892
+    \endverb
+    \field{title}{High‐temperature superconductivity in iron‐based compounds}
+    \list{institution}{1}{%
+      {Stanford University}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{2020}
+  \endentry
+
+  \entry{Hansen2017Data}{misc}{}{}
+    \name{author}{2}{}{%
+      {{hash=HP}{%
+         family={Hansen},
+         familyi={H\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=MS}{%
+         family={Miller},
+         familyi={M\bibinitperiod},
+         given={Sarah},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Dryad Digital Repository}%
+    }
+    \strng{namehash}{HPMS1}
+    \strng{fullhash}{HPMS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.5061/dryad.12345
+    \endverb
+    \field{title}{Open ocean turbulence velocity fields dataset}
+    \field{year}{2017}
+  \endentry
+
+  \entry{TensorFlow2015}{software}{}{}
+    \name{author}{1}{}{%
+      {{hash=G}{%
+         family={{Google Brain Team}},
+         familyi={G\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{G1}
+    \strng{fullhash}{G1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Software}
+    \field{title}{TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems}
+    \verb{url}
+    \verb https://www.tensorflow.org/
+    \endverb
+    \field{version}{1.0}
+    \field{year}{2015}
+  \endentry
+
+  \entry{Wikipedia2025Quantum}{online}{}{}
+    \name{author}{1}{}{%
+      {{hash=FW}{%
+         family={Foundation},
+         familyi={F\bibinitperiod},
+         given={Wikimedia},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FW1}
+    \strng{fullhash}{FW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Accessed: 2025-11-07}
+    \field{title}{Quantum mechanics — Wikipedia, The Free Encyclopedia}
+    \verb{url}
+    \verb https://en.wikipedia.org/wiki/Quantum_mechanics
+    \endverb
+    \field{year}{2025}
+  \endentry
+
+  \entry{ISO14001:2015}{standard}{}{}
+    \list{organization}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{labeltitlesource}{title}
+    \field{note}{Standard specification}
+    \field{title}{ISO 14001:2015 Environmental management systems — Requirements with guidance for use}
+    \field{year}{2015}
+  \endentry
+
+  \entry{Batterman2013OxfordHandbook}{collection}{}{}
+    \name{editor}{1}{}{%
+      {{hash=BRW}{%
+         family={Batterman},
+         familyi={B\bibinitperiod},
+         given={Robert\bibnamedelima W.},
+         giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Oxford University Press}%
+    }
+    \strng{namehash}{BRW1}
+    \strng{fullhash}{BRW1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{isbn}{978-0195392043}
+    \field{title}{The Oxford Handbook of Philosophy of Physics}
+    \list{location}{1}{%
+      {Oxford}%
+    }
+    \field{year}{2013}
+  \endentry
+
+  \entry{Penrose1987Inbook}{inbook}{}{}
+    \name{author}{2}{}{%
+      {{hash=PR}{%
+         family={Penrose},
+         familyi={P\bibinitperiod},
+         given={Roger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=RW}{%
+         family={Rindler},
+         familyi={R\bibinitperiod},
+         given={Wolfgang},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \strng{namehash}{PRRW1}
+    \strng{fullhash}{PRRW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Spinors and Space-Time, Vol. 1}
+    \field{chapter}{1}
+    \field{isbn}{978-0521337076}
+    \field{pages}{1\bibrangedash 30}
+    \field{title}{Spinors and Space-Time, Volume 1: Two-Spinor Calculus and Relativistic Fields}
+    \list{location}{1}{%
+      {Cambridge}%
+    }
+    \field{year}{1987}
+  \endentry
+
+  \entry{He2016ResNetConference}{inproceedings}{}{}
+    \name{author}{4}{}{%
+      {{hash=HK}{%
+         family={He},
+         familyi={H\bibinitperiod},
+         given={Kaiming},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=ZX}{%
+         family={Zhang},
+         familyi={Z\bibinitperiod},
+         given={Xiangyu},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Ren},
+         familyi={R\bibinitperiod},
+         given={Shaoqing},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sun},
+         familyi={S\bibinitperiod},
+         given={Jian},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HK+1}
+    \strng{fullhash}{HKZXRSSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+    \verb{doi}
+    \verb 10.1109/CVPR.2016.90
+    \endverb
+    \field{pages}{770\bibrangedash 778}
+    \field{title}{Deep Residual Learning for Image Recognition}
+    \field{year}{2016}
+  \endentry
+
+  \entry{ICML2020Proceedings}{proceedings}{}{}
+    \name{editor}{2}{}{%
+      {{hash=DIH}{%
+         family={Daumé\bibnamedelima III},
+         familyi={D\bibinitperiod\bibinitdelim I\bibinitperiod},
+         given={Hal},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=SA}{%
+         family={Singh},
+         familyi={S\bibinitperiod},
+         given={Aarti},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {PMLR}%
+    }
+    \strng{namehash}{DIHSA1}
+    \strng{fullhash}{DIHSA1}
+    \field{labelnamesource}{editor}
+    \field{labeltitlesource}{title}
+    \field{series}{Proceedings of Machine Learning Research}
+    \field{title}{Proceedings of the 37th International Conference on Machine Learning}
+    \field{volume}{119}
+    \list{location}{1}{%
+      {Online}%
+    }
+    \field{year}{2020}
+  \endentry
+
+  \entry{Shannon1937Masters}{thesis}{}{}
+    \name{author}{1}{}{%
+      {{hash=SCE}{%
+         family={Shannon},
+         familyi={S\bibinitperiod},
+         given={Claude\bibnamedelima E.},
+         giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SCE1}
+    \strng{fullhash}{SCE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{A Symbolic Analysis of Relay and Switching Circuits}
+    \list{location}{1}{%
+      {Cambridge, MA}%
+    }
+    \list{institution}{1}{%
+      {Massachusetts Institute of Technology}%
+    }
+    \field{type}{mathesis}
+    \field{year}{1937}
+  \endentry
+
+  \entry{Turing1938PhD}{thesis}{}{}
+    \name{author}{1}{}{%
+      {{hash=TAM}{%
+         family={Turing},
+         familyi={T\bibinitperiod},
+         given={Alan\bibnamedelima M.},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TAM1}
+    \strng{fullhash}{TAM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Systems of Logic Based on Ordinals}
+    \list{institution}{1}{%
+      {Princeton University}%
+    }
+    \field{type}{phdthesis}
+    \field{year}{1938}
+  \endentry
+
+  \entry{LOSCGW150914Dataset}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=L}{%
+         family={{LIGO Open Science Center}},
+         familyi={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{L1}
+    \strng{fullhash}{L1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.7935/K5MW2F23
+    \endverb
+    \field{howpublished}{LIGO Open Science Center (LOSC)}
+    \field{note}{Gravitational-wave strain data release}
+    \field{title}{GW150914 Open Data}
+    \verb{url}
+    \verb https://losc.ligo.org/events/GW150914/
+    \endverb
+    \field{year}{2016}
+  \endentry
+
+  \entry{NumPySoftware}{software}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=HCR}{%
+         family={Harris},
+         familyi={H\bibinitperiod},
+         given={Charles\bibnamedelima R.},
+         giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=MKJ}{%
+         family={Millman},
+         familyi={M\bibinitperiod},
+         given={K.\bibnamedelima Jarrod},
+         giveni={K\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=vdWSJ}{%
+         prefix={van\bibnamedelima der},
+         prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod},
+         family={Walt},
+         familyi={W\bibinitperiod},
+         given={St{\'e}fan\bibnamedelima J.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=GR}{%
+         family={Gommers},
+         familyi={G\bibinitperiod},
+         given={Ralf},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=VP}{%
+         family={Virtanen},
+         familyi={V\bibinitperiod},
+         given={Pauli},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Cournapeau},
+         familyi={C\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=WE}{%
+         family={Wieser},
+         familyi={W\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=TJ}{%
+         family={Taylor},
+         familyi={T\bibinitperiod},
+         given={Julian},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Berg},
+         familyi={B\bibinitperiod},
+         given={Sebastian},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SNJ}{%
+         family={Smith},
+         familyi={S\bibinitperiod},
+         given={Nathaniel\bibnamedelima J.},
+         giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HCR+1}
+    \strng{fullhash}{HCRMKJWSJvdGRVPCDWETJBSSNJ+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{See also Harris et al., Nature 585, 357--362 (2020), doi:10.1038/s41586-020-2649-2}
+    \field{title}{NumPy}
+    \verb{url}
+    \verb https://numpy.org/
+    \endverb
+    \field{version}{1.x}
+    \field{year}{2020}
+  \endentry
+
+  \entry{NISTCODATAOnline}{online}{}{}
+    \name{author}{1}{}{%
+      {{hash=N}{%
+         family={{NIST}},
+         familyi={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{N1}
+    \strng{fullhash}{N1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{note}{Accessed: 2025-11-07}
+    \field{title}{CODATA Recommended Values of the Fundamental Physical Constants}
+    \verb{url}
+    \verb https://physics.nist.gov/constants
+    \endverb
+    \field{year}{2018}
+  \endentry
+
+  \entry{ISO8601Standard}{standard}{}{}
+    \list{organization}{1}{%
+      {International Organization for Standardization}%
+    }
+    \field{labeltitlesource}{title}
+    \field{title}{ISO 8601-1:2019 Date and time—Representations for information interchange—Part 1: Basic rules}
+    \field{year}{2019}
+  \endentry
+
+  \entry{Newton1687Principia}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=NI}{%
+         family={Newton},
+         familyi={N\bibinitperiod},
+         given={Isaac},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Royal Society}%
+    }
+    \strng{namehash}{NI1}
+    \strng{fullhash}{NI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Philosophiae Naturalis Principia Mathematica}
+    \list{location}{1}{%
+      {London}%
+    }
+    \field{year}{1687}
+  \endentry
+
+  \entry{French1971Vibrations}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=FAP}{%
+         family={French},
+         familyi={F\bibinitperiod},
+         given={Anthony\bibnamedelima P.},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {W. W. Norton \& Company}%
+    }
+    \strng{namehash}{FAP1}
+    \strng{fullhash}{FAP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Vibrations and Waves}
+    \list{location}{1}{%
+      {New York}%
+    }
+    \field{year}{1971}
+  \endentry
+
+  \entry{Schrodinger1926Quantisation}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=SE}{%
+         family={Schr{\"o}dinger},
+         familyi={S\bibinitperiod},
+         given={Erwin},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SE1}
+    \strng{fullhash}{SE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1002/andp.19263840404
+    \endverb
+    \field{pages}{361\bibrangedash 376}
+    \field{title}{Quantisierung als Eigenwertproblem}
+    \field{volume}{79}
+    \field{journaltitle}{Annalen der Physik}
+    \field{year}{1926}
+  \endentry
+
+  \entry{KopkaDalyGuide}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=KH}{%
+         family={Kopka},
+         familyi={K\bibinitperiod},
+         given={Helmut},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=DPW}{%
+         family={Daly},
+         familyi={D\bibinitperiod},
+         given={Patrick\bibnamedelima W.},
+         giveni={P\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley}%
+    }
+    \strng{namehash}{KHDPW1}
+    \strng{fullhash}{KHDPW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{4}
+    \field{title}{A Guide to \LaTeX}
+    \list{location}{1}{%
+      {Boston, MA}%
+    }
+    \field{year}{2003}
+  \endentry
+
+  \entry{Tufte2001VisualDisplay}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=TER}{%
+         family={Tufte},
+         familyi={T\bibinitperiod},
+         given={Edward\bibnamedelima R.},
+         giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Graphics Press}%
+    }
+    \strng{namehash}{TER1}
+    \strng{fullhash}{TER1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{2}
+    \field{title}{The Visual Display of Quantitative Information}
+    \list{location}{1}{%
+      {Cheshire, CT}%
+    }
+    \field{year}{2001}
+  \endentry
+
+  \entry{EdwardRHeathLaTeXIllustrations}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=HER}{%
+         family={Heath},
+         familyi={H\bibinitperiod},
+         given={Edward\bibnamedelima R.},
+         giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{HER1}
+    \strng{fullhash}{HER1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Creating Illustrations with \LaTeX}
+    \list{location}{1}{%
+      {Cham, Switzerland}%
+    }
+    \field{year}{2018}
+  \endentry
+
+  \entry{MohrCODATA2018}{article}{}{}
+    \name{author}{4}{}{%
+      {{hash=MPJ}{%
+         family={Mohr},
+         familyi={M\bibinitperiod},
+         given={Peter\bibnamedelima J.},
+         giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=NDB}{%
+         family={Newell},
+         familyi={N\bibinitperiod},
+         given={David\bibnamedelima B.},
+         giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+      {{hash=TBN}{%
+         family={Taylor},
+         familyi={T\bibinitperiod},
+         given={Barry\bibnamedelima N.},
+         giveni={B\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=TE}{%
+         family={Tiesinga},
+         familyi={T\bibinitperiod},
+         given={Eite},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MPJ+1}
+    \strng{fullhash}{MPJNDBTBNTE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1103/RevModPhys.93.025010
+    \endverb
+    \field{number}{2}
+    \field{pages}{025010}
+    \field{title}{CODATA Recommended Values of the Fundamental Physical Constants: 2018}
+    \field{volume}{93}
+    \field{journaltitle}{Reviews of Modern Physics}
+    \field{year}{2021}
+  \endentry
+
+  \entry{Callister2018Materials}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=CWD}{%
+         family={Callister},
+         familyi={C\bibinitperiod},
+         given={William\bibnamedelima D.},
+         giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=RDG}{%
+         family={Rethwisch},
+         familyi={R\bibinitperiod},
+         given={David\bibnamedelima G.},
+         giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {John Wiley \& Sons}%
+    }
+    \strng{namehash}{CWDRDG1}
+    \strng{fullhash}{CWDRDG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{10}
+    \field{title}{Materials Science and Engineering: An Introduction}
+    \list{location}{1}{%
+      {Hoboken, NJ}%
+    }
+    \field{year}{2018}
+  \endentry
+
+  \entry{Likert1932Technique}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=LR}{%
+         family={Likert},
+         familyi={L\bibinitperiod},
+         given={Rensis},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LR1}
+    \strng{fullhash}{LR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{1\bibrangedash 55}
+    \field{title}{A Technique for the Measurement of Attitudes}
+    \field{volume}{140}
+    \field{journaltitle}{Archives of Psychology}
+    \field{year}{1932}
+  \endentry
+\enddatalist
+\endinput
