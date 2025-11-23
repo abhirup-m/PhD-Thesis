@@ -1,0 +1,26 @@
+\documentclass[
+12pt, % The default document font size, options: 10pt, 11pt, 12pt
+]{report} % The class file specifying the document structure
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{amsmath,amssymb,braket,graphicx,caption}
+
+\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+
+\addbibresource{thesis_cleaned.bib} % The filename of the bibliography
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=2cm,bottom=3cm]{geometry}
+\graphicspath{{methods}{entanglementRG}{ESIAM}{tilingFormalism}{tileESIAM}{tileHF}{appendices}}
+\setcounter{tocdepth}{1}
+
+\begin{document}
+
+% \include{Chapters/chapterMethods}
+\include{Chapters/chapterESIAM}
+% \input{Chapters/appendices}
+
+\printbibliography%
+\end{document}
