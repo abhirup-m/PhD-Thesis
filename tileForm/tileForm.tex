@@ -1,94 +1,35 @@
 \chapter{Tiling Hubbard}
-\section{The philosophy of auxiliary model methods}
+\section{The Philosophy of Auxiliary Models}
 
-The present method is a realisation of the general method of using simpler systems called auxiliary models to study bulk systems~\cite{martin_2016}. In general, a full Hamiltonian can be separated into the Hamiltonians for a particular subsystem \(S\), the rest of the system \(R\), and the interactions between \(S\) and \(R\).
+In the previous chapter, we extended the Anderson impurity model to host a localisation-delocalisation transition on the impurity site that captures the phenomenology of the Hubbard dimension in infinite dimensions (as seen from, say, dynamical mean-field theory (DMFT)). In this chapter, we extend this approach by developing a formalism to study the more realistic case of finite-dimensional interacting models by using appropriately chosen impurity models as auxiliary models. The key to an {\it auxiliary model method} is to construct an appropriate auxiliary model that while being tractable captures some essential property of the full lattice model~\cite{martin_2016}. This involves separating the complete degrees of freedom into a system part (\(H_S\)) which one treats exactly and the rest of the system (\(H_R\)) that one might simplify in order to be able to solve the problem. The non-trivial nature of the problem arises of course from the hybridisation \(H_{SR}\) between the system and the bath:
 \begin{equation}\begin{aligned}
-	\mathcal{H} &= \mathcal{H}_S\ket{S}\bra{S} + \mathcal{H}_R \ket{R}\bra{R} + \mathcal{H}_{SR} \ket{S}\bra{R} \\
-				&+ \mathcal{H}_{RS}\ket{S}\bra{R} = \begin{bmatrix} & \mathcal{H}_{R} && \mathcal{H}_{RS} & \\ & \mathcal{H}_{RS}^* && \mathcal{H}_{S} & \end{bmatrix}
+	{H} &= \begin{bmatrix} & {H}_{R} && {H}_{RS} & \\ & {H}_{RS}^* && {H}_{S} & \end{bmatrix}~.
 \end{aligned}\end{equation}
-where \(\ket{S}\) and \(\ket{R}\) actually represents sums over all basis kets of \(S\) and \(R\) respectively. As an example, we can split the Hubbard model Hamiltonian between a particular site \(i = p\) and the rest of the lattice into three parts \(H_\text{hubb} = H_S + H_R + H_{SR} + H_{RS}\) (fig.~\ref{cluster-bath}), where
-\begin{equation}\begin{aligned}
-	H_S &= U^H\hat n_{p \uparrow} \hat n_{p \downarrow} - \mu^H \sum_\sigma \hat n_{p \sigma}\\
-	H_R &= U^H\sum_{i \neq p}\hat n_{i \uparrow} \hat n_{p \downarrow} - \mu^H \sum_{i \neq p, \sigma} \hat n_{i \sigma} \\
-		&-t^H\sum_{\sigma,\left<i,j \right>\atop{i \neq p \neq j}}\left(c^\dagger_{i\sigma} c_{j\sigma} + \text{h.c.}\right) \\
-	H_{SR} + H_{Rs} &= - t^H\sum_{\sigma,\atop{i \in \text{N.N. of }p}}\left(c^\dagger_{i\sigma} c_{p\sigma} + \text{h.c.}\right)~.
-\end{aligned}\end{equation}
-The Greens function of the full Hamiltonian can also be split in a similar fashion:
-\begin{equation}\begin{aligned}
-	G(\omega) = \begin{bmatrix} G_S && G_{SR} \\ G_{RS} && G_R \end{bmatrix}
-\end{aligned}\end{equation}
-Each Greens function can be written in terms of the non-interacting counterpart and the self-energy through the Dyson equation: \(\Sigma_i = 1/G_{i,0} - 1/G_i\).
 
-The subsystem \(S\) is usually taken to be the "cluster", and consequently, \(R\) represents the "bath".
-The smaller system is typically chosen such that its eigenstates are known exactly.
-Progress is then made by choosing a simpler version of \(H_R\) and a simpler form also for its coupling \(H_{RS}\) with the smaller system.
-This combination of the cluster and the simpler bath is then called the \textit{auxiliary system}.
-A typical auxiliary system for the Hubbard model could, potentially, be the single-impurity Anderson model (SIAM), where the impurity represents an arbitrary site \(p\) of the lattice, the bath represents the rest of the lattice sites and the hybridisation term between the impurity and the bath represents the coupling term \(H_{RS}\):
-\begin{equation}\begin{aligned}\label{clus_bath_siam}
-	\mathcal{H}_\text{SIAM} = \underbrace{\epsilon_d \hat n_d + U \hat n_{d \uparrow} \hat n_{d \downarrow}}_{H_S} + \underbrace{- t\sum_{\left<i,j \right>, \sigma}\left(c^\dagger_{i\sigma}c_{j\sigma} + \text{h.c.}\right)}_{H_{R}} + \underbrace{V\sum_\sigma \left( c^\dagger_{d\sigma}c_{0\sigma} + \text{h.c.}\right)}_{H_{SR}}~.
+This separation can always be done exactly, if one does not care about tractability. For example, one can take the Hubbard model that describes electrons hopping on a lattice and interacting when two electrons reside on the same lattice site:
+\begin{equation}\begin{aligned}
+	H_\text{hub} = -t\sum_{\langle i,j \rangle,\sigma }(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}n_{i \uparrow}n_{i \downarrow}~,
 \end{aligned}\end{equation}
-Such a construction is shown in fig.~\ref{cluster-bath}.
+and separate this into parts, the system being the local orbitals of a specific site \(l\) and the rest of the system being all the other sites:
+\begin{equation}\begin{aligned}
+	H_S &= U n_{l \uparrow} n_{l \downarrow},\\
+	H_R &= -t\sum_{\langle i,j \rangle,\sigma }^\prime(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}^\prime n_{i \uparrow}n_{i \downarrow},\\
+	H_{SR} + H_{RS} &= -t\sum_{i,\sigma} (c^\dagger_{l,\sigma}c_{i,\sigma} + \text{h.c.}~,
+\end{aligned}\end{equation}
+where the primed summation is carried out over all nearest-neighbour pairs that do not involve \(l\) and the summation in \(H_{SR} + H_{RS}\) is over all sites adjacent to \(l\).
+
+The smaller system \(H_S\) (often called the {\it cluster}) is typically chosen such that its eigenstates are known exactly. Progress is then made by choosing a simpler form for \(H_R\) and its coupling \(H_{RS}\) with the smaller system. This combination of the cluster and the simpler bath is then called the \textit{auxiliary system}.
+A tractable auxiliary system for the Hubbard model is the single-impurity Anderson model (SIAM); the correlated impurity site represents the set of local orbitals of any given site, while the conduction bath represents the rest of the lattice sites in an approximate fashion.  Such a construction is shown in fig.~\ref{cluster-bath}.
 \begin{figure}[!htb]
 	\centering
-
     \includegraphics[width=0.48\textwidth]{clusterBath.pdf}
 	\caption{\textit{Left}: Full Hubbard model lattice with onsite repulsion $U^H$ on all sites and hopping between nearest neighbour sites with strength $t^H$. \textit{Right}: Extraction of the auxiliary (cluster+bath) system from the full lattice. The central site on left becomes the impurity site (red) on the right (with an onsite repulsion $\epsilon_d$), while the rest of the $N-1$ sites on the left form a conduction bath (green circles) (with dispersion $\epsilon_k$ and correlation modelled by the self-energy $\Sigma_k(\omega)$) that hybridizes with the impurity through the coupling $V$.}
 	\label{cluster-bath}
 \end{figure}
-\textit{It should be noted that any reasonable choice of the cluster and bath would break the translational symmetry of the full model}. To allow computing quantities, one would need to make the bath (which is a much larger system) simpler than the cluster (which is a single site). This distinction breaks the translational symmetry of the Hubbard model. For eg., if one chooses eq.~\ref{clus_bath_siam} as the auxiliary system, then the fact that the impurity has an onsite correlation while the bath does not means we have broken the symmetry between the cluster and the bath.
 
-\section{A ``bottoms-up" approach to using auxiliary models}
+It should be noted that any reasonable choice of the cluster and bath would break the translational symmetry of the full model: To allow computing quantities, one would need to make the bath (which is a much larger system) simpler than the cluster (which is a single site). This distinction breaks the translational symmetry of the Hubbard model. As a result, calculations that make use of the translation symmetry of the full model (such as \(k-\)space objects) will require a periodisation operation of an auxiliary model quantity.
 
-The present work is aimed towards developing a new auxiliary model method to study correlated electronic systems. We first outline the main steps of the method, to make it more convenient for the reader to following the next sections:
-\begin{itemize}
-	\item The first step is to identify the correct impurity model which can faithfully capture the physics of lattice model we are trying to solve (see Subsection \ref{identifyModel}). This model must be solved using an impurity solver. In the present work, we use the recently-developed unitary renormalisation group method~\cite{anirbanmott1,anirbanmott2,anirbanurg1,anirbanurg2,siddharthacpi,santanukagome}.
-	\item The leap to the bulk model is then made by applying lattice translation operators on the impurity model. This process, referred to as tiling here, allows us to reconstruct the lattice model Hamiltonian from that of the auxiliary model (see Subsection~\ref{tilingsubsection}).
-	\item Once the Hamiltonians are linked, it is possible to relate the eigenstates and correlations functions between the auxiliary model and lattice model, using a manybody version of Bloch's theorem (see Section~\ref{tilingProcedure}).
-\end{itemize}
-
-\subsection{Formal description of the ``tiling" procedure}\label{tilingsubsection}
-
-We will now define the {\it tiling} procedure by which we can recreate the complete lattice model by using instances of an auxiliary model Hamiltonian. The first step is of course to identify an impurity model that can act as a good auxiliary model for out lattice model. The local behaviour of this impurity model should reflect the essential local physics of the lattice model. Typically, we will consider impurity model geometries where the real-space bath site connected directly to the impurity also harbours some kind of local interaction. We will henceforth refer to this site as the zeroth site. In the case where multiple sites are connected directly to the impurity, we will choose one of these sites for reference and call that the {\it bath zeroth site} throughout.
-
-In order to identify a {\it unit cell} for our tiling procedure, we place the impurity site at a reference site \({\bf r}_d\) of our lattice, and the bath zeroth site at a nearest-neighbour site \({\bf z}\), and label the corresponding auxiliary model Hamiltonian as \(\mathcal{H}_\text{aux}({\bf r}_d, {\bf z})\). The unit cell at the position \({\bf r}_d\) is then obtained by placing the zeroth site on all nearest-neighbours of \({\bf r}_d\) and averaging over these configurations:
-\begin{equation}\begin{aligned}\label{unitCellHamiltonian}
-	\mathcal{H}_\text{aux}({\bf r}_d) = \frac{1}{\mathcal{Z}}\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\mathcal{H}_\text{aux}({\bf r}_d, {\bf z})~,
-\end{aligned}\end{equation}
-where \({\bf z}\) is summed over all nearest-neighbours of \({\bf r}_d\) and \(\mathcal{Z}\) is the number of such nearest-neighbours.
-
-In order to create the bulk model, we now need to translate this auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bf a})\) that translate all positions by a vector \({\bf a}\). In terms of manybody states and operators, their action is defined as 
-\begin{equation}\begin{aligned}\label{translationDefinition}
-	&T^\dagger({\bf a}) \ket{{\bf r}_1, {\bf r}_2,\ldots} = \ket{{\bf r}_1 + {\bf a}}\otimes\ket{{\bf r}_2 + {\bf a}}\ldots\otimes\ket{{\bf r}_n + {\bf a}}\\
-	&T^\dagger({\bf a}) \mathcal{O}\left({\bf r}_1, {\bf r}_2,\ldots\right)T({\bf a}) = \mathcal{O}\left({\bf r}_1 + {\bf a}, {\bf r}_2 + {\bf a},\ldots\right)~,
-\end{aligned}\end{equation}
-where \(\ket{{\bf r}_1, {\bf r}_2,\ldots}\) is a state in the manyparticle Fock-space basis with the particles localised at the specified positions. For example, for a local fermionic creation operator \(c^\dagger({\bf r})\), we have 
-\begin{equation}\begin{aligned}
-	T^\dagger({\bf a}) c^\dagger({\bf r}) T({\bf a}) = c^\dagger({\bf r} + {\bf a})~.
-\end{aligned}\end{equation}
-It acts similarly on the auxiliary model Hamiltonian:
-\begin{equation}\begin{aligned}
-	T^\dagger({\bf a})\mathcal{H}_\text{aux}({\bf r}_d)T({\bf a}) = \mathcal{H}_\text{aux}({\bf r}_d + {\bf a})~,
-\end{aligned}\end{equation}
-translating all sites by the vector \({\bf a}\). By introducing the Fourier transform to momentum space,
-\begin{equation}\begin{aligned}
-	\ket{{\bf r}_1, {\bf r}_2,\ldots} = \otimes_{j=1}^N \int d{\bf k}_j e^{-i {\bf r}_j\cdot{\bf k}_j} \ket{{\bf k}_j}~,
-\end{aligned}\end{equation}
-it is easy to see that the total momentum states are eigenstates of the global translation operators:
-\begin{equation}\begin{aligned}
-	T^\dagger({\bf a})\ket{{\bf k}_1, {\bf k}_2,\ldots} &= \otimes_{j=1}^N \int d{\bf r}_j e^{i {\bf r}_j\cdot{\bf k}_j} T^\dagger({\bf a})\ket{{\bf r}_j}~,\\
-							    &=\otimes_{j=1}^N \int d{\bf r}_j e^{i {\bf r}_j\cdot{\bf k}_j} \ket{{\bf r}_j + {\bf a}}\\
-							    &=e^{-i {\bf a}_j\cdot{\bf k}_\text{tot}}\ket{{\bf k}_1, {\bf k}_2,\ldots},
-\end{aligned}\end{equation}
-where \({\bf k}_\text{tot} = \sum_j {\bf k}_j\) is the total momentum.
-
-The auxiliary model, being an impurity model, lacks translation symmetry. The lattice model does remain invariant under global translation operations. In order to reconstruct the full lattice model and restore its translation invariance, we translate the unit cell across all sites of the lattice:
-\begin{equation}\begin{aligned}
-	\label{tilingPrescription}
-	\mathcal{H}_\text{tiled} &= \sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r})\\
-				&= \sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\mathcal{H}_\text{aux}({\bf r}_d)T({\bf r} - {\bf r}_d)~ \\
-				&= \frac{1}{\mathcal{Z}}\sum_{{\bf r}}\sum_{{\bf z}\in\text{NN}({\bf r}_d)}T^\dagger({\bf r} - {\bf r}_d)\mathcal{H}_\text{aux}({\bf r}_d, {\bf z})T({\bf r} - {\bf r}_d)~ \\
-\end{aligned}\end{equation}
-where \({\bf r}\) sums over all lattice sites.
+The present work is aimed towards developing a new auxiliary model method to study correlated electronic systems. As described above, the first step is to identify the correct impurity model which can faithfully capture the physics of the lattice model we are trying to solve. The local behaviour of this impurity model should reflect the essential local physics of the lattice model. Typically, we will consider impurity model geometries where the real-space bath site connected directly to the impurity hosts some local interaction. We will henceforth refer to this site as the zeroth site. This model must be solved using an impurity solver. In the present work, we use the recently-developed unitary renormalisation group method~\cite{anirbanmott1,anirbanmott2,anirbanurg1,anirbanurg2,siddharthacpi,santanukagome}. The leap to the bulk model is then made by applying manybody lattice translation operators on the auxiliary model. This process, referred to as {\it tiling} here, allows us to reconstruct the lattice model Hamiltonian from that of the auxiliary model. Once the Hamiltonians can be mapped onto one another, it is possible to relate the eigenstates and correlations functions between the auxiliary model and lattice model, using a manybody version of Bloch's theorem.
 
 \subsection{Extending the Anderson impurity model: Identifying the correct auxiliary model}\label{identifyModel}
 The standard Anderson model consists of a correlated impurity site coupled with a non-interacting conduction bath. The double occupancy cost on the impurity is \(U\), while the single-particle hopping strength between the impurity and the conduction bath is \(V\). If the impurity site hybridises with a {\it non-interacting} bath defined by a uniform density of states, the impurity spectral function is found to have a well-defined Kondo resonance at low temperatures. Such a model does not exhibit a phase transition; the low-energy phase is one of strong-coupling for all parameter regimes. Increasing the impurity correlation \(U\) only serves to reduce the width of the central peak at the cost of the appearance of side bands at energy scales of the order of \(U\), but the resonance never dies. The situation is however different if the impurity is embedded in a correlated conduction bath with a non-trivial density of states. For the case of a conduction band with the DOS shown in the right of the figure below, the impurity hybridises into a reduced bandwidth because of the correlation on the lattice~\cite{held_2013}.
@@ -104,42 +45,42 @@ Above a critical \(U_c\), the impurity spectral function gets gapped out, and th
 We have recently studied an extended Anderson impurity model (e-SIAM) where we introduced an explicit Kondo coupling \(J\) and a local correlation \(W\) on the bath zeroth site, which is the site connected to the impurity (see \cite{gazizovaleblanc2023} for some recent findings of non-local effective attractive interactions within the Hubbard model). The Hamiltonian of the e-SIAM for a half-filled impurity site is of the form
 \begin{equation}\begin{aligned}
 	\label{siam_attr}
-	\mathcal{H}_\text{E-S} = \mathcal{H}_\text{cbath} + \mathcal{H}_\text{imp} + \mathcal{H}_\text{imp-cbath}~,
+	{H}_\text{E-S} = {H}_\text{cbath} + {H}_\text{imp} + {H}_\text{imp-cbath}~,
 \end{aligned}\end{equation}
 where 
 \begin{itemize}
-	\item \(\mathcal{H}_\text{cbath} = -\frac{1}{\mathcal{Z}}t\sum_{i=0,1,\ldots;\sigma}\left(c^\dagger_{i,\sigma}c_{i+1,\sigma} + \text{h.c.}\right) - \frac{1}{2}W\left(\hat n_{0 \uparrow} - \hat n_{0 \downarrow}\right)^2\) is the Hamiltonian of the conduction bath consisting of a kinetic energy term and some local interaction terms on the zeroth site,
-	\item \(\mathcal{H}_\text{imp} = - \frac{U}{2}\left(\hat n_{d \uparrow} - \hat n_{d \downarrow} \right) ^2\) is the Hamiltonian for the localised impurity site, and
-	\item \(\mathcal{H}_\text{imp-bath} = J {\bf S}_d\cdot{\bf S}_0 - V \sum_{\sigma} \left(c^\dagger_{0\sigma} c_{d\sigma} + h.c.\right)\) describes the interaction between the impurity orbitals and the conduction bath.
+	\item \({H}_\text{cbath} = -\frac{1}{\mathcal{Z}}t\sum_{i=0,1,\ldots;\sigma}\left(c^\dagger_{i,\sigma}c_{i+1,\sigma} + \text{h.c.}\right) - \frac{1}{2}W\left(\hat n_{0 \uparrow} - \hat n_{0 \downarrow}\right)^2\) is the Hamiltonian of the conduction bath consisting of a kinetic energy term and some local interaction terms on the zeroth site,
+	\item \({H}_\text{imp} = - \frac{U}{2}\left(\hat n_{d \uparrow} - \hat n_{d \downarrow} \right) ^2\) is the Hamiltonian for the localised impurity site, and
+	\item \({H}_\text{imp-bath} = J {\bf S}_d\cdot{\bf S}_0 - V \sum_{\sigma} \left(c^\dagger_{0\sigma} c_{d\sigma} + h.c.\right)\) describes the interaction between the impurity orbitals and the conduction bath.
 \end{itemize}
 Here, \(c_{d\sigma}\) is the impurity electron operator, \(c_{i\sigma}\) is the conduction bath electron operator, \(c_{0,\sigma}\) is the bath zeroth site operator, \({\bf S}_d\) is the impurity spin operator and \({\bf S}_0 = \sum_{\alpha,\beta}{\bf \sigma}c^\dagger_{0,\alpha}c_{0,\beta}\) is the operator for the local spin in the conduction bath. We have found that the e-SIAM has a stable local moment phase for \(W < -J/4\) with an antiferromagnetic Kondo coupling (\(J > 0\)). We have also shown that this model captures much of the phenomenology of the infinite dimensional Hubbard model (as discovered via DMFT), such as a second-order phase transition at \(T=0\) and the presence of an optical gap in the local spectral function beyond a certain value of interaction strength. Note that the impurity site and the conduction bath are both at half-filling.
 
 \subsection{Tiling towards a Hubbard-Heisenberg model with an embedded extended SIAM}
-In this subsection, we provide an explicit example of constructing a lattice model. We will consider a slightly more generalised version of the extended SIAM described in the previous section, where the impurity site coupled to the conduction bath purely through the s-wave channel. We will show that that model leads to a form of a Hubbard-Heisenberg model upon restoring translation invariance via repeated translation operations. The generalisation involve allowing an arbitrary filling on the impurity site and in the conduction bath, through two additional parameter: (i) a particle-hole asymmetry parameter \(\eta\) for the impurity site, (ii) a chemical potential for the conduction bath, and (iii) embedding the impurity into the lattice of the 2D conduction bath. This modified impurity model is shown in Fig.~\ref{embeddedEsiam}. The first term modifies the impurity Hamiltonian \(\mathcal{H}_\text{imp}\) into
+In this subsection, we provide an explicit example of constructing a lattice model. We will consider a slightly more generalised version of the extended SIAM described in the previous section, where the impurity site coupled to the conduction bath purely through the s-wave channel. We will show that that model leads to a form of a Hubbard-Heisenberg model upon restoring translation invariance via repeated translation operations. The generalisation involve allowing an arbitrary filling on the impurity site and in the conduction bath, through two additional parameter: (i) a particle-hole asymmetry parameter \(\eta\) for the impurity site, (ii) a chemical potential for the conduction bath, and (iii) embedding the impurity into the lattice of the 2D conduction bath. This modified impurity model is shown in Fig.~\ref{embeddedEsiam}. The first term modifies the impurity Hamiltonian \({H}_\text{imp}\) into
 \begin{equation}\begin{aligned}\label{onsiteHamiltonian}
-	\mathcal{H}_\text{imp} = -\frac{U}{2}\left(\hat n_{{\bf r}_d \uparrow} - \hat n_{{\bf r}_d \downarrow} \right)^2 - \eta\sum_\sigma \hat n_{{\bf r}_d\sigma}~.
+	{H}_\text{imp} = -\frac{U}{2}\left(\hat n_{{\bf r}_d \uparrow} - \hat n_{{\bf r}_d \downarrow} \right)^2 - \eta\sum_\sigma \hat n_{{\bf r}_d\sigma}~.
 \end{aligned}\end{equation}
-where we have placed the impurity site at the position \({\bf r}_d\). The second term modifies the conduction bath Hamiltonian \(\mathcal{H}_\text{cbath}\):
+where we have placed the impurity site at the position \({\bf r}_d\). The second term modifies the conduction bath Hamiltonian \({H}_\text{cbath}\):
 \begin{equation}\begin{aligned}\label{bathHamiltonian}
-	\mathcal{H}_\text{cbath} = -\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>\neq{\bf r}_d;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{1}{2 \mathcal{Z}}W\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\left(\hat n_{{\bf z}, \uparrow} - \hat n_{{\bf z}, \downarrow}\right)^2 - \mu \sum_{{\bf r}_i \neq {\bf r}_d}\hat n_{{\bf r}_i,\sigma}~,
+	{H}_\text{cbath} = -\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>\neq{\bf r}_d;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{1}{2 \mathcal{Z}}W\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\left(\hat n_{{\bf z}, \uparrow} - \hat n_{{\bf z}, \downarrow}\right)^2 - \mu \sum_{{\bf r}_i \neq {\bf r}_d}\hat n_{{\bf r}_i,\sigma}~,
 \end{aligned}\end{equation}
 where \(\left<{\bf r}_i, {\bf r}_j\right>\neq {\bf r}_d\) indicates that the sum is over all nearest-neighbour pairs of sites avoiding the impurity site \({\bf r}_d\).
 
 In this notation, the interaction Hamiltonian can be written as
 \begin{equation}\begin{aligned}\label{interactionHamiltonian}
-	\mathcal{H}_\text{imp-cbath} = \frac{J}{\mathcal{Z}}\sum_{\sigma,\sigma^\prime}\sum_{{\bf z}\in\text{NN}({\bf r}_d)} {\bf S}_{{\bf r}_d}\cdot{\boldsymbol \tau}_{\sigma,\sigma^\prime}c^\dagger_{{\bf z},\sigma}c_{{\bf z},\sigma^\prime} - \frac{V}{\sqrt{\mathcal{Z}}}\sum_{\sigma} \sum_{{\bf z}\in\text{NN}({\bf r}_d)}\left(c^\dagger_{{\bf r}_d,\sigma} c_{{{\bf z}},\sigma} + h.c.\right)
+	{H}_\text{imp-cbath} = \frac{J}{\mathcal{Z}}\sum_{\sigma,\sigma^\prime}\sum_{{\bf z}\in\text{NN}({\bf r}_d)} {\bf S}_{{\bf r}_d}\cdot{\boldsymbol \tau}_{\sigma,\sigma^\prime}c^\dagger_{{\bf z},\sigma}c_{{\bf z},\sigma^\prime} - \frac{V}{\sqrt{\mathcal{Z}}}\sum_{\sigma} \sum_{{\bf z}\in\text{NN}({\bf r}_d)}\left(c^\dagger_{{\bf r}_d,\sigma} c_{{{\bf z}},\sigma} + h.c.\right)
 \end{aligned}\end{equation}
 where \(\boldsymbol \tau = \left( \tau_x, \tau_y, \tau_z \right) \) is the vector of Pauli matrices. \(\sigma\) and \(\sigma^\prime\) can be \(\pm 1\) and represent up and down configurations.
 
 We now follow the prescription laid out in eq.~\ref{tilingPrescription}. The tiled Hamiltonian can be written as 
 \begin{equation}\begin{aligned}
-	\mathcal{H}_\text{tiled} = \sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\left[\mathcal{H}_\text{cbath} + \mathcal{H}_\text{imp} + \mathcal{H}_\text{imp-cbath}\right]T({\bf r} - {\bf r}_d)~.
+	{H}_\text{tiled} = \sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\left[{H}_\text{cbath} + {H}_\text{imp} + {H}_\text{imp-cbath}\right]T({\bf r} - {\bf r}_d)~.
 \end{aligned}\end{equation}
 Note that in comparison to eq.~\ref{tilingPrescription}, we have dropped the sum over the zeroth sites, because our impurity model Hamiltonian (defined using eqs.~\ref{onsiteHamiltonian} through \ref{interactionHamiltonian}) already contains a sum over these zeroth sites.
 
 We consider the effect of the translation operations on each part of the Hamiltonian. We first have
 \begin{equation}\begin{aligned}
-	&\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\mathcal{H}_\text{cbath}({\bf r}_d, {\bf z})T({\bf r} - {\bf r}_d) \\
+	&\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d){H}_\text{cbath}({\bf r}_d, {\bf z})T({\bf r} - {\bf r}_d) \\
 	=& \sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\left[-\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>\neq{\bf r}_d;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{W}{2\mathcal{Z}}\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\left(\hat n_{{\bf z}, \uparrow} - \hat n_{{\bf z}, \downarrow}\right)^2 - \mu \sum_{{\bf r}_i \neq {\bf r}_d}\hat n_{{\bf r}_i,\sigma}\right]T({\bf r} - {\bf r}_d) \\
 	=& -\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\sum_{{\bf r}\neq{\bf r}_i,{\bf r}_j}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{W}{2\mathcal{Z}}\sum_{\bf r}\sum_{{\bf z}\in\text{NN}\left({\bf r}\right)}\left(\hat n_{{\bf z}, \uparrow} - \hat n_{{\bf z}, \downarrow}\right)^2 - \mu \sum_{{\bf r}_i}\sum_{{\bf r} \neq {\bf r}_i}\hat n_{{\bf r}_i,\sigma}\\
 	=& -\frac{1}{\sqrt\mathcal{Z}}(N-2)t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{1}{2}W\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2 - \mu (N-1) \sum_{{\bf r}}\hat n_{{\bf r},\sigma}\\
@@ -148,13 +89,13 @@ In the first step, the factor of \(\mathcal{Z}\) is cancelled out by the trivial
 
 The next part is
 \begin{equation}\begin{aligned}
-	\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\mathcal{H}_\text{imp}T({\bf r} - {\bf r}_d) = -\frac{U}{2}\sum_{{\bf r}}\left(\hat n_{{\bf r} \uparrow} - \hat n_{{\bf r} \downarrow} \right)^2 - \eta\sum_{{\bf r},\sigma} \hat n_{{\bf r}\sigma}~.
+	\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d){H}_\text{imp}T({\bf r} - {\bf r}_d) = -\frac{U}{2}\sum_{{\bf r}}\left(\hat n_{{\bf r} \uparrow} - \hat n_{{\bf r} \downarrow} \right)^2 - \eta\sum_{{\bf r},\sigma} \hat n_{{\bf r}\sigma}~.
 \end{aligned}\end{equation}
 This is obtained simply by replacing the impurity position \({\bf r}_d\) with the translated position \({\bf r}\), generating a translation-invariant Hubbard term (the first term) and a finite chemical potential (second term).
 
 We now consider the final term:
 \begin{equation}\begin{aligned}
-	&\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\mathcal{H}_\text{imp-cbath}T({\bf r} - {\bf r}_d)\\
+	&\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d){H}_\text{imp-cbath}T({\bf r} - {\bf r}_d)\\
 	&=\sum_{{\bf r}}T^\dagger({\bf r} - {\bf r}_d)\left[\frac{1}{\mathcal{Z}}\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\sum_{\sigma,\sigma^\prime}J {\bf S}_{{\bf r}_d}\cdot{\boldsymbol \tau}_{\sigma,\sigma^\prime}c^\dagger_{{\bf z},\sigma}c_{{\bf z},\sigma^\prime} - \frac{1}{\sqrt\mathcal{Z}}\sum_{{\bf z}\in\text{NN}({\bf r}_d)}\sum_{\sigma} V \left(c^\dagger_{{\bf r}_d,\sigma} c_{{{\bf z}},\sigma} + h.c.\right)\right]T({\bf r} - {\bf r}_d)\\
 	&=\sum_{{\bf r}}\sum_{{\bf z}\in\text{NN}({\bf r})}\left[\frac{1}{\mathcal{Z}}\sum_{\sigma,\sigma^\prime}J {\bf S}_{{\bf r}}\cdot{\boldsymbol \tau}_{\sigma,\sigma^\prime}c^\dagger_{{\bf z},\sigma}c_{{\bf z},\sigma^\prime} \right. -  \frac{1}{\sqrt\mathcal{Z}}\left.\sum_{\sigma} V\left(c^\dagger_{{\bf r}_d,\sigma} c_{{{\bf z}},\sigma} + h.c.\right)\right]\\
 					 &=\sum_{\left< {\bf r}_i, {\bf r}_j\right>}\left[\frac{2}{\mathcal{Z}}J {\bf S}_{{\bf r}_i}\cdot{\bf S}_{{\bf r}_j} - \frac{2}{\sqrt\mathcal{Z}}V \sum_{\sigma}\left(c^\dagger_{{\bf r}_i,\sigma} c_{{{\bf r}_j},\sigma} + h.c.\right)\right]\\
@@ -163,18 +104,18 @@ At the last step, each nearest-neighbour pair of sites \({\bf r}_i, {\bf r}_j\) 
 
 The total tiled Hamiltonian is therefore
 \begin{equation}\begin{aligned}
-	\mathcal{H}_\text{tiled} = -\frac{N-2}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>,\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \mu (N-1) \sum_{{\bf r}}\hat n_{{\bf r},\sigma} - \frac{1}{2}W\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2  -\frac{U}{2}\sum_{{\bf r}}\left(\hat n_{{\bf r} \uparrow} - \hat n_{{\bf r} \downarrow} \right)^2 - \eta\sum_{{\bf r},\sigma} \hat n_{{\bf r}\sigma}\\
+	{H}_\text{tiled} = -\frac{N-2}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>,\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \mu (N-1) \sum_{{\bf r}}\hat n_{{\bf r},\sigma} - \frac{1}{2}W\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2  -\frac{U}{2}\sum_{{\bf r}}\left(\hat n_{{\bf r} \uparrow} - \hat n_{{\bf r} \downarrow} \right)^2 - \eta\sum_{{\bf r},\sigma} \hat n_{{\bf r}\sigma}\\
 	+ \sum_{\left< {\bf r}_i, {\bf r}_j\right>}\left[\frac{2}{\mathcal{Z}}J {\bf S}_{{\bf r}_i}\cdot{\bf S}_{{\bf r}_j} - \frac{2}{\sqrt\mathcal{Z}}V \sum_{\sigma}\left(c^\dagger_{{\bf r}_i,\sigma} c_{{{\bf r}_j},\sigma} + h.c.\right)\right]
 \end{aligned}\end{equation}
-While constructing the tiled Hamiltonian, we have added extra copies of the non-interacting Hamiltonian \(\mathcal{H}_\text{cbath-nint} = -\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \mu \sum_{{\bf r}}\hat n_{{\bf r},\sigma}\) for the conduction bath (this results in the factors of \(N-2\) and \(N-1\) in front of the first and third terms). Upon removing these repeated terms, the tiled Hamiltonian becomes
+While constructing the tiled Hamiltonian, we have added extra copies of the non-interacting Hamiltonian \({H}_\text{cbath-nint} = -\frac{1}{\sqrt\mathcal{Z}}t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \mu \sum_{{\bf r}}\hat n_{{\bf r},\sigma}\) for the conduction bath (this results in the factors of \(N-2\) and \(N-1\) in front of the first and third terms). Upon removing these repeated terms, the tiled Hamiltonian becomes
 \begin{equation}\begin{aligned}
-	\mathcal{H}_\text{tiled} &= \sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r}) - (N-3)\mathcal{H}_\text{cbath-nint}\\
+	{H}_\text{tiled} &= \sum_{{\bf r}}{H}_\text{aux}({\bf r}) - (N-3){H}_\text{cbath-nint}\\
 							 &= -\frac{1}{\sqrt\mathcal{Z}}(t + 2V)\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \frac{1}{2}\left(U + W\right)\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2 - \left(\eta + 2\mu\right) \sum_{{\bf r}}\hat n_{{\bf r},\sigma} + \frac{2}{\mathcal{Z}}J\sum_{\left< {\bf r}_i, {\bf r}_j\right>} {\bf S}_{{\bf r}_i}\cdot{\bf S}_{{\bf r}_j}
 \end{aligned}\end{equation}
 
 The result of the tiling operations is a Hubbard-Heisenberg model, of the form
 \begin{equation}\begin{aligned}
-	\mathcal{H}_\text{HH} &= -\frac{1}{\sqrt\mathcal{Z}}\tilde t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \tilde \mu \sum_{{\bf r}}\hat n_{{\bf r},\sigma} + \frac{1}{\mathcal{Z}}\tilde J\sum_{\left< {\bf r}_i, {\bf r}_j\right>}{\bf S}_{{\bf r}_i}\cdot{\bf S}_{{\bf r}_j} - \frac{1}{2}\tilde U\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2  ~,
+	{H}_\text{HH} &= -\frac{1}{\sqrt\mathcal{Z}}\tilde t\sum_{\left<{\bf r}_i, {\bf r}_j\right>;\sigma}\left(c^\dagger_{{\bf r}_i,\sigma}c_{{\bf r}_j,\sigma} + \text{h.c.}\right) - \tilde \mu \sum_{{\bf r}}\hat n_{{\bf r},\sigma} + \frac{1}{\mathcal{Z}}\tilde J\sum_{\left< {\bf r}_i, {\bf r}_j\right>}{\bf S}_{{\bf r}_i}\cdot{\bf S}_{{\bf r}_j} - \frac{1}{2}\tilde U\sum_{\bf r}\left(\hat n_{{\bf r} , \uparrow} - \hat n_{{\bf r} , \downarrow}\right)^2  ~,
 \end{aligned}\end{equation}
 where the tilde symbol indicates that the parameters are for the lattice model (and not the auxiliary model). By comparing the tiled model and the general lattice model, the lattice model parameters and the auxiliary model parameters can be mapped to each other:
 \begin{equation}\begin{aligned}\label{couplingsMappings}
@@ -182,18 +123,43 @@ where the tilde symbol indicates that the parameters are for the lattice model (
 \end{aligned}\end{equation}
 In summary, the appropriate method for reconstructing the lattice model Hamiltonian is therefore
 \begin{equation}\begin{aligned}\label{tilingPrescriptionFinal}
-	\mathcal{H}_\text{tiled} &= \sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r}) - N\mathcal{H}_\text{cbath-nint}~,
+	{H}_\text{tiled} &= \sum_{{\bf r}}{H}_\text{aux}({\bf r}) - N{H}_\text{cbath-nint}~,
 \end{aligned}\end{equation}
 where we replaced \(N-3\) with \(N\) assuming a large number of sites. Using this, the extended-SIAM gets ``expanded" into a Hubbard-Heisenberg model.
 
-\subsection{Translation symmetry and a conserved total momentum}
+\subsection{Properties of Translation Operators}
+
+In order to create the bulk model, we now need to translate this auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bf a})\) that translate all positions by a vector \({\bf a}\). In terms of manybody states and operators, their action is defined as 
+\begin{equation}\begin{aligned}\label{translationDefinition}
+	&T^\dagger({\bf a}) \ket{{\bf r}_1, {\bf r}_2,\ldots} = \ket{{\bf r}_1 + {\bf a}}\otimes\ket{{\bf r}_2 + {\bf a}}\ldots\otimes\ket{{\bf r}_n + {\bf a}}\\
+	&T^\dagger({\bf a}) \mathcal{O}\left({\bf r}_1, {\bf r}_2,\ldots\right)T({\bf a}) = \mathcal{O}\left({\bf r}_1 + {\bf a}, {\bf r}_2 + {\bf a},\ldots\right)~,
+\end{aligned}\end{equation}
+where \(\ket{{\bf r}_1, {\bf r}_2,\ldots}\) is a state in the manyparticle Fock-space basis with the particles localised at the specified positions. For example, for a local fermionic creation operator \(c^\dagger({\bf r})\), we have 
+\begin{equation}\begin{aligned}
+	T^\dagger({\bf a}) c^\dagger({\bf r}) T({\bf a}) = c^\dagger({\bf r} + {\bf a})~.
+\end{aligned}\end{equation}
+It acts similarly on the auxiliary model Hamiltonian:
+\begin{equation}\begin{aligned}
+	T^\dagger({\bf a}){H}_\text{aux}({\bf r}_d)T({\bf a}) = {H}_\text{aux}({\bf r}_d + {\bf a})~,
+\end{aligned}\end{equation}
+translating all sites by the vector \({\bf a}\). By introducing the Fourier transform to momentum space,
+\begin{equation}\begin{aligned}
+	\ket{{\bf r}_1, {\bf r}_2,\ldots} = \otimes_{j=1}^N \int d{\bf k}_j e^{-i {\bf r}_j\cdot{\bf k}_j} \ket{{\bf k}_j}~,
+\end{aligned}\end{equation}
+it is easy to see that the total momentum states are eigenstates of the global translation operators:
+\begin{equation}\begin{aligned}
+	T^\dagger({\bf a})\ket{{\bf k}_1, {\bf k}_2,\ldots} &= \otimes_{j=1}^N \int d{\bf r}_j e^{i {\bf r}_j\cdot{\bf k}_j} T^\dagger({\bf a})\ket{{\bf r}_j}~,\\
+							    &=\otimes_{j=1}^N \int d{\bf r}_j e^{i {\bf r}_j\cdot{\bf k}_j} \ket{{\bf r}_j + {\bf a}}\\
+							    &=e^{-i {\bf a}_j\cdot{\bf k}_\text{tot}}\ket{{\bf k}_1, {\bf k}_2,\ldots},
+\end{aligned}\end{equation}
+where \({\bf k}_\text{tot} = \sum_j {\bf k}_j\) is the total momentum.
 From the form in eq.~\ref{tilingPrescriptionFinal}, the tiled Hamiltonian is symmetric under global many-body translations of the kind defined in eq.~\ref{translationDefinition}, by arbitrary lattice spacings:
 \begin{equation}\begin{aligned}\label{translationSymmetry}
-	&T({\bf a})^\dagger\sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r})T({\bf a}) = \sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r + a}) = \sum_{{\bf r}^\prime}\mathcal{H}_\text{aux}({\bf r}^\prime)\\
-	&T({\bf a})^\dagger\sum_{{\bf r}}\mathcal{H}_\text{cbath-nint}T({\bf a}) = \mathcal{H}_\text{cbath-nint}\\
-	&\implies T({\bf a})^\dagger\mathcal{H}_\text{tiled}T({\bf a}) = \mathcal{H}_\text{tiled}~.
+	&T({\bf a})^\dagger\sum_{{\bf r}}{H}_\text{aux}({\bf r})T({\bf a}) = \sum_{{\bf r}}{H}_\text{aux}({\bf r + a}) = \sum_{{\bf r}^\prime}{H}_\text{aux}({\bf r}^\prime)\\
+	&T({\bf a})^\dagger\sum_{{\bf r}}{H}_\text{cbath-nint}T({\bf a}) = {H}_\text{cbath-nint}\\
+	&\implies T({\bf a})^\dagger{H}_\text{tiled}T({\bf a}) = {H}_\text{tiled}~.
 \end{aligned}\end{equation}
-In the first equation, we used the fact that the translation operator simply translates the auxiliary model at the position \({\bf r}\) into another one at the position \({\bf r} + {\bf a}\). Since both are part of the summation, the summation remains unchanged. The second equation uses the fact that the Hamiltonian \(\mathcal{H}_\text{cbath-nint}\) is that of a tight-binding model and is therefore translation-invariant. The fact that the Hamiltonian \(\mathcal{H}_\text{tiled}\) commutes with the many-body translation operator implies that the total crystal momentum \(\vec k\) is a conserved quantity.
+In the first equation, we used the fact that the translation operator simply translates the auxiliary model at the position \({\bf r}\) into another one at the position \({\bf r} + {\bf a}\). Since both are part of the summation, the summation remains unchanged. The second equation uses the fact that the Hamiltonian \({H}_\text{cbath-nint}\) is that of a tight-binding model and is therefore translation-invariant. The fact that the Hamiltonian \({H}_\text{tiled}\) commutes with the many-body translation operator implies that the total crystal momentum \(\vec k\) is a conserved quantity.
 
 \subsection{Form of the eigenstates: Bloch's theorem}
 In the tight-binding approach to lattice problems, the full Hamiltonian is described by adding the localised Hamiltonians at each site, and the full eigenstate \(\ket{\Psi}\) is then obtained by constructing liner combinations of the eigenstates \(\ket{\psi_i}\) of the local Hamiltonians such that \(\ket{\Psi}\) satisfies Bloch's theorem: \(\ket{\Psi_{\bf k}} = \sum_{i} e^{i {\bf k}\cdot{\bf r}_i} \ket{\psi_i}\), where \({\bf r}_i\) sums over the positions of the local Hamiltonians. Bloch's theorem ensures that eigenstates satisfy the following relation under a translation operation by an arbitrary number of lattice spacings \({n\bf a}\):
@@ -202,9 +168,9 @@ In the tight-binding approach to lattice problems, the full Hamiltonian is descr
 \end{aligned}\end{equation}
 The definition and some properties of these global translation operations were provided in Appendix~\ref{BlochProperties}. It was shown there that they share eigenstates with the total momentum operator. In a lattice model, this continuous symmetry gets lowered to its discrete form: the total {\it crystal} momentum is conserved by any scattering process. As a result, the eigenstates can be labelled using the combined index \(s = \left({\bf k}, n\right) \) where \({\bf k}\) is the total crystal momentum and \(n\) is a band index \(n\).
 
-The eigenstates \(\ket{\Psi_{s}}\) (\(s = \left({\bf k}, n\right)\)) of the lattice Hamiltonians obtained using eq.~\ref{tilingPrescriptionFinal} also enjoy a {\it many-body} Bloch's theorem~\cite{stoyanova}, because the tiling procedure restores the translation symmetry of the Hamiltonian (as shown in eq.~\ref{translationSymmetry}). This means that the {\it local} eigenstates \(\ket{\psi_n\left({\bf r}_d\right)}\) (with the impurity located at an arbitrary position \({\bf r}_d\)) of the unit cell auxiliary model Hamiltonian \(\mathcal{H}_\text{aux}({\bf r}_d)\) defined in eq.~\ref{unitCellHamiltonian} can be used to construct eigenstates of the lattice Hamiltonian. The index \(n(=0,1,\ldots)\) in the subscript indicates that it is the \(n^\text{th}\) eigenstate of the auxiliary model.
+The eigenstates \(\ket{\Psi_{s}}\) (\(s = \left({\bf k}, n\right)\)) of the lattice Hamiltonians obtained using eq.~\ref{tilingPrescriptionFinal} also enjoy a {\it many-body} Bloch's theorem~\cite{stoyanova}, because the tiling procedure restores the translation symmetry of the Hamiltonian (as shown in eq.~\ref{translationSymmetry}). This means that the {\it local} eigenstates \(\ket{\psi_n\left({\bf r}_d\right)}\) (with the impurity located at an arbitrary position \({\bf r}_d\)) of the unit cell auxiliary model Hamiltonian \({H}_\text{aux}({\bf r}_d)\) defined in eq.~\ref{unitCellHamiltonian} can be used to construct eigenstates of the lattice Hamiltonian. The index \(n(=0,1,\ldots)\) in the subscript indicates that it is the \(n^\text{th}\) eigenstate of the auxiliary model.
 
-The state \(\ket{\psi_n\left({\bf r}_d\right)}\) does not specify the position of the zeroth site, because the unit cell Hamiltonian \(\mathcal{H}_\text{aux}({\bf r}_d)\) itself has been averaged over \(\mathcal{Z}\) zeroth sites. Accordingly, we can express the averaged eigenstate \(\ket{\psi_n\left({\bf r}_d\right)}\) as
+The state \(\ket{\psi_n\left({\bf r}_d\right)}\) does not specify the position of the zeroth site, because the unit cell Hamiltonian \({H}_\text{aux}({\bf r}_d)\) itself has been averaged over \(\mathcal{Z}\) zeroth sites. Accordingly, we can express the averaged eigenstate \(\ket{\psi_n\left({\bf r}_d\right)}\) as
 \begin{equation}\begin{aligned}
 	\ket{\psi_n\left({\bf r}_d\right)} = \frac{1}{\sqrt\mathcal{Z}}\sum_{{\bf z} \in \text{NN}({\bf r}_d)}\ket{\psi_n\left({\bf r}_d, {\bf z}\right)}~,
 \end{aligned}\end{equation}
@@ -323,7 +289,7 @@ In order to convert this into a more useful form, we use eq.~\ref{heisenberg}:
 \begin{equation}\begin{aligned}
 		\braket{\psi_{0}(\vec r) | \mathcal{T}_{{\bf K}\sigma}(t) | \psi_n(\vec r)} = \braket{\psi_{0}(\vec r) | e^{it H_\text{tiled} }\mathcal{T}_{{\bf K}\sigma}e^{-i t H_\text{tiled}} | \psi_n(\vec r)}~.
 \end{aligned}\end{equation}
-Guided by the relation in eq.~\ref{tilingPrescriptionFinal} \(H_\text{tiled} = \sum_{{\bf r}}\mathcal{H}_\text{aux}({\bf r}) - N\mathcal{H}_\text{cbath-nint}\) between the tiled Hamiltonian and the auxiliary model, we assume that the operator \(e^{-i t H_\text{tiled}}\) acting on the state \(\ket{\psi_n(\vec r)}\) involves the excitation energy \(E_n\) of only a single auxiliary model. Specifically, \(E_n\) is the energy of the eigenstate \(\ket{\psi_n(\vec r)}\). This is supported by the fact that this class of contributions to the Greens function is completed within a single auxiliary model. Accordingly, we replace \(H_\text{tiled}\) with \(E_n - \varepsilon_{\bf k} \), where \(\varepsilon_{\bf k}\) are the eigenenergies of the non-interacting conduction bath \(\mathcal{H}_\text{cbath-nint}\) and \({\bf k}\) is the crystal momentum associated with the state \(\ket{\psi_n(\vec r)}\). This momentum was found to be constrained to \({\bf k}_0 + {\bf K}\) below eq.~\ref{greensfunction3}. In the same way, the action of \(H_\text{tiled}\) on the terminal state \(\ket{\psi_{0}(\vec r)}\) gives \(E_0 - \varepsilon_{\bf k_0}\), where \(E_0\) is the ground state energy of the auxiliary model at \({\bf r}\). Applying this to our expression gives
+Guided by the relation in eq.~\ref{tilingPrescriptionFinal} \(H_\text{tiled} = \sum_{{\bf r}}{H}_\text{aux}({\bf r}) - N{H}_\text{cbath-nint}\) between the tiled Hamiltonian and the auxiliary model, we assume that the operator \(e^{-i t H_\text{tiled}}\) acting on the state \(\ket{\psi_n(\vec r)}\) involves the excitation energy \(E_n\) of only a single auxiliary model. Specifically, \(E_n\) is the energy of the eigenstate \(\ket{\psi_n(\vec r)}\). This is supported by the fact that this class of contributions to the Greens function is completed within a single auxiliary model. Accordingly, we replace \(H_\text{tiled}\) with \(E_n - \varepsilon_{\bf k} \), where \(\varepsilon_{\bf k}\) are the eigenenergies of the non-interacting conduction bath \({H}_\text{cbath-nint}\) and \({\bf k}\) is the crystal momentum associated with the state \(\ket{\psi_n(\vec r)}\). This momentum was found to be constrained to \({\bf k}_0 + {\bf K}\) below eq.~\ref{greensfunction3}. In the same way, the action of \(H_\text{tiled}\) on the terminal state \(\ket{\psi_{0}(\vec r)}\) gives \(E_0 - \varepsilon_{\bf k_0}\), where \(E_0\) is the ground state energy of the auxiliary model at \({\bf r}\). Applying this to our expression gives
 \begin{equation}\begin{aligned}
 	\tilde G({\bf K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | \left[e^{-it\omega_p} \mathcal{T}_{{\bf K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bf K}\sigma}^\dagger + e^{-it\omega_h} \mathcal{T}^\dagger_{{\bf K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bf K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~,
 \end{aligned}\end{equation}
