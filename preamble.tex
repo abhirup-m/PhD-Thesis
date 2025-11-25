@@ -1,8 +1,28 @@
+\pagestyle{headings}
+
 \usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,braket,graphicx,caption,cite,fontspec}
-\setmainfont{Linux Libertine O}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{cite}
+\usepackage{fontspec}
+\usepackage{bm}
+\usepackage{kantlipsum}
+\usepackage{sectsty}
+
 \setsansfont{Linux Libertine O}
+\allsectionsfont{\sffamily}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
 \usepackage[hidelinks]{hyperref}
-\usepackage[margin=2cm,bottom=3cm]{geometry}
-\graphicspath{{introduction}{methods}{metalsRG}{ESIAM}{tileForm}{tileESIAM}{tileHF}{conclusions}{appendices}}
+\usepackage[margin=2.5cm,bottom=3cm]{geometry}
+\graphicspath{{frontmatter}{introduction}{methods}{metalsRG}{ESIAM}{tileForm}{tileESIAM}{tileHF}{conclusions}{appendices}}
 \setcounter{tocdepth}{1}
+
+\newcommand\blankpage{%
+    \null%
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
