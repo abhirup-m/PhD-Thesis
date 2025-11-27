@@ -211,7 +211,7 @@ which combined with eq.~\ref{translationOnField} gives
 In order to make use of the mapping between auxiliary model and lattice model Hamiltonians, we would like to express this lattice Greens function in terms of auxiliary model Greens functions -- objects that can be computed purely from within a single auxiliary model. This will be a major simplification in our computations, because it is easier to work with a quantum impurity model, as compared to an interacting lattice model.
 
 To make progress towards this, we express the lattice groundstate in terms of the auxiliary model groundstates (using eq.~\ref{eigenstateProposal}):
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{retarded}
 	G({\bm k}\sigma; t) = -i\theta(t) \frac{1}{N}\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | \{ c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma} \} | \psi_\text{gs}({\bm r_1})}~.
 \end{aligned}\end{equation}
 We take one of the terms in the anticommutator and proceed to simplify it:
@@ -234,7 +234,7 @@ To resolve the time evolution of the operators, we insert $1 = \sum_m \ket{\psi_
 \end{aligned}\end{equation}
 The overlap \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})}\) between the eigenstates of the auxiliary models at \(\bm r_d\) and \(\bm r_d + \bm r\) are appreciable only for \(n_1 = n_2\). This is because, for small \(\bm r\), the auxiliary models are very similar and the states are therefore almost orthogonal. For large \(\bm r\), the overlap is again suppressed because the auxiliary model eigenstates are localised around the impurity. We therefore make the simplifying assumption: \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})} = \delta_{n_1, n_2}\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_1}({\bm r_d + \bm r})} = \delta_{n_1, n_2}F_{n_1}(\bm r)\). Substituting this, we get
 \begin{equation}\begin{aligned}\label{intermediate}
-	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} = N\sum_{\bm r, n} F_n(\bm k) \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n}({\bm r_d})}\bra{\psi_{n}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~,
+	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} = N\sum_{n} F_n(\bm k) \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n}({\bm r_d})}\bra{\psi_{n}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~,
 \end{aligned}\end{equation}
 where we have defined the Fourier transform \(F_n(\bm k) = \sum_{\bm r} e^{i\bm k \cdot\bm r} F_n(\bm r)\) of the overlap function.
 
@@ -242,146 +242,193 @@ We now consider more carefully the transition operator \(c_{{\bm k}\sigma}\) for
 
 In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we allow for all excitations of the impurity site in conjunction with those of the \(k-\)state:
 \begin{equation}\begin{aligned}\label{tmatrix}
-	\mathcal{T}_{{\bm k}\sigma} = c_{{\bm k}\sigma}\left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]~,
+	\mathcal{T}_{{\bm k},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm k}\sigma}~,
 \end{aligned}\end{equation}
-where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively. 
+where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively.
 
 Apart from modifying the excitation operator, we will now simplify the time-evolution as well. The first overlap on the right-hand side of eq.~\ref{intermediate} expands to
 \begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{cav}(\bm r_d))t} \mathcal{T}_{{\bm k}\sigma}(t) e^{-i(H_\text{clust}(\bm r_d) + H_\text{cav}(\bm r_d))t} | \psi_{n}({\bm r_d})}~,
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} | \psi_{n}({\bm r_d})}~,
 \end{aligned}\end{equation}
-where \(H_\text{cav}(\bm r_d)\) is the ``cavity" Hamiltonian formed by removing the cluster Hamiltonian \(H_\text{clust}(\bm r_d)\) from the total Hamiltonian \(H_\text{latt}\): \(H_\text{latt} = H_\text{clust}(\bm r_d) + H_\text{cav}(\bm r_d)\).
+where \(H_\text{aux}(\bm r_d)\) (eq.~\ref{LE-ESIAM}) is the auxiliary model Hamiltonian consisting of the cluster Hamiltonian \(H_\text{clust}(\bm r_d)\) along with all one-particle terms \(H_\text{1p}\) in the Hamiltonian (in a typical lattice model, this will be he tight-binding hopping terms), and \(H_\text{cav}(\bm r_d)\) is the ``cavity" Hamiltonian consisting of all interaction (2-particle and beyond) terms in the Hamiltonian. Together, they create the full lattice Hamiltonian: \(H_\text{latt} = H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d)\). Using the Zassenhaus form of the Baker-Campbell-Hausdorff formula, we have
+\begin{equation}\begin{aligned}
+	e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \approx e^{iH_\text{aux}(\bm r_d)t} e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}~,
+\end{aligned}\end{equation}
+where we have dropped the higher-order terms because the commutators involve only the boundary degrees of freedom and become subsequently smaller as the order increases. One can think of the operator \(e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\) as renormalising the auxiliary model \(\mathcal{T}-\)matrix through hybridisation with the rest of the system and formally leading to a new \(\mathcal{T}-\)matrix:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~.
+\end{aligned}\end{equation}
+One can also absorb the modulating phase factor \(F_n(\bm k)\) (defined above and appearing in eq.~\ref{intermediate}) into this renormalisation:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}F_n(\bm k) \mathcal{P}_n({\bm r_d})~e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~,
+\end{aligned}\end{equation}
+where \(\mathcal{P}_n({\bm r_d})\) projects onto the \(n^\text{th}\) eigenstate \(\ket{\psi_{n}({\bm r_d})}\).
 
-
-
-
-
-We now proceed to simplify one of the terms of the anticommutator (for simplicity of notation):
-\begin{equation}\begin{aligned}\label{greensFunction1}
-	&\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_{\vec r,\vec \Delta}e^{-i{\bm K}_0\cdot\vec\Delta}\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
-\end{aligned}\end{equation}
-To make further progress, we insert the identity resolution \(1 = \sum_s\ket{\Psi_s}\bra{\Psi_s}\) in between the two operators, where \(s=\left({\bm k}, n\right)\) sums over all eigenstates (with energies \(\tilde E_s\)). The lattice eigenstates themselves can again be written in terms of those of the auxiliary model, using eq.~\ref{eigenstateProposal}:
+Since the overlap is calculated in the eigenstates of the auxiliary model at \(\bm r_d\), we adopt the zeroth order approximation of ignoring this renormalisation. Later, we will specify a prescription of systematically improving our computation. The overlap expression becomes
 \begin{equation}\begin{aligned}
-	\ket{\Psi_s}\bra{\Psi_s} = \sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\vec k\cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)}~.
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
 \end{aligned}\end{equation}
-With this, eq.~\ref{greensFunction1} becomes
-	\begin{equation}\begin{aligned}\label{greensfunction2}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\vec k_0\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
-\end{aligned}\end{equation}
-In order to bring this expression closer to the form of an auxiliary model Greens function, we would like to transform the initial and final states \(\ket{\psi(\vec r)}\) and \(\ket{\psi(\vec r + \vec \Delta)}\) to apply to the same auxiliary model. This is done by using the relation: \(\ket{\psi(\vec r + \Delta)} = T^\dagger(\vec \Delta)\ket{\psi(\vec r)}\), where \(T^\dagger(\vec \Delta)\) translates all lattice sites by the vector \(\vec\Delta\).
+To make the problem tractable, we treat the effect of \(H_\text{1p}\) at the level of an expectation value and note that the effect of the transition operator is to create a hole of momentum \(\bm k\) (eq.~\ref{tmatrix}). This leads to an excitation cost \(\braket{n_k=0|H_\text{1p}|n_k=1} = -\epsilon_k\). Moreover, \(\ket{\psi_n(\bm r_d)}\) and \(\ket{\psi_\text{gs}(\bm r_d)}\) are eigenstates of \(H_\text{clust}(\bm r_d)\) with energies \(E_n\) and \(E_0\). This leads to the following simplified expression:
 \begin{equation}\begin{aligned}
-	\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = \braket{\psi_{0}(\vec r) | T(\vec \Delta) c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = \braket{\psi_{0}(\vec r) | T(\vec \Delta) c_{{\bm K}\sigma}(t) T^\dagger(\vec \Delta) | \psi_n(\vec r^\prime+\vec \Delta^\prime - \vec \Delta)}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}~.
 \end{aligned}\end{equation}
-The effect of the translation operators on the \(k-\)space annihilation operator can be easily ascertained by transforming it to real-space, using the Fourier transform definition
-\begin{equation}\begin{aligned}\label{fourTransf}
-	c({\bm K}) = \frac{1}{\sqrt N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}c({\bm r})~.
-\end{aligned}\end{equation}
-Upon applying this, we get
-\begin{equation}\begin{aligned}\label{translationOnField}
-	T\left(\vec a\right) c({\bm K}) T^\dagger\left(\vec a\right) = \frac{1}{N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}T\left(\vec a\right) c({\bm r}) T^\dagger\left(\vec a\right) = \frac{1}{N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}c({\bm r} - \vec a) = e^{-i{\bm K}\cdot\vec a}c({\bm K})~.
-\end{aligned}\end{equation}
-Using this identity on the above expression gives
+Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
 \begin{equation}\begin{aligned}
-	\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = e^{-i{\bm K} \cdot \vec \Delta}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime - \vec \Delta)}
+	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
-Finally replacing this all the way back into eq.~\ref{greensfunction2} gives
-	\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\left(\vec k_0 + {\bm K}\right)\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime - \vec\Delta)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
-\end{aligned}\end{equation}
-To further unify the operators, we make the substitution \(\vec \Delta^\prime \to \vec \Delta^\prime + \vec \Delta\), leading to the expression
-	\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\left(\vec k_0 + {\bm K} - \vec k\right)\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
-\end{aligned}\end{equation}
-The sum over \(\vec\Delta\) can now be carried out, resulting in
-\begin{equation}\begin{aligned}\label{greensfunction3}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N}\sum_n\sum_{\vec r,\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~,
-\end{aligned}\end{equation}
-where the sum over \(s=(\vec k, n)\) has been reduced to a sum over the auxiliary model eigenstate index \(n\) because of the Kronecker delta \(\delta\left(\vec k_0 + {\bm K} - \vec k\right)\). This can be further simplified by splitting the sum over \(\vec\Delta^\prime\) into positive and negative parts and then making the transformation \(\vec r^\prime \to \vec r^\prime + \vec \Delta^\prime\):
+Substituting the expression back into~\ref{intermediate} and then into~\ref{retarded}, we get an expression for one half of the retarded Greens function:
 \begin{equation}\begin{aligned}
-	\sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} &= \frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} + e^{-i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime-\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)}\right] \\
-																																												   &= \frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} + e^{-i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\right] \\
+	&-i\theta(t) \braket{\Psi_\text{gs} | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \Psi_\text{gs}} \\
+	&= -i\theta(t) \sum_n e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
-For each pair of \(\vec r^\prime\) and \(\vec\Delta^\prime\), the term within the box brackets has the form of a two-level Hamiltonian between the states \(\ket{\psi_n(\vec r^\prime)}\) and \(\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\), with a tunnelling amplitude \(e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\). The term can therefore be written in the eigenbasis of this Hamiltonian:
+Working through the other term with the same strategy, we get the full expression:
 \begin{equation}\begin{aligned}
-	\sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} &=\frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} - \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right],
+	-i&\theta(t) \braket{\Psi_\text{gs} | \{c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma}\} | \Psi_\text{gs}} \\
+	=& -i\theta(t) \sum_n e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
+	& -i\theta(t) \sum_n e^{i(E_n - E_0 - \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
-where \(\ket{\chi_n^\pm(\vec r^\prime,\vec\Delta^\prime)} = \frac{1}{\sqrt 2}\left[\ket{\psi_n(\vec r^\prime)} \pm e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime + \vec\Delta^\prime)}\right] \) are the eigenvectors of the tunnelling Hamiltonian with eigenvalues \(\pm 1\) respectively. With this basis transformation, we can rewrite eq.~\ref{greensfunction3} as
+Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) gives
 \begin{equation}\begin{aligned}
-	\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{2N}\sum_n\sum_{\vec r,\vec r^\prime,\vec \Delta^\prime} \bra{\psi_{0}(\vec r)} c_{{\bm K}\sigma}(t) \left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} \right.\\
-	\left.- \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right] c^\dagger_{{\bm K}\sigma} \ket{\psi_{0}(\vec r)}~.
+	G_{\bm k}(\omega) =  \sum_n &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_{\bm k})}\right.\\
+					   &- \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_{\bm k})}\right]~.
+\end{aligned}\end{equation}
+We recognise that the two parts of the lattice model Greens function are the greater and lesser Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega \mp \epsilon_{\bm k}\):
+\begin{equation}\begin{aligned}
+	G_{\bm k}(\omega) = \theta(t)\mathcal{G}^>(\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\bm k}) - \mathcal{G}^<(\mathcal{T}_{\bm k,\sigma}; \omega + \epsilon_{\bm k})~.
 \end{aligned}\end{equation}
 
-In order to make the expression more transparent, we consider the various components separately:
-\paragraph{\(\vec r^\prime = \vec r,~\vec\Delta^\prime=0\)}:
-\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-These terms represent those contributions to the total Greens function that arise from excitations that start and end at a specific auxiliary model (at \(\vec r\)), and also evolve dynamically within the same auxiliary model. These terms are therefore exactly equal to the auxiliary model Greens function at position \(\vec r\), and are the most dominant contribution due to the localised nature of the impurity model.
-
-\paragraph{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime=0\)}:
-\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{N}\sum_n\sum_{\vec r, \vec r^\prime \neq \vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-These are more non-local contributions; they involve excitations whose time evolution is governed by a different auxiliary model than the terminal one. These contributions are highly suppressed in the Kondo screened phase because of the strong entanglement of the singlet ground state.
-
-\paragraph{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime \neq 0\)}:
-\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{2N}\sum_n\sum_{\vec r,\vec r^\prime \neq \vec r,\vec \Delta^\prime \neq 0} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} - \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right] c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-These are the most non-local contributions; they involve excitations whose time evolution is governed by three different auxiliary models. Accordingly, these contributions are further suppressed.
-
-We now consider each type of contribution in more detail.
-\subsection{\(\vec r^\prime = \vec r,~\vec\Delta^\prime=0\)}
-Restricting ourselves to just the single auxiliary model contributions gives
-\begin{equation}\begin{aligned}
-		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-We first consider more carefully the transition operator \(\mathcal{T}_{{\bm K}\sigma} = c_{{\bm K}\sigma}\) for the 1-particle excitation giving rise to the above Greens function. Within our auxiliary model approach, gapless excitations within the lattice model are represented by gapless excitations of the impurity site, specifically those that screen the impurity site and form the local Fermi liquid. As a result, the uncoordinated \(\mathcal{T}-\)matrix for the lattice model must be replaced by a combined \(\mathcal{T}-\)matrix within the impurity model that captures those gapless excitations that occur in connection with the impurity, and projects out the uncorrelated excitations that take place even when the impurity site is decoupled from the bath.
-
-In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we note that the impurity site can have both spin and charge excitations. Considering both excitations, the modified \(\mathcal{T}-\)matrix that constructs \(k-\)space excitations in correlation with the impurity site are
-\begin{equation}\begin{aligned}\label{tmatrix}
-	\mathcal{T}_{{\bm K}\sigma} = c_{{\bm K}\sigma}\left(\sum_{\sigma^\prime}c^\dagger_{d\sigma} + \text{h.c.}\right) + c_{{\bm K}\sigma}\left(S_d^+ + \text{h.c.}\right)~,
-\end{aligned}\end{equation}
-leading to the updated expression for the complete Greens function:
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | \left[\mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-
-In order to convert this into a more useful form, we use eq.~\ref{heisenberg}:
-\begin{equation}\begin{aligned}
-		\braket{\psi_{0}(\vec r) | \mathcal{T}_{{\bm K}\sigma}(t) | \psi_n(\vec r)} = \braket{\psi_{0}(\vec r) | e^{it H_\text{tiled} }\mathcal{T}_{{\bm K}\sigma}e^{-i t H_\text{tiled}} | \psi_n(\vec r)}~.
-\end{aligned}\end{equation}
-Guided by the relation in eq.~\ref{tilingPrescriptionFinal} \(H_\text{tiled} = \sum_{{\bm r}}{H}_\text{aux}({\bm r}) - N{H}_\text{cbath-nint}\) between the tiled Hamiltonian and the auxiliary model, we assume that the operator \(e^{-i t H_\text{tiled}}\) acting on the state \(\ket{\psi_n(\vec r)}\) involves the excitation energy \(E_n\) of only a single auxiliary model. Specifically, \(E_n\) is the energy of the eigenstate \(\ket{\psi_n(\vec r)}\). This is supported by the fact that this class of contributions to the Greens function is completed within a single auxiliary model. Accordingly, we replace \(H_\text{tiled}\) with \(E_n - \varepsilon_{\bm k} \), where \(\varepsilon_{\bm k}\) are the eigenenergies of the non-interacting conduction bath \({H}_\text{cbath-nint}\) and \({\bm k}\) is the crystal momentum associated with the state \(\ket{\psi_n(\vec r)}\). This momentum was found to be constrained to \({\bm k}_0 + {\bm K}\) below eq.~\ref{greensfunction3}. In the same way, the action of \(H_\text{tiled}\) on the terminal state \(\ket{\psi_{0}(\vec r)}\) gives \(E_0 - \varepsilon_{\bm k_0}\), where \(E_0\) is the ground state energy of the auxiliary model at \({\bm r}\). Applying this to our expression gives
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | \left[e^{-it\omega_p} \mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + e^{-it\omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~,
-\end{aligned}\end{equation}
-where \(\omega_p = (E_n - \varepsilon_{\bm k_0 + \bm K}) - (E_0 - \varepsilon_{\bm k_0})\) is the particle-excitation cost and \(\omega_h = -\omega_p\) is the hole-excitation cost. We now introduce the Fourier transform \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) to obtain the frequency-domain Greens function in its spectral representation:
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; \omega) = \frac{1}{N}\sum_{\vec r}\sum_n \braket{\psi_{0}(\vec r) | \left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}\right] | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-For each value of \({\vec r}\), the term within that summation is simply the Greens function (for the excitation \(\mathcal{T}_{{\bm K}\sigma}\)) of the auxiliary model with the impurity site at \({\vec r}\). Since all these impurity models are physically equivalent (because of translation invariance), we can replace the average over \({\bm r}\) with the value obtained from any one auxiliary model.
-\begin{equation}\begin{aligned}\label{kspaceGreensFunction}
-	\tilde G({\bm K}\sigma; \omega) &= \sum_n \braket{\psi_{0} | \left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma} \ket{\psi_n}\bra{\psi_n} \mathcal{T}_{{\bm K}\sigma}^\dagger + \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n}\bra{\psi_n} \mathcal{T}_{{\bm K}\sigma}\right] | \psi_{0}} \\
-									&= G^>(\mathcal{T}^\dagger_{{\bm K}\sigma}, \omega - \varepsilon_{{\bm k}_0 + {\bm K}}) + G^<(\mathcal{T}^\dagger_{{\bm K}\sigma}, \omega + \varepsilon_{{\bm k}_0 + {\bm K}})~,
-\end{aligned}\end{equation}
-where \(G^>(\mathcal{O}^\dagger, t) = -i\braket{\mathcal{O}(t)\mathcal{O}^\dagger}\) and \(G^<(\mathcal{O}^\dagger, t) = -i\braket{\mathcal{O}^\dagger\mathcal{O}(t)}\) are the greater and lesser Greens function for the auxiliary model.
-
-\subsection{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime=0\)}
-Allowing for more non-local contributions, and updating the \(\mathcal{T}-\)matrix similar to the previous section gives the following Greens function:
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r, \vec r^\prime} \braket{\psi_{0}(\vec r) | \left[\mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-In order to allow computations within a single auxiliary model, we replace the translated state \(\ket{\psi_n(\vec r^\prime)}\) with \(T^\dagger(\vec r \to \vec r^\prime)\ket{\psi_n(\vec r)} \), where \(T^\dagger(\vec r - \vec r^\prime)\) translates all sites by the vector \(\vec r^\prime - \vec r\). This leads to a modified correlation function but within a single auxiliary model:
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_{n,\vec r, \vec r^\prime} \bra{\psi_{0}(\vec r)} &\left[\mathcal{T}_{{\bm K}\sigma}(t)T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}^\dagger + \right. \\
-								&\left. \mathcal{T}^\dagger_{{\bm K}\sigma}T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}(t)\right] \ket{\psi_{0}(\vec r)} ~.
-\end{aligned}\end{equation}
-In fact, by the same arguments as in the previous section, we can obtain a frequency-resolved Greens function:
-\begin{equation}\begin{aligned}
-	\tilde G({\bm K}\sigma; \omega) = \sum_n \bra{\psi_{0}} &\left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma}(t)T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n}\bra{\psi_n}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}^\dagger + \right.\\
-															&\left. \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma}T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n}\bra{\psi_n}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}(t)\right] \ket{\psi_{0}} ~.
-\end{aligned}\end{equation}
-To obtain the above, we used the fact that \(H_\text{tiled}\) commutes with the translation operator.
+%
+%
+%
+%
+%
+%
+% We now proceed to simplify one of the terms of the anticommutator (for simplicity of notation):
+% \begin{equation}\begin{aligned}\label{greensFunction1}
+% 	&\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_{\vec r,\vec \Delta}e^{-i{\bm K}_0\cdot\vec\Delta}\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
+% \end{aligned}\end{equation}
+% To make further progress, we insert the identity resolution \(1 = \sum_s\ket{\Psi_s}\bra{\Psi_s}\) in between the two operators, where \(s=\left({\bm k}, n\right)\) sums over all eigenstates (with energies \(\tilde E_s\)). The lattice eigenstates themselves can again be written in terms of those of the auxiliary model, using eq.~\ref{eigenstateProposal}:
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi_s}\bra{\Psi_s} = \sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\vec k\cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)}~.
+% \end{aligned}\end{equation}
+% With this, eq.~\ref{greensFunction1} becomes
+% 	\begin{equation}\begin{aligned}\label{greensfunction2}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\vec k_0\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
+% \end{aligned}\end{equation}
+% In order to bring this expression closer to the form of an auxiliary model Greens function, we would like to transform the initial and final states \(\ket{\psi(\vec r)}\) and \(\ket{\psi(\vec r + \vec \Delta)}\) to apply to the same auxiliary model. This is done by using the relation: \(\ket{\psi(\vec r + \Delta)} = T^\dagger(\vec \Delta)\ket{\psi(\vec r)}\), where \(T^\dagger(\vec \Delta)\) translates all lattice sites by the vector \(\vec\Delta\).
+% \begin{equation}\begin{aligned}
+% 	\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = \braket{\psi_{0}(\vec r) | T(\vec \Delta) c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = \braket{\psi_{0}(\vec r) | T(\vec \Delta) c_{{\bm K}\sigma}(t) T^\dagger(\vec \Delta) | \psi_n(\vec r^\prime+\vec \Delta^\prime - \vec \Delta)}
+% \end{aligned}\end{equation}
+% The effect of the translation operators on the \(k-\)space annihilation operator can be easily ascertained by transforming it to real-space, using the Fourier transform definition
+% \begin{equation}\begin{aligned}\label{fourTransf}
+% 	c({\bm K}) = \frac{1}{\sqrt N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}c({\bm r})~.
+% \end{aligned}\end{equation}
+% Upon applying this, we get
+% \begin{equation}\begin{aligned}\label{translationOnField}
+% 	T\left(\vec a\right) c({\bm K}) T^\dagger\left(\vec a\right) = \frac{1}{N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}T\left(\vec a\right) c({\bm r}) T^\dagger\left(\vec a\right) = \frac{1}{N}\sum_{\bm r}e^{-i{\bm K}\cdot{\bm r}}c({\bm r} - \vec a) = e^{-i{\bm K}\cdot\vec a}c({\bm K})~.
+% \end{aligned}\end{equation}
+% Using this identity on the above expression gives
+% \begin{equation}\begin{aligned}
+% 	\braket{\psi_{0}(\vec r+\vec \Delta) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime)} = e^{-i{\bm K} \cdot \vec \Delta}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) | \psi_n(\vec r^\prime+\vec \Delta^\prime - \vec \Delta)}
+% \end{aligned}\end{equation}
+% Finally replacing this all the way back into eq.~\ref{greensfunction2} gives
+% 	\begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\left(\vec k_0 + {\bm K}\right)\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime - \vec\Delta)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
+% \end{aligned}\end{equation}
+% To further unify the operators, we make the substitution \(\vec \Delta^\prime \to \vec \Delta^\prime + \vec \Delta\), leading to the expression
+% 	\begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N^2}\sum_s\sum_{\vec r,\vec \Delta}\sum_{\vec r^\prime,\vec \Delta^\prime}e^{-i\left(\vec k_0 + {\bm K} - \vec k\right)\cdot\vec\Delta} e^{i\vec k\cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~.
+% \end{aligned}\end{equation}
+% The sum over \(\vec\Delta\) can now be carried out, resulting in
+% \begin{equation}\begin{aligned}\label{greensfunction3}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N}\sum_n\sum_{\vec r,\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)}~,
+% \end{aligned}\end{equation}
+% where the sum over \(s=(\vec k, n)\) has been reduced to a sum over the auxiliary model eigenstate index \(n\) because of the Kronecker delta \(\delta\left(\vec k_0 + {\bm K} - \vec k\right)\). This can be further simplified by splitting the sum over \(\vec\Delta^\prime\) into positive and negative parts and then making the transformation \(\vec r^\prime \to \vec r^\prime + \vec \Delta^\prime\):
+% \begin{equation}\begin{aligned}
+% 	\sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} &= \frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} + e^{-i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime-\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)}\right] \\
+% 																																												   &= \frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} + e^{-i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\right] \\
+% \end{aligned}\end{equation}
+% For each pair of \(\vec r^\prime\) and \(\vec\Delta^\prime\), the term within the box brackets has the form of a two-level Hamiltonian between the states \(\ket{\psi_n(\vec r^\prime)}\) and \(\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\), with a tunnelling amplitude \(e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\). The term can therefore be written in the eigenbasis of this Hamiltonian:
+% \begin{equation}\begin{aligned}
+% 	\sum_{\vec r^\prime,\vec \Delta^\prime} e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime+\vec \Delta^\prime)}\bra{\psi_n(\vec r^\prime)} &=\frac{1}{2}\sum_{\vec r^\prime,\vec \Delta^\prime}\left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} - \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right],
+% \end{aligned}\end{equation}
+% where \(\ket{\chi_n^\pm(\vec r^\prime,\vec\Delta^\prime)} = \frac{1}{\sqrt 2}\left[\ket{\psi_n(\vec r^\prime)} \pm e^{i\left( \vec k_0 + {\bm K} \right) \cdot\vec\Delta^\prime}\ket{\psi_n(\vec r^\prime + \vec\Delta^\prime)}\right] \) are the eigenvectors of the tunnelling Hamiltonian with eigenvalues \(\pm 1\) respectively. With this basis transformation, we can rewrite eq.~\ref{greensfunction3} as
+% \begin{equation}\begin{aligned}
+% 	\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{2N}\sum_n\sum_{\vec r,\vec r^\prime,\vec \Delta^\prime} \bra{\psi_{0}(\vec r)} c_{{\bm K}\sigma}(t) \left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} \right.\\
+% 	\left.- \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right] c^\dagger_{{\bm K}\sigma} \ket{\psi_{0}(\vec r)}~.
+% \end{aligned}\end{equation}
+%
+% In order to make the expression more transparent, we consider the various components separately:
+% \paragraph{\(\vec r^\prime = \vec r,~\vec\Delta^\prime=0\)}:
+% \begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% These terms represent those contributions to the total Greens function that arise from excitations that start and end at a specific auxiliary model (at \(\vec r\)), and also evolve dynamically within the same auxiliary model. These terms are therefore exactly equal to the auxiliary model Greens function at position \(\vec r\), and are the most dominant contribution due to the localised nature of the impurity model.
+%
+% \paragraph{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime=0\)}:
+% \begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{N}\sum_n\sum_{\vec r, \vec r^\prime \neq \vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% These are more non-local contributions; they involve excitations whose time evolution is governed by a different auxiliary model than the terminal one. These contributions are highly suppressed in the Kondo screened phase because of the strong entanglement of the singlet ground state.
+%
+% \paragraph{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime \neq 0\)}:
+% \begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} \to \frac{1}{2N}\sum_n\sum_{\vec r,\vec r^\prime \neq \vec r,\vec \Delta^\prime \neq 0} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \left[ \ket{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^+(\vec r^\prime,\vec\Delta^\prime)} - \ket{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\bra{\chi_n^-(\vec r^\prime,\vec\Delta^\prime)}\right] c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% These are the most non-local contributions; they involve excitations whose time evolution is governed by three different auxiliary models. Accordingly, these contributions are further suppressed.
+%
+% We now consider each type of contribution in more detail.
+% \subsection{\(\vec r^\prime = \vec r,~\vec\Delta^\prime=0\)}
+% Restricting ourselves to just the single auxiliary model contributions gives
+% \begin{equation}\begin{aligned}
+% 		\braket{\Psi_\text{gs} | c_{{\bm K}\sigma}(t) c^\dagger_{{\bm K}\sigma} | \Psi_\text{gs}} = \frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | c_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} c^\dagger_{{\bm K}\sigma} | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% We first consider more carefully the transition operator \(\mathcal{T}_{{\bm K}\sigma} = c_{{\bm K}\sigma}\) for the 1-particle excitation giving rise to the above Greens function. Within our auxiliary model approach, gapless excitations within the lattice model are represented by gapless excitations of the impurity site, specifically those that screen the impurity site and form the local Fermi liquid. As a result, the uncoordinated \(\mathcal{T}-\)matrix for the lattice model must be replaced by a combined \(\mathcal{T}-\)matrix within the impurity model that captures those gapless excitations that occur in connection with the impurity, and projects out the uncorrelated excitations that take place even when the impurity site is decoupled from the bath.
+%
+% In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we note that the impurity site can have both spin and charge excitations. Considering both excitations, the modified \(\mathcal{T}-\)matrix that constructs \(k-\)space excitations in correlation with the impurity site are
+% \begin{equation}\begin{aligned}\label{tmatrix}
+% 	\mathcal{T}_{{\bm K}\sigma} = c_{{\bm K}\sigma}\left(\sum_{\sigma^\prime}c^\dagger_{d\sigma} + \text{h.c.}\right) + c_{{\bm K}\sigma}\left(S_d^+ + \text{h.c.}\right)~,
+% \end{aligned}\end{equation}
+% leading to the updated expression for the complete Greens function:
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | \left[\mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+%
+% In order to convert this into a more useful form, we use eq.~\ref{heisenberg}:
+% \begin{equation}\begin{aligned}
+% 		\braket{\psi_{0}(\vec r) | \mathcal{T}_{{\bm K}\sigma}(t) | \psi_n(\vec r)} = \braket{\psi_{0}(\vec r) | e^{it H_\text{tiled} }\mathcal{T}_{{\bm K}\sigma}e^{-i t H_\text{tiled}} | \psi_n(\vec r)}~.
+% \end{aligned}\end{equation}
+% Guided by the relation in eq.~\ref{tilingPrescriptionFinal} \(H_\text{tiled} = \sum_{{\bm r}}{H}_\text{aux}({\bm r}) - N{H}_\text{cbath-nint}\) between the tiled Hamiltonian and the auxiliary model, we assume that the operator \(e^{-i t H_\text{tiled}}\) acting on the state \(\ket{\psi_n(\vec r)}\) involves the excitation energy \(E_n\) of only a single auxiliary model. Specifically, \(E_n\) is the energy of the eigenstate \(\ket{\psi_n(\vec r)}\). This is supported by the fact that this class of contributions to the Greens function is completed within a single auxiliary model. Accordingly, we replace \(H_\text{tiled}\) with \(E_n - \varepsilon_{\bm k} \), where \(\varepsilon_{\bm k}\) are the eigenenergies of the non-interacting conduction bath \({H}_\text{cbath-nint}\) and \({\bm k}\) is the crystal momentum associated with the state \(\ket{\psi_n(\vec r)}\). This momentum was found to be constrained to \({\bm k}_0 + {\bm K}\) below eq.~\ref{greensfunction3}. In the same way, the action of \(H_\text{tiled}\) on the terminal state \(\ket{\psi_{0}(\vec r)}\) gives \(E_0 - \varepsilon_{\bm k_0}\), where \(E_0\) is the ground state energy of the auxiliary model at \({\bm r}\). Applying this to our expression gives
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r} \braket{\psi_{0}(\vec r) | \left[e^{-it\omega_p} \mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + e^{-it\omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~,
+% \end{aligned}\end{equation}
+% where \(\omega_p = (E_n - \varepsilon_{\bm k_0 + \bm K}) - (E_0 - \varepsilon_{\bm k_0})\) is the particle-excitation cost and \(\omega_h = -\omega_p\) is the hole-excitation cost. We now introduce the Fourier transform \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) to obtain the frequency-domain Greens function in its spectral representation:
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; \omega) = \frac{1}{N}\sum_{\vec r}\sum_n \braket{\psi_{0}(\vec r) | \left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)} \mathcal{T}_{{\bm K}\sigma}\right] | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% For each value of \({\vec r}\), the term within that summation is simply the Greens function (for the excitation \(\mathcal{T}_{{\bm K}\sigma}\)) of the auxiliary model with the impurity site at \({\vec r}\). Since all these impurity models are physically equivalent (because of translation invariance), we can replace the average over \({\bm r}\) with the value obtained from any one auxiliary model.
+% \begin{equation}\begin{aligned}\label{kspaceGreensFunction}
+% 	\tilde G({\bm K}\sigma; \omega) &= \sum_n \braket{\psi_{0} | \left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma} \ket{\psi_n}\bra{\psi_n} \mathcal{T}_{{\bm K}\sigma}^\dagger + \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n}\bra{\psi_n} \mathcal{T}_{{\bm K}\sigma}\right] | \psi_{0}} \\
+% 									&= G^>(\mathcal{T}^\dagger_{{\bm K}\sigma}, \omega - \varepsilon_{{\bm k}_0 + {\bm K}}) + G^<(\mathcal{T}^\dagger_{{\bm K}\sigma}, \omega + \varepsilon_{{\bm k}_0 + {\bm K}})~,
+% \end{aligned}\end{equation}
+% where \(G^>(\mathcal{O}^\dagger, t) = -i\braket{\mathcal{O}(t)\mathcal{O}^\dagger}\) and \(G^<(\mathcal{O}^\dagger, t) = -i\braket{\mathcal{O}^\dagger\mathcal{O}(t)}\) are the greater and lesser Greens function for the auxiliary model.
+%
+% \subsection{\(\vec r^\prime \neq \vec r,~\vec\Delta^\prime=0\)}
+% Allowing for more non-local contributions, and updating the \(\mathcal{T}-\)matrix similar to the previous section gives the following Greens function:
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_n\sum_{\vec r, \vec r^\prime} \braket{\psi_{0}(\vec r) | \left[\mathcal{T}_{{\bm K}\sigma}(t) \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} \mathcal{T}_{{\bm K}\sigma}^\dagger + \mathcal{T}^\dagger_{{\bm K}\sigma} \ket{\psi_n(\vec r^\prime)}\bra{\psi_n(\vec r^\prime)} \mathcal{T}_{{\bm K}\sigma}(t)\right] | \psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% In order to allow computations within a single auxiliary model, we replace the translated state \(\ket{\psi_n(\vec r^\prime)}\) with \(T^\dagger(\vec r \to \vec r^\prime)\ket{\psi_n(\vec r)} \), where \(T^\dagger(\vec r - \vec r^\prime)\) translates all sites by the vector \(\vec r^\prime - \vec r\). This leads to a modified correlation function but within a single auxiliary model:
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; t) = -i\theta(t)\frac{1}{N}\sum_{n,\vec r, \vec r^\prime} \bra{\psi_{0}(\vec r)} &\left[\mathcal{T}_{{\bm K}\sigma}(t)T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}^\dagger + \right. \\
+% 								&\left. \mathcal{T}^\dagger_{{\bm K}\sigma}T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n(\vec r)}\bra{\psi_n(\vec r)}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}(t)\right] \ket{\psi_{0}(\vec r)} ~.
+% \end{aligned}\end{equation}
+% In fact, by the same arguments as in the previous section, we can obtain a frequency-resolved Greens function:
+% \begin{equation}\begin{aligned}
+% 	\tilde G({\bm K}\sigma; \omega) = \sum_n \bra{\psi_{0}} &\left[\frac{1}{\omega - \omega_p} \mathcal{T}_{{\bm K}\sigma}(t)T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n}\bra{\psi_n}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}^\dagger + \right.\\
+% 															&\left. \frac{1}{\omega - \omega_h} \mathcal{T}^\dagger_{{\bm K}\sigma}T^\dagger(\vec r - \vec r^\prime) \ket{\psi_n}\bra{\psi_n}T(\vec r - \vec r^\prime) \mathcal{T}_{{\bm K}\sigma}(t)\right] \ket{\psi_{0}} ~.
+% \end{aligned}\end{equation}
+% To obtain the above, we used the fact that \(H_\text{tiled}\) commutes with the translation operator.
 
 \subsection{Equal-Time Ground State Correlators: Real-space}\label{staticCorr}
 We first consider a real-space operator \(\mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r})\) that quantifies the presence of correlations over a distance \({\bm \Delta}\). The correlation function itself is given by the expectation value of this operator in the ground state:
