@@ -32,17 +32,40 @@ The details of tiling a cluster Hamiltonian were already shown in Sec.~\ref{hami
 				   & -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - \frac{U_f - W_f}{2}\sum_i \left(n_{i,\uparrow,f} - n_{i,\downarrow,f}\right)^2 + \frac{2J}{Z} \sum_{\langle i,j \rangle}{\bm S}_{i,f}\cdot{\bm S}_{j,f}\\
 				   & - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})
 \end{aligned}\end{equation}
-Tiling the impurity model therefore leads to a bilayer extended Hubbard model, where the tilde indicates that 
+Tiling the impurity model therefore leads to a bilayer extended Hubbard model, with effective couplings that depend on the auxiliary model couplings. The value of \(\epsilon_d\) defines the filling of the \(d-\)layer. The \(f-\)layer is pinned at half-filling.
 
 
 Following Sec.~\ref{tileKspaceGreen}, the retarded \(k-\)space Greens function in either layer can be expressed in terms of  auxiliary model Greens functions:
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma,\alpha;\omega) = \theta(t)\mathcal{G}^>(\mathcal{T}_{\bm k,\sigma,\alpha}; \omega - \epsilon_{\bm k,\alpha}) - \mathcal{G}^<(\mathcal{T}_{\bm k,\sigma,\alpha}; \omega + \epsilon_{\bm k,\alpha})~,
+	G(\bm k,\sigma,\alpha;\omega) = \sum_\nu C_{\nu,\bm k\alpha}\left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma,\alpha}; \omega - \epsilon_{\nu}) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma,\alpha}; \omega + \epsilon_{\nu})\right]~,
 \end{aligned}\end{equation}
-where \(\alpha=f,d\) denotes the layer in which the Greens function is being calculated. The frequency shift \(\epsilon_{\bm k,\alpha}\) was defined as the expectation value \(\braket{n_{k,\sigma,\alpha}=1|H_\text{1p}|n_{k,\sigma,\alpha}=0}\), where \(H_\text{1p}\) is the non-interacting part of the lattice Hamiltonian:
+where \(\alpha=f,d\) denotes the layer in which the Greens function is being calculated, the modes \(\nu\) indicate the operators which diagonalise the Hamiltonian \(H_\text{1p}\), with energies \(\epsilon_\nu\):
 \begin{equation}\begin{aligned}
-	H_\text{1p} = -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.} + f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})~.
+	H_\text{1p} = -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.} + f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})~,
 \end{aligned}\end{equation}
+and the \(\mathcal{T}-\)matrices are defined in eq.~\ref{tmatrix}:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{\nu,\sigma,\alpha} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm \alpha\sigma} + \text{h.c.}\right) + \left(S_{\bm \alpha}^+ + \text{h.c.}\right) + \left(C_{\bm \alpha}^+ + \text{h.c.}\right)\right]c_{\nu,\sigma}~,
+\end{aligned}\end{equation}
+In order to calculate \(\epsilon_\nu\), we introduce the \(k-\)space modes via a Fourier transform:
+\begin{equation}\begin{aligned}
+	c^\dagger_{i,\sigma} =\frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} c^\dagger_{\bm k,\sigma}~,\quad f^\dagger_{i,\sigma} =\frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} f^\dagger_{\bm k,\sigma}~.
+\end{aligned}\end{equation}
+In terms of these modes, the \(1-\)particle Hamiltonian decouples in \(k-\)space:
+\begin{equation}\begin{aligned}
+	H_\text{1p} &= \sum_{\bm k,\sigma}\left[\epsilon_{\bm k}^0 (n_{\bm k,\sigma, d} + n_{\bm k,\sigma, f}) - V_\perp(c^\dagger_{\bm k,\sigma}f_{\bm k,\sigma} + \text{h.c.})\right]\\
+				&= \sum_{\sigma, \bm k}\left[(\epsilon^0_k - V_\perp)\nu^\dagger_{\bm k,\sigma,+}\nu_{\bm k,\sigma,+} + (\epsilon^0_k + V)\nu^\dagger_{\bm k,\sigma,-}\nu_{\bm k,\sigma,-}\right]~,
+\end{aligned}\end{equation}
+where the diagonal modes are \(\nu^\dagger_{\bm k,\sigma,\pm} = \frac{1}{\sqrt 2}(c^\dagger_{\bm k,\sigma} \pm f^\dagger_{\bm k,\sigma})\) with energies \(\epsilon_{\nu, \pm} = \epsilon_k^0 \mp V_\perp\).
+
+Substituting into the expression for the lattice Greens function, we get
+\begin{equation}\begin{aligned}
+	G(\bm k,\sigma,d;\omega) =& \frac{1}{\sqrt 2}\left[\mathcal{G}^>(\mathcal{T}_{\nu+,\sigma,d}; \omega - \epsilon_k^0 + V_\perp) - \mathcal{G}^<(\mathcal{T}_{\nu+,\sigma,d}; \omega + \epsilon_k^0 - V_\perp)\right] \\
+							  &+ \frac{1}{\sqrt 2}\left[\mathcal{G}^>(\mathcal{T}_{\nu-,\sigma,d}; \omega - \epsilon_k^0 - V_\perp) - \mathcal{G}^<(\mathcal{T}_{\nu-,\sigma,d}; \omega + \epsilon_k^0 + V_\perp)\right]~,
+\end{aligned}\end{equation}
+
+
+
 
 
 

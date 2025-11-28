@@ -268,33 +268,37 @@ Since the overlap is calculated in the eigenstates of the auxiliary model at \(\
 \begin{equation}\begin{aligned}
 	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
 \end{aligned}\end{equation}
-To make the problem tractable, we treat the effect of \(H_\text{1p}\) at the level of an expectation value and note that the effect of the transition operator is to create a hole of momentum \(\bm k\) (eq.~\ref{tmatrix}). This leads to an excitation cost \(\braket{n_k=0|H_\text{1p}|n_k=1} = -\epsilon_k\). Moreover, \(\ket{\psi_n(\bm r_d)}\) and \(\ket{\psi_\text{gs}(\bm r_d)}\) are eigenstates of \(H_\text{clust}(\bm r_d)\) with energies \(E_n\) and \(E_0\). This leads to the following simplified expression:
+To make the problem tractable, we treat the effect of \(H_\text{1p}\) at the level of an expectation value and note that the effect of the transition operator is to create a hole of momentum \(\bm k\) (eq.~\ref{tmatrix}). Let the Hamiltonian \(H_\text{1p}\) be diagonal in certain modes \(c_{\nu,\sigma}\) with energies \(\epsilon_\nu\), and the operator \(c_{\bm k,\sigma}\) can be expressed in terms of these modes: \(c_{\bm k,\sigma} = \sum_{\nu}C_{\nu,\bm k}c^\dagger_{\nu,\sigma}\). A similar decomposition will hold for the \(\mathcal{T}-\)matrix. Substituting it gives
 \begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}~.
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{\nu,\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Each excitation \(\mathcal{T}_{\nu,\sigma}\) therefore leads to an energy cost \(-\epsilon_\nu\). Moreover, \(\ket{\psi_n(\bm r_d)}\) and \(\ket{\psi_\text{gs}(\bm r_d)}\) are eigenstates of \(H_\text{clust}(\bm r_d)\) with energies \(E_n\) and \(E_0\). This leads to the following simplified expression:
+\begin{equation}\begin{aligned}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
 \begin{equation}\begin{aligned}
-	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\nu},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Substituting the expression back into~\ref{intermediate} and then into~\ref{retarded}, we get an expression for one half of the retarded Greens function:
 \begin{equation}\begin{aligned}
 	&-i\theta(t) \braket{\Psi_\text{gs} | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \Psi_\text{gs}} \\
-	&= -i\theta(t) \sum_n e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+	&= -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Working through the other term with the same strategy, we get the full expression:
 \begin{equation}\begin{aligned}
 	-i&\theta(t) \braket{\Psi_\text{gs} | \{c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma}\} | \Psi_\text{gs}} \\
-	=& -i\theta(t) \sum_n e^{-i(E_n - E_0 + \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
-	& -i\theta(t) \sum_n e^{i(E_n - E_0 - \epsilon_k)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
+	=& -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
+	 & -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{i(E_n - E_0 - \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) gives
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) =  \sum_n &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_{\bm k})}\right.\\
-					   &- \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_{\bm k})}\right]~.
+	G(\bm k,\sigma;\omega) =  \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~.
 \end{aligned}\end{equation}
 We recognise that the two parts of the lattice model Greens function are the greater and lesser Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega \mp \epsilon_{\bm k}\):
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \theta(t)\mathcal{G}^>(\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\bm k}) - \mathcal{G}^<(\mathcal{T}_{\bm k,\sigma}; \omega + \epsilon_{\bm k})~.
+	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu}) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma}; \omega + \epsilon_{\nu})\right]~.
 \end{aligned}\end{equation}
 
 \subsection{Equal-Time Ground State Correlators: Real-space}\label{staticCorr}
