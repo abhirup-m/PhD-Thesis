@@ -259,7 +259,7 @@ where we have dropped the higher-order terms because the commutators involve onl
 	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~.
 \end{aligned}\end{equation}
 One can also absorb the modulating phase factor \(F_n(\bm k)\) (defined above and appearing in eq.~\ref{intermediate}) into this renormalisation:
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{Zassenhaus}
 	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}F_n(\bm k) \mathcal{P}_n({\bm r_d})~e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~,
 \end{aligned}\end{equation}
 where \(\mathcal{P}_n({\bm r_d})\) projects onto the \(n^\text{th}\) eigenstate \(\ket{\psi_{n}({\bm r_d})}\).
@@ -298,8 +298,26 @@ Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T
 \end{aligned}\end{equation}
 We recognise that the two parts of the lattice model Greens function are the greater and lesser Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega \mp \epsilon_{\bm k}\):
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu}) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma}; \omega + \epsilon_{\nu})\right]~.
+	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma}; \omega + \epsilon_{\nu})\right]~.
 \end{aligned}\end{equation}
+
+We now discuss how to systematically improve this estimate. One way is to include the effect of other auxiliary models in the overlap function \(F_n(\bm r)\). This will of course require us to calculate an off-diagonal Greens function. As a concrete example, upon including the effects of the auxiliary models nearest to the reference point \(\bm r_d\), the expression for the Greens function becomes
+\begin{equation}\begin{aligned}
+	G(\bm k,\sigma;\omega) = \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~,
+\end{aligned}\end{equation}
+with \(\tau^*_{\nu,\sigma} = \mathcal{T}_{\nu,\sigma} (F_n(0) + \sum_{\bm a}F_n(\bm a)e^{i \bm k \cdot \bm a})\) where \(\bm a\) sums over the primitive lattice vectors. Another way to include more non-local contributions is by considering the effects of the cavity Hamiltonian in eq.~\ref{Zassenhaus}:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm k},\sigma}^*(t) = e^{i H_\text{cav}(\bm r_d)t}(\mathcal{T}_{{\bm k},\sigma} + t^2/2\left[[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)], \mathcal{T}_{{\bm k},\sigma}\right])e^{-i H_\text{cav}(\bm r_d)t}~.
+\end{aligned}\end{equation}
+The time-domain Greens function associated with this operator will then need to be calculated, which can then be used to calculate frequency-domain functions.
+
+\subsection{One-particle real-space Greens functions}\label{tileRealspaceGreen}
+We now work with Greens functions for real-space excitations. The retarded Greens function in this case is
+\begin{equation}\begin{aligned}
+	G({\bm r}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+
 
 \subsection{Equal-Time Ground State Correlators: Real-space}\label{staticCorr}
 We first consider a real-space operator \(\mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r})\) that quantifies the presence of correlations over a distance \({\bm \Delta}\). The correlation function itself is given by the expectation value of this operator in the ground state:
