@@ -317,6 +317,70 @@ We now work with Greens functions for real-space excitations. The retarded Green
 \begin{equation}\begin{aligned}
 	G({\bm r}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
 \end{aligned}\end{equation}
+Since our lattice model has discrete translation symmetry, we instead calculate the equivalent quantity
+\begin{equation}\begin{aligned}
+	G({\bm r}\sigma; t) = -i\theta(t) \sum_{\bm r_d}\braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+Similar to the \(k-\)space Greens functions, express the groundstates as a superposition of auxiliary model Greens functions. We take the first term in the anticommutator and proceed to simplify it:
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm R + \bm \Delta}) | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm R})}\\
+																											&=\frac{1}{N}\sum_{\bm R,\bm \Delta} \braket{\psi_\text{gs}({-\bm r_d}) |  c_{{\bm r - \bm R - \bm \Delta},\sigma}(t) T({\bm \Delta}) c^\dagger_{{- \bm R},\sigma} | \psi_\text{gs}({-\bm r_d})}~.
+\end{aligned}\end{equation}
+\subsubsection*{Local Greens function: \(\bm r = 0\)}
+We first consider the case of local Greens function, by setting \(\bm r=0\). We also change the dummy variable \(\bm r_d\), \(\bm R\) and \(\Delta\) to \(-\bm r_d\), \(\-\bm R\) and \(-\bm \Delta\) to make the expressions tidier:
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+We split the full summation into four parts, based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
+\begin{equation}\begin{aligned}\label{realGreenSplit}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where we have used the fact that the location of the auxiliary model does not affect the correlation calculated within the auxiliary model in order to cancel out the summation over \(\bm r_d\) with the factor of \(1/N\). The reason for splitting the expression into these parts is to explicitly write out which operators act on the impurity site \(\bm r_d\) and which act on other real-space sites away from the impurity site. We will now replace the real-space excitation operators away from the impurity site with the associated \(T-\)matrices, following the discussion above eq.~\ref{tmatrix}:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm r},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm r}\sigma} = \sum_{\bm k} e^{i \bm k \cdot \bm r} \mathcal{T}_{\bm k,\sigma}~.
+\end{aligned}\end{equation}
+We also insert a complete basis of states of the auxiliary model at \(\bm r_d\), \(1 = \sum_n\ket{\psi_n(\bm r_d)}\bra{\psi_n(\bm r_d)}\), generating an overlap factor \(F_n\) as before:
+\begin{equation}\begin{aligned}
+&\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} \\
+&= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^{i \bm k \cdot \bm r}F_n(\bm r)\) of the overlap factor.
+
+We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
+\begin{equation}\begin{aligned}
+	&G(\bm r\sigma;\omega) \\
+	&= \mathcal{G}(d\sigma; \omega) + \sum_{\bm k, \nu} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},d\sigma; \omega + \epsilon_{\nu})\right]\\
+						   &+\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)  + \sum_{\bm k, \nu, \bm q} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega + \epsilon_{\nu})\right]~,
+\end{aligned}\end{equation}
+where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\). \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath.
+
+\subsubsection*{Non-local Greens function: \(\bm r \neq 0\)}
+We next consider the case of non-local Greens function, where the excitations propagate a non-zero distance \(\bm r\):
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta + \bm r},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+To bring this expression closer to the one for the local Greens function, we redefine \(\Delta + \bm r \to \Delta\):
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) T(\bm r) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+This allows to again split the full summation based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
+\begin{equation}\begin{aligned}\label{NLrealGreenSplit}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T(\bm r) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm r}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Introducing Fourier transforms of the operators and inserting eigenstates of the auxiliary models leads to
+\begin{equation}\begin{aligned}
+\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} = F_n^*(\bm r)\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}}.
+\end{aligned}\end{equation}
+The net difference from the diagonal Greens function is the presence of the overlap factor \(F_n^*(\bm r)\).
 
 
 \subsection{Equal-Time Ground State Correlators: Real-space}\label{staticCorr}
