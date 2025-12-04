@@ -7,13 +7,13 @@ We approach the heavy-fermion problem by starting from a bilayer extended Hubbar
 \end{aligned}\end{equation}
 where \(H_\text{1p}\) is  the Hamiltonian for the non-interacting itinerant electrons of either layer,
 \begin{equation}\begin{aligned}
-H_\text{1p} = -t\sum_{\sigma,\alpha}\sum_{\braket{i,j}}\left(c^\dagger_{i,\sigma,\alpha}c_{j,\sigma,\alpha} + \text{h.c.}\right)~,
+	H_\text{1p} = -t\sum_{\sigma,\alpha}\sum_{\braket{i,j}}\left(c^\dagger_{i,\sigma,\alpha}c_{j,\sigma,\alpha} + \text{h.c.}\right) - \sum_{i,\sigma,\alpha}\mu_\alpha n_{i,\sigma,\alpha}~,
 \end{aligned}\end{equation}
 such that \(\alpha\) sums over the two layers \(f\) and \(d\). \(H_f\) and \(H_d\) describe the dynamics of the correlated impurity sites (and their local neighbourhood) in each layer:
 \begin{equation}\begin{aligned}
 	H_f = -\frac{U_f}{2} (n_{f,\uparrow} - n_{f,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{f,\sigma} c_{Z,\sigma,f} + \text{h.c.}\right) + \frac{J}{2}\sum_{\alpha,\beta}{\bf S}_f \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,f}c_{Z,\beta,f} \right.\\
 		 &\left.- \frac{W_f}{2} \left(n_{Z,\uparrow,f} - n_{Z,\downarrow,f}\right)^2\right] ~,\\
-	H_d = \varepsilon_d \sum_\sigma n_{d,\sigma} + U_d n_{d,\uparrow} n_{d,\downarrow} + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{d,\sigma} c_{Z,\sigma,d} + \text{h.c.}\right) + \frac{J}{2}\sum_{\alpha,\beta}{\bf S}_d \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,d}c_{Z,\beta,d}\right] ~,
+	H_d = -\eta_d n_{d} - \frac{U_d}{2}(n_{d,\uparrow} - n_{d,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{d,\sigma} c_{Z,\sigma,d} + \text{h.c.}\right) + \frac{J}{2}\sum_{\alpha,\beta}{\bf S}_d \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,d}c_{Z,\beta,d}\right] ~,
 \end{aligned}\end{equation}
 where \(c^\dagger_{\nu,\sigma,\alpha}\) can refer to creation operator for either the \(f-\)layer. Finally, \(H_{fd}\) represents the inter-layer hybridisation:
 \begin{equation}\begin{aligned}
@@ -28,40 +28,54 @@ Tiling the impurity model leads to a bilayer extended Hubbard model on the 2D sq
 The details of tiling a cluster Hamiltonian were already shown in Sec.~\ref{hamiltonianTile}; the general idea is to use manybody translation operators (details in Sec.~\ref{translationOperators}) to center the cluster Hamiltonian at various sites of the lattice, such that combining all such terms leads to a periodised Hamiltonian. we write down the final result here:
 \begin{equation}\begin{aligned}
 	H_\text{latt} =& \sum_r T^\dagger(\bm r) H_\text{clust}(\bm r_d) T(\bm r)\\
-				  =& -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}\right) + U_d \sum_i n_{i,\uparrow,d}n_{i,\downarrow,d} + \epsilon_d\sum_{i}n_{i,d} + \frac{2J}{Z}\sum_{\langle i,j \rangle}{\bm S}_{i,d}\cdot{\bm S}_{j,d}\\
+	=& -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}\right) - \sum_i \left[\eta_d n_{i,d} + \frac{U_d}{2}(n_{i,\uparrow,d} - n_{i,\downarrow,d})^2\right] + \frac{2J}{Z}\sum_{\langle i,j \rangle}{\bm S}_{i,d}\cdot{\bm S}_{j,d}\\
 				   & -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - \frac{U_f - W_f}{2}\sum_i \left(n_{i,\uparrow,f} - n_{i,\downarrow,f}\right)^2 + \frac{2J}{Z} \sum_{\langle i,j \rangle}{\bm S}_{i,f}\cdot{\bm S}_{j,f}\\
 				   & - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})
 \end{aligned}\end{equation}
-Tiling the impurity model therefore leads to a bilayer extended Hubbard model, with effective couplings that depend on the auxiliary model couplings. The value of \(\epsilon_d\) defines the filling of the \(d-\)layer. The \(f-\)layer is pinned at half-filling.
+Tiling the impurity model therefore leads to a bilayer extended Hubbard model, with effective couplings that depend on the auxiliary model couplings. The value of \(\eta_d\) defines the effective chemical potential of the \(d-\)layer; a non-zero value moves the layer away from half-filling. The \(f-\)layer is pinned at half-filling.
 
 
 Following Sec.~\ref{tileKspaceGreen}, the retarded \(k-\)space Greens function in either layer can be expressed in terms of  auxiliary model Greens functions:
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma,\alpha;\omega) = \sum_\nu C_{\nu,\bm k\alpha}\left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma,\alpha}; \omega - \epsilon_{\nu}) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma,\alpha}; \omega + \epsilon_{\nu})\right]~,
+	G(\bm k,\sigma,\alpha;\omega) = \sum_\nu C_{\nu,\bm k\alpha}\left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma,\alpha}; \omega - \mathcal{E}_\nu(\bm k)) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma,\alpha}; \omega + \mathcal{E}_\nu(\bm k))\right]~,
 \end{aligned}\end{equation}
-where \(\alpha=f,d\) denotes the layer in which the Greens function is being calculated, the modes \(\nu\) indicate the operators which diagonalise the Hamiltonian \(H_\text{1p}\), with energies \(\epsilon_\nu\):
+where \(\alpha=f,d\) denotes the layer in which the Greens function is being calculated, the modes \(\nu\) indicate the operators which diagonalise the Hamiltonian \(H_\text{1p}\), with energies \(\mathcal{E}_\nu(\bm k)\):
 \begin{equation}\begin{aligned}
-	H_\text{1p} = -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.} + f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})~,
+	H_\text{1p} = -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.} + f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.}) -\sum_i \eta_d n_{i,d}~,
 \end{aligned}\end{equation}
 and the \(\mathcal{T}-\)matrices are defined in eq.~\ref{tmatrix}:
 \begin{equation}\begin{aligned}
 	\mathcal{T}_{\nu,\sigma,\alpha} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm \alpha\sigma} + \text{h.c.}\right) + \left(S_{\bm \alpha}^+ + \text{h.c.}\right) + \left(C_{\bm \alpha}^+ + \text{h.c.}\right)\right]c_{\nu,\sigma}~,
 \end{aligned}\end{equation}
-In order to calculate \(\epsilon_\nu\), we introduce the \(k-\)space modes via a Fourier transform:
+In order to calculate \(\mathcal{E}_\nu(\bm k)\), we introduce the \(k-\)space modes via a Fourier transform:
 \begin{equation}\begin{aligned}
-	c^\dagger_{i,\sigma} =\frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} c^\dagger_{\bm k,\sigma}~,\quad f^\dagger_{i,\sigma} =\frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} f^\dagger_{\bm k,\sigma}~.
+	c^\dagger_{i,\sigma} =\frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} c^\dagger_{\bm k,\sigma}~,\quad f^\dagger_{i,\sigma} = \frac{1}{\sqrt N}\sum_{\bm k} e^{-i \bm k \cdot \bm r_i} f^\dagger_{\bm k,\sigma}~.
 \end{aligned}\end{equation}
 In terms of these modes, the \(1-\)particle Hamiltonian decouples in \(k-\)space:
 \begin{equation}\begin{aligned}
-	H_\text{1p} &= \sum_{\bm k,\sigma}\left[\epsilon_{\bm k}^0 (n_{\bm k,\sigma, d} + n_{\bm k,\sigma, f}) - V_\perp(c^\dagger_{\bm k,\sigma}f_{\bm k,\sigma} + \text{h.c.})\right]\\
-				&= \sum_{\sigma, \bm k}\left[(\epsilon^0_k - V_\perp)\nu^\dagger_{\bm k,\sigma,+}\nu_{\bm k,\sigma,+} + (\epsilon^0_k + V)\nu^\dagger_{\bm k,\sigma,-}\nu_{\bm k,\sigma,-}\right]~,
+	H_\text{1p} &= \sum_{\bm k,\sigma}\left[(\epsilon_{\bm k} - \eta_d) (n_{\bm k,\sigma, d} + n_{\bm k,\sigma, f}) - V_\perp(c^\dagger_{\bm k,\sigma}f_{\bm k,\sigma} + \text{h.c.})\right]~.
 \end{aligned}\end{equation}
-where the diagonal modes are \(\nu^\dagger_{\bm k,\sigma,\pm} = \frac{1}{\sqrt 2}(c^\dagger_{\bm k,\sigma} \pm f^\dagger_{\bm k,\sigma})\) with energies \(\epsilon_{\nu, \pm} = \epsilon_k^0 \mp V_\perp\).
-
+The diagonal modes are given by
+\begin{equation}\begin{aligned}
+	\nu^\dagger_{\bm k,\sigma,\pm} = C_{\pm,k} c^\dagger_{\bm k,\sigma} + \sqrt{1 - C_{\pm,k}^2}f^\dagger_{\bm k,\sigma}~,
+\end{aligned}\end{equation}
+the coefficients obtained from diagonalising the matrix
+\begin{equation}\begin{aligned}
+	H_\text{1p}(\bm k) = \begin{pmatrix} \epsilon_{\bm k}  & -V_\perp\\ -V_\perp & \epsilon_{\bm k} - \eta_d \end{pmatrix}~.
+\end{aligned}\end{equation}
+The energies are given by \(\mathcal{E}_\pm(\bm k) = \epsilon_k -\eta_d/2 \pm \Delta\), with \(\epsilon_k\) being \(-\frac{4V}{Z}(\cos k_x + \cos k_y)\) for a 2D square lattice and \(\Delta = \sqrt{V_\perp^2 + \eta_d^2/4}\).
 Substituting into the expression for the lattice Greens function, we get
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma,d;\omega) =& \frac{1}{\sqrt 2}\left[\mathcal{G}^>(\mathcal{T}_{\nu+,\sigma,d}; \omega - \epsilon_k^0 + V_\perp) - \mathcal{G}^<(\mathcal{T}_{\nu+,\sigma,d}; \omega + \epsilon_k^0 - V_\perp)\right] \\
-							  &+ \frac{1}{\sqrt 2}\left[\mathcal{G}^>(\mathcal{T}_{\nu-,\sigma,d}; \omega - \epsilon_k^0 - V_\perp) - \mathcal{G}^<(\mathcal{T}_{\nu-,\sigma,d}; \omega + \epsilon_k^0 + V_\perp)\right]~,
+	G(\bm k,d;\omega) =& \sum_{\alpha=\pm}C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d}; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d}; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]~.
+\end{aligned}\end{equation}
+
+Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function, in real-space:
+\begin{equation}\begin{aligned}
+	G&_\text{loc}(\omega)\\
+	=&~ \mathcal{G}(d\sigma; \omega) \\
+						 &+ \sum_{\bm k, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
+						   &+\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)  \\
+						   &+ \sum_{\bm k, \bm q, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
 \end{aligned}\end{equation}
 
 
@@ -69,7 +83,8 @@ Substituting into the expression for the lattice Greens function, we get
 
 
 
-\section{Unitary RG Analysis of bilayer lattice-embedded SIAM}
+
+\section{Unitary RG Analysis of The Bilayer Lattice-Embedded ESIAM}
 In the limit of large \(U_\alpha\), we carry out a Schrieffer-Wolff transformation and work with the following low-energy Hamiltonian:
 \begin{equation}\begin{aligned}
 	H_\text{aux} &= \sum_{{\bf k},\sigma,\alpha}\epsilon_{{\bf k},\alpha}n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{2}J_\alpha\sum_{\sigma,\sigma^\prime}{\bf S}_\alpha \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} - \frac{W_\alpha}{2} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.

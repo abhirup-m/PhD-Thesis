@@ -353,8 +353,8 @@ We also insert a complete basis of states of the auxiliary model at \(\bm r_d\),
 where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^{i \bm k \cdot \bm r}F_n(\bm r)\) of the overlap factor.
 
 We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
-\begin{equation}\begin{aligned}
-	&G(\bm r\sigma;\omega) \\
+\begin{equation}\begin{aligned}\label{localTiledGreenF}
+	&G_\text{loc}(\omega) \\
 	&= \mathcal{G}(d\sigma; \omega) + \sum_{\bm k, \nu} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},d\sigma; \omega + \epsilon_{\nu})\right]\\
 						   &+\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)  + \sum_{\bm k, \nu, \bm q} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega + \epsilon_{\nu})\right]~,
 \end{aligned}\end{equation}
