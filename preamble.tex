@@ -1,28 +1,53 @@
-\pagestyle{headings}
-
-\usepackage[T1]{fontenc}
+%%%%%%%%%% PACKAGES  %%%%%%%%%5
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{braket}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{cite}
-\usepackage{fontspec}
-\usepackage{bm}
 \usepackage{kantlipsum}
 \usepackage{sectsty}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm,bottom=3.5cm]{geometry}
+\graphicspath{{frontmatter}{introduction}{methods}{metalsRG}{ESIAM}{tileForm}{tileESIAM}{tileHF}{conclusions}{appendices}}
 
-\setsansfont{Linux Libertine O}
-\allsectionsfont{\sffamily}
+%%%%%%%%% HEADER AND FOOTER
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[fit]{truncate}
+\definecolor{headfoot}{rgb}{0.3, 0.3, 0.3}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+% \renewcommand{\chaptermark}[1]{\markboth{\scshape\MakeLowercase{%
+  % \ifnum\c@secnumdepth > \m@ne \@chapapp\ \thechapter.\ \fi #1}}{}}
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\fancyhead{} % clear all header fields
+% \fancyfoot{}
+\renewcommand{\headrulewidth}{1pt}% 2pt header rule
+\renewcommand{\footrulewidth}{1pt}% default is 0pt
+\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{darkgray}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{25pt}
+\fancyhead[LE]{\nouppercase{\hfill\color{Blue}\bf\truncate{400pt}{\rightmark}}}
+\fancyhead[RO]{{\color{Blue}\bf\truncate{400pt}{\scshape\leftmark}\hfill}}
+\fancyfoot[C]{\\\color{Blue}\bf\hfill\thepage\hfill}
+\fancyfoot[L]{\\\color{Blue}\bf Abhirup Mukherjee\hfill}
+\fancyfoot[R]{\\\color{Blue}\bf \hfill IISER Kolkata}
+
+%%%%%%% FONTS SETUP
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{bm}
 \usepackage{newtxtext}
 \usepackage{newtxmath}
-\usepackage{hyperref}
-\usepackage[margin=2.5cm,bottom=3cm]{geometry}
-\graphicspath{{frontmatter}{introduction}{methods}{metalsRG}{ESIAM}{tileForm}{tileESIAM}{tileHF}{conclusions}{appendices}}
 \setcounter{tocdepth}{1}
 
+%%%%%%% CUSTOM COMMANDS
 \newcommand\blankpage{%
     \null%
     \thispagestyle{empty}%
     \addtocounter{page}{-1}%
     \newpage}
+\newcommand{\inpar}[1]{\paragraph{\it\textbf{{\color{Blue}#1}~}}~}
+\numberwithin{equation}{section}
+\renewcommand\theequation{{\color{Blue}\bf\arabic{section}.\arabic{equation}}}
