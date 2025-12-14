@@ -242,9 +242,9 @@ We now consider more carefully the transition operator \(c_{{\bm k}\sigma}\) for
 
 In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we allow for all excitations of the impurity site in conjunction with those of the \(k-\)state:
 \begin{equation}\begin{aligned}\label{tmatrix}
-	\mathcal{T}_{{\bm k},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm k}\sigma}~,
+	\mathcal{T}_{{\bm k},\sigma} = c_{\bm r_d\sigma} + \left[c^\dagger_{\bm r_d\sigma} + S_{\bm r_d}^\sigma + C_{\bm r_d}^+ \right]c_{{\bm k}\sigma}~,
 \end{aligned}\end{equation}
-where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively.
+where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively. The first term encodes the local component of the \(k-\)space Greens function by creating an excitation on the impurity site (which is then translated across the lattice), and the rest of the terms encode the non-local components by tracking impurity-bath excitations.
 
 Apart from modifying the excitation operator, we will now simplify the time-evolution as well. The first overlap on the right-hand side of eq.~\ref{intermediate} expands to
 \begin{equation}\begin{aligned}
