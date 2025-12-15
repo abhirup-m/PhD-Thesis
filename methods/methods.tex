@@ -1991,18 +1991,158 @@ Here, \(q\) is the first momentum state immediately outside the emergent cloud. 
 A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
 
 \subsection{Evolution equation for tensor network coefficients}
-Let the IR and UV states contain \(m\) and \(N\) entangled momentum states, with \(N\) of course larger than \(m\). We assume that the reverse unitary to re-entangle the \(M^\text{th}\) state can be written as
+In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. After the \(j^\text{th}\) application of the reverse RG transformation, the state can be represented as
 \begin{equation}\begin{aligned}
-	U^\dagger_{M} = \sum_{n < M}(\alpha^{(M)}_{n,M} \mathcal{O}_d c^\dagger_{n}c_{M} + \text{h.c.})~.
+	\ket{\Psi_j} = \sum_{\nu_d,\nu_Z}~C_{\nu_d,\nu_Z,I_j}\ket{\nu_d}\ket{\nu_Z}\otimes\ket{I_j}~,
 \end{aligned}\end{equation}
-By introducing the coefficient matrix \(\alpha^{(M)}\) with matrix elements \(\alpha^{(M)}_{n,M}\) and the \(M-\)spinor \(\chi_M = (c_1~c_2~\dots~c_M)^T\), we can write the reverse unitary operator as
-\begin{equation}\begin{aligned}
-	U^\dagger_{M} = \mathcal{O}_d \chi^\dagger_M \alpha^{(M)} \chi_{M}~.
-\end{aligned}\end{equation}
-The matrix \(\alpha^{(M)}\) can be diagonalised: \(\mathcal{U}^{-1}_M \alpha^{(M)} \mathcal{U}_M = D^{(M)} \), leading to a simpler form for the unitary:
-\begin{equation}\begin{aligned}
-	\tilde U^\dagger_M = \mathcal{U}_M^{-1} U^\dagger_M \mathcal{U}_M = \mathcal{O}_d \tilde \chi_M^\dagger D^{(M)} \tilde \chi_M = \mathcal{O}_d \sum_n D^{(M)}_n \tilde c^\dagger_n \tilde c_n~,
-\end{aligned}\end{equation}
-where the rotated \(M-\)spinor \(\tilde \chi_M\) is given by \(\tilde \chi_M = \mathcal{U}^{-1}_M \chi_M \mathcal{U}_M = (\tilde c_1~\tilde c_2~\dots~\tilde c_M)\).
+where \(\ket{n_1}_{d \uparrow}\ket{n_2}_{d \downarrow}\ket{n_3}_{Z^j,\uparrow}\ket{n_4}_{Z^j,\downarrow}\) sums over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step, and \(\ket{I_j}\) is the configuration of the integrals of motion at the \(j^\text{th}\) step, in direct product with the impurity+cloud part.
 
-We start with the final unitary \(U_N\) that entangles the \(N^\text{th}\) state. By applying the above procedure, we bring it to a diagonal 
+We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
+\begin{equation}\begin{aligned}
+	U_j = \sum_{\nu_d,\mu_d,\nu_Z,\mu_Z}(J^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\mathcal{T}^{\nu_d}_{\mu_d} \mathcal{T}^{\nu_Z}_{\mu_Z} c_{I_j} + K^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\mathcal{T}^{\nu_d}_{\mu_d}  \mathcal{T}^{\nu_Z}_{\mu_Z}c_{I_j}^\dagger)~,
+\end{aligned}\end{equation}
+where \(\mathcal{T}^\nu_\alpha\) sums over all transition operators of the subspace \(\nu\) (impurity or zeroth site). The state at the \((j+1)^\text{th}\) step is
+\begin{equation}\begin{aligned}
+	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_Z}~C_{\nu_d,\nu_Z,I_j}\left[\ket{\nu_d}\ket{\nu_Z}\otimes(\theta(E_j)\ket{0}_{I_j} + \theta(-E_j)\ket{1}_{I_j}) + \right.\\
+					  &\left. \sum_{\mu_d,\mu_Z}~\ket{\mu_d}\ket{\mu_Z}(\theta(E_j)K^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\ket{1}_{I_j} + \theta(-E_j)J^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\ket{0}_{I_j})\right]~,
+\end{aligned}\end{equation}
+
+
+
+\section{Zero temperature Greens function in frequency domain}
+
+\label{appx-spectral-func}
+
+\subsection{Spectral representation of Greens function}
+The impurity retarded Green's function is defined as
+\begin{equation}\begin{aligned}
+	G_{d\sigma}(t) = -i\theta(t) \left<\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\}  \right>
+\end{aligned}\end{equation}
+where the average \(\left< \right>\) is over a canonical ensemble at temperature \(T\), and \(\mathcal{O}_\sigma\) is the excitation whose spectral function we are interested in. What follows is a standard calculation where we write the Green's function in the spectral representation. The ensemble average for the operator \(\mathcal{O}_\sigma\) can be written in terms of the exact eigenstates of the Hamiltonian:
+\begin{equation}\begin{aligned}
+	H \ket{n} &= E_n \ket{n}, \quad\left<\mathcal{O}_\sigma\right> &\equiv \frac{1}{Z}\sum_n \braket{n | \mathcal{O}_\sigma | n} e^{-\beta E_n}
+\end{aligned}\end{equation}
+where \(Z = \sum_n e^{-\beta E_n}\) is the partition function and \(\left\{ \ket{n} \right\} \) is the set of eigenfunctions of the Hamiltonian. We can therefore write
+\begin{equation}\begin{aligned}
+	&\left<\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\}  \right> \\
+	&= \frac{1}{Z}\sum_{m}e^{-\beta E_m}\bra{m}\left\{ \mathcal{O}_{\sigma}(t),\mathcal{O}^\dagger_{\sigma} \right\} \ket{m}\\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\bra{m}\left( \mathcal{O}_{\sigma}(t)\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} + \mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}\mathcal{O}_{\sigma}(t)\right) \ket{m} && \left[\sum_n \ket{n}\bra{n} = 1\right]  \\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\bra{m}\left( e^{iH^* t}\mathcal{O}_{\sigma}e^{-iH^* t}\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} + \mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}e^{iH^* t}\mathcal{O}_{\sigma}e^{-iH^* t}\right) \ket{m}\\
+	&= \frac{1}{Z}\sum_{m,n}e^{-\beta E_m}\left( e^{i\left( E_m - E_n \right)  t}\bra{m}\mathcal{O}_{\sigma}\ket{n}\bra{n}\mathcal{O}^\dagger_{\sigma} \ket{m} + e^{i\left( E_n - E_m \right)  t}\bra{m}\mathcal{O}^\dagger_{\sigma}\ket{n}\bra{n}\mathcal{O}_{\sigma} \ket{m}\right)\\
+	&= \frac{1}{Z}\sum_{m,n}e^{i\left( E_m - E_n \right)  t}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\\
+\end{aligned}\end{equation}
+The time-domain impurity Green's function can thus be written as (this is the so-called Lehmann-Kallen representation)
+\begin{equation}\begin{aligned}
+	G_{d\sigma} = -i\theta(t)\frac{1}{Z}\sum_{m,n}e^{i\left( E_m - E_n \right)  t}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\\
+\end{aligned}\end{equation}
+We are interested in the frequency domain form.
+\begin{equation}\begin{aligned}
+	G_{d d}^\sigma(\omega) &= \int_{-\infty}^\infty dt e^{i \left(\omega \right)t}G_{d d}^\sigma(t) \\
+			       &= \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\left(-i\right)\int_{-\infty}^\infty dt \theta(t)e^{i\left(\omega + E_m - E_n \right)t}
+\end{aligned}\end{equation}
+To evaluate the time-integral, we will use the integral representation of the Heaviside function:
+\begin{equation}\begin{aligned}
+	\theta(t) = -\frac{1}{2\pi i}\lim_{\eta \to 0^+} \int_{-\infty}^\infty \frac{1}{x + i\eta}e^{-ixt}dx
+\end{aligned}\end{equation}
+With this definition, the integral in \(G_{d\sigma}(\omega)\) becomes
+\begin{equation}\begin{aligned}
+	\left(-i\right)\int_{-\infty}^\infty dt \theta(t)e^{i\left( \omega + i0^+ + E_m - E_n \right)t} &= \left(-i\right)\frac{-1}{2\pi i}\lim_{\eta \to 0^+} \int_{-\infty}^\infty dx\frac{1}{x+ i\eta}\int_{-\infty}^\infty dt e^{i\left( \omega + i0^+ + E_m - E_n - x\right)t} \\
+									     &=\frac{1}{2\pi}\lim_{\eta \to 0^+} \int_{-\infty}^\infty dx\frac{1}{x+ i\eta} 2\pi \delta\left( \omega + i0^+ + E_m - E_n - x\right) \\
+									     &=\frac{1}{\omega + E_m - E_n + i0^+}~.
+\end{aligned}\end{equation}
+The frequency-domain Green's function is thus
+\begin{equation}\begin{aligned}
+	G_{d d}^\sigma(\omega) = \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\frac{1}{\omega + E_m - E_n + i0^+}
+\end{aligned}\end{equation}
+The infinitesimally positive imaginary part in the denominator shifts the poles onto the lower half of the complex plane, leaving it analytic in the upper half: this is necessary to make the retarded Greens function causal.
+
+\subsection{Real and imaginary parts - The Sokhotski-Plemelj theorem}
+In order to write down the real and imaginary parts of the Greens function, we first prove the {\it Sokhotski-Plemelj} formula:
+\begin{equation}\begin{aligned}\label{SokhotskiPlemelj}
+	\lim_{\eta \to 0^+} \frac{1}{x + i \eta} = P\left(\frac{1}{x}\right) - i \pi \delta(x)~.
+\end{aligned}\end{equation}
+where \(P(f(x))\) is the Cauchy principal value, defined as 
+\begin{equation}\begin{aligned}
+	P\left[\int_{-\infty}^{\infty}\frac{dx}{x}\right] = \int_{-\infty}^{0^-}\frac{dx}{x} + \int_{0^+}^{\infty}\frac{dx}{x}~.
+\end{aligned}\end{equation}
+
+To prove the above identity, we integrate the left-hand side using a test function \(f(x)\):
+\begin{equation}\begin{aligned}\label{twoIntegrals}
+	\lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)}{x + i \eta} &= \lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)\left( x - i\eta \right) }{x^2 + \eta^2} \\
+																				 &= \lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~f(x)\left[\frac{x}{x^2 + \eta^2} - i\eta\frac{1}{x^2 + \eta^2}\right]
+\end{aligned}\end{equation}
+The first integral can be split into three parts:
+\begin{equation}\begin{aligned}
+	\lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~f(x)\frac{x}{x^2 + \eta^2} &= \lim_{\eta \to 0^+}\lim_{\varepsilon_\to 0^+}\left[\int_{-\infty}^{-\varepsilon} \text{dx}~\frac{f(x) x}{x^2 + \eta^2} + \int_{\varepsilon}^{\infty} \text{dx}~\frac{f(x)x}{x^2 + \eta^2} + \int_{-\varepsilon}^{\varepsilon} \text{dx}~\frac{f(x)x}{x^2 + \eta^2}\right]
+\end{aligned}\end{equation}
+For the first two parts, it is safe to take the limit of \(\eta\), because \(x\) is always non-vanishing there. For the third part, we can approximate \(f(x)\) as \(f(0)\) in the neighbourhood \(x \in \left[-\varepsilon, \varepsilon\right], \varepsilon \to 0 \). This leaves an odd function \(x/(x^2 + \eta^2)\) as the integrand, being integrated over a symmetric range. The third term therefore vanishes. In total, we get
+\begin{equation}\begin{aligned}\label{integral1}
+	\lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~f(x)\frac{x}{x^2 + \eta^2} &= \int_{-\infty}^{-\varepsilon} \text{dx}~\frac{f(x)}{x} + \int_{\varepsilon}^{\infty} \text{dx}~\frac{f(x)}{x}  = P\left(\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)}{x}\right) ~.
+\end{aligned}\end{equation}
+To evaluate the second integral of eq.~\ref{twoIntegrals}, we note that the only region in which the integrand is non-zero is when \(|x| \simeq 0\); there, we again approximate \(f(x)\) as \(f(0)\). The remaining integral can then be evaluated easily:
+\begin{equation}\begin{aligned}\label{integral2}
+	-i\lim_{\eta \to 0^+}\eta\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)}{x^2 + \eta^2} = -i \lim_{\eta \to 0^+}\eta f(0)\int_{-\infty}^{\infty} \frac{\text{dx}}{x^2 + \eta^2} = -i \pi f(0),
+\end{aligned}\end{equation}
+where we used \(\int \frac{dx}{x^2 + \eta^2} = \frac{1}{\eta} \arctan\left( x/\eta \right) \). Combining eqs.~\ref{twoIntegrals},\ref{integral1} and \ref{integral2}, we get
+\begin{equation}\begin{aligned}
+	\lim_{\eta \to 0^+}\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)}{x + i \eta} = P\left(\int_{-\infty}^{\infty} \text{dx}~\frac{f(x)}{x}\right) - i\pi \int_{-\infty}^{\infty} \text{dx}~f(x)\delta(x)~.
+\end{aligned}\end{equation}
+This proves eq.~\ref{SokhotskiPlemelj}.
+
+The Sokhotski-Plemelj formula allows us to split the spectral representation into a real and an imaginary part:
+\begin{equation}\begin{aligned}
+	G_{d\sigma}^\prime = \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)P\left(\frac{1}{\omega + E_m - E_n}\right)\\
+	G_{d\sigma}^{\prime\prime} = -\pi\frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\delta\left(\omega + E_m - E_n\right)~.
+\end{aligned}\end{equation}
+The spectral function, specifically, is defined as follows:
+\begin{equation}\begin{aligned}
+	A_{d\sigma}(\omega) = -\frac{1}{\pi}G_{d\sigma}^\prime = \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\delta\left(\omega + E_m - E_n\right)
+\end{aligned}\end{equation}
+
+\subsection{Zero temperature spectral function}
+We specialise to zero temperature by taking the limit of \(\beta \to \infty\). In both the partition function as well as inside the summation, the only term that will survive is the exponential of the ground state energy \(E_\text{GS}\).
+\begin{equation*}\begin{aligned}
+	Z \equiv \sum_m e^{-\beta E_m} \implies \lim_{\beta \to \infty}Z = d_\text{GS} e^{-\beta E_\text{GS}}, && E_\text{GS} \equiv \text{min}\left\{ E_n \right\} 
+\end{aligned}\end{equation*}
+where \(d_\text{GS}\) is the degeneracy of the ground state. The spectral function then simplifies to
+\begin{equation}\begin{aligned}
+	\label{Gf_lk}
+	A_{d\sigma} &= \frac{1}{d_\text{GS}e^{-\beta E_\text{GS}}}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left[e^{-\beta E_m}\delta_{E_m, E_\text{GS}} + e^{-\beta E_n}\delta_{E_n, E_\text{GS}}\right]\delta\left(\omega + E_m - E_n\right)\\
+											 &= \frac{1}{d_\text{GS}}\sum_{n,n_\text{GS}}\left[||\bra{n_\text{GS}}\mathcal{O}_{\sigma}\ket{n}||^2\delta\left(\omega + E_\text{GS} - E_n\right) + ||\bra{n}\mathcal{O}_{\sigma}\ket{n_\text{GS}}||^2\delta\left(\omega - E_\text{GS} + E_n\right)\right]\\
+\end{aligned}\end{equation}
+The label \(n_\text{GS}\) sums over all states \(\ket{n_\text{GS}}\) with energy \(E_\text{GS}\). In practise, we evaluate this expression by replacing the formal Dirac delta functions with "nascent" ones, such as a Lorentzian function with a sufficiently sharp peak.
+
+\subsection{Reconstructing full Green function from spectral function: Kramers-Kronig relations}
+As mentioned earlier, the retarded Greens function \(G_R(\omega + i 0^+)\) has a complex pole in the lower half of the complex plane. In the following, the frequency \(\omega\) is assumed to be complex. Consider the integral
+\begin{equation}\begin{aligned}
+	I(\omega) = \oint_C d\omega^\prime \frac{G_R(\omega^\prime)}{\omega^\prime - \omega},~\omega \in \mathbb{R}~.
+\end{aligned}\end{equation}
+The contour \(C\) encloses the entirety of the upper half of the complex plane as well as almost all points of the real line but avoids the pole at \(\omega^\prime = \omega\) by forming a semicircle about that point that extends into the upper half of the plane. Since the integrand is completely analytic in the region enclosed by the contour (recall again that \(G_R\) is analytic in the upper half), the integral evaluates to zero (by Cauchy's theorem):
+\begin{equation}\begin{aligned}\label{zerointegral}
+	I(\omega) = 0~.
+\end{aligned}\end{equation}
+One can also evaluate the integral along each part of the contour. The semicircular part contributes zero: this is because while the length of the semicircular arc goes as \(|\omega^\prime|\), the integrand vanishes faster than \(1/|\omega^\prime|\) as \(|\omega^\prime| \to \infty\) (this assumes that the Green function vanishes in the limit of \(\omega \to \infty\)). The part of the contour along the real axis can now be evaluated. The two parts of the contour on either side of the pole contribute
+\begin{equation}\begin{aligned}
+	\int_{-\infty}^{\omega - 0^+}d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} + \int_{\omega + 0^+}^{\infty}d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} = P\int_{-\infty}^{\infty}d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega}
+\end{aligned}\end{equation}
+To evaluate the part of the integral along the small semicircular around \(\omega^\prime = \omega\) (that extends into the upper half), we argue that this contribution should be equal to that obtained by taking the semicircle that goes instead into the lower half but circulates in the opposite direction. Each of these contributions should, in turn, be equal to that obtained from joining these two contours. But joining these contours leads to a closed integral about the pole at \(\omega^\prime = \omega\), which is equal to \(2\pi G_R(\omega)\).
+\begin{equation}\begin{aligned}
+	\int_\text{upper} d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} = \int_\text{lower} d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} = \frac{1}{2}\oint_{C(\omega)} d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} = i\pi G_R(\omega)~.
+\end{aligned}\end{equation}
+Combining the last two equations, we get
+\begin{equation}\begin{aligned}
+	I(\omega) = P\int_{-\infty}^{\infty}d\omega^\prime~\frac{G_R(\omega^\prime)}{\omega^\prime - \omega} + i\pi G_R(\omega)~.
+\end{aligned}\end{equation}
+Comparing with eq.~\ref{zerointegral} and separating into real part \(G_R^\prime\) and imaginary part \(G_R^{\prime\prime}\) gives
+\begin{equation}\begin{aligned}
+	P\int_{-\infty}^{\infty}d\omega^\prime~\frac{\left[G_R^\prime(\omega^\prime) + i G_R^{\prime\prime}(\omega^\prime)\right]}{\omega^\prime - \omega} + \pi\left[-G_R^{\prime\prime}(\omega) + i G_R^\prime(\omega) \right]= 0~.
+\end{aligned}\end{equation}
+Comparing the imaginary parts gives
+\begin{equation}\begin{aligned}
+	G_R^\prime(\omega) = \frac{1}{\pi}P\int_{-\infty}^{\infty}d\omega^\prime~\frac{G_R^{\prime\prime}(\omega^\prime)}{\omega^\prime - \omega} = - \mathcal{H}\left[G_R^{\prime\prime}(\omega)\right] ~,
+\end{aligned}\end{equation}
+where \(\mathcal{H}\left[g(\omega)\right]=\frac{1}{\pi}P\int_{-\infty}^{\infty}d\omega^\prime~\frac{g(\omega^\prime)}{\omega - \omega^\prime}\) is the Hilbert transform of the function \(g(\omega)\). The spectral function was defined above as \(-1/\pi\) times the imaginary part of the Greens function. Exchanging \(G_R^{\prime\prime}\) for \(A\) gives
+\begin{equation}\begin{aligned}
+	G_R^\prime(\omega) = \pi \mathcal{H}\left[A(\omega)\right]~.
+\end{aligned}\end{equation}
+This provides a method for calculating the real part of a Greens function if the spectral function is already known.
