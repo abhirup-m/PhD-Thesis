@@ -1990,21 +1990,37 @@ The wavefunction after reversing one step of the RG will thus be
 Here, \(q\) is the first momentum state immediately outside the emergent cloud. Re-entangling further momentum states using their respective unitaries lead to the sequence of wavefunctions \(\ket{\Psi}_2, \ket{\Psi}_3\) and so on.
 A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
 
-\subsection{Evolution equation for tensor network coefficients}
+\subsection{Evolution equation for state tensor coefficients}
 In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. After the \(j^\text{th}\) application of the reverse RG transformation, the state can be represented as
 \begin{equation}\begin{aligned}
-	\ket{\Psi_j} = \sum_{\nu_d,\nu_Z}~C_{\nu_d,\nu_Z,I_j}\ket{\nu_d}\ket{\nu_Z}\otimes\ket{I_j}~,
+	\ket{\Psi_j} = \sum_{\nu_d,\nu_Z}~C^{(j)}_{\nu_d,\nu_Z,I_j,\bar I_j}\ket{\nu_d}\ket{\nu_Z}\otimes\ket{I_j}\ket{\bar I_{j}}~,
 \end{aligned}\end{equation}
-where \(\ket{n_1}_{d \uparrow}\ket{n_2}_{d \downarrow}\ket{n_3}_{Z^j,\uparrow}\ket{n_4}_{Z^j,\downarrow}\) sums over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step, and \(\ket{I_j}\) is the configuration of the integrals of motion at the \(j^\text{th}\) step, in direct product with the impurity+cloud part.
+where \(\ket{n_1}_{d \uparrow}\ket{n_2}_{d \downarrow}\ket{n_3}_{Z^j,\uparrow}\ket{n_4}_{Z^j,\downarrow}\) sums over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_j}\) is the configuration of the integrals of motion at the \(j^\text{th}\) step, in direct product with the impurity+cloud part. \(\ket{\bar I_j}\) is the configuration of the rest of the integrals of motion (beyond \(I_j\)).
 
 We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
 \begin{equation}\begin{aligned}
-	U_j = \sum_{\nu_d,\mu_d,\nu_Z,\mu_Z}(J^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\mathcal{T}^{\nu_d}_{\mu_d} \mathcal{T}^{\nu_Z}_{\mu_Z} c_{I_j} + K^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\mathcal{T}^{\nu_d}_{\mu_d}  \mathcal{T}^{\nu_Z}_{\mu_Z}c_{I_j}^\dagger)~,
+U_j^\dagger = 1 + \sum_{\nu_d,\mu_d,\nu_Z,\mu_Z}(J^{\mu_d,\mu_Z}_{\nu_d,\nu_Z}\mathcal{T}^{\mu_d}_{\nu_d} \mathcal{T}^{\mu_Z}_{\nu_Z} c_{I_j} + K^{\mu_d,\mu_Z}_{\nu_d,\nu_Z}\mathcal{T}^{\mu_d}_{\nu_d}  \mathcal{T}^{\mu_Z}_{\nu_Z}c_{I_j}^\dagger)~,
 \end{aligned}\end{equation}
 where \(\mathcal{T}^\nu_\alpha\) sums over all transition operators of the subspace \(\nu\) (impurity or zeroth site). The state at the \((j+1)^\text{th}\) step is
 \begin{equation}\begin{aligned}
-	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_Z}~C_{\nu_d,\nu_Z,I_j}\left[\ket{\nu_d}\ket{\nu_Z}\otimes(\theta(E_j)\ket{0}_{I_j} + \theta(-E_j)\ket{1}_{I_j}) + \right.\\
-					  &\left. \sum_{\mu_d,\mu_Z}~\ket{\mu_d}\ket{\mu_Z}(\theta(E_j)K^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\ket{1}_{I_j} + \theta(-E_j)J^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}\ket{0}_{I_j})\right]~,
+	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_Z}~C^{(j)}_{\nu_d,\nu_Z,I_j,\bar I_J}\ket{\nu_d}\ket{\nu_Z}\ket{I_j}\ket{\bar I_j}\ket{\bar I_{j}} \\
+					  &+ \sum_{\mu_d,\mu_Z}~\sum_{\nu_d,\nu_Z}C^{(j)}_{\nu_d,\nu_Z,I_j,\bar I_J}K^{\mu_d,\mu_Z}_{\nu_d,\nu_Z}\ket{\mu_d}\ket{\mu_Z}\ket{I_j + 1}\ket{\bar I_{j}} \\
+					  &+ \sum_{\mu_d,\mu_Z}~\sum_{\nu_d,\nu_Z}C^{(j)}_{\nu_d,\nu_Z,I_j,\bar I_J}J^{\mu_d,\mu_Z}_{\nu_d,\nu_Z}\ket{\mu_d}\ket{\mu_Z}\ket{I_j - 1}\ket{\bar I_{j}}~.
+\end{aligned}\end{equation}
+We can now read off the renormalisation of the state tensor coefficients:
+\begin{equation}\begin{aligned}
+	C^{(j+1)}_{\nu_d, \nu_z, I_j, \bar I_j} &= C^{(j)}_{\nu_d, \nu_z, I_j, \bar I_j}~,\\
+	C^{(j+1)}_{\nu_d, \nu_z, I_j+1, \bar I_j} &= \sum_{\mu_d,\mu_Z}C^{(j)}_{\mu_d,\mu_Z,I_j,\bar I_J}K^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}~,\\
+	C^{(j+1)}_{\nu_d, \nu_z, I_j-1, \bar I_j} &= \sum_{\mu_d,\mu_Z}C^{(j)}_{\mu_d,\mu_Z,I_j,\bar I_J}J^{\nu_d,\nu_Z}_{\mu_d,\mu_Z}~,\\
+\end{aligned}\end{equation}
+
+One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator that acts on the impurity site and the first bath site:
+\begin{equation}\begin{aligned}
+	\mathcal{O} = \mathcal{T}^{\mu_d}_{\nu_d} \mathcal{T}_{\mu_1}^{\nu_1}~.
+\end{aligned}\end{equation}
+The expectation value of this operator at any step can be written as
+\begin{equation}\begin{aligned}
+	\braket{\mathcal{O}}_{j+1} = \sum_{\nu_Z,\mu_z,I_{j+1},\bar I_{j+1}} C^{(j+1)}_{\mu_d,\mu_Z,I_{j+1},\bar I_{j+1}}C^{(j+1)}_{\nu_d,\nu_Z,I_{j+1},\bar I_{j+1}}
 \end{aligned}\end{equation}
 
 
