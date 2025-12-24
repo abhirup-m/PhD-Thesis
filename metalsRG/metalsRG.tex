@@ -1,29 +1,5 @@
-\chapter{Entanglement RG}
+\chapter{Holographic entanglement renormalisation for fermionic quantum matter}
 \section{Introduction}
-
-The present millennium has seen a rapid surge in the use of quantum entanglement towards the study of quantum and condensed matter systems~\cite{terhal_physicstoday_2003,horodecki2009quantum,eisert_entanglement_2010,laflorencie2016quantum,zeng2019,Erhard2020}. By tracking quantum correlations among particles across both small and large distances, entanglement measures offer valuable insights into the nature of the ground state and low-energy excitations. This, for example, allows us to distinguish strongly-correlated topologically ordered states characterised by long-ranged entanglement (in the form of a sub-leading topological term in their entanglement entropy~\cite{wen_1990,Wen_fqhe_1990,wen1995topological,niu1985quantized}) from weakly-interacting topologically trivial phases that have short-ranged area-law entanglement~\cite{das_shankaranarayanan_2006,cramer_eisert_2006,eisert_entanglement_2010}.
-
-More pertinent to the present work is the entanglement of non-interacting relativistic fermionic systems. Such phases are known to emerge in several condensed matter systems~\cite{vafek_2014_diracreview}, appearing at the surfaces of three-dimensional topological insulators~\cite{bernevig_2013,cayssol2013,moessner_moore_2021,Rachel_2018}, quasi-2D organic materials~\cite{wang_2015,Wu_2016,ni_2022_dirac} and in artificial quantum simulators such as cold atom gases, molecular and microwave crystals~\cite{zhu_2007_coldatoms,Lepori_2010,Boada_2011,Kuno2018,Gomes2012,Yuan2016,bellec_2013}.
-Massless critical systems (or conformal field theories (CFTs)) differ from gapped systems due to the fact that their entanglement satisfies a modified area law; in one spatial dimension, the entanglement entropy ($S$) of a single subsystem of length \(l\) scales as \(S \sim \frac{c}{3}\ln l\)~\cite{vidal2003entanglement,latorre_extanglement_2003,lattore_pra_2005,calabrese2004,wolf2008area}, where \(c\) is the conformal central charge of the CFT.
-This violation arises from the non-local nature of the gapless quantum fluctuations that lie proximate to the $d-1$-dimensional Fermi surface of a quantum critical fermionic system in $d$ spatial dimensions.
-For massive fermions, an entropic \(c-\)function (spatial derivative of the entanglement entropy) can be expressed in the form of differential equations that need to be solved numerically~\cite{Casini_2005,Cardy2008,Casini_2009_multi,doyon_2009}.
-
-Unlike topologically ordered phases, there is no geometry-independent topological term in the entanglement entropy of free fermionic systems~\cite{Chen_2017,bueno_2017}. It is, however, possible to generate such a term even here by placing the system on a multiply connected manifold such as a cylinder, and inserting a magnetic flux through the cylinder~\cite{Metlitski_2009,Arias_2015,Whitsitt_2017,Chen_2017,zhu_kagome_2018}.
-It has been shown that if there are \(\phi\) number of electronic flux quanta piercing the system, an additional term is generated in the entanglement entropy of a subsystem of massless Dirac fermions of sufficiently large length (as defined in Ref.~\cite{Chen_2017}) with the form $\frac{1}{6}\ln \big|2\sin \frac{\phi}{2}\big|$~\cite{Chen_2017,Arias_2015}. Further, there is evidence from numerical computations on discrete models that such a term is a signature of the specific field theory and encodes universality~\cite{zhu_kagome_2018,Hu_triangular_2019,crepel_2021}.
-
-The notion of entanglement also plays a key role in the context of holographic duality, which posits that there exists a duality relation between a quantum field theory in \(d-\)spatial dimensions and a gravity theory in \(d+1-\)spatial dimensions~\cite{hooft_1974,polyakov_1978,polyakov_strings,gross_1993,bousso_2002,zaanen_liu_sun_schalm_2015,hartnoll_lucas_sachdev2018}. It is widely believed that the additional dimension can be visualised as a renormalisation group flow that starts from the (almost) critical field theory on the boundary and extends into the bulk~\cite{akhmedov_1998,alvarez_1999,freedman_1999,porrati_1999,kachru_2000,girardello_2000,de2000,
-de_2001,Johnson_2001,Yamaguchi_2003}. The most popular realisation of the holographic principle is the AdS/CFT correspondence that links a conformal field theory with a theory of quantum gravity through a strong-weak duality relation~\cite{bekenstein_1973,Hawking_1974,Hawking_1975,maldacena1999large,gubser_1998,witten1998anti,
-ryu2006,ryu2006aspects}.
-This has led to new insights in various areas of high energy and condensed matter physics, such as the viscosity of the quark-gluon plasma~\cite{kovtun_2005}, the response functions of the Bose-Hubbard model~\cite{damle_1997,hartnoll_2007}, and the phenomenology of non-Fermi liquids~\cite{lee_2009_nonfermi,lio_2011,faulkner_2011,mihailo_2009}, holographic superconductors~\cite{gubser_2010,gauntlett_2009,hartnoll_2008_building,Hartnoll_2008,Cai2015,Wang2020}, striped phases~\cite{Donos2011,Donos2013,Cremonini2018} and holographic Fermi liquids~\cite{kachru_2008,cubrovic_2011,senthil_2003,sachdev_2011,Hartnoll_2011_stellar}.
-
-Conversely, the holographic principle also implies that studying the boundary conformal theory can provide insights into the nature of the bulk quantum gravity theory. This requires constructing the emergent dimension from first principles by investigating the RG flow of the (often strongly coupled) quantum field theory, and has proved to be considerably more difficult.
-Nevertheless, there exist some examples of constructive attempts towards a bulk gravity theory, including ~\cite{matsueda_2012_kondo,czech_2018,Lee2012,lee2014,vidal2007,vidal2008,swingle2012a,evenbly_2014,anirbanurg1,anirbanurg2}.
-These include the momentum-shell renormalisation approach of Refs.\cite{lee2010,lee_2010_lectures,Lee2012,lee2014}, the multi-scale entanglement renormalisation ansatz (MERA) approach of Refs.\cite{vidal2007,vidal2008,swingle2012a,evenbly_2014,milsted_2018}, the exact holographic mapping (EHM)~\cite{qi2013,lee2016}, the Wilsonian RG-based approach of Ki-Seok Kim~\cite{kim2019,kim_2017_supeconductor,kim_2016} and the unitary renormalisation group (URG) approach~\cite{anirbanurg1,anirbanurg2,Mukherjee_mott_merg}.
-
-Questions on entanglement and holography become particularly interesting in systems of critical fermions. As mentioned earlier, such systems differ from bosonic and gapped systems through the presence of longer-ranged entanglement that follows a modified area-law~\cite{wolf2008area,swingle2010} as well as topological features arising from the incompressibility of the Fermi volume~\cite{oshikawa2000topological,seki2017topological}. Fermi surface gapping phase transitions in such systems are often driven by changes in topological quantum numbers and the nature of the inter-particle entanglement~\cite{anirbanurg1,anirbanurg2,Gegenwart2008}. Constructing a framework for fermionic criticality is therefore an active area of research with consequences for important systems such as unconventional superconductors, strange metals and heavy fermions~\cite{anirbanmott1,anirbanmott2,anirban_mott_2022,Custers2003}. Still less is known about the holographic implications of such systems. We extend this body of work by providing an explicit demonstration of the holographic principle in the form of a simple and tractable exact holographic mapping (EHM) for a free fermion system with and without a mass gap. Our program yields analytic relations between the RG flow parameters and their dual bulk quantities such as distances and curvature. This also allows us to study the consequences of a critical Fermi surface (lying precisely at the quantum phase transition) on the nature of the holographic space.
-
-We first briefly describe the strategy employed in the present work. (i)~We perform a set of scaling transformations \(T_j\) (corresponding to a step index \(j\)) on the set of \(k-\)states in the Hilbert space of our system of fermions, and we show that the renormalisation of entanglement measures along the sequence of Hamiltonians \(T_j^\dagger H_j T_j\) constitutes an emergent additional spatial dimension. (ii)~By employing the mutual information between multiple subsets of the Hilbert space, we define a measure of distance that is used to obtain holographic relations between boundary and bulk quantities. Additional results are obtained upon further analysis of the entanglement and these holographic relations.
-The approach presented in this work is similar in spirit to other renormalisation group approaches that apply decoupling transformations on the Hamiltonian, such as the continuous unitary transformation (CUT) RG~\cite{wegner1994flow,glazekwilson1993,glazekwilson1994,savitz2017stable}, the strong-disorder RG~\cite{rademaker2016explicit,monthus2016flow} and the spectrum-bifurcation RG~\cite{you2016}. As the system we consider is non-interacting, the scaling transformations implemented in this work do not lead to the decoupling of states, and only result in the coarse-graining of the system in momentum space, through non-local transformations.
 
 The manuscript is structured in the following manner. Sec.~\ref{prelims} describes the system we work with and defines certain physical ideas and measures of entanglement that are employed in later sections. In Sec.~\ref{hierarchy}, we define the scaling transformations mentioned earlier, and discuss its implications on the scaling of entanglement in the system under study.
 In Sections \ref{EHM},\ref{holography} and \ref{curvature}, we probe the holographic nature of the entanglement, unveiling an emergent spatial dimension in the process and obtain several characteristics of this emergent geometry.
@@ -57,15 +33,50 @@ In order to calculate entanglement measures, we will express the \(2+1-\)dimensi
 ~\cite{chung_2000,Arias_2015,Chen_2017,Murciano_2020}. In the presence of a gauge field \(\vec A = A \hat x\), the complete Lagrangian (in natural units) is
 \begin{equation}\begin{aligned}
 	\label{lagrangian}
-	\mathcal{L} = \int \mathrm{d}x~\mathrm{d}y~\overline\psi(x,y)\left[\gamma^\mu\left(i\partial_\mu + eA_\mu\right) -m \right]\psi(x,y)~,
+	\mathcal{L} = \int \mathrm{d}x~\mathrm{d}y~\overline\psi(x,y)\left[\gamma^\mu\left(i\partial_\mu - eA_\mu\right) -m \right]\psi(x,y)~,
 \end{aligned}\end{equation}
 where \(A_\mu = A \delta_{\mu,x}\) and \(\phi = eAL_x/2\pi\). The integral ranges over the surface area of the torus, and the time dependence of the fields has been suppressed. Due to the periodic boundary conditions (PBCs) in the \(x-\)direction, the momenta \(k_x\) are quantised:~\( k_x^n = \frac{2\pi n}{L_x}, n \in \mathbb{Z}\). We then expand the fields \(\psi(x,y)\) in these momenta: 
 \begin{equation}\begin{aligned}
 \psi(x,y) = \sum_{n=-\infty}^{\infty} e^{ik_x^n x} \psi(k_x^n,y)~.
 \end{aligned}\end{equation}
-In terms of these dual fields, the Lagrangian can be shown to be equivalent to a tower of massive \(1+1-\)dimensional fermions (see Fig.~\ref{dim-red}). Details are provided in Appendix~\ref{app-red}:
+
+In the absence of the gauge field, the Lagrangian for \(2+1-\)dimensional massive non-interacting relativistic electrons (in natural units) is
 \begin{equation}\begin{aligned}
-\mathcal{L} = \sum_{k_x^n} \int \mathrm{d}y~\overline\psi(k_x^n,y)\left(i\gamma^\mu \partial_\mu - M(n,\phi)\right) \psi(k_x^n,y)~,
+	\mathcal{L} = \int \mathrm{d}x~\mathrm{d}y~\overline\psi(x,y)\left[\gamma^\mu(i\partial_\mu - eA_\mu) - m \right]\psi(x,y)~.
+\end{aligned}\end{equation}
+The integral ranges over the area of the torus on which the electrons reside, and the time dependence of the fields has been suppressed. Each component \(\psi^a,a=0,1,2,3\), of the Dirac spinor \(\psi = \left( \psi^0\quad\psi^1\quad\psi^2\quad\psi^3 \right) \) satisfies the Dirac equation
+\begin{equation}\begin{aligned}
+	\left[\gamma^\mu(i\partial_\mu - eA_\mu) - m\right]\psi^a(x,y) = 0~,
+\end{aligned}\end{equation}
+which is equivalent to the form
+\begin{equation}\begin{aligned}
+\int dx~ \overline{\psi^a}(x,y)\left[\gamma^\nu(i\partial_\nu + eA_\nu) + m\right]\left[\gamma^\mu(i\partial_\mu - eA_\mu) - m\right]\psi^a(x,y) = 0~.
+\end{aligned}\end{equation}
+Due to the periodic boundary conditions (PBCs) in the \(x-\)direction, the momenta \(k_x\) are quantised:~\( k_x^n = \frac{2\pi n}{L_x}, n \in \mathbb{Z}\). We expand the fields \(\psi^a(x,y)\) in these momenta: 
+\begin{equation}\begin{aligned}
+\psi^a(x,y) = \sum_{n=-\infty}^{\infty} e^{ik_x^n x} \psi^a(k_x^n,y)~.
+\end{aligned}\end{equation}
+Writing the Dirac equation in terms of the dual fields \(\psi^a(k_x^n,y)\) gives
+\begin{equation}\label{DEdual}\begin{aligned}
+	\sum_{m,n}\left(\overline{\psi^a}(k_x^m,y) e^{-ik_x^m x}\right) \left[\gamma^\nu(i\partial_\nu + eA_\nu) + m\right]\left[\gamma^\mu(i\partial_\mu - eA_\mu) - m\right]\left(e^{ik_x^n x}\psi^a(k_x^n,y)\right) = 0~.
+\end{aligned}\end{equation}
+Evaluating the right operation gives
+\begin{equation}\begin{aligned}
+	\left[\gamma^\mu(i\partial_\mu - eA_\mu) - m\right]\left(e^{ik_x^n x}\psi^a(k_x^n,y)\right) = e^{ik_x^n x}\left[\gamma^\mu(i\partial_\mu - eA_\mu) - \left( \gamma^x (k_x^n + eA_x) + m\right) \right]\psi^a~.
+\end{aligned}\end{equation}
+Similarly, the left operation gives
+\begin{equation}\begin{aligned}
+	\left(\overline{\psi^a}(k_x^m,y) e^{-ik_x^m x}\right) \left[\gamma^\nu(i\partial_\nu + eA_\nu) + m\right] &= \left[\left[\gamma^\nu(i\partial_\nu - eA_\nu) + m\right]\left(e^{ik_x^m x}\gamma_0\psi^a\right)\right]^\dagger \\
+							      &= \overline{\psi^a} e^{-ik_x^m x}\left[\gamma_\nu(i\partial^\nu + eA_\nu) - \left( \gamma^x (k_x^n + eA_x) - m \right) \right]~.
+\end{aligned}\end{equation}
+Substituting these into the equation eq.\eqref{DEdual} gives
+\begin{equation}\begin{aligned}
+	\sum_{n}\int\mathrm{d}y ~ \overline{\psi^a}(k_x^n,y) \left[-(i\partial_\mu + eA_\mu)(i\partial_\mu - eA_\mu) + (k_x^n + eA_x)^2 + m^2\right]\psi^a(k_x^n,y)= 0~,
+\end{aligned}\end{equation}
+where we have used \(\int \mathrm{d}x ~e^{ix\left( k_x^m - k_x^n \right) } = \delta_{m,n}\).
+In terms of these dual fields, the Lagrangian can be shown to be equivalent to a tower of massive \(1+1-\)dimensional fermions (see Fig.~\ref{dim-red}):
+\begin{equation}\begin{aligned}
+\mathcal{L} = \sum_{k_x^n} \int \mathrm{d}y~\overline\psi(k_x^n,y)\left(\gamma^\mu (i\partial_\mu - eA_\mu) - M(n,\phi)\right) \psi(k_x^n,y)~,
 \end{aligned}\end{equation}
 with an effective mass $M_{n,\phi}$ given by
 \begin{equation}\begin{aligned}
@@ -155,6 +166,7 @@ The other case of \(z>0\) is, on the contrary, a decimation process in \(k_x-\)s
 Within a given set \(\mathcal{A}_{z}(i)\), the distance between adjacent \(k-\)space points is \(\frac{2\pi}{L_x} t_{z}(i)\) where \(t_{z}(i) = 2^{i^z}\). Choosing \(i=0\) keeps the set of \(k_x-\)space points unchanged, such that we recover the entire Lagrangian of eq.~\eqref{lagrangian} in the \(x-\)direction for system size \(L_x\), while the \(y-\)direction is constrained to length \(l\).
 This means that \(\mathcal{A}_z(0)\) is just an annulus that wraps around the \(x-\)direction of the torus and extends to a length \(l\) longitudinally in the \(y-\)direction (shown in Fig.~\ref{Am-1}).
 \begin{figure}
+	\centering
 	\includegraphics[width=0.45\textwidth]{A_m1.pdf}
 	\caption{{\it Top:} Depiction of the subset \(\mathcal{A}_z(i)\) for the choice \(i=0\). Setting \(i=0\) leads to unchanged length \(L_x\) along \(x\) and the constraint \(0\leq y \leq l\) in the \(y-\)direction. This creates an annulus (red region) of height \(l\) and circumference \(L_x\).\\
 	{\it Bottom:} Typical \(k-\)modes present in the subset \(\mathcal{A}_z(i)\) for \(z=1\) and \(i=2\). This is because, if \(i=0\) has the modes \(n=0,1,2,3,4,\ldots,\), increasing \(i\) by 2 increases the spacing between the modes to \(2^{2^z}=4\), so that the mode just after \(n=0\) is \(n=4\), and the one following that is \(n=8\), and so on.}
@@ -186,8 +198,7 @@ where \(c\) is the conformal central charge and \(\epsilon\) is a UV cutoff; \(c
 \end{aligned}\end{equation}
 where \(\alpha\) is a cutoff-dependent non-universal constant.The flux-dependent term in \(S_{\widetilde{A}_{z}(0)}^n\) leads to the sub-leading term of \(S_{z}(0)(\phi)\), and requires a regularisation using the Hurwitz zeta function~\cite{Chen_2017}:
 \begin{equation}\begin{aligned}
-	\sum_{n=-\infty}^\infty \ln|n+\phi| = \sum_{n=-\infty}^\infty \left[\ln|n+\phi| + \ln|n+\left( 1-\phi \right) |\right] \\
-	= -\frac{\partial{\zeta(\phi)}}{\partial{\phi}} - \frac{\partial{\zeta(1-\phi)}}{\partial{\phi}}~,
+	\sum_{n=-\infty}^\infty \ln|n+\phi| = \sum_{n=-\infty}^\infty \left[\ln|n+\phi| + \ln|n+\left( 1-\phi \right) |\right] = -\frac{\partial{\zeta(\phi)}}{\partial{\phi}} - \frac{\partial{\zeta(1-\phi)}}{\partial{\phi}}~,
 \end{aligned}\end{equation}
 where \(\zeta(\phi)=\sum_{n=-\infty}^\infty \left(n+\phi\right)^{-1} \) is the Hurwitz zeta function.
 The derivative converges to \(\frac{\partial{\zeta(\phi)}}{\partial{\phi}} = \ln \Gamma(\phi) - \frac{1}{2}\ln 2\pi\), as long as the zero mode \(n+\phi=0\) is excluded from the summation. The latter condition is guaranteed as we have chosen \(\phi\) to be a non-integer. \(\Gamma\) is the Gamma function, satisfying \(\Gamma(\phi)\Gamma(1 - \phi) = \pi/\sin(\pi\phi)\).
@@ -206,15 +217,12 @@ Substituting the derivative gives~\cite{Arias_2015,Chen_2017,crepel_2021}
 For a general \(\mathcal{A}_{z}(i)\), there are certain modifications to the expression in eq.~\eqref{annulus}. For the first term in eq.\eqref{annulus}, we have
 \begin{equation}\begin{aligned}
 	\label{area-term}
-\lim_{N \to \infty} \sum_{n=-N,\atop{-N+t_{z}(i),\ldots}}^N c\ln \frac{L_x}{2\pi\epsilon} = \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} c\ln \frac{L_x}{2\pi\epsilon}\\
-= t^{-1}_{z}(i) \lim_{N \to \infty} \sum_{n=-N}^N c\ln \frac{L_x}{2\pi\epsilon} \rightarrow c f_{z}(i)\frac{\alpha L_x}{\epsilon}~.
+\lim_{N \to \infty} \sum_{n=-N,\atop{-N+t_{z}(i),\ldots}}^N c\ln \frac{L_x}{2\pi\epsilon} = \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} c\ln \frac{L_x}{2\pi\epsilon} = t^{-1}_{z}(i) \lim_{N \to \infty} \sum_{n=-N}^N c\ln \frac{L_x}{2\pi\epsilon} \rightarrow c f_{z}(i)\frac{\alpha L_x}{\epsilon}~.
 \end{aligned}\end{equation}
 Similarly, for the second term, we have
 \begin{equation}\begin{aligned}
-	\lim_{N \to \infty} &\sum_{n=-N,\atop{-N+t_{z}(i),\ldots}}^N \ln|n+\phi| \\
-	&= \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} \ln|n^\prime t_{z}(i) + \phi| \\
-										&= \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} \ln \left(f_{z}(i)|n^\prime + f_{z}(i)\phi|\right) \\
-										&= \sum_{n^\prime=-\infty}^{\infty} \ln |n^\prime +  f_{z}(i)\phi|~,
+	\lim_{N \to \infty} \sum_{n=-N,\atop{-N+t_{z}(i),\ldots}}^N \ln|n+\phi| = \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} \ln|n^\prime t_{z}(i) + \phi| = \lim_{N \to \infty} \sum_{n^\prime=-\frac{N}{t_{z}(i)},\atop{-\frac{N}{t_{z}(i)}+1,\ldots}}^{\frac{N}{t_{z}(i)}} \ln \left(f_{z}(i)|n^\prime + f_{z}(i)\phi|\right) \\
+	= \sum_{n^\prime=-\infty}^{\infty} \ln |n^\prime +  f_{z}(i)\phi|~,
 \end{aligned}\end{equation}
 where we have assumed that \(t_{z}(i)\) is finite, and dropped the constant part \(\ln f_{z}(i)\) (which can be absorbed into the UV cutoff \(\epsilon\) in eq.~\eqref{area-term}). Following eq.~\eqref{gamma}, this gives
 \begin{equation}\begin{aligned}
@@ -233,8 +241,7 @@ The above-mentioned hierarchy in entanglement measures leads to an interesting p
 \end{aligned}\end{equation}
 The mutual information \(I^2(i,j)\) between the systems at two RG steps \(i\) and \(j\) can then be computed:
 \begin{equation}\begin{aligned}\label{mutinfo}
-	I^2(i,j) &\equiv S_{z}(i) + S_{j,z} - S_{i \cup j,z} &\\
-		 &= \theta(-z) S_{\text{min}(i,j),z} + \theta(z) S_{\text{max}(i,j),z}~.
+	I^2(i,j) &\equiv S_{z}(i) + S_{j,z} - S_{i \cup j,z} = \theta(-z) S_{\text{min}(i,j),z} + \theta(z) S_{\text{max}(i,j),z}~.
 \end{aligned}\end{equation}
 
 In light of this subsystem-based hierarchical structure, we can also consider the \(g-\)partite information \(I^g_{\left\{ \mathcal{A}_{z}(i) \right\}} \) among \(g\) sets \(\left\{\mathcal{A}_{z}(i)\right\}\). $I^g$ is defined as~\cite{siddhartha_TEE}
@@ -244,10 +251,9 @@ In light of this subsystem-based hierarchical structure, we can also consider th
 \end{aligned}\end{equation}
 where \(\mathcal{P}\left(\left\{ \mathcal{A}_{z}(i) \right\}\right)\) is the power set of \(\left\{ \mathcal{A}_{z}(i) \right\}\), and \(|\beta|=r\) indicates that the sum is carried out only over those sets \(\beta\) that have \(r\) number of elements in them. For example, for \(g=3\), we have
 \begin{equation}\begin{aligned}
-	I^3 =& S_{\mathcal{A}_{z}(0)} + S_{\mathcal{A}_{z}(1)} + S_{\mathcal{A}_{z}(2)} - S_{\mathcal{A}_{z}(0)\cup \mathcal{A}_{z}(1)} \\
-	     &- S_{\mathcal{A}_{z}(1)\cup \mathcal{A}_{z}(2)} - S_{\mathcal{A}_{z}(2)\cup \mathcal{A}_{z}(0)} + S_{\mathcal{A}_{z}(0)\cup \mathcal{A}_{z}(1) \cup \mathcal{A}_{z}(2)}~.
+	I^3 = S_{\mathcal{A}_{z}(0)} + S_{\mathcal{A}_{z}(1)} + S_{\mathcal{A}_{z}(2)} - S_{\mathcal{A}_{z}(0)\cup \mathcal{A}_{z}(1)} - S_{\mathcal{A}_{z}(1)\cup \mathcal{A}_{z}(2)} - S_{\mathcal{A}_{z}(2)\cup \mathcal{A}_{z}(0)} + S_{\mathcal{A}_{z}(0)\cup \mathcal{A}_{z}(1) \cup \mathcal{A}_{z}(2)}~.
 \end{aligned}\end{equation}
-For our choice of subsystems, the \(g-\)partite information can be shown to be equal to the EE of the {\it intersection set} of the concerned \(g-\)sets (details in Appendix~\ref{g-partite info}). For the case of \(z > 0\), this takes the form
+For our choice of subsystems, the \(g-\)partite information can be shown to be equal to the EE of the {\it intersection set} of the concerned \(g-\)sets (details in \hyperref[g-partite info]{Appendix A}). For the case of \(z > 0\), this takes the form
 \begin{equation}\begin{aligned}
 	\label{manyparty-info}
 	I^g_{\left\{ \mathcal{A}_{z}(i) \right\}}(\phi) = S_{g}(\phi) = c f_{g,z}\alpha \frac{L_x}{\epsilon} - c\ln \big|2\sin\left(\pi f_{g,z} \phi\right) \big|~.
@@ -266,8 +272,7 @@ where \({H}(k_x)\) is the Hamiltonian for a massive Dirac fermion that extends o
 The set of momentum at step \(j\) is given by \(\mathcal{A}_{j,z} = \frac{2\pi}{L_x}\times\left\{0, \pm t_{z}(j), \pm, 2t_{z}(j), \ldots \right\} \) with \(t_{z}(j) = 2^{j^z}\).
 The projector onto this set is given by
 \begin{equation}\begin{aligned}
-	P_{j,z} = \sum_{k_x^1=0,1}\sum_{k_x^2=0,1}\ldots\sum_{k_x^N=0,1} \ket{\hat n_{k_x^1} \hat n_{k_x^2}\ldots}\bra{\hat n_{k_x^1} \hat n_{k_x^2}\ldots},\\
-	k_x^j \in \mathcal{A}_{j,z}~,
+	P_{j,z} = \sum_{k_x^1=0,1}\sum_{k_x^2=0,1}\ldots\sum_{k_x^N=0,1} \ket{\hat n_{k_x^1} \hat n_{k_x^2}\ldots}\bra{\hat n_{k_x^1} \hat n_{k_x^2}\ldots},\quad k_x^j \in \mathcal{A}_{j,z}~,
 \end{aligned}\end{equation}
 and the Hamiltonian at the corresponding step is then obtained as
 \begin{equation}\begin{aligned}
@@ -335,8 +340,7 @@ where \(I^2_z(i:j) \equiv I^2\left( \mathcal{A}_{z}(i), \mathcal{A}_{j,z} \right
 We compute the distance between the points \(i\) and \(j\) to obtain the scaling of the distance $d_z(j)$. We assume \( i < j\) without loss of generality. At each step, we tune the flux $\phi$ so as to remove the flux-dependent part from the EE. Following eq.~\eqref{mutinfo}, the mutual information is of the form \(\theta(-z) S_i + \theta(z)S_j\), such that the distance is given by 
 \begin{equation}\begin{aligned}
 	\label{info-dist2}
-	d_z(i,j) = \theta(-z) \ln \frac{S_\text{max}}{S_{z}(i)} + \theta(z) \ln \frac{S_\text{max}}{S_{j,z}} \\
-	= \theta(z)j^z\ln 2 + \theta(-z) i^z\ln 2~.
+	d_z(i,j) = \theta(-z) \ln \frac{S_\text{max}}{S_{z}(i)} + \theta(z) \ln \frac{S_\text{max}}{S_{j,z}} = \theta(z)j^z\ln 2 + \theta(-z) i^z\ln 2~.
 \end{aligned}\end{equation}
 \begin{figure}
 	\centering
@@ -557,8 +561,8 @@ We can now summarise the topological nature of the sign of the curvature. For \(
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.45\textwidth]{wormhole_gapless.pdf}\\
-	\vspace*{20pt}
+	\includegraphics[width=0.45\textwidth]{wormhole_gapless.pdf}
+	\hfill
 	\includegraphics[width=0.45\textwidth]{wormhole_gapped.pdf}
 	\caption{Schematic depiction of the emergent geometries in the cases of gapless (top) and gapped (bottom) RG flows. While the gapless RG flow involves a growth in the entanglement between the UV and IR spaces, the latter leads to the vanishing of UV-IR entanglement. This results in the emergence of connected and disconnected geometries, respectively.}
 	\label{wormhole}
@@ -633,8 +637,7 @@ We will now generalise several of the main results obtained above to the case of
 
 The functional forms of certain other results do, however, undergo changes. For instance, the coupling \(g_z(j)\) is given by the (more general) expression
 \begin{equation}\begin{aligned}
-	&g_z(n,j) \\
-	&= \ln \frac{M_{n+1,\phi}(j) - M_{n,\phi}(j)}{2\pi/L_x} \\
+	g_z(n,j) &= \ln \frac{M_{n+1,\phi}(j) - M_{n,\phi}(j)}{2\pi/L_x} \\
 	&= \ln \left[\sqrt{\tilde m^2 + \left(t_z(j)(n+1) + \phi\right)^2} -\sqrt{\tilde m^2 + \left(t_z(j)n + \phi\right)^2} \right]~, 
 \end{aligned}\end{equation}
 where \(\tilde m = m L_x/2\pi\) is a dimensionless parameter. We will work with the coupling for the mode \(n=0\):
@@ -673,8 +676,7 @@ Quantities such as the curvature $\kappa$ and the convergence parameter $\theta$
 \end{figure}
 We will now show how to obtain Luttinger's volume (eq.\eqref{Luttvol}) from the $g$-partite information entanglement measure \(I^g\) of a system of massless 2D electrons. The flux-dependent part of the $g$-partite information \(I^g\) can be used to probe the \(k-\)space volume \(V_L\) within the Fermi surface. We define a quantity \(Q_g(\phi)\) that is periodic in the flux \(\phi\) and independent of the geometry:
 \begin{equation}\begin{aligned}
-	Q_g(\phi) = f_{g,z}\left[\frac{1}{\sqrt 2} - \frac{1}{2}e^{-\frac{1}{c}\left(I^g_{\left\{ \mathcal{A}_{z}(i) \right\}}(\phi) - I^g_{\left\{ \mathcal{A}_{z}(i) \right\}}(\phi^{(0)}f_{g,z})\right)}\right] \\
-	= f_{g,z}\left[\frac{1}{\sqrt 2} - \big|\sin \left(\pi\phi f_{g,z}\right)\big|\right] ~,
+	Q_g(\phi) = f_{g,z}\left[\frac{1}{\sqrt 2} - \frac{1}{2}e^{-\frac{1}{c}\left(I^g_{\left\{ \mathcal{A}_{z}(i) \right\}}(\phi) - I^g_{\left\{ \mathcal{A}_{z}(i) \right\}}(\phi^{(0)}f_{g,z})\right)}\right] = f_{g,z}\left[\frac{1}{\sqrt 2} - \big|\sin \left(\pi\phi f_{g,z}\right)\big|\right] ~,
 \end{aligned}\end{equation}
 where \(\phi^{(0)} = \frac{1}{6}\) is the value at which the flux-dependent part of \(S_0(\phi)\) vanishes. Further, from eq.\eqref{manyparty-info}, we have 
 \begin{equation}
@@ -691,7 +693,7 @@ If we now connect the system to a particle reservoir with the chemical potential
 	-f_j \frac{1}{2\sqrt 2 i}\oint_{\mathcal{C}_j} \frac{d\phi}{Q_0(\phi)} = 1~,
 \end{aligned}\end{equation}
 where \(f_j\) is either \(+1\) or \(-1\) and is defined through the equation \(|\sin\left( \pi \left( j - \frac{1}{4} \right)  \right)| = f_j\sin\left( \pi \left( j - \frac{1}{4} \right)  \right)\), and \(\mathcal{C}_j\) is a circle of diameter \(1/4\) centered at \(\phi = j-\frac{1}{4}\) (shown in Fig.~\ref{contour-1}).
-The evaluation of the integral eq.\eqref{pole-1} is shown in Appendix~\ref{contour-integral}.
+The evaluation of the integral eq.\eqref{pole-1} is shown in \hyperref[contour-integral]{Appendix~B}.
 In order to drop the sign prefactor \(f_j\), we reorient those contours for which \(f_j\) is \(+1\), and such that they wind around in the clockwise direction. The contours are shown in the left panel of Fig.~\ref{contour}, and defined as
 \begin{equation}\begin{aligned}
 	\label{curves0}
@@ -721,8 +723,7 @@ In order to rewrite $N_L^x$ in terms of the flux \(\phi\), we start by making th
 In the above equation, we can recognise  \(\frac{f_{g,z} }{\frac{1}{\sqrt 2} - |\sin \left( \pi f_{g,z}\phi\right)|}\) as \(Q_g^{-1}(\phi)\).
 Also note that the contour can be written as
 \begin{equation}\begin{aligned}
-	\mathcal{C}_j(f_{g,z}\phi) \equiv \mathcal{C}^g_j(\phi) = \bigg\{\phi:\phi = t_{g,z}\left( j - \frac{1}{4} + \frac{e^{i\theta}}{8} \right),\\
-\theta \in \left[0, -2\pi f_j\right]\bigg\}~.
+	\mathcal{C}_j(f_{g,z}\phi) \equiv \mathcal{C}^g_j(\phi) = \bigg\{\phi:\phi = t_{g,z}\left( j - \frac{1}{4} + \frac{e^{i\theta}}{8} \right),~\theta \in \left[0, -2\pi f_j\right]\bigg\}~.
 \end{aligned}\end{equation}
 These curves are again circles of radius \(1/8\), but centered at \(t_{g,z}\times \left( 1 - \frac{1}{4} \right) ,t_{g,z}\times \left( 2 - \frac{1}{4} \right) ,t_{g,z}\times \left( 3 - \frac{1}{4} \right) \) and so on. These are simply a generalisation of the curves defined in eq.~\eqref{curves0}; the curves for \(t_{g,z}=2\) are shown in the right panel of Fig.~\ref{contour}.
 Substituting this in eq.\eqref{NLx} gives
@@ -856,48 +857,7 @@ Finally, we would like to point out an interesting conclusion that emerges from 
 Further, we have shown that the mutual information leads to the emergence of the holographic dimension. However, whether the higher-party measures also have a holographic interpretation remains an open question.
 We note that studies of the time-variation of tripartite information during an equilibrium process after the injection of energy suggest that it remains negative throughout the process~\cite{balasubramanian2011,asadi2018,aliakbari_2019}, indicating that care must be taken in defining geometric measures using it. Nevertheless, our study raises the possibility of obtaining a generalisation of the gauge-gravity duality from the perspective of many-particle entanglement. We speculate that the higher order information measures will lead to a modification of the universal entanglement Hamiltonian obtained at criticality. Further, that these modifications can be visualised as a {\it hypergraph}: just as a graph contains edges that connect any two nodes, a hypergraph contains {\it hyperedges} that can connect more than two nodes. The eigenvalues \(\epsilon^{(n)}\) (with \(n>2\)) of the entanglement Hamiltonian would act as hyperedges connecting the degrees of freedom \(\{i,j,\ldots\}\). We leave an investigation of these aspects to future works.
 
-\section*{Appendix A: Reduction of the \(2+1-\)D system to a tower of \(1+1-\)D massive modes}
-\label{app-red}
-
-In the absence of the gauge field, the Lagrangian for \(2+1-\)dimensional massive non-interacting relativistic electrons (in natural units) is
-\begin{equation}\begin{aligned}
-	\mathcal{L} = \int \mathrm{d}x~\mathrm{d}y~\overline\psi(x,y)\left[i\gamma^\mu\partial_\mu - m \right]\psi(x,y)~.
-\end{aligned}\end{equation}
-The integral ranges over the area of the torus on which the electrons reside, and the time dependence of the fields has been suppressed. Each component \(\psi^a,a=0,1,2,3\), of the Dirac spinor \(\psi = \left( \psi^0\quad\psi^1\quad\psi^2\quad\psi^3 \right) \) satisfies the Dirac equation
-\begin{equation}\begin{aligned}
-	\left[i\gamma^\mu\partial_\mu  -m \right]\psi^a(x,y) = 0~,
-\end{aligned}\end{equation}
-which is equivalent to the form
-\begin{equation}\begin{aligned}
-\int dx~ \overline{\psi^a}(x,y)\left[i\partial^\nu\gamma_\nu  + m \right]\left[i\gamma^\mu\partial_\mu  - m \right]\psi^a(x,y) = 0~.
-\end{aligned}\end{equation}
-Due to the periodic boundary conditions (PBCs) in the \(x-\)direction, the momenta \(k_x\) are quantised:~\( k_x^n = \frac{2\pi n}{L_x}, n \in \mathbb{Z}\). We expand the fields \(\psi^a(x,y)\) in these momenta: 
-\begin{equation}\begin{aligned}
-\psi^a(x,y) = \sum_{n=-\infty}^{\infty} e^{ik_x^n x} \psi^a(k_x^n,y)~.
-\end{aligned}\end{equation}
-Writing the Dirac equation in terms of the dual fields \(\psi^a(k_x^n,y)\) gives
-\begin{equation}\label{DEdual}\begin{aligned}
-	\sum_{m,n}\left(\overline{\psi^a}(k_x^m,y) e^{-ik_x^m x}\right) \left[i\partial^\nu\gamma_\nu  + m \right]\left[i\gamma^\mu\partial_\mu  - m \right]\times\\
-	\left(e^{ik_x^n x}\psi^a(k_x^n,y)\right) = 0~,
-\end{aligned}\end{equation}
-where
-\begin{equation}\begin{aligned}
-	\left[i\gamma^\mu\partial_\mu  - m \right]\left(e^{ik_x^n x}\psi^a\right) = e^{ik_x^n x}\left[i\gamma^\mu\partial_\mu - \left( \gamma^x k_x^n + m \right) \right]\psi^a~.
-\end{aligned}\end{equation}
-Similarly, 
-\begin{equation}\begin{aligned}
-	\left(\overline{\psi^a}(k_x^m,y) e^{-ik_x^m x}\right) &\left[i\partial^\nu\gamma_\nu  + m \right] \\
-							      &= \left[\left[i\gamma^\nu\partial_\nu + m\right]\left(e^{ik_x^m x}\gamma_0\psi^a\right)\right]^\dagger \\
-							      &= \overline{\psi^a} e^{-ik_x^m x}\left[i\partial^\nu\gamma_\nu - \left( \gamma^x k_x^n - m \right) \right]~.
-\end{aligned}\end{equation}
-Substituting these into the equation eq.\eqref{DEdual} gives
-\begin{equation}\begin{aligned}
-	\sum_{n}\int\mathrm{d}y ~ \overline{\psi^a}(k_x^n,y) \left[\partial_\mu \partial^\mu + {k_x^n}^2 + m^2\right]\psi^a(k_x^n,y)= 0~,
-\end{aligned}\end{equation}
-where we have used \(\int \mathrm{d}x ~e^{ix\left( k_x^m - k_x^n \right) } = \delta_{m,n}\).
-
-\section*{Appendix B: Evaluation of the multi-partite information}
-\label{g-partite info}
+\section*{Appendix A: Evaluation of multi-partite information}\label{g-partite info}
 
 We define the multipartite information among \(g\) sets \(\left\{ \mathcal{A}_{z}(i)\right\} \) as~\cite{siddhartha_TEE}
 \begin{equation}\begin{aligned}
@@ -937,8 +897,7 @@ By noting that \(S_g\) and \(S_0\) are, respectively, the EE of the intersection
 	I^g_{\left\{ \mathcal{A}_{z}(i) \right\}} = \theta(z)S_g + \theta(-z)S_0 = S_{\cap \left\{ \mathcal{A}_{z}(i) \right\}}~.
 \end{aligned}\end{equation}
 
-\section*{Appendix C: Evaluation of the contour integral that counts poles}
-\label{contour-integral}
+\section*{Appendix B: Evaluation of the contour integral that counts poles}\label{contour-integral}
 We prove eq.~\eqref{pole-1} in this appendix. The integral in question is given by
 \begin{equation}\label{appcont}\begin{aligned}
 	\mathcal{I} = \oint_{\mathcal{C}_j} \frac{d\phi}{Q_0(\phi)} = \oint_{\mathcal{C}_j} \frac{d\phi}{\frac{1}{\sqrt 2} - |\sin\pi\phi|}~,

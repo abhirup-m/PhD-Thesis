@@ -15,7 +15,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{fancyhdr}
 \usepackage[fit]{truncate}
-\definecolor{headfoot}{rgb}{0.3, 0.3, 0.3}
+\definecolor{link}{rgb}{0.6, 0.3, 0.0}
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
 % \renewcommand{\chaptermark}[1]{\markboth{\scshape\MakeLowercase{%
@@ -40,7 +40,7 @@
 \usepackage{bm}
 \usepackage{newtxtext}
 \usepackage{newtxmath}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 %%%%%%% CUSTOM COMMANDS
 \newcommand\blankpage{%
@@ -51,3 +51,14 @@
 \newcommand{\inpar}[1]{\paragraph{\it\textbf{{\color{Blue}#1}~}}~}
 \numberwithin{equation}{section}
 \renewcommand\theequation{{\color{Blue}\bf\arabic{section}.\arabic{equation}}}
+
+
+%%%%%%%%%%% LINK COLORS
+\hypersetup{
+    colorlinks=true,
+    linkcolor=link,
+    filecolor=magenta,      
+    citecolor=gray,
+    pdftitle={Thesis: Abhirup Mukherjee},
+    pdfpagemode=FullScreen,
+    }

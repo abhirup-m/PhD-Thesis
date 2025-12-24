@@ -2014,20 +2014,20 @@ Gathering similar terms and normalising the state, we can write it as
 \end{aligned}\end{equation}
 where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
 \begin{equation}\begin{aligned}
-C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},0_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}\\
-C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},0_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~.
+C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}\\
+C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~.
 \end{aligned}\end{equation}
 
 We can now read off the renormalisation of the state tensor coefficients:
 \begin{equation}\begin{aligned}
 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},0_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},0_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
 \end{aligned}\end{equation}
 
-One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{T}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
+One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
 \begin{equation}\begin{aligned}
-	\braket{\mathcal{T}_{\mu_k}^{\nu_k}}_{j+1} = \sum_{\nu_Z,\mu_z,I_{j+1},\bar I_{j+1}} C^{(j+1)}_{\mu_d,\mu_Z,I_{j+1},\bar I_{j+1}}C^{(j+1)}_{\nu_d,\nu_Z,I_{j+1},\bar I_{j+1}}
+	\braket{\mathcal{O}_{\mu_k}^{\nu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}~(-1)^{\nu_d - \mu _k + \sum_{i\leq k}\nu_i}C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_k,\ldots,\nu_{2j},I_{2j+1}}C^{(j)}_{\nu_d,\nu_1,\ldots,\mu_k,\ldots,\nu_{2j},I_{2j+1}}
 \end{aligned}\end{equation}
 
 
