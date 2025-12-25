@@ -186,322 +186,6 @@ As discussed earlier, the eigenstates \(\ket{\Psi_{n,\bm K}}\) of the lattice Ha
 \end{aligned}\end{equation}
 where \(N\) is the total number of lattice sites and \({\bm r}_d\) is summed over all lattice spacings. The set of \(n=0\) states form the lowest band in the spectrum of the lattice, while higher values of \(n\) produce the more energetic bands.
 
-\section{Mapping Greens Functions from Auxiliary Model to Lattice Model}\label{tilingGreensFunction}
-\subsection{One-particle \(k-\)space Greens functions}\label{tileKspaceGreen}
-In the previous part, we proposed a form for the eigenstates \(\ket{\Psi_s}\) of the bulk Hamiltonian in terms of the ground-states \(\ket{\psi_n}\) of the auxiliary models.
-In this section, we will relate one-particle Greens functions of the lattice model to those of the auxiliary model. We define the retarded time-domain lattice \(k-\)space Greens function at zero temperature as
-\begin{equation}\begin{aligned}
-	G({\bm k}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma} \} | \Psi_\text{gs}}~.
-\end{aligned}\end{equation}
-where \(\ket{\Psi_\text{gs}}\) is the lattice groundstate. Time evolution of the operators is governed by the lattice Hamiltonian \(H_\text{latt}\):
-\begin{equation}\begin{aligned}\label{heisenberg}
-	c_{{\bm k}\sigma}(t) = e^{it H_\text{latt} }c_{{\bm k}\sigma}e^{-i t H_\text{latt}}~.
-\end{aligned}\end{equation}
-By using eq.~\ref{translationOnField} and the fact that the translation operators commute with \(H_\text{latt}\), we have the relation
-\begin{equation}\begin{aligned}
-	T\left(\vec a\right) c({\bm k})(t) T^\dagger\left(\vec a\right) = e^{-i{\bm k}\cdot\vec a}c({\bm k})(t)~,
-\end{aligned}\end{equation}
-which combined with eq.~\ref{translationOnField} gives
-\begin{equation}\begin{aligned}\label{translationOnProduct}
-	T\left(\bm a\right) c({\bm k})(t) c^\dagger({\bm k}) T^\dagger\left(\bm b\right) = e^{i{\bm k}\cdot(\bm b - \bm a)}c({\bm k})(t) T^\dagger({\bm b - \bm a}) c^\dagger({\bm k})~.
-\end{aligned}\end{equation}
-
-
-
-In order to make use of the mapping between auxiliary model and lattice model Hamiltonians, we would like to express this lattice Greens function in terms of auxiliary model Greens functions -- objects that can be computed purely from within a single auxiliary model. This will be a major simplification in our computations, because it is easier to work with a quantum impurity model, as compared to an interacting lattice model.
-
-To make progress towards this, we express the lattice groundstate in terms of the auxiliary model groundstates (using eq.~\ref{eigenstateProposal}):
-\begin{equation}\begin{aligned}\label{retarded}
-	G({\bm k}\sigma; t) = -i\theta(t) \frac{1}{N}\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | \{ c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma} \} | \psi_\text{gs}({\bm r_1})}~.
-\end{aligned}\end{equation}
-We take one of the terms in the anticommutator and proceed to simplify it:
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} &= \sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_d}) | T({\bm r_2 - \bm r_d}) c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r_1 - \bm r_d}) | \psi_\text{gs}({\bm r_d})}\\
-																																		   &= \sum_{\bm r_1,\bm r_2} e^{i\bm k(\bm r_1 - \bm r_2)} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) T^\dagger({\bm r_1 - \bm r_2}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~\\
-																																		   &= N\sum_{\bm r} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) T^\dagger(\bm r) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-where \({\bm r_d}\) is a reference lattice site, and we used eq.~\ref{translationOnProduct} in the second step. The other term in the anticommutator gives
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c^\dagger_{{\bm k}\sigma} c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_1})} &= \sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_d}) | T({\bm r_2 - \bm r_d}) c^\dagger_{{\bm k}\sigma} c_{{\bm k}\sigma}(t) T^\dagger({\bm r_1 - \bm r_d}) | \psi_\text{gs}({\bm r_d})}\\
-																																		   &= \sum_{\bm r_1,\bm r_2} e^{-i\bm k(\bm r_1 - \bm r_2)} \braket{\psi_\text{gs}({\bm r_d}) | c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r_1 - \bm r_2}) c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_d})}~\\
-																																		   &= N\sum_{\bm r} e^{-i\bm k\cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r}) c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-To resolve the time evolution of the operators, we insert $1 = \sum_m \ket{\psi_m({\bm r_d})}\bra{\psi_m({\bm r_d})}$ into the equation. We again work with just the first term of the anticommutator for convenience:
-\begin{equation}\begin{aligned}
-	&\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} \\
-	&= N\sum_{\bm r, n_1, n_2} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n_1}({\bm r_d})}\bra{\psi_{n_1}({\bm r_d})} T^\dagger(\bm r) \ket{\psi_{n_2}({\bm r_d})}\bra{\psi_{n_2}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}\\
-	&= N\sum_{\bm r, n_1, n_2} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n_1}({\bm r_d})}\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})}\bra{\psi_{n_2}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-The overlap \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})}\) between the eigenstates of the auxiliary models at \(\bm r_d\) and \(\bm r_d + \bm r\) are appreciable only for \(n_1 = n_2\). This is because, for small \(\bm r\), the auxiliary models are very similar and the states are therefore almost orthogonal. For large \(\bm r\), the overlap is again suppressed because the auxiliary model eigenstates are localised around the impurity. We therefore make the simplifying assumption: \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})} = \delta_{n_1, n_2}\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_1}({\bm r_d + \bm r})} = \delta_{n_1, n_2}F_{n_1}(\bm r)\). Substituting this, we get
-\begin{equation}\begin{aligned}\label{intermediate}
-	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} = N\sum_{n} F_n(\bm k) \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n}({\bm r_d})}\bra{\psi_{n}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~,
-\end{aligned}\end{equation}
-where we have defined the Fourier transform \(F_n(\bm k) = \sum_{\bm r} e^{i\bm k \cdot\bm r} F_n(\bm r)\) of the overlap function.
-
-We now consider more carefully the transition operator \(c_{{\bm k}\sigma}\) for the 1-particle excitation giving rise to the above Greens function. Within our auxiliary model approach, gapless excitations within the lattice model are represented by gapless excitations of the impurity site, specifically those that try to screen the impurity site. As a result, the uncoordinated scattering process \(c_{{\bm k}\sigma}\) for the lattice model must be replaced by a coherent excitation  \(\mathcal{T}\) within the impurity model that captures those gapless excitations that occur in connection with the impurity, and projects out the uncorrelated excitations that take place even when the impurity site is decoupled from the bath.
-
-In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we allow for all excitations of the impurity site in conjunction with those of the \(k-\)state:
-\begin{equation}\begin{aligned}\label{tmatrix}
-	\mathcal{T}_{{\bm k},\sigma} = c_{\bm r_d\sigma} + \left[c^\dagger_{\bm r_d\sigma} + S_{\bm r_d}^\sigma + C_{\bm r_d}^+ \right]c_{{\bm k}\sigma}~,
-\end{aligned}\end{equation}
-where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively. The first term encodes the local component of the \(k-\)space Greens function by creating an excitation on the impurity site (which is then translated across the lattice), and the rest of the terms encode the non-local components by tracking impurity-bath excitations.
-
-Apart from modifying the excitation operator, we will now simplify the time-evolution as well. The first overlap on the right-hand side of eq.~\ref{intermediate} expands to
-\begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} | \psi_{n}({\bm r_d})}~,
-\end{aligned}\end{equation}
-where \(H_\text{aux}(\bm r_d)\) (eq.~\ref{LE-ESIAM}) is the auxiliary model Hamiltonian consisting of the cluster Hamiltonian \(H_\text{clust}(\bm r_d)\) along with all one-particle terms \(H_\text{1p}\) in the Hamiltonian (in a typical lattice model, this will be he tight-binding hopping terms), and \(H_\text{cav}(\bm r_d)\) is the ``cavity" Hamiltonian consisting of all interaction (2-particle and beyond) terms in the Hamiltonian. Together, they create the full lattice Hamiltonian: \(H_\text{latt} = H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d)\). Using the Zassenhaus form of the Baker-Campbell-Hausdorff formula, we have
-\begin{equation}\begin{aligned}
-	e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \approx e^{iH_\text{aux}(\bm r_d)t} e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}~,
-\end{aligned}\end{equation}
-where we have dropped the higher-order terms because the commutators involve only the boundary degrees of freedom and become subsequently smaller as the order increases. One can think of the operator \(e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\) as renormalising the auxiliary model \(\mathcal{T}-\)matrix through hybridisation with the rest of the system and formally leading to a new \(\mathcal{T}-\)matrix:
-\begin{equation}\begin{aligned}
-	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~.
-\end{aligned}\end{equation}
-One can also absorb the modulating phase factor \(F_n(\bm k)\) (defined above and appearing in eq.~\ref{intermediate}) into this renormalisation:
-\begin{equation}\begin{aligned}\label{Zassenhaus}
-	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}F_n(\bm k) \mathcal{P}_n({\bm r_d})~e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~,
-\end{aligned}\end{equation}
-where \(\mathcal{P}_n({\bm r_d})\) projects onto the \(n^\text{th}\) eigenstate \(\ket{\psi_{n}({\bm r_d})}\).
-
-Since the overlap is calculated in the eigenstates of the auxiliary model at \(\bm r_d\), we adopt the zeroth order approximation of ignoring this renormalisation. Later, we will specify a prescription of systematically improving our computation. The overlap expression becomes
-\begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
-\end{aligned}\end{equation}
-To make the problem tractable, we treat the effect of \(H_\text{1p}\) at the level of an expectation value and note that the effect of the transition operator is to create a hole of momentum \(\bm k\) (eq.~\ref{tmatrix}). Let the Hamiltonian \(H_\text{1p}\) be diagonal in certain modes \(c_{\nu,\sigma}\) with energies \(\epsilon_\nu\), and the operator \(c_{\bm k,\sigma}\) can be expressed in terms of these modes: \(c_{\bm k,\sigma} = \sum_{\nu}C_{\nu,\bm k}c^\dagger_{\nu,\sigma}\). A similar decomposition will hold for the \(\mathcal{T}-\)matrix. Substituting it gives
-\begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{\nu,\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Each excitation \(\mathcal{T}_{\nu,\sigma}\) therefore leads to an energy cost \(-\epsilon_\nu\). Moreover, \(\ket{\psi_n(\bm r_d)}\) and \(\ket{\psi_\text{gs}(\bm r_d)}\) are eigenstates of \(H_\text{clust}(\bm r_d)\) with energies \(E_n\) and \(E_0\). This leads to the following simplified expression:
-\begin{equation}\begin{aligned}
-	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
-\begin{equation}\begin{aligned}
-	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\nu},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Substituting the expression back into~\ref{intermediate} and then into~\ref{retarded}, we get an expression for one half of the retarded Greens function:
-\begin{equation}\begin{aligned}
-	&-i\theta(t) \braket{\Psi_\text{gs} | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \Psi_\text{gs}} \\
-	&= -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Working through the other term with the same strategy, we get the full expression:
-\begin{equation}\begin{aligned}
-	-i&\theta(t) \braket{\Psi_\text{gs} | \{c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma}\} | \Psi_\text{gs}} \\
-	=& -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
-	 & -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{i(E_n - E_0 - \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) gives
-\begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) =  \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
-					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~.
-\end{aligned}\end{equation}
-We recognise that the two parts of the lattice model Greens function are the greater and lesser Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega \mp \epsilon_{\bm k}\):
-\begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma}; \omega + \epsilon_{\nu})\right]~.
-\end{aligned}\end{equation}
-
-We now discuss how to systematically improve this estimate. One way is to include the effect of other auxiliary models in the overlap function \(F_n(\bm r)\). This will of course require us to calculate an off-diagonal Greens function. As a concrete example, upon including the effects of the auxiliary models nearest to the reference point \(\bm r_d\), the expression for the Greens function becomes
-\begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
-					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~,
-\end{aligned}\end{equation}
-with \(\tau^*_{\nu,\sigma} = \mathcal{T}_{\nu,\sigma} (F_n(0) + \sum_{\bm a}F_n(\bm a)e^{i \bm k \cdot \bm a})\) where \(\bm a\) sums over the primitive lattice vectors. Another way to include more non-local contributions is by considering the effects of the cavity Hamiltonian in eq.~\ref{Zassenhaus}:
-\begin{equation}\begin{aligned}
-	\mathcal{T}_{{\bm k},\sigma}^*(t) = e^{i H_\text{cav}(\bm r_d)t}(\mathcal{T}_{{\bm k},\sigma} + t^2/2\left[[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)], \mathcal{T}_{{\bm k},\sigma}\right])e^{-i H_\text{cav}(\bm r_d)t}~.
-\end{aligned}\end{equation}
-The time-domain Greens function associated with this operator will then need to be calculated, which can then be used to calculate frequency-domain functions.
-
-\subsection{One-particle real-space Greens functions}\label{tileRealspaceGreen}
-We now work with Greens functions for real-space excitations. The retarded Greens function in this case is
-\begin{equation}\begin{aligned}
-	G({\bm r}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
-\end{aligned}\end{equation}
-Since our lattice model has discrete translation symmetry, we instead calculate the equivalent quantity
-\begin{equation}\begin{aligned}
-	G({\bm r}\sigma; t) = -i\theta(t) \sum_{\bm r_d}\braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
-\end{aligned}\end{equation}
-Similar to the \(k-\)space Greens functions, express the groundstates as a superposition of auxiliary model Greens functions. We take the first term in the anticommutator and proceed to simplify it:
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm R + \bm \Delta}) | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm R})}\\
-																											&=\frac{1}{N}\sum_{\bm R,\bm \Delta} \braket{\psi_\text{gs}({-\bm r_d}) |  c_{{\bm r - \bm R - \bm \Delta},\sigma}(t) T({\bm \Delta}) c^\dagger_{{- \bm R},\sigma} | \psi_\text{gs}({-\bm r_d})}~.
-\end{aligned}\end{equation}
-\subsubsection*{Local Greens function: \(\bm r = 0\)}
-We first consider the case of local Greens function, by setting \(\bm r=0\). We also change the dummy variable \(\bm r_d\), \(\bm R\) and \(\Delta\) to \(-\bm r_d\), \(\-\bm R\) and \(-\bm \Delta\) to make the expressions tidier:
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-We split the full summation into four parts, based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
-\begin{equation}\begin{aligned}\label{realGreenSplit}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~,
-\end{aligned}\end{equation}
-where we have used the fact that the location of the auxiliary model does not affect the correlation calculated within the auxiliary model in order to cancel out the summation over \(\bm r_d\) with the factor of \(1/N\). The reason for splitting the expression into these parts is to explicitly write out which operators act on the impurity site \(\bm r_d\) and which act on other real-space sites away from the impurity site. We will now replace the real-space excitation operators away from the impurity site with the associated \(T-\)matrices, following the discussion above eq.~\ref{tmatrix}:
-\begin{equation}\begin{aligned}
-	\mathcal{T}_{{\bm r},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm r}\sigma} = \sum_{\bm k} e^{i \bm k \cdot \bm r} \mathcal{T}_{\bm k,\sigma}~.
-\end{aligned}\end{equation}
-We also insert a complete basis of states of the auxiliary model at \(\bm r_d\), \(1 = \sum_n\ket{\psi_n(\bm r_d)}\bra{\psi_n(\bm r_d)}\), generating an overlap factor \(F_n\) as before:
-\begin{equation}\begin{aligned}
-&\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} \\
-&= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
-\end{aligned}\end{equation}
-where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^{i \bm k \cdot \bm r}F_n(\bm r)\) of the overlap factor.
-
-We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
-\begin{equation}\begin{aligned}\label{localTiledGreenF}
-	&G_\text{loc}(\omega) \\
-	&= \mathcal{G}(d\sigma; \omega) + \sum_{\bm k, \nu} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},d\sigma; \omega + \epsilon_{\nu})\right]\\
-						   &+\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)  + \sum_{\bm k, \nu, \bm q} C_{\nu,\bm k} \left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega - \epsilon_{\nu}) + \mathcal{G}^<(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega + \epsilon_{\nu})\right]~,
-\end{aligned}\end{equation}
-where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\). \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath.
-
-\subsubsection*{Non-local Greens function: \(\bm r \neq 0\)}
-We next consider the case of non-local Greens function, where the excitations propagate a non-zero distance \(\bm r\):
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta + \bm r},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-To bring this expression closer to the one for the local Greens function, we redefine \(\Delta + \bm r \to \Delta\):
-\begin{equation}\begin{aligned}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) T(\bm r) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-This allows to again split the full summation based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
-\begin{equation}\begin{aligned}\label{NLrealGreenSplit}
-	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T(\bm r) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm r}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
-Introducing Fourier transforms of the operators and inserting eigenstates of the auxiliary models leads to
-\begin{equation}\begin{aligned}
-\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} = F_n^*(\bm r)\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}}.
-\end{aligned}\end{equation}
-The net difference from the diagonal Greens function is the presence of the overlap factor \(F_n^*(\bm r)\).
-
-
-\subsection{Equal-Time Ground State Correlators: Real-space}\label{staticCorr}
-We first consider a real-space operator \(\mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r})\) that quantifies the presence of correlations over a distance \({\bm \Delta}\). The correlation function itself is given by the expectation value of this operator in the ground state:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) = \braket{\Psi_\text{gs} | \mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r}) | \Psi_\text{gs}}~.
-\end{aligned}\end{equation}
-To obtain a tractable expression for this, we first replace the full ground state with its expression in terms of the auxiliary model ground states (eq.~\ref{groundstateProposal}):
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) = \frac{1}{N}\sum_{{\bm r}_1,{\bm r}^\prime}\braket{\psi_\text{gs}\left({\bm r}_1 + {\bm r}^\prime + {\bm r}_c + {\bm r}\right)  | \mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_1 + {\bm r}_c + {\bm r}\right)} e^{-i{\bm k}_0\cdot\left({\bm r}_1 - {\bm r}_2\right)}~,
-\end{aligned}\end{equation}
-where \({\bm r}_1\) and \({\bm r}_1 + {\bm r}^\prime\) are the positions of the incoming and outgoing auxiliary model states, relative to \({\bm r}_c + {\bm r}\), and \({\bm k}_0\) is the crystal momentum of the ground state (which we will immediately set to zero). In order to convert the incoming and outgoing states into the same auxiliary mode at a reference location \({\bm r}_c\) (which would then allow computations purely within a single auxiliary model), we use the relation: \(\ket{\psi_\text{gs}\left({\bm x}\right)} = T^\dagger\left({\bm x} - {\bm r}_c\right)\psi_\text{gs}\ket{\psi\left({\bm r}_c \right)}\). Substituting this appropriately for both the auxiliary model states gives:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}^\prime}\braket{\psi_\text{gs}\left({\bm r}_c\right) | T\left({\bm r}_1 + {\bm r}^\prime + {\bm r}\right) \mathcal{O}({\bm r} + {\bm \Delta})\mathcal{O}^\dagger({\bm r}) T^\dagger\left({\bm r}_1 + {\bm r}\right) | \psi_\text{gs}\left({\bm r}_c\right)}\\
-								  &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}^\prime}\braket{\psi_\text{gs}\left({\bm r}_c\right) | T\left({\bm r}^\prime\right) \mathcal{O}({\bm \Delta} - {\bm r}_1) \mathcal{O}^\dagger(- {\bm r}_1) | \psi_\text{gs}\left({\bm r}_c\right)}\\
-								  &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}^\prime}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm r}^\prime\right) | \mathcal{O}({\bm \Delta} - {\bm r}_1) \mathcal{O}^\dagger(- {\bm r}_1) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-As a final cosmetic change, we transform \({\bm r}_1 \to -{\bm r}\):
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) = \frac{1}{N}\sum_{{\bm r},{\bm r}^\prime}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm r}^\prime\right) | \mathcal{O}({\bm \Delta} + {\bm r}) \mathcal{O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-Like in the Greens function calculation, we now consider the various kinds of contributions separately.
-
-\subsubsection{Intra-auxiliary model contributions: \({\bm r}^\prime = 0\)}
-These terms describe excitations that start and propagate within the same auxiliary model, upto a distance \({\bm \Delta}\):
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) \to \frac{1}{N}\sum_{{\bm r}}\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{O}({\bm \Delta} + {\bm r})\mathcal{O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-With an eye towards introducing the impurity operators into the correlations, we insert a complete basis defined by the eigenstates \(\left\{\ket{\psi_n\left({\bm r}_c\right)}\right\} \) of the auxiliary model into the expression:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) \to \frac{1}{N}\sum_{{\bm r}}\sum_{n}\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{O}({\bm \Delta} + {\bm r}) \ket{\psi_n\left({\bm r}_c\right)}\bra{\psi_n\left({\bm r}_c\right)} \mathcal{O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-
-For the excitations that exist purely in the conduction bath \(({\bm r} \neq {\bm r}_c)\), the excitation operators must be suitably modified (see the arguments around eq.~\ref{tmatrix}) in order to incorporate Kondo screening. The modified excitation operators are generally defined as
-\begin{equation}\begin{aligned}\label{operatorTmatrix}
-	\mathcal{\tilde O}({\bm r}) = \mathcal{O}({\bm r})\mathcal{O}^\dagger(d) \mathcal{P}_\text{gs} ~,
-\end{aligned}\end{equation}
-where \(\mathcal{O}^\dagger(d)\) is the hermitian conjugate of the correlation operator \(\mathcal{O}\), but applied on the impurity sites. This therefore constitutes a time-reversed scattering process on the impurity site relative to the process in the bath. The operator \(\mathcal{P}_\text{gs}\) projects onto the ground state of the auxiliary model, since we are interested in ground state correlations. The operator multiplying the old correlation operator represents all possible excitations of the impurity site, and ensure that the bath and impurity excitation processes take place coherently. The projector ensures that only tripartite correlations between the impurity site and the two momentum states are captured by the correlation, which is what's desired within the tiling method.
-
-With this modified operator, this class of correlation functions can be written as
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) \to \frac{1}{N}\sum_{{\bm r} }\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{\tilde O}({\bm \Delta} + {\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{\tilde O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-This can be interpreted as the fact that within our auxiliary model formalism, the correlation between the sites \({\bm r}\) and \({\bm \Delta + r}\) can only occur through a transition process that connect one of the sites with the impurity site and then a return process that connects the impurity site with the other site.
-
-\subsubsection{Inter-auxiliary model contributions: \({\bm r}^\prime \neq 0\)}
-These are the most non-local contributions, and involve excitations that connect different auxiliary models:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm \Delta}) \to \frac{1}{N}\sum_{{\bm r}^\prime \neq 0}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm r}^\prime\right) | \mathcal{\tilde O}({\bm \Delta} + {\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{\tilde O}^\dagger({\bm r}) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-
-\subsection{Equal-Time Ground State Correlators: Momentum-space}
-We now consider momentum space correlations, through a general operator \(\mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1)\):
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) = \braket{\Psi_\text{gs} | \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \Psi_\text{gs}}~.
-\end{aligned}\end{equation}
-Note that \(\mathcal{O}\) itself is a two-particle operator. To obtain a tractable expression for this, we first replace the full ground state with its expression in terms of the auxiliary model ground states (eq.~\ref{groundstateProposal}):
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) = \frac{1}{N}\sum_{{\bm r}_1,{\bm r}_2}\braket{\psi_\text{gs}\left({\bm r}_2\right)  | \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_1\right)}~,
-\end{aligned}\end{equation}
-where \({\bm r}_1\) and \({\bm r}_2 \) are the positions of the incoming and outgoing auxiliary model states. In order to convert the incoming and outgoing states into the same auxiliary mode at a reference location \({\bm r}_c\) (which would then allow computations purely within a single auxiliary model), we use the relation: \(\ket{\psi_\text{gs}\left({\bm x}\right)} = T^\dagger\left({\bm x} - {\bm r}_c\right)\psi_\text{gs}\ket{\psi\left({\bm r}_c \right)}\). Substituting this appropriately for both the auxiliary model states gives:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}_2}\braket{\psi_\text{gs}\left({\bm r}_c\right) | T\left({\bm r}_2 - {\bm r}_c\right) \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) T^\dagger\left({\bm r}_1 - {\bm r}_c\right) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-In order to simplify the translation operators, we can use eq.~\ref{translationOnField}. For that, we would need to know whether the operator \(\mathcal{O}\) involves a net transfer of momentum. If \(\mathcal{O}({\bm k})\) commutes with the total number operator \(n_{\bm k} = \sum_\sigma n_{{\bm k},\sigma}\), there is no momentum transfer. Examples of such operators are spin operators, \(S_{\alpha\beta}({\bm k}) \equiv c^\dagger_{{\bm k \alpha}}c_{{\bm k}\beta}\), and density operators \(n_{{\bm k}\alpha}\). If \(\mathcal{O}({\bm k})\) does not commute with \(n_{\bm k}\), there is a net transfer of momentum, and one such operator would be the charge isospin operator \(C^+({\bm k}) = c^\dagger_{{\bm k}\uparrow}c^\dagger_{{\bm k}\downarrow}\). For the first kind of operators, we have \(T({\bm a})\mathcal{O}({\bm k})T^\dagger({\bm a}) = \mathcal{O}({\bm k})\), while the for the latter, we get \(T({\bm a})\mathcal{O}({\bm k})T^\dagger({\bm a}) = e^{-{\bm a}\cdot{\bm 2k}}\mathcal{O}({\bm k})\), where \(2{\bm k}\) represents the momentum being transferred by the operator. We consider the two cases separately.
-
-\subsubsection{Momentum-conserving operators: \(\left[\mathcal{O}({\bm k}), n_{{\bm k}}\right] = 0\)}
-For these operators, the expression for the correlation gives
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}_2}\braket{\psi_\text{gs}\left({\bm r}_c\right) | T\left({\bm r}_2 - {\bm r}_1\right) \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_c\right)}\\
-										 &=\sum_{{\bm \Delta}}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm \Delta}\right) | \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-To obtain the last form, we defined \({\bm \Delta}={\bm r}_2 - {\bm r}_1\) as the distance between the incoming and outgoing auxiliary model states, and preformed the sum over the free variable \({\bm r}_1\) to cancel out the factor of \(1/N\). Just like before, this expression can be decomposed into a term that involves a single auxiliary model and other terms that involve two distinct auxiliary models. By making the identification of the right transition operator \(\mathcal{\tilde O}({\bm k}) = \mathcal{O}({\bm k})\mathcal{O}^\dagger(d)\mathcal{P}_\text{gs}\), we get
-\begin{equation}\begin{aligned}\label{kspaceCorrelation}
-C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) &= \sum_{{\bm \Delta}}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm \Delta}\right) | \mathcal{\tilde O}({\bm k}_2) | \psi_\text{gs}\left({\bm r}_c\right)}\braket{\psi_\text{gs}\left({\bm r}_c\right) | \mathcal{\tilde O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-
-\subsubsection{Non-momentum-conserving operators: \(\left[\mathcal{O}({\bm k}), n_{{\bm k}}\right] \neq 0\)}
-This class of operators incur an additional phase factor of \(e^{-{\bm a}\cdot{\bm 2k}}\) when the translation operators are translated across them:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}({\bm k}_1,{\bm k}_2) &= \frac{1}{N}\sum_{{\bm r}_1,{\bm r}_2}\braket{\psi_\text{gs}\left({\bm r}_c\right) | T\left({\bm r}_2 - {\bm r}_1\right) \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_c\right)}e^{2i\left( {\bm r}_1 - {\bm r}_c \right) \cdot \left( {\bm k}_1 - {\bm k}_2 \right)} \\
-										 &= \delta_{{\bm k}_1, {\bm k}_2}\sum_{{\bm \Delta}}\braket{\psi_\text{gs}\left({\bm r}_c + {\bm \Delta}\right) | \mathcal{O}({\bm k}_2)\mathcal{O}^\dagger({\bm k}_1) | \psi_\text{gs}\left({\bm r}_c\right)}~.
-\end{aligned}\end{equation}
-For this expression, we again defined \({\bm \Delta}\) similar to before, and carried out the sum of \({\bm r}_1\) involving the exponential to obtain a factor of \(N \delta_{{\bm k}_1, {\bm k}_2}\). The Kronecker delta factor is a manifestation of translational invariance and the associated total momentum conservation.
-
-As it stands, operators like \(\mathcal{O}({\bm k}_1)\) act purely on the conduction bath degrees of freedom. In order to incorporate impurity-bath correlation effects, we modify these operators using the appropriate \(T-\)matrices, by employing eq.~\ref{operatorTmatrix}. The final computations are carried out using these modified operators.
-
-
-\subsection{Entanglement Measures}
-We will now describe the prescription of calculating entanglement measures of the lattice model from within our auxiliary model treatment. In this section, we are interested mainly in two such measures, the entanglement entropy and the mutual information. Given a pure state \(\ket{\Psi}\) describing the complete system, the entanglement entropy \(S_\text{EE}(\nu)\) of a subsystem \(\nu\) quantifies the entanglement of \(\nu\) with the rest of the subsystem, and is defined as
-\begin{equation}\begin{aligned}
-	S_\text{EE}(\nu) = -\text{Tr}\left[\rho(\nu)\log \rho(\nu)\right],\quad \rho(\nu) = \text{Tr}_\nu\left[\ket{\Psi}\bra{\Psi}\right] 
-\end{aligned}\end{equation}
-where \(\text{Tr}\left[\cdot\right] \) is the trace operator, and \(\rho(\nu)\) is the reduced density matrix (RDM) for the subsystem \(\nu\) obtained by taking the partial trace \(\text{Tr}_\nu\) (over the states of \(\nu\)) of the full density matrix \(\rho = \ket{\Psi}\bra{\Psi}\). If the subsystem \(\nu\) describes local regions in real space (or states in \(k-\)space), we might be interested in the entanglement between two such subsystems \(\nu_1\) and \(\nu_2\). The correct measure to quantify such entanglement is the mutual information:
-\begin{equation}\begin{aligned}
-	I_2(\nu_1,\nu_2) = S_\text{EE}(\nu_1) + S_\text{EE}(\nu_2) - S_\text{EE}(\nu_1 \cup \nu_2)~,
-\end{aligned}\end{equation}
-where \(\nu_1 \cup \nu_2\) is a larger subsystem formed by combining \(\nu_1\) and \(\nu_2\).
-
-\subsubsection{Real-space entanglement}
-Real-space entanglement measures can be used to probe delocalisation-localisation transitions. The simplest such measure is the entanglement of a local mode. Since the local entanglement entropy will be uniform at each lattice site for a system with translation invariance, it suffices to calculate the real-space averaged entanglement entropy \(S_\text{EE}^\text{loc} = \frac{1}{N}\sum_{{\bm r}}S_\text{EE}\left( {\bm r} \right) \). By visualising the lattice model as a superposition of auxiliary models placed at various sites (eq.~\ref{tilingPrescriptionFinal}), the real space average of the lattice model can be thought of as an average over sites of a particular impurity model, and then a second average over all the impurity models. But since all all impurity models are equivalent to each other, the second average is redundant. Secondly, all correlations must derive from the impurity site, which can be formally encoded by subtracting, from this average, the corresponding contribution obtained in the absence of the impurity site. In total, the lattice-auxiliary model relation for the local entanglement entropy can be written as
-\begin{equation}\begin{aligned}
-	S_\text{EE}^\text{loc} = \frac{1}{N}\sum_{{\bm r}}\left[S_\text{EE}({\bm r}_d + {\bm r}) - S_\text{EE}^{(0)}({\bm r}_d + {\bm r})\right] ~,
-\end{aligned}\end{equation}
-where \({\bm r}_d\) is the impurity site position, \({\bm r}\) is the distance of a conduction bath site from the impurity site (can be zero), and \(S_\text{EE}({\bm r}_d + {\bm r})\) is the entanglement entropy, calculated within the impurity model, at the locatiom \({\bm r}_d + {\bm r}\). \(S^{(0)}_\text{EE}({\bm r}_d + {\bm r})\) is the same entanglement entropy, but calculated for an impurity model with vanishing impurity-bath hybridisation and bath interaction.
-
-\subsubsection{Momentum-space entanglement}
-Entanglement measures in \(k-\)space can provide valuable information regarding the Fermi surface structure and the nature of gapless excitations proximate to it. The most elementary measure is the entanglement entropy \(S_\text{EE}({\bm q})\) of a single excitation carrying momentum \({\bm q}\). Unlike \(S_\text{EE}^\text{loc}\), this does not involve an average, and involves a single computation:
-\begin{equation}\begin{aligned}
-	\tilde S_\text{EE}({\bm q}) = S_\text{EE}({\bm q}) - S_\text{EE}^{(0)}({\bm q})~.
-\end{aligned}\end{equation}
-It is possible to improve this by considering inter-auxiliary model contributions in the reduced density matrix \(\rho({\bm q})\). On the lattice model, \(\rho({\bm q})\) is defined as
-\begin{equation}\begin{aligned}\label{SEE-k}
-	\rho({\bm q}) = \text{Tr}_{\bm q}\left[\ket{\Psi_\text{gs}}\bra{\Psi_\text{gs}}\right] ~,
-\end{aligned}\end{equation}
-where \(\text{Tr}_{\bm q}\left[\cdot\right]\) is the partial trace over the Hilbert space of \({\bm q}\), and \(\ket{\Psi_\text{gs}}\) is the tiled ground state. Using eq.~\ref{groundstateProposal}, we can write the ground state in terms of those of the auxiliary model. These leads to two classes of terms, one purely within a single auxiliary model ground state \(\ket{\psi_\text{gs}}\), and the other involving transitions across auxiliary models:
-\begin{equation}\begin{aligned}\label{RDMTiled}
-	\rho({\bm q}) \sim \text{Tr}_{\bm q}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d)}\right] + \frac{1}{N}\text{Tr}_{\bm q}\sum_{{\bm r}}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d + {\bm r})}\right]~,
-\end{aligned}\end{equation}
-where \(\ket{\psi_\text{gs}({\bm r}_d)}\) is a reference auxiliary model ground state, and \(\ket{\psi_\text{gs}({\bm r}_d + {\bm r})}\) sums over other auxiliary models at increasing distances from this reference model. The \(\sim\) indicates that the RDM needs to be normalised. The first term leads to the expression in eq.~\ref{SEE-k}, while the second term can be used to improve this estimate. Away from any quantum critical points, the localised nature of the impurity-bath hybridisation ensures that impurity correlations decay exponentially away from the transition. This ensures that the second term is very small away from a critical point. We therefore restrict ourselves to just the first term in the present work.
-
 \section{Properties of the Bloch states}\label{BlochProperties}
 
 \subsection{Translation invariance}
@@ -554,4 +238,270 @@ To resolve the translation operators, we will now insert the momentum eigenstate
 	&= N\delta_{kk^\prime}\braket{\vec k | H_\text{aux}\left({\bm r_0}\right) | \vec k}
 \end{aligned}\end{equation}
 The momentum eigenket \(\ket{\vec k}\) can be expressed as a sum over position eigenkets at varying distances from \({\bm r_0}\). This form allows a systematic method of improving the energy eigenvalue estimate, because the interacting in the impurity model is extremely localised, so the overlap between two auxiliary models decreases rapidly with distance. The majority of the contribution will come from the state at \({\bm r_0}\), and improvements are then made by considering auxiliary models at further distances. 
+\section{Mapping Greens Functions from Auxiliary Model to Lattice Model}\label{tilingGreensFunction}
+\subsection{One-particle \(k-\)space Greens functions}\label{tileKspaceGreen}
+In the previous part, we proposed a form for the eigenstates \(\ket{\Psi_s}\) of the bulk Hamiltonian in terms of the ground-states \(\ket{\psi_n}\) of the auxiliary models.
+In this section, we will relate one-particle Greens functions of the lattice model to those of the auxiliary model. We define the retarded time-domain lattice \(k-\)space Greens function at zero temperature as
+\begin{equation}\begin{aligned}
+	G({\bm k}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma} \} | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+where \(\ket{\Psi_\text{gs}}\) is the lattice groundstate. Time evolution of the operators is governed by the lattice Hamiltonian \(H_\text{latt}\):
+\begin{equation}\begin{aligned}\label{heisenberg}
+	c_{{\bm k}\sigma}(t) = e^{it H_\text{latt} }c_{{\bm k}\sigma}e^{-i t H_\text{latt}}~.
+\end{aligned}\end{equation}
+By using eq.~\ref{translationOnField} and the fact that the translation operators commute with \(H_\text{latt}\), we have the relation
+\begin{equation}\begin{aligned}
+	T\left(\vec a\right) c({\bm k})(t) T^\dagger\left(\vec a\right) = e^{-i{\bm k}\cdot\vec a}c({\bm k})(t)~,
+\end{aligned}\end{equation}
+which combined with eq.~\ref{translationOnField} gives
+\begin{equation}\begin{aligned}\label{translationOnProduct}
+	T\left(\bm a\right) c({\bm k})(t) c^\dagger({\bm k}) T^\dagger\left(\bm b\right) = e^{i{\bm k}\cdot(\bm b - \bm a)}c({\bm k})(t) T^\dagger({\bm b - \bm a}) c^\dagger({\bm k})~.
+\end{aligned}\end{equation}
+
+
+
+In order to make use of the mapping between auxiliary model and lattice model Hamiltonians, we would like to express this lattice Greens function in terms of auxiliary model Greens functions -- objects that can be computed purely from within a single auxiliary model. This will be a major simplification in our computations, because it is easier to work with a quantum impurity model, as compared to an interacting lattice model.
+
+To make progress towards this, we express the lattice groundstate in terms of the auxiliary model groundstates (using eq.~\ref{eigenstateProposal}):
+\begin{equation}\begin{aligned}\label{retarded}
+	G({\bm k}\sigma; t) = -i\theta(t) \frac{1}{N}\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | \{ c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma} \} | \psi_\text{gs}({\bm r_1})}~.
+\end{aligned}\end{equation}
+We take one of the terms in the anticommutator and proceed to simplify it:
+\begin{equation}\begin{aligned}\label{kspaceGreenInterm}
+	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} &= \sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_d}) | T({\bm r_2 - \bm r_d}) c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r_1 - \bm r_d}) | \psi_\text{gs}({\bm r_d})}\\
+																																		   &= \sum_{\bm r_1,\bm r_2} e^{i\bm k(\bm r_1 - \bm r_2)} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) T^\dagger({\bm r_1 - \bm r_2}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~\\
+																																		   &= N\sum_{\bm r} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) T^\dagger(\bm r) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+where \({\bm r_d}\) is a reference lattice site, and we used eq.~\ref{translationOnProduct} in the second step. The other term in the anticommutator gives
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c^\dagger_{{\bm k}\sigma} c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_1})} &= \sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_d}) | T({\bm r_2 - \bm r_d}) c^\dagger_{{\bm k}\sigma} c_{{\bm k}\sigma}(t) T^\dagger({\bm r_1 - \bm r_d}) | \psi_\text{gs}({\bm r_d})}\\
+																																		   &= \sum_{\bm r_1,\bm r_2} e^{-i\bm k(\bm r_1 - \bm r_2)} \braket{\psi_\text{gs}({\bm r_d}) | c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r_1 - \bm r_2}) c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_d})}~\\
+																																		   &= N\sum_{\bm r} e^{-i\bm k\cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c^\dagger_{{\bm k}\sigma} T^\dagger({\bm r}) c_{{\bm k}\sigma}(t) | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+To resolve the time evolution of the operators, we insert $1 = \sum_m \ket{\psi_m({\bm r_d})}\bra{\psi_m({\bm r_d})}$ into the equation. We again work with just the first term of the anticommutator for convenience:
+\begin{equation}\begin{aligned}
+	&\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} \\
+	&= N\sum_{\bm r, n_1, n_2} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n_1}({\bm r_d})}\bra{\psi_{n_1}({\bm r_d})} T^\dagger(\bm r) \ket{\psi_{n_2}({\bm r_d})}\bra{\psi_{n_2}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}\\
+	&= N\sum_{\bm r, n_1, n_2} e^{i\bm k \cdot\bm r} \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n_1}({\bm r_d})}\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})}\bra{\psi_{n_2}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+The overlap \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})}\) between the eigenstates of the auxiliary models at \(\bm r_d\) and \(\bm r_d + \bm r\) are appreciable only for \(n_1 = n_2\). This is because, for small \(\bm r\), the auxiliary models are very similar and the states are therefore almost orthogonal. For large \(\bm r\), the overlap is again suppressed because the auxiliary model eigenstates are localised around the impurity. We therefore make the simplifying assumption: \(\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_2}({\bm r_d + \bm r})} = \delta_{n_1, n_2}\braket{\psi_{n_1}({\bm r_d}) | \psi_{n_1}({\bm r_d + \bm r})} = \delta_{n_1, n_2}F_{n_1}(\bm r)\). Substituting this, we get
+\begin{equation}\begin{aligned}\label{intermediate}
+	\sum_{\bm r_1,\bm r_2} \braket{\psi_\text{gs}({\bm r_2}) | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_1})} = N\sum_{n} F_n(\bm k) \braket{\psi_\text{gs}({\bm r_d}) | c_{{\bm k}\sigma}(t) \ket{\psi_{n}({\bm r_d})}\bra{\psi_{n}({\bm r_d})} c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where we have defined the Fourier transform \(F_n(\bm k) = \sum_{\bm r} e^{i\bm k \cdot\bm r} F_n(\bm r)\) of the overlap function.
+
+We now consider more carefully the transition operator \(c_{{\bm k}\sigma}\) for the 1-particle excitation giving rise to the above Greens function. Within our auxiliary model approach, gapless excitations within the lattice model are represented by gapless excitations of the impurity site, specifically those that try to screen the impurity site. As a result, the uncoordinated scattering process \(c_{{\bm k}\sigma}\) for the lattice model must be replaced by a coherent excitation  \(\mathcal{T}\) within the impurity model that captures those gapless excitations that occur in connection with the impurity, and projects out the uncorrelated excitations that take place even when the impurity site is decoupled from the bath.
+
+In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we allow for all excitations of the impurity site in conjunction with those of the \(k-\)state:
+\begin{equation}\begin{aligned}\label{tmatrix}
+	\mathcal{T}_{{\bm k},\sigma} = \left[c^\dagger_{\bm r_d\sigma} + S_{\bm r_d}^\sigma + C_{\bm r_d}^+ \right]c_{{\bm k}\sigma}~,
+\end{aligned}\end{equation}
+where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively. The first term encodes the local component of the \(k-\)space Greens function by creating an excitation on the impurity site (which is then translated across the lattice), and the rest of the terms encode the non-local components by tracking impurity-bath excitations.
+
+Apart from modifying the excitation operator, we will now simplify the time-evolution as well. The first overlap on the right-hand side of eq.~\ref{intermediate} expands to
+\begin{equation}\begin{aligned}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} | \psi_{n}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where \(H_\text{aux}(\bm r_d)\) (eq.~\ref{LE-ESIAM}) is the auxiliary model Hamiltonian consisting of the cluster Hamiltonian \(H_\text{clust}(\bm r_d)\) along with all one-particle terms \(H_\text{1p}\) in the Hamiltonian (in a typical lattice model, this will be he tight-binding hopping terms), and \(H_\text{cav}(\bm r_d)\) is the ``cavity" Hamiltonian consisting of all interaction (2-particle and beyond) terms in the Hamiltonian. Together, they create the full lattice Hamiltonian: \(H_\text{latt} = H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d)\). Using the Zassenhaus form of the Baker-Campbell-Hausdorff formula, we have
+\begin{equation}\begin{aligned}
+	e^{i(H_\text{aux}(\bm r_d) + H_\text{cav}(\bm r_d))t} \approx e^{iH_\text{aux}(\bm r_d)t} e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}~,
+\end{aligned}\end{equation}
+where we have dropped the higher-order terms because the commutators involve only the boundary degrees of freedom and become subsequently smaller as the order increases. One can think of the operator \(e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\) as renormalising the auxiliary model \(\mathcal{T}-\)matrix through hybridisation with the rest of the system and formally leading to a new \(\mathcal{T}-\)matrix:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~.
+\end{aligned}\end{equation}
+One can also absorb the modulating phase factor \(F_n(\bm k)\) (defined above and appearing in eq.~\ref{intermediate}) into this renormalisation:
+\begin{equation}\begin{aligned}\label{Zassenhaus}
+	\mathcal{T}_{{\bm k},\sigma}^* = e^{i H_\text{cav}(\bm r_d)t}e^{[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}\mathcal{T}_{{\bm k},\sigma}F_n(\bm k) \mathcal{P}_n({\bm r_d})~e^{-[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)]t^2/2}e^{-i H_\text{cav}(\bm r_d)t}~,
+\end{aligned}\end{equation}
+where \(\mathcal{P}_n({\bm r_d})\) projects onto the \(n^\text{th}\) eigenstate \(\ket{\psi_{n}({\bm r_d})}\).
+
+Since the overlap is calculated in the eigenstates of the auxiliary model at \(\bm r_d\), we adopt the zeroth order approximation of ignoring this renormalisation. Later, we will specify a prescription of systematically improving our computation. The overlap expression becomes
+\begin{equation}\begin{aligned}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{{\bm k},\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
+\end{aligned}\end{equation}
+To make the problem tractable, we treat the effect of \(H_\text{1p}\) at the level of an expectation value and note that the effect of the transition operator is to create a hole of momentum \(\bm k\) (eq.~\ref{tmatrix}). Let the Hamiltonian \(H_\text{1p}\) be diagonal in certain modes \(c_{\nu,\sigma}\) with energies \(\epsilon_\nu\), and the operator \(c_{\bm k,\sigma}\) can be expressed in terms of these modes: \(c_{\bm k,\sigma} = \sum_{\nu}C_{\nu,\bm k}c_{\nu,\sigma}\). A similar decomposition will hold for the \(\mathcal{T}-\)matrix. Substituting it gives
+\begin{equation}\begin{aligned}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_\text{gs}({\bm r_d}) | e^{i(H_\text{clust}(\bm r_d) + H_\text{1p})t} \mathcal{T}_{\nu,\sigma} e^{-i(H_\text{clust}(\bm r_d) + H_\text{1p})t} | \psi_{n}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Each excitation \(\mathcal{T}_{\nu,\sigma}\) therefore leads to an energy cost \(-\epsilon_\nu\). Moreover, \(\ket{\psi_n(\bm r_d)}\) and \(\ket{\psi_\text{gs}(\bm r_d)}\) are eigenstates of \(H_\text{clust}(\bm r_d)\) with energies \(E_n\) and \(E_0\). This leads to the following simplified expression:
+\begin{equation}\begin{aligned}
+	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
+\begin{equation}\begin{aligned}
+	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\nu},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Substituting the expression back into~\ref{intermediate} and then into~\ref{retarded}, we get an expression for one half of the retarded Greens function:
+\begin{equation}\begin{aligned}
+	&-i\theta(t) \braket{\Psi_\text{gs} | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \Psi_\text{gs}} \\
+	&= -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Working through the other term with the same strategy, we get the full expression:
+\begin{equation}\begin{aligned}
+	-i&\theta(t) \braket{\Psi_\text{gs} | \{c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma}\} | \Psi_\text{gs}} \\
+	=& -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
+	 & -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{i(E_n - E_0 - \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) gives
+\begin{equation}\begin{aligned}
+	G(\bm k,\sigma;\omega) =  \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~.
+\end{aligned}\end{equation}
+We recognise the two parts of the lattice model Greens function as the Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega - \epsilon_\nu\):
+\begin{equation}\begin{aligned}
+	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \mathcal{G}(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu})
+\end{aligned}\end{equation}
+
+We now discuss how to systematically improve this estimate. One way is to include the effect of other auxiliary models in the overlap function \(F_n(\bm r)\). This will of course require us to calculate an off-diagonal Greens function. As a concrete example, upon including the effects of the auxiliary models nearest to the reference point \(\bm r_d\), the expression for the Greens function becomes
+\begin{equation}\begin{aligned}
+	G(\bm k,\sigma;\omega) = \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~,
+\end{aligned}\end{equation}
+with \(\tau^*_{\nu,\sigma} = \mathcal{T}_{\nu,\sigma} (F_n(0) + \sum_{\bm a}F_n(\bm a)e^{i \bm k \cdot \bm a})\) where \(\bm a\) sums over the primitive lattice vectors. Another way to include more non-local contributions is by considering the effects of the cavity Hamiltonian in eq.~\ref{Zassenhaus}:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\bm k},\sigma}^*(t) = e^{i H_\text{cav}(\bm r_d)t}(\mathcal{T}_{{\bm k},\sigma} + t^2/2\left[[H_\text{aux}(\bm r_d),~H_\text{cav}(\bm r_d)], \mathcal{T}_{{\bm k},\sigma}\right])e^{-i H_\text{cav}(\bm r_d)t}~.
+\end{aligned}\end{equation}
+The time-domain Greens function associated with this operator will then need to be calculated, which can then be used to calculate frequency-domain functions.
+
+\subsection{One-particle real-space Greens functions}\label{tileRealspaceGreen}
+We now work with Greens functions for real-space excitations. The retarded Greens function in this case is
+\begin{equation}\begin{aligned}
+	G({\bm r}\sigma; t) = -i\theta(t) \braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+Since our lattice model has discrete translation symmetry, we instead calculate the equivalent quantity
+\begin{equation}\begin{aligned}
+	G({\bm r}\sigma; t) = -i\theta(t) \sum_{\bm r_d}\braket{\Psi_\text{gs} | \{ c_{{\bm r_d + \bm r},\sigma}(t), c^\dagger_{{\bm r_d},\sigma} \} | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+Similar to the \(k-\)space Greens functions, express the groundstates as a superposition of auxiliary model Greens functions. We take the first term in the anticommutator and proceed to simplify it:
+\begin{equation}\begin{aligned}\label{realCorrInterm}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm R + \bm \Delta}) | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm R})}\\
+																											&=\frac{1}{N}\sum_{\bm R,\bm \Delta} \braket{\psi_\text{gs}({-\bm r_d}) |  c_{{\bm r - \bm R - \bm \Delta},\sigma}(t) T({\bm \Delta}) c^\dagger_{{- \bm R},\sigma} | \psi_\text{gs}({-\bm r_d})}~.
+\end{aligned}\end{equation}
+\subsubsection*{Local Greens function: \(\bm r = 0\)}
+We first consider the case of local Greens function, by setting \(\bm r=0\). We also change the dummy variable \(\bm r_d\), \(\bm R\) and \(\Delta\) to \(-\bm r_d\), \(\-\bm R\) and \(-\bm \Delta\) to make the expressions tidier:
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+We split the full summation into four parts, based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
+\begin{equation}\begin{aligned}\label{realGreenSplit}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where we have used the fact that the location of the auxiliary model does not affect the correlation calculated within the auxiliary model in order to cancel out the summation over \(\bm r_d\) with the factor of \(1/N\). The reason for splitting the expression into these parts is to explicitly write out which operators act on the impurity site \(\bm r_d\) and which act on other real-space sites away from the impurity site. We will now replace the real-space excitation operators away from the impurity site with the associated \(T-\)matrices, following the discussion above eq.~\ref{tmatrix}:
+\begin{equation}\begin{aligned}\label{realLocalInterm}
+	\mathcal{T}_{{\bm r},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm r}\sigma} = \sum_{\bm k} e^{i \bm k \cdot \bm r} \mathcal{T}_{\bm k,\sigma}~.
+\end{aligned}\end{equation}
+We also insert a complete basis of states of the auxiliary model at \(\bm r_d\), \(1 = \sum_n\ket{\psi_n(\bm r_d)}\bra{\psi_n(\bm r_d)}\), generating an overlap factor \(F_n\) as before:
+\begin{equation}\begin{aligned}
+&\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} \\
+&= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^{i \bm k \cdot \bm r}F_n(\bm r)\) of the overlap factor.
+
+We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
+\begin{equation}\begin{aligned}\label{localTiledGreenF}
+	&G_\text{loc}(\omega) \\
+	&= \mathcal{G}(d\sigma; \omega) + \sum_{\nu} C_{\nu} \left[\mathcal{G}(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \sum_{\bf k}\mathcal{G}(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\nu})\right] + \sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega) ~,
+\end{aligned}\end{equation}
+where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\). \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath. The coefficient \(C_\nu\) is given by \(C_\nu = \sum_{\bf k}C_{\nu,\bf k}\).
+
+\subsubsection*{Non-local Greens function: \(\bm r \neq 0\)}
+We next consider the case of non-local Greens function, where the excitations propagate a non-zero distance \(\bm r\):
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta + \bm r},\sigma}(t) T^\dagger({\bm \Delta}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+To bring this expression closer to the one for the local Greens function, we redefine \(\Delta + \bm r \to \Delta\):
+\begin{equation}\begin{aligned}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &=\frac{1}{N}\sum_{\bm R,\bm \Delta,\bm r_d} \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm R + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta}) T(\bm r) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+This allows to again split the full summation based on whether \(\bm R = \bm r_d\) and whether \(\Delta + \bm R = \bm r_d\):
+\begin{equation}\begin{aligned}\label{NLrealGreenSplit}
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T(\bm r) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																												  &+ \sum_{\bm \Delta \neq 0}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d + \bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm r}) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) T^\dagger({\bm r_d - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																											&+\sum_{\bm R \neq \bm r_d, \bm \Delta \neq \bm r_d}\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm \Delta},\sigma}(t) T^\dagger({\bm \Delta - \bm R - \bm r}) c^\dagger_{{\bm R},\sigma} | \psi_\text{gs}({\bm r_d})}~.
+\end{aligned}\end{equation}
+Introducing Fourier transforms of the operators and inserting eigenstates of the auxiliary models leads to
+\begin{equation}\begin{aligned}\label{nonlocalGreens}
+&\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d + \bm r},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} \\
+&= \sum_{n}F_n^*(\bm r)\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)F_n^*(\bm r)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*F_n^*(\bm r)\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*F_n^*(\bm r)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
+\end{aligned}\end{equation}
+The net difference from the diagonal Greens function is the presence of the overlap factor \(F_n^*(\bm r)\).
+
+\subsection{Equal-Time Ground State Correlators}\label{staticCorr}
+Apart from dynamical correlations such as Greens functions, we would also like to use our approach to calculate static correlation functions in terms of auxiliary model quantities. We first consider a real-space correlation that tracks the propagation of a general excitation described by the operator \(\mathcal{O}({\bm r})\) over a distance \({\bm \Delta}\):
+\begin{equation}\begin{aligned}
+	C_{\mathcal{O}}({\bm r}) = \braket{\Psi_\text{gs} | \mathcal{O}({\bm r}_d + {\bm r})\mathcal{O}^\dagger({\bm r}_d) | \Psi_\text{gs}}~.
+\end{aligned}\end{equation}
+We first consider a local correlation: \(\bm r = 0\). To obtain a tractable expression for this, we note that the quantity being computed here is almost identical to the one computed in eq.~\ref{realCorrInterm}, the only difference being the time-evolution of the operator. For the local correlation, we therefore assume the result of eq.~\ref{realLocalInterm}, dropping the time evolution because the correlators in this section are calculated at equal time. We also transform from \(k-\)space back to real-space because there are no time-evolution operators which need extended states in order to be resolved. Putting all this together, we get
+\begin{equation}\begin{aligned}
+	C_{\mathcal{O}}^\text{loc} =& \braket{\psi_\text{gs}(\bm r_d) | \mathcal{O}(\bm r_d)\mathcal{O}^\dagger(\bm r_d) | \psi_\text{gs}(\bm r_d)} \\
+								&+ \sum_{\bm r \neq 0, n} F_n(\bm r)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{T}_{\mathcal{O}(\bm r + \bm r_d)} | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{O}^\dagger(\bm r_d) | \psi_\text{gs}(\bm r_d)}\\
+								&+ \sum_{\bm r \neq 0, n} F_n(\bm r)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{O}(\bm r + \bm r_d) | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{T}^\dagger_{\mathcal{O}(\bm r_d)} | \psi_\text{gs}(\bm r_d)}\\
+								&+ \sum_{\bm r_1 \neq 0, \bm r_2 \neq 0, n} F_n(\bm r)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{T}_{\mathcal{O}(\bm r_1 + \bm r_d)} | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{T}^\dagger_{\mathcal{O}(\bm r_2 + \bm r_d)} | \psi_\text{gs}(\bm r_d)}~,
+\end{aligned}\end{equation}
+where the transition operator \(\mathcal{T}_{\mathcal{O}(\bm r + \bm r_d)}\) represents impurity-bath correlation:
+\begin{equation}\begin{aligned}
+	\mathcal{T}_{{\mathcal{O}(\bm r + \bm r_d)},\sigma} = \left[c^\dagger_{\bm r_d\sigma} + S_{\bm r_d}^\sigma + C_{\bm r_d}^+ \right]{\mathcal{O}(\bm r + \bm r_d)}~,
+\end{aligned}\end{equation}
+
+We next consider non-local correlations over a distance \(\bm \Delta\). Adapting eq.~\ref{nonlocalGreens} for the non-local real-space Greens function in the same manner, we get
+\begin{equation}\begin{aligned}
+	C_{\mathcal{O}}(\bm \Delta) =& \sum_{n}F_n^*(\bm \Delta)\braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+								&+ \sum_{\bm r \neq 0, n} F_n(\bm r + \bm \Delta)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{T}_{\mathcal{O}(\bm r + \bm \Delta + \bm r_d)} | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{O}^\dagger(\bm r_d) | \psi_\text{gs}(\bm r_d)}\\
+								&+ \sum_{\bm r \neq 0, n} F_n(\bm r + \bm \Delta)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{O}(\bm r + \bm \Delta + \bm r_d) | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{T}^\dagger_{\mathcal{O}(\bm r_d)} | \psi_\text{gs}(\bm r_d)}\\
+								&+ \sum_{\bm r_1 \neq 0, \bm r_2 \neq 0, n} F_n(\bm r + \bm \Delta)\braket{\psi_\text{gs}(\bm r_d) | \mathcal{T}_{\mathcal{O}(\bm r_1 + \bm \Delta + \bm r_d)} | \psi_n(\bm r_d)} \braket{\psi_n(\bm r_d) | \mathcal{T}^\dagger_{\mathcal{O}(\bm r_2 + \bm r_d)} | \psi_\text{gs}(\bm r_d)}~,
+\end{aligned}\end{equation}
+
+\section{Entanglement Measures}
+We will now describe the prescription of calculating entanglement measures of the lattice model from within our auxiliary model treatment. In this section, we are interested mainly in two such measures, the entanglement entropy and the mutual information. Given a pure state \(\ket{\Psi}\) describing the complete system, the entanglement entropy \(S_\text{EE}(\nu)\) of a subsystem \(\nu\) quantifies the entanglement of \(\nu\) with the rest of the subsystem, and is defined as
+\begin{equation}\begin{aligned}
+	S_\text{EE}(\nu) = -\text{Tr}\left[\rho(\nu)\log \rho(\nu)\right],\quad \rho(\nu) = \text{Tr}_\nu\left[\ket{\Psi}\bra{\Psi}\right] 
+\end{aligned}\end{equation}
+where \(\text{Tr}\left[\cdot\right] \) is the trace operator, and \(\rho(\nu)\) is the reduced density matrix (RDM) for the subsystem \(\nu\) obtained by taking the partial trace \(\text{Tr}_\nu\) (over the states of \(\nu\)) of the full density matrix \(\rho = \ket{\Psi}\bra{\Psi}\). If the subsystem \(\nu\) describes local regions in real space (or states in \(k-\)space), we might be interested in the entanglement between two such subsystems \(\nu_1\) and \(\nu_2\). The correct measure to quantify such entanglement is the mutual information:
+\begin{equation}\begin{aligned}
+	I_2(\nu_1,\nu_2) = S_\text{EE}(\nu_1) + S_\text{EE}(\nu_2) - S_\text{EE}(\nu_1 \cup \nu_2)~,
+\end{aligned}\end{equation}
+where \(\nu_1 \cup \nu_2\) is a larger subsystem formed by combining \(\nu_1\) and \(\nu_2\).
+
+We start by recalling the decomposition of entanglement entropy in terms of multipartite information as laid out in Subsection~\ref{entanglementDecomposition}. Given a partitioning of the system into mutually exclusive subsystems \(\{\nu_i\}\), the average entanglement entropy \(S_\text{EE}^{(1)}\) over all subsystems can be expressed as
+\begin{equation}\begin{aligned}
+	S_\text{EE}^{(1)} &= \sum_{n=2}^N \lambda_n \bar I_n,\\
+	\bar I_n &= \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N} I_n(\nu_1,\ldots,\nu_n),\\
+	\lambda_{n} &= (-1)^{N-n} \binom{N}{m} \lambda_N (m>0),\quad \lambda_N = \frac{(-1)^N}{N}~,
+\end{aligned}\end{equation}
+where \(\bar I_n\) is the  average multipartite information \(I_n\) over all combinations of \(n\) subsystems.
+
+We first take a look at real-space entanglement. Real-space entanglement measures can be used to probe delocalisation-localisation transitions. The simplest such measure is the entanglement of a patch in real-space. Since the local entanglement entropy will be uniform at each lattice site for a system with translation invariance, it suffices to calculate the real-space averaged entanglement entropy \(S_\text{EE}^{(1)}\).
+
+By visualising the lattice model as a superposition of auxiliary models placed at various sites (eq.~\ref{tilingPrescriptionFinal}), the real space average of the lattice model can be thought of as an average over sites of a particular impurity model, and then a second average over all the impurity models. But since all all impurity models are equivalent to each other, the second average is redundant. Secondly, all correlations must derive from the impurity site, which can be formally encoded by subtracting, from this average, the corresponding contribution obtained in the absence of the impurity site. In total, the lattice-auxiliary model relation for the local entanglement entropy can be written as
+\begin{equation}\begin{aligned}
+	S_\text{EE}^\text{loc} = \frac{1}{N}\sum_{{\bm r}}\left[S_\text{EE}({\bm r}_d + {\bm r}) - S_\text{EE}^{(0)}({\bm r}_d + {\bm r})\right] ~,
+\end{aligned}\end{equation}
+where \({\bm r}_d\) is the impurity site position, \({\bm r}\) is the distance of a conduction bath site from the impurity site (can be zero), and \(S_\text{EE}({\bm r}_d + {\bm r})\) is the entanglement entropy, calculated within the impurity model, at the locatiom \({\bm r}_d + {\bm r}\). \(S^{(0)}_\text{EE}({\bm r}_d + {\bm r})\) is the same entanglement entropy, but calculated for an impurity model with vanishing impurity-bath hybridisation and bath interaction.
+
+\subsubsection{Momentum-space entanglement}
+Entanglement measures in \(k-\)space can provide valuable information regarding the Fermi surface structure and the nature of gapless excitations proximate to it. The most elementary measure is the entanglement entropy \(S_\text{EE}({\bm q})\) of a single excitation carrying momentum \({\bm q}\). Unlike \(S_\text{EE}^\text{loc}\), this does not involve an average, and involves a single computation:
+\begin{equation}\begin{aligned}
+	\tilde S_\text{EE}({\bm q}) = S_\text{EE}({\bm q}) - S_\text{EE}^{(0)}({\bm q})~.
+\end{aligned}\end{equation}
+It is possible to improve this by considering inter-auxiliary model contributions in the reduced density matrix \(\rho({\bm q})\). On the lattice model, \(\rho({\bm q})\) is defined as
+\begin{equation}\begin{aligned}\label{SEE-k}
+	\rho({\bm q}) = \text{Tr}_{\bm q}\left[\ket{\Psi_\text{gs}}\bra{\Psi_\text{gs}}\right] ~,
+\end{aligned}\end{equation}
+where \(\text{Tr}_{\bm q}\left[\cdot\right]\) is the partial trace over the Hilbert space of \({\bm q}\), and \(\ket{\Psi_\text{gs}}\) is the tiled ground state. Using eq.~\ref{groundstateProposal}, we can write the ground state in terms of those of the auxiliary model. These leads to two classes of terms, one purely within a single auxiliary model ground state \(\ket{\psi_\text{gs}}\), and the other involving transitions across auxiliary models:
+\begin{equation}\begin{aligned}\label{RDMTiled}
+	\rho({\bm q}) \sim \text{Tr}_{\bm q}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d)}\right] + \frac{1}{N}\text{Tr}_{\bm q}\sum_{{\bm r}}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d + {\bm r})}\right]~,
+\end{aligned}\end{equation}
+where \(\ket{\psi_\text{gs}({\bm r}_d)}\) is a reference auxiliary model ground state, and \(\ket{\psi_\text{gs}({\bm r}_d + {\bm r})}\) sums over other auxiliary models at increasing distances from this reference model. The \(\sim\) indicates that the RDM needs to be normalised. The first term leads to the expression in eq.~\ref{SEE-k}, while the second term can be used to improve this estimate. Away from any quantum critical points, the localised nature of the impurity-bath hybridisation ensures that impurity correlations decay exponentially away from the transition. This ensures that the second term is very small away from a critical point. We therefore restrict ourselves to just the first term in the present work.
+
 

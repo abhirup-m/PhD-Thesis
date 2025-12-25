@@ -37,7 +37,7 @@ Tiling the impurity model therefore leads to a bilayer extended Hubbard model, w
 
 Following Sec.~\ref{tileKspaceGreen}, the retarded \(k-\)space Greens function in either layer can be expressed in terms of  auxiliary model Greens functions:
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma,\alpha;\omega) = \sum_\nu C_{\nu,\bm k\alpha}\left[\mathcal{G}^>(\mathcal{T}_{\nu,\sigma,\alpha}; \omega - \mathcal{E}_\nu(\bm k)) - \mathcal{G}^<(\mathcal{T}_{\nu,\sigma,\alpha}; \omega + \mathcal{E}_\nu(\bm k))\right]~,
+	G(\bm k,\sigma,\alpha;\omega) = \sum_\nu C_{\nu,\bm k\alpha}\mathcal{G}(\mathcal{T}_{\nu,\sigma,\alpha}; \omega - \mathcal{E}_\nu(\bm k))
 \end{aligned}\end{equation}
 where \(\alpha=f,d\) denotes the layer in which the Greens function is being calculated, the modes \(\nu\) indicate the operators which diagonalise the Hamiltonian \(H_\text{1p}\), with energies \(\mathcal{E}_\nu(\bm k)\):
 \begin{equation}\begin{aligned}
@@ -66,7 +66,7 @@ the coefficients obtained from diagonalising the matrix
 The energies are given by \(\mathcal{E}_\pm(\bm k) = \epsilon_k -\eta_d/2 \pm \Delta\), with \(\epsilon_k\) being \(-\frac{4V}{Z}(\cos k_x + \cos k_y)\) for a 2D square lattice and \(\Delta = \sqrt{V_\perp^2 + \eta_d^2/4}\).
 Substituting into the expression for the lattice Greens function, we get
 \begin{equation}\begin{aligned}
-	G(\bm k,d;\omega) =& \sum_{\alpha=\pm}C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d}; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d}; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]~.
+	G(\bm k,d;\omega) = C_{+, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,+,d}; \omega - (\epsilon_k - \eta_d/2 + \Delta)) + C_{-, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,-,d}; \omega - (\epsilon_k - \eta_d/2 - \Delta))~.
 \end{aligned}\end{equation}
 
 Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function, in real-space:
