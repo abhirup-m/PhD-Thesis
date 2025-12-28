@@ -1948,46 +1948,59 @@ We first define a partitioning of the entire system into \(N\) disjoint regions,
 \end{aligned}\end{equation}
 where \(\sigma\) is a subset drawn from the power set of \(\mathcal{S}_n\), and \(|\sigma|\) is the number of members in the subset \(\sigma\). The 4-partite information can be written as
 \begin{equation}\begin{aligned}
-	I_4 = & ~ S_\text{EE}(\nu_1) + S_\text{EE}(\nu_2) + S_\text{EE}(\nu_3) + S_\text{EE}(\nu_4) \\
-		  & - S_\text{EE}(\nu_1 \cup \nu_2) - S_\text{EE}(\nu_1 \cup \nu_3) - S_\text{EE}(\nu_1 \cup \nu_4) - S_\text{EE}(\nu_2 \cup \nu_3) - S_\text{EE}(\nu_2 \cup \nu_4) - S_\text{EE}(\nu_3 \cup \nu_4) \\
-		  & + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_3) + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_4) + S_\text{EE}(\nu_1 \cup \nu_3 \cup \nu_4) + S_\text{EE}(\nu_2 \cup \nu_3 \cup \nu_4)\\
-		  & + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_3 \cup \nu_4)~.
+	&I_4(\nu_1,\nu_2,\nu_3,\nu_4) \\
+	&=  ~ S_\text{EE}(\nu_1) + S_\text{EE}(\nu_2) + S_\text{EE}(\nu_3) + S_\text{EE}(\nu_4) - S_\text{EE}(\nu_1 \cup \nu_2) - S_\text{EE}(\nu_1 \cup \nu_3) \\
+		  &~ - S_\text{EE}(\nu_1 \cup \nu_4) - S_\text{EE}(\nu_2 \cup \nu_3) - S_\text{EE}(\nu_2 \cup \nu_4) - S_\text{EE}(\nu_3 \cup \nu_4)  + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_3)\\
+		  &~ + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_4) + S_\text{EE}(\nu_1 \cup \nu_3 \cup \nu_4) + S_\text{EE}(\nu_2 \cup \nu_3 \cup \nu_4) + S_\text{EE}(\nu_1 \cup \nu_2 \cup \nu_3 \cup \nu_4)~.
 \end{aligned}\end{equation}
-One can also define the average \(n-\)partite information, \(\bar I_n\):
+One can also define the average \(n-\)partite information \(\bar I_n\) by considering all sets of \(n\) regions:
 \begin{equation}\begin{aligned}
-\bar I_n = \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N} I_n(\nu_1,\ldots,\nu_n) = \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N}\sum_{\sigma \in \mathcal{P}\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} S_\text{EE}(\sigma)~.
+	\bar I_n &= \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)} I_n(S_n) = \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)}\sum_{\sigma \in \mathcal{P}\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} S_\text{EE}(\sigma)~,
 \end{aligned}\end{equation}
-This can be simplified by bringing the summations over \(\nu_i\) inside the summation over \(\sigma\):
-\begin{equation}\begin{aligned}
-	\bar I_n = \frac{1}{N^n}\sum_{\sigma \in \mathcal{P}\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} \sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N}S_\text{EE}(\sigma) = \sum_{\sigma \in \mathcal{P}\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} S_\text{EE}^{(|\sigma|)} ~,
-\end{aligned}\end{equation}
-where we have define the average entanglement entropy for subsystem size \(|\sigma|\), 
-\begin{equation}\begin{aligned}
-	S_\text{EE}^{(|\sigma|)} = \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \ldots\sum_{\nu_n \in \mathcal{S}_N}S_\text{EE}(\sigma)~.
-\end{aligned}\end{equation}
-The advantage of doing this is that \(S_\text{EE}^{(|\sigma|)}\) depends only on the length \(|\sigma|\), not on the elements themselves. This allows us to carry out the sum over \(\sigma\), for a fixed \(|\sigma|\):
-\begin{equation}\begin{aligned}
-	\bar I_n = \sum_{l=1}^n  (-1)^{1+l} S_\text{EE}^{(l)}\sum_{\sigma \in \mathcal{P}\left(\mathcal{S}_n\right),\atop{|\sigma|=l}} = \sum_{l=1}^n  (-1)^{1+l} \binom{n}{l} S_\text{EE}^{(l)} ~,
-\end{aligned}\end{equation}
-where \(\binom{n}{l} = \frac{n!}{l!~(n-l)!}\) is the number of subsets of \(\mathcal{S}_n\) that have length \(l\). With most of the machinery in place, we would now like to express the entanglement entropy \(S_\text{EE}\) purely in terms multipartite measures \(I_n\), for the reasons stated above. For a system that is invariant under real-space translation (as our lattice model is), the entanglement entropy of any real-space interval should only depend on the extent of the interval. It therefore suffices to calculate the entanglement entropy averaged over all such intervals, and the corresponding measure in our formulation is \(S_\text{EE}^{(1)}\). 
+where \(C_n(\mathcal{S}_N)\) represents all ways of choosing \(n\) distinct elements out of the full set \(\mathcal{S}_N\) of subsystems.
 
-We will now express \(S_\text{EE}^{(1)}\) in terms of \(\bar I_n\), by eliminating \(S_\text{EE}^{(l)} (l > 1)\) from the equations. We adopt the ansatz
-\begin{equation}\begin{aligned}\label{expansion}
-	S_\text{EE}^{(1)} = \sum_{n=2}^N \lambda_n \bar I_n = S_\text{EE}^{(1)}\sum_{n=2}^N n \lambda_n - \sum_{l=2}^{N-1} S_\text{EE}^{(l)} (-1)^{l} \sum_{n=l}^N \binom{n}{l} \lambda_n~,
+The expression for \(\bar I_n\) can be simplified by splitting the summation over the elements of the power set \(\mathcal{P}\) into sets of definite number:
+\begin{equation}\begin{aligned}
+	\bar I_n &= \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)} I_n(S_n) = \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)}\sum_{m=1}^n \sum_{\sigma_m \in \mathcal{P}_m\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} S_\text{EE}(\sigma_m)~,
 \end{aligned}\end{equation}
-where the \(N-1\) coefficients \(\left\{ \lambda_n \right\} \) will be determined by requiring that the \(S_\text{EE}^{(l)} (l > 1)\) vanish on the right-hand side, as well as by matching the coefficients of \(S_\text{EE}^{(1)}\) on both sides. Note that \(l\) runs only upto \(N-1\) in the second term; this is because, \(S_\text{EE}^{(N)}\) is the entanglement entropy of the full system and hence automatically zero. The equations are
+where \(\mathcal{P}_m\) represents all subsets of the power set that have \(m\) elements. With some combinatorial magic, it can be shown that
+\begin{equation}\begin{aligned}
+	\sum_{S_n \in C_n(\mathcal{S}_N)} \sum_{\sigma_m \in \mathcal{P}_m\left(\mathcal{S}_n\right)} = \binom{N-m}{n-m}\sum_{\sigma_m \in C_m(\mathcal{S}_N)}~.
+\end{aligned}\end{equation}
+To see how this comes about, note that what this equation says is that summing over combinations of subsets of length \(n\) of the super set \(S_N\) and further summing over all subsets of length \(m \leq n\) for each set \(S_n\) is equivalent to summing just once over subsets of length \(m\) of the super set \(S_N\) but now each subset of length \(m\) appears with a frequency \(f_m = \binom{N-m}{n-m}\). The value for the frequency \(f_m\) is simply the number of subsets \(S_n\) in which the smaller subset \(\sigma_m\) appears. This can be calculated by allowing \(m\) of the \(n\) slots in \(S_n\) to be filled by the members of \(\sigma_m\), and the remaining \(n-m\) slots then have to be filled by choosing from the remaining \(N-m\) members of the super set \(S_N\); there's obviously \(\binom{N-m}{n-m}\) ways of carrying this out.
+
+Implementing this into the expression for \(\bar I_n\) gives
+\begin{equation}\begin{aligned}
+	\bar I_n = \sum_{m=1}^n (-1)^{1 + m} \frac{\binom{n}{m}}{\binom{N}{m}}\sum_{\sigma_m \in C_m(\mathcal{S}_N)} S_\text{EE}(\sigma_m) = \sum_{m=1}^n (-1)^{1 + m} \binom{n}{m}S_\text{EE}^{(m)}~,
+\end{aligned}\end{equation}
+where we have define the average entanglement entropy \(S_\text{EE}^{(m)}\) for all \(m-\)member sets of regions:
+\begin{equation}\begin{aligned}
+	S_\text{EE}^{(m)} = \frac{1}{\binom{N}{m}}\sum_{\sigma_m \in C_m(\mathcal{S}_N)} S_\text{EE}(\sigma_m)~.
+\end{aligned}\end{equation}
+
+With most of the machinery in place, we would now like to express the entanglement entropy \(S_\text{EE}\) purely in terms multipartite measures \(I_n\), for the reasons stated above. For a system that is invariant under real-space translation (as our lattice model is), the entanglement entropy of any real-space interval should only depend on the extent of the interval. It therefore suffices to calculate the entanglement entropy averaged over all such intervals, and the corresponding measure in our formulation is \(S_\text{EE}^{(1)}\). 
+
+We will now express \(S_\text{EE}^{(1)}\) in terms of \(\bar I_n\), by eliminating \(S_\text{EE}^{(m)} (m > 1)\) from the equations. We adopt the ansatz
+\begin{equation}\begin{aligned}\label{expansion}
+	S_\text{EE}^{(1)} = \sum_{n=2}^N \lambda_n \bar I_n = \sum_{n=2}^N \lambda_n \binom{n}{m}\sum_{m=1}^n (-1)^{1 + m} S_\text{EE}^{(m)}~.
+\end{aligned}\end{equation}
+In order to separate \(S_\text{EE}^{(1)}\) from the rest of the \(S_\text{EE}^{(m)}\), we exchange the order of summation:
+\begin{equation}\begin{aligned}
+	S_\text{EE}^{(1)} = \sum_{m=1}^N (-1)^{1 + m} S_\text{EE}^{(m)}\sum_{n=m}^N \lambda_n \binom{n}{m} - S_\text{EE}^{(1)} \lambda_1 = S_\text{EE}^{(1)}\sum_{n=2}^N n \lambda_n - \sum_{m=2}^{N-1} S_\text{EE}^{(m)} (-1)^{m} \sum_{n=m}^N \binom{n}{m} \lambda_n~,
+\end{aligned}\end{equation}
+where the constraint of \(m \leq n\) in the previous form is now enforced by letting \(n\) run from \(m\) to \(N\). The \(N-1\) coefficients \(\left\{ \lambda_n \right\} \) will be determined by requiring that the \(S_\text{EE}^{(m)} (m > 1)\) vanish on the right-hand side, as well as by matching the coefficients of \(S_\text{EE}^{(1)}\) on both sides. Note that \(m\) runs only upto \(N-1\) in the second term; this is because, \(S_\text{EE}^{(N)}\) is the entanglement entropy of the full system and hence automatically zero. The equations are
 \begin{gather}\label{equation1}
 	\sum_{n=2}^N n \lambda_n = 1,\\
-	\sum_{n=l}^N \binom{n}{l} \lambda_n = 0;~l=2,\ldots,N-1~.
+	\sum_{n=m}^N \binom{n}{m} \lambda_n = 0;~m=2,\ldots,N-1~.
 \end{gather}
-We focus on the second equation first, since it is very short for \(l\) close to \(N\). For \(l=N-1\) and \(l=N-2\), we get
+We focus on the second equation first, since it is very short for \(m\) close to \(N\). For \(m=N-1\) and \(m=N-2\), we get
 \begin{equation}\begin{aligned}
-	l=N-1:~&\lambda_{N-1} + N\lambda_{N} = 0 \implies &\lambda_{N-1} = -N \lambda_N\\
-	l=N-2:~&\lambda_{N-2} + \left(N-1\right) \lambda_{N-1} + \frac{N(N-1)}{2}\lambda_{N} = 0 \implies &\lambda_{N-2} = \frac{N(N-1)}{2}\lambda_N~.
+	m=N-1:~&\lambda_{N-1} + N\lambda_{N} = 0 \implies \lambda_{N-1} = -N \lambda_N\\
+	m=N-2:~&\lambda_{N-2} + \left(N-1\right) \lambda_{N-1} + \frac{N(N-1)}{2}\lambda_{N} = 0 \implies \lambda_{N-2} = \frac{N(N-1)}{2}\lambda_N~.
 \end{aligned}\end{equation}
 We extrapolate this to the general solution,
 \begin{equation}\begin{aligned}\label{coeffSolution}
-	\lambda_{N-m} = (-1)^m \binom{N}{m} \lambda_N,~m>0,
+	\lambda_{m} = (-1)^m \binom{N}{m} \lambda_N,~m < N~,
 \end{aligned}\end{equation}
 and then prove that if this is true for \(\lambda_{N-m}\), it also solves the equation for \(\lambda_{N-m-1}\), thus amounting to a proof by mathematical induction. The general equation for \(\lambda_{N-m-1}\) is
 \begin{equation}\begin{aligned}
@@ -1995,19 +2008,19 @@ and then prove that if this is true for \(\lambda_{N-m}\), it also solves the eq
 \end{aligned}\end{equation}
 Substituting the extrapolated solution gives
 \begin{equation}\begin{aligned}
-	\lambda_{N-m-1} = -\sum_{m^\prime=0}^{m} (-1)^{m^\prime}\binom{N-m^\prime}{N-m-1} \binom{N}{m^\prime} \lambda_N = \binom{N}{m+1} \lambda_N\sum_{m^\prime=0}^{m} (-1)^{m^\prime + 1}\binom{m+1}{m^\prime} \\
-	= (-1)^{m+1}\binom{N}{m+1} \lambda_N~,
+	\lambda_{N-m-1} = -\sum_{m^\prime=0}^{m} (-1)^{N - m^\prime}\binom{N-m^\prime}{N-m-1} \binom{N}{m^\prime} \lambda_N = \binom{N}{m+1} \lambda_N\sum_{m^\prime=0}^{m} (-1)^{N - m^\prime - 1}\binom{m+1}{m^\prime} \\
+	= (-1)^{N - m - 1}\binom{N}{m+1} \lambda_N~,
 \end{aligned}\end{equation}
 which is consistent with the general solution eq.~\ref{coeffSolution}. This determines all coefficients \(\lambda_n\) for \(n < N\) in terms of \(\lambda_N\). To determine \(\lambda_N\) itself, we use eq.~\ref{equation1}. Substituting eq.~\ref{coeffSolution} into it gives
 \begin{equation}\begin{aligned}\label{finalCoeff}
-	\lambda_N \sum_{n=2}^N n (-1)^{N-n} \binom{N}{n} = 1 \implies \lambda_N =  \frac{(-1)^N}{N}~.
+	\lambda_N \sum_{n=2}^N n (-1)^{n} \binom{N}{n} = 1 \implies \lambda_N =  \frac{(-1)^N}{N}~.
 \end{aligned}\end{equation}
 The decomposition of entanglement entropy into multipartite measures is now complete:
 \begin{equation}\begin{aligned}
-	S_\text{EE}^{(1)} &= \sum_{n=2}^N \lambda_n \bar I_n,\\
-	\bar I_n &= \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N} I_n(\nu_1,\ldots,\nu_n),\\
-	\lambda_{n} &= (-1)^{N-n} \binom{N}{m} \lambda_N (m>0),\quad \lambda_N = \frac{(-1)^N}{N}~.
+	S_\text{EE}^{(1)} &= \frac{1}{N}\sum_{n=2}^N (-1)^{n} \binom{N}{n} \bar I_n,\\
+	\bar I_n &= \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)} I_n(S_n),
 \end{aligned}\end{equation}
+where we have assumed \(N\) is even in order to drop the global phase factor \((-1)^N\).
 
 \section{Wavefunction Renormalisation Group}
 

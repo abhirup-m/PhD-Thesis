@@ -475,33 +475,25 @@ where \(\nu_1 \cup \nu_2\) is a larger subsystem formed by combining \(\nu_1\) a
 
 We start by recalling the decomposition of entanglement entropy in terms of multipartite information as laid out in Subsection~\ref{entanglementDecomposition}. Given a partitioning of the system into mutually exclusive subsystems \(\{\nu_i\}\), the average entanglement entropy \(S_\text{EE}^{(1)}\) over all subsystems can be expressed as
 \begin{equation}\begin{aligned}
-	S_\text{EE}^{(1)} &= \sum_{n=2}^N \lambda_n \bar I_n,\\
-	\bar I_n &= \frac{1}{N^n}\sum_{\nu_1 \in \mathcal{S}_N} \sum_{\nu_2 \in \mathcal{S}_N}\ldots\sum_{\nu_n \in \mathcal{S}_N} I_n(\nu_1,\ldots,\nu_n),\\
-	\lambda_{n} &= (-1)^{N-n} \binom{N}{m} \lambda_N (m>0),\quad \lambda_N = \frac{(-1)^N}{N}~,
+	S_\text{EE}^{(1)} &= \frac{1}{N}\sum_{n=2}^N (-1)^{n} \binom{N}{n} \bar I_n,\\
+	\bar I_n &= \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)} I_n(S_n),
 \end{aligned}\end{equation}
-where \(\bar I_n\) is the  average multipartite information \(I_n\) over all combinations of \(n\) subsystems.
+where \(\bar I_n\) is the  average multipartite information \(I_n\) over all distinct combinations of \(n\) subsystems.
 
-We first take a look at real-space entanglement. Real-space entanglement measures can be used to probe delocalisation-localisation transitions. The simplest such measure is the entanglement of a patch in real-space. Since the local entanglement entropy will be uniform at each lattice site for a system with translation invariance, it suffices to calculate the real-space averaged entanglement entropy \(S_\text{EE}^{(1)}\).
-
-By visualising the lattice model as a superposition of auxiliary models placed at various sites (eq.~\ref{tilingPrescriptionFinal}), the real space average of the lattice model can be thought of as an average over sites of a particular impurity model, and then a second average over all the impurity models. But since all all impurity models are equivalent to each other, the second average is redundant. Secondly, all correlations must derive from the impurity site, which can be formally encoded by subtracting, from this average, the corresponding contribution obtained in the absence of the impurity site. In total, the lattice-auxiliary model relation for the local entanglement entropy can be written as
+We first take a look at real-space entanglement. Real-space entanglement measures can be used to probe delocalisation-localisation transitions. The simplest such measure is the entanglement of a lattice site in real-space. Since the local entanglement entropy will be uniform at each lattice site for a system with translation invariance, it suffices to calculate the real-space averaged entanglement entropy \(S_\text{EE}^{(1)}\). The corresponding multipartite measures \(\bar I_n\) involve collections of lattice sites. We write such a measure as
 \begin{equation}\begin{aligned}
-	S_\text{EE}^\text{loc} = \frac{1}{N}\sum_{{\bm r}}\left[S_\text{EE}({\bm r}_d + {\bm r}) - S_\text{EE}^{(0)}({\bm r}_d + {\bm r})\right] ~,
+	\bar I_n &= \frac{(N-n)! n!}{N!} \frac{1}{N}\sum_{I(\bm r_d)} \sum_{B^{n-1}(\bm r_d)} I_n(I(\bm r_d); B^{n-1}(\bm r_d)),
 \end{aligned}\end{equation}
-where \({\bm r}_d\) is the impurity site position, \({\bm r}\) is the distance of a conduction bath site from the impurity site (can be zero), and \(S_\text{EE}({\bm r}_d + {\bm r})\) is the entanglement entropy, calculated within the impurity model, at the locatiom \({\bm r}_d + {\bm r}\). \(S^{(0)}_\text{EE}({\bm r}_d + {\bm r})\) is the same entanglement entropy, but calculated for an impurity model with vanishing impurity-bath hybridisation and bath interaction.
-
-\subsubsection{Momentum-space entanglement}
-Entanglement measures in \(k-\)space can provide valuable information regarding the Fermi surface structure and the nature of gapless excitations proximate to it. The most elementary measure is the entanglement entropy \(S_\text{EE}({\bm q})\) of a single excitation carrying momentum \({\bm q}\). Unlike \(S_\text{EE}^\text{loc}\), this does not involve an average, and involves a single computation:
+where \(I(\bm r_d)\) sums over all lattice sites in the form of an impurity site and \(B^{n-1}(\bm r_d)\) considers all possible subsets of size \(n-1\) of the remaining bath sites. Together, this choice corresponds to an auxiliary model with the impurity placed at \(\bm r_d\). The additional factor of \(1/N\) takes care of the overcounting arising from each choice appearing in \(N\) auxiliary models. We can therefore write the multipartite information as an average over auxiliary models, each auxiliary model contributing an average \(I_n\) over its bath sites:
 \begin{equation}\begin{aligned}
-	\tilde S_\text{EE}({\bm q}) = S_\text{EE}({\bm q}) - S_\text{EE}^{(0)}({\bm q})~.
+	\bar I_n &= \frac{n}{N^2} \sum_{\bm r_d} I_n^{(\text{tot})}(\bm r_d)~.
 \end{aligned}\end{equation}
-It is possible to improve this by considering inter-auxiliary model contributions in the reduced density matrix \(\rho({\bm q})\). On the lattice model, \(\rho({\bm q})\) is defined as
-\begin{equation}\begin{aligned}\label{SEE-k}
-	\rho({\bm q}) = \text{Tr}_{\bm q}\left[\ket{\Psi_\text{gs}}\bra{\Psi_\text{gs}}\right] ~,
+The quantity \(I_n^{(\text{tot})}(\bm r_d)\) is defined as \(I_n^{(\text{tot})}(\bm r_d) = \frac{(N-n)! (n-1)!}{(N-1)!} \sum_{B^{n-1}(\bm r_d)} I_n(I(\bm r_d); B^{n-1}(\bm r_d))\). By translation invariance, such a measure will be uniform across auxiliary models and it suffices to calculate the measure for a single auxiliary model located at a reference point \(\bm r_d\); the whole expression therefore simplifies to
+\begin{equation}\begin{aligned}
+	S_\text{EE}^{(1)} &= \frac{1}{N}\sum_{n=2}^N (-1)^{n} \binom{N - 1}{n - 1} I_n^{(\text{tot})}(\bm r_d) = \frac{1}{N}\sum_{n=2}^N (-1)^{n} \sum_{B^{n-1}(\bm r_d)} I_n(I(\bm r_d); B^{n-1}(\bm r_d))~.
 \end{aligned}\end{equation}
-where \(\text{Tr}_{\bm q}\left[\cdot\right]\) is the partial trace over the Hilbert space of \({\bm q}\), and \(\ket{\Psi_\text{gs}}\) is the tiled ground state. Using eq.~\ref{groundstateProposal}, we can write the ground state in terms of those of the auxiliary model. These leads to two classes of terms, one purely within a single auxiliary model ground state \(\ket{\psi_\text{gs}}\), and the other involving transitions across auxiliary models:
-\begin{equation}\begin{aligned}\label{RDMTiled}
-	\rho({\bm q}) \sim \text{Tr}_{\bm q}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d)}\right] + \frac{1}{N}\text{Tr}_{\bm q}\sum_{{\bm r}}\left[\ket{\psi_\text{gs}({\bm r}_d)}\bra{\psi_\text{gs}({\bm r}_d + {\bm r})}\right]~,
-\end{aligned}\end{equation}
-where \(\ket{\psi_\text{gs}({\bm r}_d)}\) is a reference auxiliary model ground state, and \(\ket{\psi_\text{gs}({\bm r}_d + {\bm r})}\) sums over other auxiliary models at increasing distances from this reference model. The \(\sim\) indicates that the RDM needs to be normalised. The first term leads to the expression in eq.~\ref{SEE-k}, while the second term can be used to improve this estimate. Away from any quantum critical points, the localised nature of the impurity-bath hybridisation ensures that impurity correlations decay exponentially away from the transition. This ensures that the second term is very small away from a critical point. We therefore restrict ourselves to just the first term in the present work.
 
-
+For example, truncating the summation to \(n=3\), we have the explicit expression
+\begin{equation}\begin{aligned}
+	S_\text{EE}^{(1)} &= \frac{N-1}{N}I_2^{(\text{tot})}(\bm r_d) - \frac{(N-1)(N-2)}{2N}I_3^{(\text{tot})}(\bm r_d)
+\end{aligned}\end{equation}
