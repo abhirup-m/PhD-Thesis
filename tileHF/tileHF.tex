@@ -72,9 +72,8 @@ Substituting into the expression for the lattice Greens function, we get
 Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function, in real-space:
 \begin{equation}\begin{aligned}
 	G&_\text{loc}(\omega)\\
-	=&~ \mathcal{G}(d\sigma; \omega) \\
+	=&~ \mathcal{G}(d\sigma; \omega) +\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)\\
 						 &+ \sum_{\bm k, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
-						   &+\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)  \\
 						   &+ \sum_{\bm k, \bm q, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
 \end{aligned}\end{equation}
 
@@ -89,6 +88,12 @@ In the limit of large \(U_\alpha\), we carry out a Schrieffer-Wolff transformati
 \begin{equation}\begin{aligned}
 	H_\text{aux} &= \sum_{{\bf k},\sigma,\alpha}\epsilon_{{\bf k},\alpha}n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{2}J_\alpha\sum_{\sigma,\sigma^\prime}{\bf S}_\alpha \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} - \frac{W_\alpha}{2} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.
 \end{aligned}\end{equation}
+The Kondo coupling and bath interaction acquire \(k-\)dependence:
+\begin{equation}\begin{aligned}
+	J({\bf k}, {\bf q}) &= \frac{J}{2}\left[\cos({\bf k}_x - {\bf q}_x) + \cos({\bf k}_y - {\bf q}_y)\right]~,\\
+	W({\bf k}, {\bf q}, {\bf k}^\prime, {\bf q}^\prime) &= \frac{W}{2}\left[\cos({\bf k}_x - {\bf q}_x + {\bf k}^\prime_x - {\bf q}^\prime_x) + \cos({\bf k}_y - {\bf q}_y + {\bf k}^\prime_y - {\bf q}^\prime_y)\right]~.
+\end{aligned}\end{equation}
+The particle-hole transformed state \(\bar{\bf q}\) associated with \({\bf q}\) is defined as \(\bar {\bf q} = {\bf q} + \left(\pi, \pi\right)\) if \({\bf q}\) is in the first or third quadrant and \({\bf q} + \left(\pi, -\pi\right)\) is in the second or fourth quadrant.
 
 In order to study the low-energy physics of the impurity model, we iteratively integrate out high-energy degrees of freedom using the unitary RG method. Let the momentum states being decoupled from the two layers be \(\ket{{\bf q},\sigma,f}\) and \(\ket{{\bf q},\sigma,d}\) if they are above the Fermi energy (unoccupied in the low-energy configuration) and \(\ket{\bar{\bf q},\sigma,f}\) and \(\ket{\bar{\bf q},\sigma,d}\) if they are below the Fermi energy (occupied in the low-energy configuration)
 For every shell of conduction bath states of width \(\Delta D\) integrated out, the Hamiltonian couplings renormalise by folding in the effects of virtual excitations to these states. We already have the renormalisation group equations for the couplings \(J_\alpha\) in the case of \(J=0\):
@@ -114,7 +119,8 @@ Using these relations, we can write
 \end{aligned}\end{equation}
 Noting that only the first operator renormalises the Kondo interaction, we get the following modified RG equation for the Kondo coupling \(J_\alpha\):
 \begin{equation}\begin{aligned}
-	\frac{\Delta J_\alpha}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + 3J/4} + \frac{3}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - J/4}\right)~,
+	\frac{\Delta J_\alpha}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + 3J/4}\right.\\
+																																																										   \left. + \frac{3}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - J/4}\right)~,
 \end{aligned}\end{equation}
 
 We now turn to the renormalisation of \(J\), arising from hybridisation of \(f-\) and \(d-\)layers. In order to capture coherent scattering processes between the two layers, we project onto the following rotated basis of excited states:
@@ -145,7 +151,8 @@ where
 
 In eq.~\ref{rgEqtn1}, since the first process is an excitation into a \(d-\)state and the second process is a de-excitation from an \(f-\)state, the expression can be simplified into
 \begin{equation}\begin{aligned}\label{rgEqtn2}
-	\braket{L | S_f^+ c^\dagger_{{\bf q-}_\downarrow,f}c_{{\bf q+}\uparrow,f} \mathcal{P({\bf q})}_H G \mathcal{P({\bf q})}_H S_d^- c^\dagger_{{\bf q+}\uparrow,d}c_{{\bf q-}\downarrow,d} | L } = S_f^+ S_d^- \braket{H_f | \mathcal{P({\bf q})}_H G \mathcal{P({\bf q})}_H | H_d} = \frac{1}{2}\left(G_f + G_d\right) S_f^+ S_d^-~.
+	\braket{L | S_f^+ c^\dagger_{{\bf q-}_\downarrow,f}c_{{\bf q+}\uparrow,f} \mathcal{P({\bf q})}_H G \mathcal{P({\bf q})}_H S_d^- c^\dagger_{{\bf q+}\uparrow,d}c_{{\bf q-}\downarrow,d} | L } &= S_f^+ S_d^- \braket{H_f | \mathcal{P({\bf q})}_H G \mathcal{P({\bf q})}_H | H_d} \\
+																																																 &= \frac{1}{2}\left(G_f + G_d\right) S_f^+ S_d^-~.
 \end{aligned}\end{equation}
 The net Hamiltonian renormalisation is finally a sum over the contribution from each mode:
 \begin{equation}\begin{aligned}
@@ -158,140 +165,10 @@ Converting the sums to integrals (assuming a density of states \(\rho({\bf q})\)
 
 The time-reversed of this process can be obtained simply by exchanging the \(d-\)interaction with the \(f-\)interaction. Since the renormalisation itself is symmetric, the contribution is equal to what we obtained here. The total renormalisation in the coupling for the term \(S_f^+ S_d^-\) is therefore
 \begin{equation}\begin{aligned}
-	\frac{\Delta J}{\Delta D} &= \frac{1}{2}J_f J_d \int_{UV} d{\bf q} ~\rho({\bf q}) J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\left(G_f({\bf q}) + G_d({\bf q})\right) \\
+	\frac{\Delta J}{\Delta D} &= \frac{1}{2} \int_{UV} d{\bf q} ~\rho({\bf q}) J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\left(G_f({\bf q}) + G_d({\bf q})\right) \\
 							  &= \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) \left[\frac{J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})}{\omega - \frac{1}{2}\bar\epsilon_f({\bf q}) + \frac{1}{2}J_f({\bf q}) + W_f({\bf q}) - \frac{1}{4}J} + \frac{J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})}{\omega - \frac{1}{2}\bar\epsilon_d({\bf q}) + \frac{1}{2}J_d({\bf q}) + W_d({\bf q}) - \frac{1}{4}J}\right]~,
 \end{aligned}\end{equation}
 where \(\bar\epsilon_\alpha({\bf q}) = \epsilon_f({\bf q}) - \epsilon_f(\bar{\bf q})\) is the total excitation energy for the pair of states \({\bf q},\bar{\bf q}\).
-
-\section{Symmetries preserved under renormalisation}
-By Fourier transforming the real-space forms of the Kondo coupling \(J_f\) and bath interaction \(W\), we get their \(k-\)space forms:
-\begin{equation}\begin{aligned}\label{momentumForm}
-	J_f({\bf k}, {\bf q}) &= \frac{J_f}{2}\left[\cos(k_x - q_x) + \cos(k_y - q_y)\right]~,\\
-	W({\bf k}, {\bf q}, {\bf k}^\prime, {\bf q}^\prime) &= \frac{W}{2}\left[\cos(k_x - q_x + k^\prime_x - q^\prime_x) + \cos(k_y - q_y + k^\prime_y - q^\prime_y)\right]~.
-\end{aligned}\end{equation}
-These are of course the unrenormalised forms; the Kondo coupling \(k-\)space dependence can evolve during the RG flow. The \(k-\)space sensitive form of the Kondo coupling and conduction bath interactions are invariant under symmetry transformations in the Brillouin zone.\\
-
-\par\noindent{\bf Translation by a nesting vector into opposite quadrant}\\
-Define the reciprocal lattice vectors (RLVs) \({\bf Q}_1 = \left(\pi, \pi\right)\) and \({\bf Q}_2 = \left(\pi, -\pi\right)\). The bare Kondo coupling in eq.~\ref{momentumForm} is (anti)symmetric under translation of (one)both momentum by either of the two RLVs:
-\begin{equation}\begin{aligned}\label{oppositeQ}
-	J_f({\bf k} + {\bf Q}_i, {\bf q}) = J_f({\bf k}, {\bf q} + {\bf Q}_i) = - J_f({\bf k}, {\bf q})~;~i = 1,2~;\\
-	J_f({\bf k} + {\bf Q}_i, {\bf q} + {\bf Q}_j) = J_f({\bf k}, {\bf q})~;~i=1,2~~j=1,2~.\\
-\end{aligned}\end{equation}
-These symmetries survive under the renormalisation group transformations. For the first transformation (under which the Kondo coupling is antisymmetric), note that each of the terms on the right hand side of the RG equation for \(J_f\) (eq.~\ref{rgEquation}) are antisymmetric as well - the third term because it's the Kondo coupling itself which automatically has the symmetry, the second term (involving \(W\)) because \(W\) is also antisymmetric under transformation of one momentum, and the first term because only one of the two \(J_f\) in the product will transform (to obtain a minus sign). This ensures that the entirety of the renormalisation transforms antisymmetrically. A very similar argument shows that the symmetry under transformation of both momenta also survives under renormalisation.\\
-
-\par\noindent{\bf Translation into adjacent quadrant}\\
-We will make use of another symmetry. Consider two momenta \({\bf k}\) and \({\bf q}\) in the first and second quadrant, with the same \(y-\)component but opposite \(x-\)components:
-\begin{equation}\begin{aligned}
-	{\bf k}_y = {\bf q}_y, ~ {\bf k}_x = -{\bf q}_x~.
-\end{aligned}\end{equation}
-We refer to \({\bf q}\) as \({\bf \bar k}\) to signal the fact the above relation between the two momenta. We first consider the bare interaction, where we have the symmetry
-\begin{equation}\begin{aligned}\label{adjacent}
-	J_f({\bf k}, {\bf \bar k}^\prime) = J_f({\bf \bar k}, {\bf k}^\prime),~\\
-	J_f({\bf \bar k}, {\bf \bar k}^\prime) = J_f({\bf k}, {\bf k}^\prime)~.
-\end{aligned}\end{equation}
-We now argue that these symmetries are preserved during the RG flow. Using the properties \(W_{{\bf \bar q}, {\bf k}_2, {\bf \bar k}_1, {\bf q}} = W_{{\bf \bar q}, {\bf \bar k}_2, {\bf k}_1, {\bf q}}\) and  \(J_f^{(j)}\left({\bf k}_2,{\bf q}\right) J_f^{(j)}\left({\bf q},{\bf \bar k}_1\right) = J_f^{(j)}\left({\bf \bar k}_2,{\bf \bar q}\right) J_f^{(j)}\left({\bf \bar q},{\bf k}_1\right)\) and the fact that \({\bf \bar q}\) lies on the same isoenergy shell as \({\bf q}\) and is already part of the summation over PS in eq.~\ref{rgEquation}, we can see that \(\Delta J_f^{(j)}\left({\bf \bar k}_1, {\bf k}_2\right) = \Delta J_f^{(j)}\left({\bf k}_1, {\bf \bar k}_2\right)\). A similar line of argument shows that \(\Delta J_f^{(j)}\left({\bf \bar k}_1, {\bf \bar k}_2\right) = \Delta J_f^{(j)}\left({\bf k}_1, {\bf k}_2\right)\).
-
-
-\section{Reduction to Truncated 1D Representation}
-At the renormalisation group fixed point, we have a renormalised theory for the interaction of the impurity spin \(S_f\) with the \(f-\)layer Fermi surface:
-\begin{equation}\begin{aligned}
-	H^* = \sum_{\alpha,\beta}{\bf S}_f\cdot{\boldsymbol\sigma}_{\alpha,\beta}\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}f_{{\bf q},\beta}~.
-\end{aligned}\end{equation}
-We will now obtain a more minimal representation of this interaction. Each momentum label is summed over all four quadrants \(\mathcal{Q}_1\) through \(\mathcal{Q}_4\); eq.~\ref{oppositeQ} relates \(\mathcal{Q}_1\) with \(\mathcal{Q}_3\) and \(\mathcal{Q}_2\) with \(\mathcal{Q}_4\):
-\begin{equation}\begin{aligned}
-	\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}f_{{\bf q},\beta} 
-	&= \sum_{\bf q}\left[\sum_{{\bf k} \in \mathcal{Q}_1,\mathcal{Q}_2} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha} + \sum_{{\bf k} \in \mathcal{Q}_3,\mathcal{Q}_4} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}\right] f_{{\bf q},\beta}\\
-	&= \sum_{\bf q}\left[\sum_{{\bf k} \in \mathcal{Q}_1,\mathcal{Q}_2} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha} + \sum_{{\bf k} \in \mathcal{Q}_1} J_f^*({\bf k - Q_1},{\bf q}) f^\dagger_{{\bf k - Q_1},\alpha} + \sum_{{\bf k} \in \mathcal{Q}_2} J_f^*({\bf k + Q_2},{\bf q}) f^\dagger_{{\bf k + Q_2},\alpha}\right] f_{{\bf q},\beta}\\
-	&= \sum_{\bf q}\left[\sum_{{\bf k} \in \mathcal{Q}_1} J_f^*({\bf k},{\bf q}) \left(f^\dagger_{{\bf k},\alpha} - f^\dagger_{{\bf k - Q_1},\alpha}\right) + \sum_{{\bf k} \in \mathcal{Q}_2} J_f^*({\bf k},{\bf q}) \left(f^\dagger_{{\bf k},\alpha} - f^\dagger_{{\bf k + Q_2},\alpha}\right) \right] f_{{\bf q},\beta}~.
-\end{aligned}\end{equation}
-For ease of notation, we define new fermionic operators \(A_{{\bf k},\sigma}\):
-\begin{equation}\begin{aligned}\label{defineA}
-	A_{{\bf k},\sigma,\pm} = \begin{cases}
-		\frac{1}{\sqrt{2}}\left(f_{{\bf k},\sigma} \pm f_{{\bf k - Q_1},\sigma}\right), {\bf k}\in\mathcal{Q}_1~,\\
-		\frac{1}{\sqrt{2}}\left(f_{{\bf k},\sigma} \pm f_{{\bf k + Q_2},\sigma}\right), {\bf k}\in\mathcal{Q}_2~,
-	\end{cases}
-\end{aligned}\end{equation}
-which satisfy the appropriate algebra: \(\left\{A_{{\bf k},\sigma, p}, A_{{\bf k}^\prime,\sigma^\prime, p^\prime}\right\} = \delta_{{\bf k},{\bf k}^\prime}\delta_{\sigma,\sigma^\prime}\delta{p, p^\prime}\), with \(p=\pm\) denoting the flavours of the \(A\) fields. Note that only the \(p=-1\) flavour enters the Hamiltonian. Henceforth, we drop the label \(\pm\) and it is implied that \(A\) refers to the \(p=-1\) variant.
-
-Decomposing the sum over \({\bf q}\) in a similar fashion, we get
-\begin{equation}\begin{aligned}\label{kondoAB}
-	\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}f_{{\bf q},\beta} 
-	&= 2\sum_{{\bf k}, {\bf q} \in \mathcal{Q}_1, \mathcal{Q}_2} J_f^*({\bf k},{\bf q}) A^\dagger_{{\bf k},\alpha}A_{{\bf q},\beta}~.
-\end{aligned}\end{equation}
-
-\section{Correlations in truncated representation}
-In order to calculate equal-time correlations (such as \(\braket{S_d^+ f^\dagger_{{\bf k}\downarrow}f_{{\bf k}^\prime \uparrow}} \)), we use eq.~\ref{defineA} to express the bare fields \(f_{{\bf k},\sigma}\) in terms of the new fields \(A_{{\bf k},\sigma,\pm}\) and \(B_{{\bf k},\sigma,\pm}\):
-\begin{equation}\begin{aligned}
-	f_{{\bf k},\sigma} = \frac{1}{\sqrt{2}}\left(A_{{\bf k},\sigma, +} + A_{{\bf k},\sigma,-}\right)~,{\bf k} \in {Q}_1, Q_2\\
-	f_{{\bf k} - {\bf Q}_1,\sigma} = \frac{1}{\sqrt{2}}\left(A_{{\bf k},\sigma, +} - A_{{\bf k},\sigma,-}\right)~,{\bf k} \in {Q}_1\\
-	f_{{\bf k} + {\bf Q}_2,\sigma} = \frac{1}{\sqrt{2}}\left(A_{{\bf k},\sigma, +} - A_{{\bf k},\sigma,-}\right)~,{\bf k} \in {Q}_2\\
-\end{aligned}\end{equation}
-where the four relations act on operators in four quadrants. These relations allow us to express correlations \(F_{k_i, k_j} = \braket{S_d^+ c^\dagger_{k_i, \uparrow}c_{k_j, \downarrow}}\) for the bare fields \(f\) in terms of the rotated fields. Using the fact that the Hamiltonian does not couple the fields \(B_{+}\) and \(A_{+}\), we have
-\begin{equation}\begin{aligned}
-	F_{k_1, k_1} = F_{k_3, k_3} = -F_{k_1, k_3} = \frac{1}{2}\braket{S_d^+ A^\dagger_{k_1,\downarrow,-}A_{k_1,\uparrow,-})}~,\\
-	F_{k_2, k_2} = F_{k_4, k_4} = -F_{k_2, k_4} = \frac{1}{2}\braket{S_d^+ A^\dagger_{k_2,\downarrow,-}A_{k_2,\uparrow,-})}~,\\
-	F_{k_1, k_2} = F_{k_3, k_4} = -F_{k_1, k_4} = -F_{k_2, k_3} = \frac{1}{2}\braket{S_d^+ A^\dagger_{k_1,\downarrow,-}A_{k_1,\uparrow,-})}~,
-\end{aligned}\end{equation}
-where the momentum state \(k_i\) belongs to the quadrant \(Q_i\).
-
-\section{Effective Star Graph Representation of Kondo Interaction}
-To make computation less intensive, we want to make the Hamiltonian in eq.~\ref{kondoAB} sparser, by going to a star graph representation where each node of the graph couples only with the impurity spin (central node) and not to the other nodes of the graph. We therefore consider a rotated basis of excitations
-\begin{equation}\begin{aligned}\label{gammaDef}
-	\gamma_{i,\sigma}^\dagger = \sum_{k}\Lambda_{i, k} A^\dagger_{k,\sigma}~,\text{ where }~\sum_{k}\Lambda^*_{i, k}\Lambda_{j, k} = \delta_{i,j}~.
-\end{aligned}\end{equation}
-These fermions of course satisfy the appropriate algebra:
-\begin{equation}\begin{aligned}
-	\left\{\gamma_{i,\sigma}, \gamma^\dagger_{j,\sigma^\prime}\right\} = \sum_{k, q}\Lambda^*_{i, k}\Lambda_{j, q} \left\{A_{k,\sigma}, A_{q,\sigma^\prime}^\dagger\right\} = \delta_{i, j}\delta_{\sigma,\sigma^\prime}~.
-\end{aligned}\end{equation}
-In order to calculate the coefficients \(\Lambda_{i, k}\), we impose the star graph simplification condition described above:
-\begin{equation}\begin{aligned}
-	\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) A^\dagger_{{\bf k},\alpha}A_{{\bf q},\beta} = \sum_i K_i \gamma^\dagger_{i,\alpha}\gamma_{i,\beta}~,
-\end{aligned}\end{equation}
-where \(K_i\) are the eigenvalues of the Kondo coupling matrix \(J_f^*({\bf k},{\bf q})\). Substituting the definition of the \(\gamma\) fields (eq.~\ref{gammaDef}) leads to the equation
-\begin{equation}\begin{aligned}\label{lambdaEigen}
-	J_f^*({\bf k},{\bf q}) = \sum_i \Lambda_{k, i} K_i \Lambda^\dagger_{i,q} \implies \mathcal{J} = \Lambda K \Lambda^\dagger~,
-\end{aligned}\end{equation}
-where \(\mathcal{J}\) is the Kondo coupling matrix with matrix elements \(J_f^*({\bf k},{\bf q})\), \(K\) is a diagonal matrix with the eigenvalues (\(K_i\)) of \(\mathcal{J}\) along its diagonal, and \(\Lambda\) is the matrix \(\Lambda_{i, k}\) (the rotated indices \(i\) along the row, and the earlier momentum indices along the column). From eq.~\ref{lambdaEigen}, it is clear that since \(\mathcal{J}\) is Hermitian, the matrix \(\Lambda\) is simply the unitary matrix which diagonalises the Kondo matrix \(\mathcal{J}\):
-\begin{equation}\begin{aligned}
-\Lambda^\dagger \mathcal{J} \Lambda = K~.
-\end{aligned}\end{equation}
-
-
-The prescription is therefore as follows. We compute the unitary transformation \(\Lambda\) that diagonalises \(\mathcal{J}\) and obtain the eigenvalues \(\left\{K_i\right\}\). Using the eigenvalues, we work with the sparser Hamiltonian
-\begin{equation}\begin{aligned}
-	\vec{S}_f \cdot \sum_{\alpha,\beta}\vec{\sigma}_{\alpha,\beta}\sum_i K_i \gamma^\dagger_{i,\alpha}\gamma_{i,\beta}~.
-\end{aligned}\end{equation}
-If we have to calculate a certain correlation \(C_{k,q}\), we instead calculate the correlation matrix \(\tilde C_{i,j}\), and then transform back using the unitary transformation:
-\begin{equation}\begin{aligned}
-	C = \Lambda \tilde C \Lambda^\dagger~.
-\end{aligned}\end{equation}
-
-
-
-
-
-\section{RG flow simulation on the \(d=\infty\) Bethe lattice at half-filling}
-\includegraphics[width=\textwidth]{bilayerHubbard.pdf}
-
-\section{RG flow simulation on the 2D square lattice}
-Kondo coupling and bath interaction acquire \(k-\)dependence:
-\begin{equation}\begin{aligned}
-	J({\bf k}, {\bf q}) &= \frac{J}{2}\left[\cos({\bf k}_x - {\bf q}_x) + \cos({\bf k}_y - {\bf q}_y)\right]~,\\
-	W({\bf k}, {\bf q}, {\bf k}^\prime, {\bf q}^\prime) &= \frac{W}{2}\left[\cos({\bf k}_x - {\bf q}_x + {\bf k}^\prime_x - {\bf q}^\prime_x) + \cos({\bf k}_y - {\bf q}_y + {\bf k}^\prime_y - {\bf q}^\prime_y)\right]~.
-\end{aligned}\end{equation}
-The particle-hole transformed state \(\bar{\bf q}\) associated with \({\bf q}\) is defined as \(\bar {\bf q} = {\bf q} + \left(\pi, \pi\right)\) if \({\bf q}\) is in the first or third quadrant and \({\bf q} + \left(\pi, -\pi\right)\) is in the second or fourth quadrant.
-
-We first introduce a non-zero chemical potential in the conduction bath of the two layer:
-\begin{equation}\begin{aligned}
-	H_\text{aux} &= \sum_{{\bf k},\sigma,\alpha}\left(\epsilon_{{\bf k},\alpha} - \mu\right)n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{2}J_\alpha\sum_{\sigma,\sigma^\prime}{\bf S}_\alpha \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} - \frac{W_\alpha}{2} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.
-\end{aligned}\end{equation}
-The effect of this is to split the RG equation into contributions from particle and hole sectors:
-\begin{equation}\begin{aligned}
-	&\frac{\Delta J_\alpha}{\Delta D} =\\
-	& \frac{1}{2}\int_{PS} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1/4}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 + 3J/4} + \frac{3/4}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 - J/4}\right)\\
-									  &+ \frac{1}{2}\int_{HS} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1/4}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 + 3J/4} + \frac{3/4}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 - J/4}\right)~,
-\end{aligned}\end{equation}
-where \(PS\) and \(HS\) integrate over the particle and hole sectors of the excited states (where the excited states are occupied and unoccupied respectively).
 
 Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
 \begin{equation}\begin{aligned}
@@ -315,38 +192,36 @@ where \({\bf J}\) and \(\mathcal{\bf G}\) are vectors defined by the elements \(
 	\mathcal{\bf G}[q] = \rho({\bf q}) \left[\frac{1}{\omega - \frac{1}{2}\bar\epsilon_f({\bf q}) + \frac{1}{2}J_f({\bf q}) + W_f({\bf q}) - \frac{1}{4}J} + \frac{1}{\omega - \frac{1}{2}\bar\epsilon_d({\bf q}) + \frac{1}{2}J_d({\bf q}) + W_d({\bf q}) - \frac{1}{4}J}\right]~.
 \end{aligned}\end{equation}
 
-\section{Mapping Correlations from Auxiliary Model to Lattice Model}
-We follow a similar procedure as the one laid out in the earlier work. Using Bloch's theorem, the eigenstates for the tiled lattice model can be expressed as a superposition of the "local" eigenstates of the auxiliary model. Let \(\ket{\psi_\text{gs}({\bf r}_d)}\) be the groundstate of the bilayer impurity model with the \(f-\) and \(d-\)impurity sites located at \({\bf r}_d\) (only tracking the horizontal position). The low-lying eigenstates of the tiled model for the total crystal momentum \({\bf k}\) are then given by
-\begin{equation}\begin{aligned}\label{tiledState}
-	\ket{\Psi_{\bf k}} = \frac{1}{\sqrt N}\sum_{\bf r_d}e^{i {\bf k} \cdot {\bf r}_d}\ket{\psi_\text{gs}({\bf r}_d)}~.
-\end{aligned}\end{equation}
+\section{Renormalisation Group Flows of Kondo Couplings: RG Phase Diagram}
+\begin{figure}[!t]
+	\includegraphics[width=\textwidth]{PD_33.pdf}
+	\caption{RG phase diagrams for various Kondo couplings: \(f-\)layer (left), \(d-\)layer (middle) and inter-layer (right). For each plot, the background color (quantified by the right colorbar) tracks the fixed point value of the coupling as a function of the inter-layer couplings \(J_\perp\) and the \(f-\)layer bath interaction \(|W_f|\). The marker color complements this by tracking whether the coupling is relevant, intermediate-coupling or irrelevant in the RG sense, by taking the values 1, \(1/2\) or 0 respectively.}
+	\label{couplingRG}
+\end{figure}
+We first analyse the model by obtaining unitary RG flows of three kinds of Kondo couplings. Fig.~\ref{couplingRG} shows the fixed point values of the couplings under renormalisation to a low-energy theory. We view these values as a function of the \(f-\)layer bath interaction \(W_f\) and inter-layer Kondo coupling \(J_\perp\). In each panel, the right (left) colorbar quantifies the background (marker) color of the plot. The background displays the fixed point value of each coupling whereas the marker color tracks whether the couplings is relevant (1), intermediate coupling (0.5) or irrelevant (0). 
 
-We first consider intra-layer equal-time correlators, of the form
-\begin{equation}\begin{aligned}\label{intraCorrelator}
-	C_{\mathcal{O}_\alpha}(\Delta) = \braket{\Psi_{\bf k} | \mathcal{O}_\alpha({\bf r + \Delta})\mathcal{O}^\dagger_\alpha({\bf r}) | \Psi_{\bf k}}~,
-\end{aligned}\end{equation}
-where \(\alpha\) can be \(f\) or \(d\) and indicates the layer in which the correlation is being calculated (or equivalently, the layer in which the operators act).
+The Kondo coupling \(J_d\) (middle panel) of the \(d-\)layer remains relevant for the entirety of the chosen parameter regime. The Kondo coupling \(J_f\) (left panel) of the \(f-\)layer becomes RG-irrelevant for larger values of \(|W_f|\); this leads to an in-plane Mott transition of the kind observed in our earlier work, where the local Fermi liquid excitations of the \(f-\)impurity give way to a pseudogapped non-Fermi liquid Mott metal phase which ultimately destabilises into a local moment phase. The RG flow of \(J_f\) does not appear to be significantly affected by the variation of \(J_\perp\). Concomitant with the irrelevance of \(J_f\) under increasing \(|W_f|\), the inter-plane coupling \(J_\perp\) (right panel) becomes RG-relevant, as seen from the darkening markers as we go to higher \(|W_f|\). 
 
-Following arguments identical to the ones laid out in the previous work, we substitute eq.~\ref{tiledState} into eq.~\ref{intraCorrelator} and use global translation operators to transfer the sum over the local eigenstates into a sum over the operators, allowing us to compute correlations within a single auxiliary model:
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}_\alpha}(\Delta) = \frac{1}{N}\sum_{{\bf r}_1, {\bf r}_2}\braket{\psi_\text{gs}({\bf r}_2 + {\bf r}_c) | \mathcal{O}_\alpha({\Delta + {\bf r}_1})\mathcal{O}^\dagger_\alpha({\bf r}_1) | \psi_\text{gs}({\bf r}_c)}e^{-i{\bf k}\cdot{\bf r}_2}~.
-\end{aligned}\end{equation}
+These simulations motivate an RG-based phase diagram with the following regimes: (i) weak \(J_\perp\), weak \(|W_f|\): decoupled metallic layers, each layer participating in transport independently, (ii) strong \(J_\perp\), strong \(|W_f|\): Kondo insulator regime, where the local moments of the \(f-\)layer hybridise with the itinerant electrons of the \(d-\)layer to form a band insulator with the chemical potential situated in the hybridisation gap, and (iii) weak \(J_\perp\), strong \(|W_f|\): the so-called RKKY regime, where the \(f-\)layer forms local moments which decouple from the \(d-\)layer and are then free to order magnetically, and (iv) strong \(J_\perp\), weak \(|W_f|\): this is similar to the Kondo insulator regime, except here the \(f-\)electrons remain itinerant and it is they who hybridise with the \(d-\)electrons to again form two bands separated by a hybridisation gap.
 
-Using the treatment laid out in the previous work, we can extract an intra-auxiliary model component from the full expression (by setting \({\bf r}_2 = 0\)):
-\begin{equation}\begin{aligned}
-\frac{1}{N}\sum_{{\bf r}_1}\braket{\psi_\text{gs}({\bf r}_c) | \mathcal{\tilde O}_\alpha({\Delta + {\bf r}_1}) | \psi_\text{gs}({\bf r}_c)} \braket{\psi_\text{gs}({\bf r}_c) | \mathcal{\tilde O}^\dagger_\alpha({\bf r}_1) | \psi_\text{gs}({\bf r}_c)}~.
-\end{aligned}\end{equation}
-The modified excitation operators are generally defined as
-\begin{equation}\begin{aligned}\label{operatorTmatrix}
-	\mathcal{\tilde O}_\alpha({\bf r}) = \mathcal{O}_\alpha({\bf r})\mathcal{O}^\dagger(\alpha) \mathcal{P}_\text{gs} ~,
-\end{aligned}\end{equation}
-where \(\mathcal{O}^\dagger(d)\) is the hermitian conjugate of the correlation operator \(\mathcal{O}\), but applied on the impurity sites. This therefore constitutes a time-reversed scattering process on the impurity site relative to the process in the bath. The operator \(\mathcal{P}_\text{gs}\) projects onto the ground state of the auxiliary model, since we are interested in ground state correlations. The operator multiplying the old correlation operator represents excitation of the impurity site, and ensures that the bath and impurity excitation processes take place coherently. The projector ensures that only tripartite correlations between the impurity site and the two momentum states are captured by the correlation, which is what's desired within the tiling method.
+\section{Results at half-filling}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{locCorr_33_1299.pdf}
+	\caption{Left: Real-space spin correlations for the auxiliary model. Background colour (right colourbar) represents that between the \(f-\)impurity and its nearest-neighbour sites, while the marker colour (left colourbar) represents that between the \(f-\)impurity and the \(d-\)impurity. While the former shrinks as \(J_\perp\) or \(|W_f|\) is increased, the latter grows. This marks a transfer of entanglement from intra-plane channel into inter-plane channel. Right: }
+\end{figure}
 
-For inter-layer correlations, we have
-\begin{equation}\begin{aligned}
-	C_{\mathcal{O}}(\Delta) = \braket{\Psi_{\bf k} | \mathcal{O}_{\bar\alpha}({\bf r + \Delta})\mathcal{O}^\dagger_\alpha({\bf r}) | \Psi_{\bf k}}~,
-\end{aligned}\end{equation}
-where \(\bar\alpha\) represents the layer opposite to \(\alpha\). An identical treatment leads to the following intra-auxiliary model contribution
-\begin{equation}\begin{aligned}
-	\frac{1}{N}\sum_{{\bf r}_1}\braket{\psi_\text{gs}({\bf r}_c) | \mathcal{\tilde O}_{\bar\alpha}({\Delta + {\bf r}_1}) | \psi_\text{gs}({\bf r}_c)} \braket{\psi_\text{gs}({\bf r}_c) | \mathcal{\tilde O}^\dagger_\alpha({\bf r}_1) | \psi_\text{gs}({\bf r}_c)}~.
-\end{aligned}\end{equation}
+\begin{figure}[!h]
+	\includegraphics[width=0.49\textwidth]{specFunc_node_+_33_1555.pdf}
+	\includegraphics[width=0.49\textwidth]{specFunc_node_-_33_1555.pdf}
+		\caption{Spectral functions of the tiled model, for excitations in the bonding (two on the left) and antibonding (two on the right) basis, defined by the Greens function \(G_{k,\pm} = G(k_d \pm k_f; \omega)\). There is no hybridisation for \(J_\perp=0\) (first and third plots), and the only effect of \(W_f\) is to shrink the height of the central resonance. Introducing a non-zero \(J_\perp\) splits the central resonance into an upper band (second from left) and a lower band (first from right). This leads to a Kondo insulator, where \(\omega=0\) resides inside the hybridisation gap.
+		}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.49\textwidth]{specFunc_node_d_33_1555.pdf}
+	\includegraphics[width=0.49\textwidth]{specFunc_node_f_33_1555.pdf}
+	\caption{Spectral functions \(A_d\) and \(A_f\) of the auxiliary model, for excitations in the \(d-\) and \(f-\)layers respectively. Both show a central Kondo resonance for \(J_\perp=0\) which splits into two bands upon adding a non-zero \(J_\perp\). Increasing \(|W_f|\) to large values gaps out the local Fermi liquid excitations of \(A_f\).
+	}
+\end{figure}

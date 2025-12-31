@@ -396,8 +396,7 @@ where we have used the fact that the location of the auxiliary model does not af
 \end{aligned}\end{equation}
 We also insert a complete basis of states of the auxiliary model at \(\bm r_d\), \(1 = \sum_n\ket{\psi_n(\bm r_d)}\bra{\psi_n(\bm r_d)}\), generating an overlap factor \(F_n\) as before:
 \begin{equation}\begin{aligned}
-&\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} \\
-&= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
 																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
 																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
 																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
@@ -406,10 +405,10 @@ where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^
 
 We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
 \begin{equation}\begin{aligned}\label{localTiledGreenF}
-	&G_\text{loc}(\omega) \\
-	&= \mathcal{G}(d\sigma; \omega) + \sum_{\nu} C_{\nu} \left[\mathcal{G}(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \sum_{\bf k}\mathcal{G}(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\nu})\right] + \sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega) ~,
+	G_\text{loc}(\omega) = \mathcal{G}(d\sigma; \omega - \epsilon_\text{loc}) + \sum_{\nu} C_{\nu} \left[\mathcal{G}(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \sum_{\bf k}\mathcal{G}(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\nu})\right] \\
+	+ \sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega) ~,
 \end{aligned}\end{equation}
-where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\). \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath. The coefficient \(C_\nu\) is given by \(C_\nu = \sum_{\bf k}C_{\nu,\bf k}\).
+where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\), and \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath. \(\epsilon_\text{loc} = \braket{n_{d\sigma}=0 | H_\text{1p} | n_{d\sigma}=0} - \braket{n_{d\sigma}=1 | H_\text{1p} | n_{d\sigma}=1}\), and the coefficient \(C_\nu\) is given by \(C_\nu = \sum_{\bf k}C_{\nu,\bf k}\).
 
 \subsubsection*{Non-local Greens function: \(\bm r \neq 0\)}
 We next consider the case of non-local Greens function, where the excitations propagate a non-zero distance \(\bm r\):
