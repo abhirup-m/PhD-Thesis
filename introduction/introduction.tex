@@ -1,33 +1,51 @@
 %! TEX root = thesis.tex
-\chapter{Introduction}\label{sec:Introduction}
+\chapter{Introduction: Mott Transitions and Kondo Breakdown}\label{sec:Introduction}
+The rich physics of Mott metal-insulator transitions in strongly correlated systems has been an active subject of study for quite some time~\cite{hubbard1963electron,Mott_RMP_1968,milligan_1985,imada1998metal}. Their appearance in various materials such as the nickelates, cuprates, iridates and manganites, among others, is marked by complex phase diagrams that display dramatic changes in properties across changes in filling and/or bandwidth, even at low temperatures. 
+The physics of Mott transitions is driven by the competition between two energy scales in the system: (i) the scale of itineracy, quantified by the bandwidth, and (ii) the scale of electron-electron repulsion. A Mott insulator arises when the electronic correlations are strong enough that low-energy electronic excitations become gapped, and the metallic valence band gets split into lower and upper bands; for an initially half-filled valence band, the lower band is filled at \(T=0\) while the upper band is vacant. Because of strong electronic repulsion, the electrons in the lower band form local moments which can show a variety of behaviour. This includes various symmetry-broken ground states such as an antiferromagnet~\cite{Lee_RMP_2006}, or symmetry-preserved states such as quantum spin liquids~\cite{Pustogow2018}. The physics of Mottness is also responsible for several very interesting phenomena, such as high-temperature superconductivity~\cite{Lee_RMP_2006}, non-Fermi liquids~\cite{Stewart2001RMP} and the various phases in magic-angle twisted bilayer graphene~\cite{Cao2018Mott,Cao2018}.
 
-\section{Metal-insulator transition arising from strong correlation}
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=\textwidth]{mottInsulator.pdf}
 	\caption{}
-	\label{}
+	\label{mottInsulator}
 \end{figure}
 
-The rich physics of Mott metal-insulator transitions in strongly correlated systems has been an active subject of study for quite some time~\cite{hubbard1963electron,Mott_RMP_1968,milligan_1985,imada1998metal}. Their appearance in various materials such as the nickelates, cuprates, iridates and manganites, among others, is marked by complex phase diagrams that display dramatic changes in properties across changes in filling and/or bandwidth, even at low temperatures. 
-The physics of Mott transitions is driven by the competition between two energy scales in the system: (i) the scale of itineracy, quantified by the bandwidth, and (ii) the scale of electron-electron repulsion. A Mott insulator arises when the electronic correlations are strong enough that low-energy electronic excitations become gapped, and the metallic valence band gets split into lower and upper bands; for an initially half-filled valence band, the lower band is filled at \(T=0\) while the upper band is vacant. Because of strong electronic repulsion, the electrons in the lower band form local moments which can show a variety of behaviour. This includes various symmetry-broken ground states such as an antiferromagnet~\cite{Lee_RMP_2006}, or symmetry-preserved states such as quantum spin liquids~\cite{Pustogow2018}. The physics of Mottness is also responsible for several very interesting phenomena, such as high-temperature superconductivity~\cite{Lee_RMP_2006}, non-Fermi liquids~\cite{Stewart2001RMP} and the various phases in magic-angle twisted bilayer graphene~\cite{Cao2018Mott,Cao2018}.
+\section{Metal-insulator transition arising from strong correlation}
+Initial attempts at explaining metal-insulator transitions was based on a non-interacting picture of electrons (through the work of Bethe, Sommerfeld, Bloch and Wilson among others); in such a picture, electronic bands can arise only from the scattering of electrons off the periodic lattice potential. One then distinguishes between metals and insulators at zero temperature by the position of the Fermi level \(E_F\) with respect to the bands: if \(E_F\) lies within a band gap, an integer number of bands will be completely filled and the system will be an insulator, whereas if \(E_F\) lies within one of the bands, the system will be a metal because there are vacant gapless excitations within the band. 
 
-There is ample evidence that a microscopic description of the interplay of such phases requires understanding the cooperative effect of a large number of particles.
+It was first pointed out by Boer and Verwey~\cite{Boer_1937} that certain insulators and semiconductors (such as nickel oxides) have a particle filling that, purely from band theory, would lead to partially filled bands. This poses a challenge because a partially filled band necessarily leads to a metallic phase (see Fig.~\ref{mottInsulator} (left)). The insulating behaviour of these materials therefore signals a fundamental limitation of single-particle band theory and points to a qualitatively different mechanism for electron localization---one driven by strong electron–electron interactions rather than by scattering from the lattice potential alone. This realization led to the concept of a Mott insulator, in which charge localization emerges as a genuine many-body effect despite the absence of a band gap in the non-interacting electronic structure. A very simple mechanism for this was put forth by Mott~\cite{Mott_1949,Mott1956,Mott961}: in the presence of a large local Coulomb repulsion cost \(U\) on a lattice site, the quantum states \(\ket{\Psi_1}\) in which the site is singly occupied get separated in energy from the states \(\ket{\Psi_2}\) where the site is doubly occupied by a gap of size \(U\); the former class of states \(\ket{\Psi_1}\) form the lower band (LB) while the latter \(\ket{\Psi_2}\) form the upper band (UB). If we now have a half-filled system (one electron per site), this electron will completely fill LB and leave UB vacant, leading to an insulating state (see Fig.~\ref{mottInsulator} (right)).
+
+Given the above discussion, it is clear that a Mott insulator must involve a gap to charge excitations (excitations that add or remove an electron). It does not however determine the fate of the spin, orbital or other degrees of freedom. One scenario is when the spin or orbital degree of freedom undergoes spontaneous symmetry breaking into an ordered state; in the case of spin, this usually results in a superexchange interaction being generated and leads to an long-range ordered antiferromagnetic Neel state coexisting with the Mott state. Examples of such systems include vanadium sesquioxide V$_2$O$_3$ and its derivatives and the high-\(T_c\) cuprates (such as La$_2$CuO$_4$)~\cite{imada1998metal}. The other scenario is one where the spin degree of freedom retains its symmetry, and we end up with a quantum mechanically non-trivial entangled state (in order to quench the entropy). Examples of such states include quantum spin liquids~\cite{Isono2016}. Mott insulators without long-range order are of particular interest because of the possibility of topological order, fractional excitations, and novel metallic parent states.
+
+A prototypical model for gaining theoretical understanding of Mott metal-insulator transitions on a lattice is the single-band Hubbard model~\cite{Anderson1959,hubbard1963electron,kanamori_1963,gutzwiller_1963}
+\begin{equation}\begin{aligned}\label{hubbardModel}
+	H = -t\sum_{\langle i,j \rangle , \sigma}(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) - \frac{U}{2}\sum_i (n_{i, \uparrow} - n_{i, \downarrow})^2 - \mu N~.
+\end{aligned}\end{equation}
+The first term incorporates nearest-neighbour hopping on the lattice, while the second term introduces inter-electron repulsion when two electrons site on the same lattice site; in this way, the model incorporates the two competing tendencies of delocalisation and localisation that are responsible for the Mott MIT. The third term fixes the chemical potential and determines the filling of the lattice. Many of the materials that are studied for Mott MIT involve \(d-\)electrons that are five-fold degenerate, and these orbitals can hybridisation with ligand atoms. The Hubbard model avoids these complexities by focusing on only a single band that lies closest to the Fermi energy, and it is the states of this band that are described by the Hubbard model.
+
+This leaves us with two channels for observing Mott MIT~\cite{imada1998metal}: (i) tuning the bandwidth, and (ii) tuning the filling. The former can be done, in experiments, by applying pressure. Filling is tuned by doping specific elements of a compound with elements of a different valence. The former is referred to as bandwidth-control metal-insulator transition, while the latter is called filling-control metal-insulator transition.
+
+\section{Features of Mott metal-insulator transition}
+\paragraph{Two complementary pictures of the Mott transition: Brinkman-Rice vs Mott-Hubbard.} Initial insights into the Mott MIT were obtained by Hubbard~\cite{hubbard1963electron}, thinking along lines similar to Mott. Within this picture, one starts from the insulating large \(U\) limit of the Hubbard model (eq.~\ref{hubbardModel}) (\(U \gg t\). We stay at half-filling for simplicity (\(\mu = 0\)). The large on-site repulsion leads to the formation of two bands at each site, the lower Hubbard band (LHB) associated with singly-occupied  states and the upper Hubbard band (UHB) associated with doubles and holes (states that incur a cost \(U\)). In the large \(U\) limit, these bands are well-separated, and the dynamics within the bands is a result of the motion of tightly bound holons and doubles (more on this later) that are generated because of the small but non-zero hopping probablity \(t\). As \(U/t\) is lowered, the bands come closer and a metal-insulator transition occurs at the critical value of \(U\) at which the gap vanishes. For lower \(U/t\), the bands overlap and we get a metal. This picture fails to provide an accurate description of the metal resulting from the melting of such a Mott insulator~\cite{georges1996}.
+
+An alternative approach to the Mott MIT is due to Brinkman and Rice~\cite{brinkman_rice_1970}, where the authors applied Gutzwiller's variational method~\cite{Gutzwiller1965} to the half-filled Hubbard model. Gutzwiller's approach involves modifying, through variational factors, the hopping matrix elements that start from doubly occupied states, in order to reflect the electronic correlation at each site. By requiring that the number of doubly-occupied states vanish in the Mott insulating ground state, they obtained a critical value of the interaction strength. In the Brinkman-Rice scenario, therefore, the transition from the metal to the insulating phase occurs when the hopping matrix elements from the doubly-occupied to the singly-occupied states strictly vanishes. Note that in contrast to the Mott-Hubbard picture, this approach starts from a correlated Fermi liquid (renormalised due to the Gutzwiller factors). While it gives a better low-energy description of the correlated metal compared to the Mott-Hubbard picture, it fails to account for the high-energy physics, and treats the Mott insulator as a direct product state of local moments at each state (on account of the strictly zero hopping). This of course means that this method cannot explain antiferromagnetic superexchange processes in the Mott insulator~\cite{georges1996}.
+
 \begin{itemize}
-	\item Failure of band theory
-	\item Symmetry-preserved nature of transition
-	\item bandwidth vs filling controlled
+	\item Brinkman-Rice vs Mott scenario
+	\item Mott's holon-doublon binding-unbinding picture
 	\item Greens function and self-energy properties
 	\item spectral weight transfer
 	\item Luttinger surfaces
-	\item fractionalization and emergent degrees of freedom
 \end{itemize}
 
-, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
+% , and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
 
-\section{A Minimal Model for Mottness: The Baskaran-Hatsugai-Kohmoto Model}
+\section{Preliminary Insights Into Mottness}
+\subsection{The Hubbard dimer}
+\subsection{A minimal model for Mottness: The Baskaran-Hatsugai-Kohmoto model}
 
 \section{Warming up: Mott transition in infinite dimensions}
+\subsection{Define and motivate the auxiliary model approach}
 \subsection{DMFT results on the Bethe lattice}
 \subsection{Motivate the impurity-lattice connection}
 \subsection{Open Questions}
@@ -42,18 +60,13 @@ There is ample evidence that a microscopic description of the interplay of such 
 \subsection{Experimental results}
 \subsection{Open Questions}
 
-\section{Auxiliary model approaches towards studying the Mott MIT}
-\subsection{Define and motivate the auxiliary model approach}
-
-\subsection{Why do we need another auxiliary model method?}
-\subsection{Limitations of existing methods}
-
 \section{Brief introduction to the tiling auxiliary model approach}
+\subsection{Why do we need another auxiliary model method? Limitations of existing approaches}
 \subsection{Overview}
 \subsection{Features}
 
-\section{Entanglement, RG, and Emergent Geometry}
-\subsection{Introduction to AdS-CFT}
+\section{Entanglement, RG, and Fermionic Criticality}
+\subsection{Introduction to entanglement holography}
 \subsection{Open questions}
 
 \section{<title about an introduction to our holography work>}
