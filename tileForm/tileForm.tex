@@ -191,16 +191,22 @@ where \(N\) is the total number of lattice sites and \({\bm r}_d\) is summed ove
 \subsection{Translation invariance}
 It is easy to verify that \(\Psi_{\vec k}\left(\left\{ {\bm r}_k \right\}  \right) \) transforms like Bloch functions under translation by a displacement \({\bm r}\):
 \begin{equation}\begin{aligned}
-	\Psi_{\vec k}\left(\left\{{\bm r}_k + {\bm r}\right\} \right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i,{\bm a}} e^{i \vec{k}\cdot\vec{R}_i} \psi_\text{aux}\left({\bm r}_i - {\bm r}, {\bm a}\right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_j, {\bm a}} e^{i \vec{k}\cdot\left(\vec{R}_j + {\bm r}\right)} \psi_\text{aux}\left({\bm r}_j, {\bm a}\right) = e^{i \vec{k}\cdot\vec{R}} \Psi_{\vec k}\left(\left\{ {\bm r}_k \right\} \right)
+	\Psi_{\vec k}\left(\left\{{\bm r}_k + {\bm r}\right\} \right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i,{\bm a}} e^{i \vec{k}\cdot\vec{R}_i} \psi_\text{aux}\left({\bm r}_i - {\bm r}, {\bm a}\right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_j, {\bm a}} e^{i \vec{k}\cdot\left(\vec{R}_j + {\bm r}\right)} \psi_\text{aux}\left({\bm r}_j, {\bm a}\right) \\
+	= e^{i \vec{k}\cdot\vec{R}} \Psi_{\vec k}\left(\left\{ {\bm r}_k \right\} \right)
 \end{aligned}\end{equation}
 In the last equation, we transformed \({\bm r}_i \to {\bm r}_j = {\bm r}_i - {\bm r}\). Note that the argument \({\bm a}\) does not change under a translation of the system, because that vector always represents the difference between the impurity lattice position and its nearest neighbours, irrespective of the absolute position of the impurity.
 
 The wavefunction can be even brought into the familiar Bloch function form:
 \begin{equation}\begin{aligned}
-	\Psi^n_{\vec k}\left(\left\{{\bm r}_k\right\}\right) = \sum_{{\bm r}_i, {\bm a}} \frac{e^{i \vec{k}\cdot\vec{R}_i}}{\lambda_{\ket{\vec k}} \mathcal{Z} N} \psi_\text{aux}\left(\left\{ {\bm r}_d - {\bm r}_i, {\bm r_0} - {\bm r}_i - {\bm a} \right\} \right) = \frac{e^{i \vec{k}\cdot\frac{1}{N}\sum_k \vec{r}_k}}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i, {\bm a}} e^{-i \vec{k}\cdot\left(\frac{1}{N}\sum_k{\bm r}_k - \vec{R}_i\right)} \psi_\text{aux}\left(\left\{ {\bm r}_d - {\bm r}_i, {\bm r_0} - {\bm r}_i - {\bm a} \right\} \right) \\
-	= e^{i \vec{k}\cdot\vec{r}_\text{COM}} \eta_{\vec k}\left(\left\{{\bm r}_k\right\}\right)
+	\Psi^n_{\vec k}\left(\left\{{\bm r}_k\right\}\right) &= \sum_{{\bm r}_i, {\bm a}} \frac{e^{i \vec{k}\cdot\vec{R}_i}}{\lambda_{\ket{\vec k}} \mathcal{Z} N} \psi_\text{aux}\left(\left\{ {\bm r}_d - {\bm r}_i, {\bm r_0} - {\bm r}_i - {\bm a} \right\} \right) \\
+														 &= \frac{e^{i \vec{k}\cdot\frac{1}{N}\sum_k \vec{r}_k}}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i, {\bm a}} e^{-i \vec{k}\cdot\left(\frac{1}{N}\sum_k{\bm r}_k - \vec{R}_i\right)} \psi_\text{aux}\left(\left\{ {\bm r}_d - {\bm r}_i, {\bm r_0} - {\bm r}_i - {\bm a} \right\} \right) \\
+														 &= e^{i \vec{k}\cdot\vec{r}_\text{COM}} \eta_{\vec k}\left(\left\{{\bm r}_k\right\}\right)
 \end{aligned}\end{equation}
-where \({\bm r}_\text{COM} = \frac{1}{N}\sum_k {\bm r}_k\) is the center-of-mass coordinate and \(\eta_{\vec k}\left(\left\{{\bm r}_k\right\}\right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i} e^{-i \vec{k}\cdot\left(\frac{1}{N}\sum_k{\bm r}_k - \vec{R}_i\right)} \psi^n_\text{aux}\left(\left\{{\bm r}_k - {\bm r}_i\right\}\right)\) is the translation symmetric function. This form of the eigenstate allows the interpretation that tuning the Bloch momentum \(\vec k\) corresponds to a translation of the center of mass of the system (or in this case, of the auxiliary models that comprise the system).
+where \({\bm r}_\text{COM} = \frac{1}{N}\sum_k {\bm r}_k\) is the center-of-mass coordinate and 
+\begin{equation}\begin{aligned}
+\eta_{\vec k}\left(\left\{{\bm r}_k\right\}\right) = \frac{1}{\lambda_{\ket{\vec k}} \mathcal{Z} N}\sum_{{\bm r}_i} e^{-i \vec{k}\cdot\left(\frac{1}{N}\sum_k{\bm r}_k - \vec{R}_i\right)} \psi^n_\text{aux}\left(\left\{{\bm r}_k - {\bm r}_i\right\}\right)~,
+\end{aligned}\end{equation}
+is the translation symmetric function. This form of the eigenstate allows the interpretation that tuning the Bloch momentum \(\vec k\) corresponds to a translation of the center of mass of the system (or in this case, of the auxiliary models that comprise the system).
 
 \subsection{Orthonormality}
 It is straightforward to show that these states form an orthonormal basis. We start by writing down the inner product of two distinct such states:
