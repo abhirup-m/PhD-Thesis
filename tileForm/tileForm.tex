@@ -334,35 +334,35 @@ Each excitation \(\mathcal{T}_{\nu,\sigma}\) therefore leads to an energy cost \
 \begin{equation}\begin{aligned}
 	\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma}(t) | \psi_{n}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}~.
 \end{aligned}\end{equation}
-Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
-\begin{equation}\begin{aligned}
-	\braket{\psi_{n}({\bm r_d}) c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\nu},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
-\end{aligned}\end{equation}
+% Treating the other overlap in eq.~\ref{intermediate} in an identical fashion gives
+% \begin{equation}\begin{aligned}
+% 	\braket{\psi_{n}({\bm r_d}) | c^\dagger_{{\bm k}\sigma} | \psi_\text{gs}({\bm r_d})} = \sum_{\nu}C_{\nu,\bm k}^*\braket{\psi_n({\bm r_d}) | \mathcal{T}_{{\nu},\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+% \end{aligned}\end{equation}
 Substituting the expression back into~\ref{intermediate} and then into~\ref{retarded}, we get an expression for one half of the retarded Greens function:
 \begin{equation}\begin{aligned}
 	&-i\theta(t) \braket{\Psi_\text{gs} | c_{{\bm k}\sigma}(t) c^\dagger_{{\bm k}\sigma} | \Psi_\text{gs}} \\
-	&= -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
+	&= -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Working through the other term with the same strategy, we get the full expression:
 \begin{equation}\begin{aligned}
 	-i&\theta(t) \braket{\Psi_\text{gs} | \{c_{{\bm k}\sigma}(t), c^\dagger_{{\bm k}\sigma}\} | \Psi_\text{gs}} \\
-	=& -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
+	=& -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{-i(E_n - E_0 + \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{{\nu},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}\\
 	 & -i\theta(t) \sum_{\nu, n} C_{\nu,\bm k} e^{i(E_n - E_0 - \epsilon_\nu)t} \braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{{\bm k},\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}~.
 \end{aligned}\end{equation}
 Changing from time to frequency domain using \(g(\omega) = \int~dt~ e^{i\omega T}f(t)\) gives
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) =  \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
-					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~.
+	G(\bm k,\sigma;\omega) =  \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - \epsilon_\nu - (E_n - E_0)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma} | \psi_\text{gs}({\bm r_d})}}{\omega - \epsilon_\nu + (E_n - E_0)}\right]~.
 \end{aligned}\end{equation}
-We recognise the two parts of the lattice model Greens function as the Greens functions of the operator \(\mathcal{T}_{\bm k,\sigma}\), calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega - \epsilon_\nu\):
+We recognise the two parts of the lattice model Greens function as a retarded off-diagonal Greens functions calculated within the auxiliary model at \(\bm r_d\), but at shifted frequencies \(\omega - \epsilon_\nu\):
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \mathcal{G}(\mathcal{T}_{\nu,\sigma}; \omega - \epsilon_{\nu})
+	G(\bm k,\sigma;\omega) = \sum_\nu C_{\nu,\bm k} \mathcal{G}(\mathcal{T}_{\nu,\sigma}, \mathcal{T}^\dagger_{\bm k,\sigma}; \omega - \epsilon_{\nu})~.
 \end{aligned}\end{equation}
 
 We now discuss how to systematically improve this estimate. One way is to include the effect of other auxiliary models in the overlap function \(F_n(\bm r)\). This will of course require us to calculate an off-diagonal Greens function. As a concrete example, upon including the effects of the auxiliary models nearest to the reference point \(\bm r_d\), the expression for the Greens function becomes
 \begin{equation}\begin{aligned}
-	G(\bm k,\sigma;\omega) = \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - (E_n - E_0 + \epsilon_\nu)}\right.\\
-					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\nu,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_\text{gs}({\bm r_d})}}{\omega + (E_n - E_0 - \epsilon_\nu)}\right]~,
+	G(\bm k,\sigma;\omega) = \sum_{\nu, n} C_{\nu,\bm k} &\left[\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}^\dagger | \psi_\text{gs}({\bm r_d})}}{\omega - \epsilon_\nu - (E_n - E_0)}\right.\\
+					   &+ \left.\frac{\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_{n}({\bm r_d})}\braket{\psi_n({\bm r_d}) | \mathcal{T}_{\nu,\sigma}^* | \psi_\text{gs}({\bm r_d})}}{\omega - \epsilon_\nu + (E_n - E_0)}\right]~,
 \end{aligned}\end{equation}
 with \(\tau^*_{\nu,\sigma} = \mathcal{T}_{\nu,\sigma} (F_n(0) + \sum_{\bm a}F_n(\bm a)e^{i \bm k \cdot \bm a})\) where \(\bm a\) sums over the primitive lattice vectors. Another way to include more non-local contributions is by considering the effects of the cavity Hamiltonian in eq.~\ref{Zassenhaus}:
 \begin{equation}\begin{aligned}
@@ -398,23 +398,24 @@ We split the full summation into four parts, based on whether \(\bm R = \bm r_d\
 \end{aligned}\end{equation}
 where we have used the fact that the location of the auxiliary model does not affect the correlation calculated within the auxiliary model in order to cancel out the summation over \(\bm r_d\) with the factor of \(1/N\). The reason for splitting the expression into these parts is to explicitly write out which operators act on the impurity site \(\bm r_d\) and which act on other real-space sites away from the impurity site. We will now replace the real-space excitation operators away from the impurity site with the associated \(T-\)matrices, following the discussion above eq.~\ref{tmatrix}:
 \begin{equation}\begin{aligned}\label{realLocalInterm}
-	\mathcal{T}_{{\bm r},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm r}\sigma} = \sum_{\bm k} e^{i \bm k \cdot \bm r} \mathcal{T}_{\bm k,\sigma}~.
+	\mathcal{T}_{{\bm r},\sigma} = \left[\left(\sum_{\sigma^\prime}c^\dagger_{\bm r_d\sigma} + \text{h.c.}\right) + \left(S_{\bm r_d}^+ + \text{h.c.}\right) + \left(C_{\bm r_d}^+ + \text{h.c.}\right)\right]c_{{\bm r}\sigma}~. %= \sum_{\bm k} e^{i \bm k \cdot \bm r} \mathcal{T}_{\bm k,\sigma}~.
 \end{aligned}\end{equation}
 We also insert a complete basis of states of the auxiliary model at \(\bm r_d\), \(1 = \sum_n\ket{\psi_n(\bm r_d)}\bra{\psi_n(\bm r_d)}\), generating an overlap factor \(F_n\) as before:
 \begin{equation}\begin{aligned}
 	\sum_{\bm r_d}\braket{\Psi_\text{gs} | c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \Psi_\text{gs}} &= \braket{\psi_\text{gs}({\bm r_d}) |  c_{{\bm r_d},\sigma}(t) c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+ \sum_{\bm k, n}F^\prime_n(\bm k)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+ \sum_{\bm k, n}{F^\prime_n(\bm k)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k,\sigma} | \psi_\text{gs}({\bm r_d})}\\
-																													  &+\sum_{\bm k_1,\bm k_2}F^\prime_n(\bm k_1){F^\prime_n(\bm k_2)}^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm k_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm k_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
+																													  &+ \sum_{\bm r \neq r_d, n}F_n(\bm r - \bm r_d)\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm r,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | c^\dagger_{{\bm r_d},\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+ \sum_{\bm r \neq r_d, n}{F_n(\bm r - \bm r_d)}^*\braket{\psi_\text{gs}({\bm r_d}) | c_{\bm r_d,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm r,\sigma} | \psi_\text{gs}({\bm r_d})}\\
+																													  &+\sum_{\bm r_1,\bm r_2 \neq r_d, n}F_n(\bm r_1 - \bm r_2)^*\braket{\psi_\text{gs}({\bm r_d}) | \mathcal{T}_{\bm r_1,\sigma}(t) | \psi_{n}(\bm r_d)} \braket{\psi_{n}(\bm r_d) | \mathcal{T}^\dagger_{\bm r_2,\sigma} | \psi_\text{gs}({\bm r_d})}~,
 \end{aligned}\end{equation}
-where \(F_n'(\bm k)\) is the truncated Fourier transform \(\sum_{\bm r \neq 0}e^{i \bm k \cdot \bm r}F_n(\bm r)\) of the overlap factor.
 
 We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
 \begin{equation}\begin{aligned}\label{localTiledGreenF}
-	G_\text{loc}(\omega) = \mathcal{G}(d\sigma; \omega - \epsilon_\text{loc}) + \sum_{\nu} C_{\nu} \left[\mathcal{G}(\mathcal{T}_{\nu,\sigma},d\sigma; \omega - \epsilon_{\nu}) + \sum_{\bf k}\mathcal{G}(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm k,\sigma}; \omega - \epsilon_{\nu})\right] \\
-	+ \sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega) ~,
+	G_\text{loc}(\omega) =& \sum_\nu C_{\nu,\bm r_d} \mathcal{G}(\nu(r_d)\sigma, c^\dagger_{r_d,\sigma}; \omega - \epsilon_\nu^\text{loc}) \\
+						 &+ \sum_{\bm r\neq r_d, \nu} C_{\bm r, \nu}F_n(\bm r - \bm r_d)\mathcal{G}(\mathcal{T}_{\nu(\bm r)\sigma},c^\dagger_{r_d\sigma};\omega - \epsilon_\nu^\text{loc})\\
+						 &+ \sum_{\bm r\neq r_d, \nu} C_{\bm r_d, \nu} F_n(\bm r - \bm r_d)^*\mathcal{G}(\nu(\bm r_d)\sigma,\mathcal{T}^\dagger_{\bm r\sigma}; \omega - \epsilon_\nu^\text{loc})\\
+						 &+ \sum_{\bm r_1,\bm r_2 \neq r_d, \nu} C_{\bm r_1, \nu_1} F_n(\bm r_1 - \bm r_2)^* \mathcal{G}(\mathcal{T}_{\nu(\bm r_1)\sigma},\mathcal{T}^\dagger_{\bm r_2\sigma}; \omega - \epsilon_\nu^\text{loc}) ~,
 \end{aligned}\end{equation}
-where \(\mathcal{G}(d\sigma; \omega)\) is the retarded Greens function of the impurity site, \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},d\sigma; \omega)\) is the off-diagonal retarded Greens function between the impurity site and the bath state \(\nu\sigma\), and \(\mathcal{G}^>(\mathcal{T}_{\nu,\sigma},\mathcal{T}_{\bm q,\sigma}; \omega)\) is the same but between multiple states in the bath. \(\epsilon_\text{loc} = \braket{n_{d\sigma}=0 | H_\text{1p} | n_{d\sigma}=0} - \braket{n_{d\sigma}=1 | H_\text{1p} | n_{d\sigma}=1}\), and the coefficient \(C_\nu\) is given by \(C_\nu = \sum_{\bf k}C_{\nu,\bf k}\).
+where [NEED TO EXPLAIN ALL THE TERMS!]. % TODO
 
 \subsubsection*{Non-local Greens function: \(\bm r \neq 0\)}
 We next consider the case of non-local Greens function, where the excitations propagate a non-zero distance \(\bm r\):
