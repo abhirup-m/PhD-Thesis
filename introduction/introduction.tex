@@ -30,36 +30,88 @@ This leaves us with two channels for observing Mott MIT~\cite{imada1998metal}: (
 
 An alternative approach to the Mott MIT is due to Brinkman and Rice~\cite{brinkman_rice_1970}, where the authors applied Gutzwiller's variational method~\cite{Gutzwiller1965} to the half-filled Hubbard model. Gutzwiller's approach involves modifying, through variational factors, the hopping matrix elements that start from doubly occupied states, in order to reflect the electronic correlation at each site. By requiring that the number of doubly-occupied states vanish in the Mott insulating ground state, they obtained a critical value of the interaction strength. In the Brinkman-Rice scenario, therefore, the transition from the metal to the insulating phase occurs when the hopping matrix elements from the doubly-occupied to the singly-occupied states strictly vanishes. Note that in contrast to the Mott-Hubbard picture, this approach starts from a correlated Fermi liquid (renormalised due to the Gutzwiller factors). While it gives a better low-energy description of the correlated metal compared to the Mott-Hubbard picture, it fails to account for the high-energy physics, and treats the Mott insulator as a direct product state of local moments at each state (on account of the strictly zero hopping). This of course means that this method cannot explain antiferromagnetic superexchange processes in the Mott insulator~\cite{georges1996}.
 
-\paragraph{Holon-doublon unbinding picture of the Mott MIT.} In 1949, Mott proposed a zero temperature explanation for a correlation-driven insulator and a mechanism for its transition into a metal in terms of the motion of holes and doubles in the background of a half-filled lattice. For \(U \ll t\) (strong correlation), the ground state predominantly involves lattice sites with a single electron. Hopping processes between two nearest-neighbour sites transfer an electron between them and create a pair of hole and double, but the pair remains tightly bound to each other. This is because moving the hole independently involves scattering processes that cross the Mott gap, and these processes are not allowed at \(T=0\). But without the independent motion of the hole (or double), there is no current, and the system is an insulator. 
-
-As \(U/t\) is lowered, the gap closes and processes that transport the hole without transporting the double become gapless. This essentially means that the pair becomes deconfined, and the hole can be moved far away from the double. Current can then be passed by having the hole move through the lattice, and we get a metallic state. This leads to a picture of the Mott transition into a metal in terms of an unbinding of the hole-double bound states (excitons) that were present in the insulator.
-
-There have been more quantitative studies of this mechanism. I list some of the relatively recent ones here. In~\cite{Prelovsek2015}, Prelovšek et al. studied the motion of holon-doublon pairs in a spin polarised background by rewriting the repulsive Hubbard model in terms of electrons as an attractive Hubbard model of holes and doubles. The model was treated using a BCS-like treatment, and the Mott transition was obtained when the binding energy for the hole-double condensate vanishes. To mark the deconfinement, they show that the approach to the transition from the insulating side is concomitant with an increase in the size of the pairs. Following a slave-boson treatment of holon-doublon unbinding, Zhou et al.~\cite{Zhou2014} show that the Mott transition from a paramagnetic metal to a Mott insulator on the half-field honeycomb and 2D square lattices occur through an intervening Slater insulator with coherent quasiparticles. In particular, their approach sheds light on the nature of the incoherent excitations in the Hubbard sidebands of the local spectral function. Finally, an older work by Watanabe et al.~\cite{Watanabe2006} studies the half-filled Hubbard model on an anisotropic triangular lattice using a Monte carlo method with a variational binding parameter between holons and doublons. Their approach reveals a first order Mott transition, along with robust \(d-\)wave superconductivity and short-range magnetic order.
-
-\begin{figure}[!htpb]
+\begin{figure}[!t]
 	\centering
 	\includegraphics[width=\textwidth]{mottPicture.pdf}
 	\caption{}
 	\label{mottInsulator}
 \end{figure}
 
-\begin{itemize}
-	\item Mott's holon-doublon binding-unbinding picture
-	\item Greens function and self-energy properties
-	\item spectral weight transfer
-	\item Luttinger surfaces
-\end{itemize}
+\paragraph{Holon-doublon unbinding picture of the Mott MIT.} In 1949, Mott proposed a zero temperature explanation for a correlation-driven insulator and a mechanism for its transition into a metal in terms of the motion of holes and doubles in the background of a half-filled lattice. For \(U \ll t\) (strong correlation), the ground state predominantly involves lattice sites with a single electron. Hopping processes between two nearest-neighbour sites transfer an electron between them and create a pair of hole and double, but the pair remains tightly bound to each other. This is because moving the hole independently involves scattering processes that cross the Mott gap, and these processes are not allowed at \(T=0\). But without the independent motion of the hole (or double), there is no current, and the system is an insulator. 
 
-% , and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
+As \(U/t\) is lowered, the gap closes and processes that transport the hole without transporting the double become gapless. This essentially means that the pair becomes deconfined, and the hole can be moved far away from the double. Current can then be passed by having the hole move through the lattice, and we get a metallic state. This leads to a picture of the Mott transition into a metal in terms of an unbinding of the hole-double bound states (excitons) that were present in the insulator.
 
-\section{Preliminary Insights Into Mottness}
-\subsection{The Hubbard dimer}
-\subsection{A minimal model for Mottness: The Baskaran-Hatsugai-Kohmoto model}
+There have been more quantitative studies of this mechanism. I list some of the relatively recent ones here. In~\cite{Prelovsek2015}, Prelovšek et al. studied the motion of holon-doublon pairs in a spin polarised background by rewriting the repulsive Hubbard model in terms of electrons as an attractive Hubbard model of holes and doubles. The model was treated using a BCS-like treatment, and the Mott transition was obtained when the binding energy for the hole-double condensate vanishes. To mark the deconfinement, they show that the approach to the transition from the insulating side is concomitant with an increase in the size of the pairs. Following a slave-boson treatment of holon-doublon unbinding, Zhou et al.~\cite{Zhou2014} show that the Mott transition from a paramagnetic metal to a Mott insulator on the half-field honeycomb and 2D square lattices occur through an intervening Slater insulator with coherent quasiparticles. In particular, their approach sheds light on the nature of the incoherent excitations in the Hubbard sidebands of the local spectral function. Finally, an older work by Watanabe et al.~\cite{Watanabe2006} studies the half-filled Hubbard model on an anisotropic triangular lattice using a Monte carlo method with a variational binding parameter between holons and doublons. Their approach reveals a first order Mott transition, along with robust \(d-\)wave superconductivity and short-range magnetic order.
+
+\paragraph{Spectral features of the Mott transition.} One of the important diagnostics of the Mott metal-insulator transition is the spectrum for one-particle electron-like excitations, as expressed through the one-particle retarded Greens function \(G(\bm k,\sigma; t) = -i \theta(t)\langle \{c_{\bm k,\sigma}(t), c^\dagger_{\bm k, \sigma}\} \rangle \). In general, the presence of poles in the Green function at the Fermi energy and in its neighbourhood imply the existence of gapless excitations and hence a metallic phase. It turns out that this statement is equivalent to Luttinger's theorem,
+\begin{equation}\begin{aligned}
+	\frac{N}{V} = 2\int_{G(0,\bm k)>0}\frac{d\bm k}{(2\pi)^3}~,
+\end{aligned}\end{equation}
+which states that the particle density in a metal is equal to the number of states in the Fermi volume. As clarified in the equation, the Fermi volume is defined as the region of \(k-\)space where the Greens function is positive at \(\omega=0\).
+
+In a Mott insulator, strong correlations lead to the destruction of electronic excitations around \(\omega=0\). This results in the Greens function poles transmuting into zeros. This is also tracked by analogous changes in the electronic self-energy \(\Sigma({\bm k};\omega)\); Greens function zeros leads to a Mott pole at \(\omega=0\) in \(\Sigma({\bm k};\omega)\). The points in \(k-\)space where \(\Sigma({\bm k};0)\) vanishes is called a Luttinger surface. The Mott metal-insulator transition is therefore about the topological change of a Fermi surface (surface of Greens function poles) into a Luttinger surface (surface of self-energy poles).
+
+As discussed earlier, the appearance of Greens function zeros at \(\omega=0\) leads to the formation of a charge gap that freezes one-particle low-energy excitations. The spectrum gets redistributed into two bands on either side of the gap, the upper and lower Hubbard bands. In the ground state, the lower band is obviously filled while the upper band is empty. Bands of a Mott insulator formed from electronic correlation differ from those formed due to one-particle scattering in a particular way: dynamical spectral weight transfer. Unlike a band insulator, the bands of a Mott insulator are not rigid; tuning the lattice filling results in a continuous transfer of states from one band to another. 
+
+The non-rigidity of the bands can be seen most easily from the atomic limit (\(t=0\)) of the Hubbard model (eq.~\ref{hubbardModel}). The local retarded Greens function at an arbitrary site \(i\) can be obtained using the equation of motion approach. The final result is~\cite{phillips2012advanced}
+\begin{equation}\begin{aligned}
+G_R(i; \omega) = \frac{1 + x}{\omega + \mu + U/2} + \frac{1 - x}{\omega + \mu - U/2}~,
+\end{aligned}\end{equation}
+where \(x = 1 - \sum_\sigma\langle n_{i\sigma} \rangle \) is the average number of holes at any site. The spectral weight for the two poles makes it clear that the lower band has \(1+x\) number of states while the upper band has \(1-x\) states. Changing the number of states in the lower band (by tuning \(\mu\) and hence \(x\)) also changes those in the upper band. For example, by adding \(0.1\) holes per site to the lower band, the spectral weight in the upper band decreases by the same amount. This is the non-rigidity of the bands mentioned previously.
+
+\section{Preliminary Insights Into Mottness: The Baskaran-Hatsugai-Kohmoto model}
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.48\textwidth]{insulator.pdf}
+	\includegraphics[width=0.48\textwidth]{metal.pdf}
+	\caption{}
+	\label{HKM-phases}
+\end{figure}
+The Baskaran-Hatsugai-Kohmoto model~\cite{Baskaran1991,Hatsugai1992} introduced independently in 1991 and 1992 is an exactly solvable model of electronic correlation that displays a transition from a metallic phase to a Mott insulator. While it's solvability offers an instructive method for studying Mott transition, the infinitely long-ranged nature of its interaction makes it tricky to apply these conclusions to realistic materials.
+
+At half-filling, the model is defined by the following Hamiltonian:
+\begin{equation}\begin{aligned}
+	H_\text{BHK}= \sum_{\bf k,\sigma}\epsilon({\bf k}) n_{\bf k,\sigma} - \frac{U}{2}\sum_{\bf k}(n_{\bf k, \uparrow} - n_{\bf k,\downarrow})^2~.
+\end{aligned}\end{equation}
+Clearly the model is diagonal in momentum-space; the Hamiltonian splits up into commuting \(4\times 4\) blocks for every point \(\bf k\):
+\begin{equation}\begin{aligned}
+	H_\text{BHK} = \sum_{\bf k}H({\bf k}), \quad H({\bf k}) = \epsilon({\bf k}) \sum_\sigma n_{\bf k,\sigma} - \frac{U}{2}(n_{\bf k, \uparrow} - n_{\bf k,\downarrow})^2~.
+\end{aligned}\end{equation}
+The vacant eigenstate \(\ket{0}\) of \(H({\bf k})\) has zero energy (\(E_0 = 0\)), the two singly-occupied states \(\ket{\uparrow}\) and \(\ket{\downarrow}\) have energy \(E_1 = \epsilon({\bf k}) - U/2\) and the doubly-occupied state \(\ket{\uparrow, \downarrow}\) has energy \(E_2 = 2\epsilon({\bf k})\). This leads to two possible single-particle excitations -- one for adding an electron on the vacant state: (\(\Delta_1 = E_1 - E_0 = \epsilon({\bf k}) - U/2\), the other for adding an additional electron on a singly-occupied state: \(\Delta_2 = E_2 - E_1 = \epsilon({\bf k}) + U/2\). 
+
+Upon combining states from other \(k-\)modes, these isolated excitations broaden into bands around \(\pm U/2\) because of the continuum of values available to \(\epsilon({\bf k})\). For large enough \(U\) (compared to the non-interacting bandwidth \(W\)), these bands remain well-separated in energy (Fig.~\ref{HKM-phases} left), forming lower and upper Hubbard bands. The half-filled system results in the lower band being completely filled and the upper band empty, leading to a Mott insulator. The states within this band are all singly-occupied (per \(k-\)state). Upon lowering the correlation strength \(U\), the bands touch each other at the critical value of \(U_c = W\) (obtained by equating the top of the lower band to the bottom of the upper band). For lower values of \(U\), the system is a metal due to the presence of gapless excitations within the combined band (Fig.~\ref{HKM-phases} right). This therefore provides a simple demonstration of a correlation-driven Mott metal-insulator transition.
 
 \section{Warming up: Mott transition in infinite dimensions}
-\subsection{Define and motivate the auxiliary model approach}
+\subsection{Introduction to the auxiliary model approach}
+One of the main results obtained within this thesis is the development of a formalism to study the more realistic case of finite-dimensional interacting models by using appropriately chosen impurity models as auxiliary models. The key to an {\it auxiliary model method} is to construct an appropriate auxiliary model that while being tractable captures some essential property of the full lattice model~\cite{martin_2016}. This involves separating the complete degrees of freedom into a system part (\(H_S\)) which one treats exactly and the rest of the system (\(H_R\)) that one might simplify in order to be able to solve the problem. The non-trivial nature of the problem arises of course from the hybridisation \(H_{SR}\) between the system and the bath:
+\begin{equation}\begin{aligned}
+	{H} &= \begin{bmatrix} & {H}_{R} && {H}_{RS} & \\ & {H}_{RS}^* && {H}_{S} & \end{bmatrix}~.
+\end{aligned}\end{equation}
+
+This separation can always be done exactly, if one does not care about tractability. For example, one can take the Hubbard model that describes electrons hopping on a lattice and interacting when two electrons reside on the same lattice site:
+\begin{equation}\begin{aligned}
+	H_\text{hub} = -t\sum_{\langle i,j \rangle,\sigma }(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}n_{i \uparrow}n_{i \downarrow}~,
+\end{aligned}\end{equation}
+and separate this into parts, the system being the local orbitals of a specific site \(l\) and the rest of the system being all the other sites:
+\begin{equation}\begin{aligned}
+	H_S = U n_{l \uparrow} n_{l \downarrow},~~ H_R = -t\sum_{\langle i,j \rangle,\sigma }^\prime(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}^\prime n_{i \uparrow}n_{i \downarrow},~~ H_{SR} + H_{RS} = -t\sum_{i,\sigma} (c^\dagger_{l,\sigma}c_{i,\sigma} + \text{h.c.})~,
+\end{aligned}\end{equation}
+where the primed summation is carried out over all nearest-neighbour pairs that do not involve \(l\) and the summation in \(H_{SR} + H_{RS}\) is over all sites adjacent to \(l\).
+
+The smaller system \(H_S\) (often called the {\it cluster}) is typically chosen such that its eigenstates are known exactly. Progress is then made by choosing a simpler form for \(H_R\) and its coupling \(H_{RS}\) with the smaller system. This combination of the cluster and the simpler bath is then called the \textit{auxiliary system}.
+A tractable auxiliary system for the Hubbard model is the single-impurity Anderson model (SIAM); the correlated impurity site represents the set of local orbitals of any given site, while the conduction bath represents the rest of the lattice sites in an approximate fashion.  Such a construction is shown in fig.~\ref{cluster-bath}.
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[width=0.9\textwidth]{clusterBath.pdf}
+	\caption{\textit{Left}: Full Hubbard model lattice with onsite repulsion $U^H$ on all sites and hopping between nearest neighbour sites with strength $t^H$. \textit{Right}: Extraction of the auxiliary (cluster+bath) system from the full lattice. The central site on left becomes the impurity site (red) on the right (with an onsite repulsion $\epsilon_d$), while the rest of the $N-1$ sites on the left form a conduction bath (green circles) (with dispersion $\epsilon_k$ and correlation modelled by the self-energy $\Sigma_k(\omega)$) that hybridizes with the impurity through the coupling $V$.}
+	\label{cluster-bath}
+\end{figure}
+
+It should be noted that any reasonable choice of the cluster and bath would break the translational symmetry of the full model: To allow computing quantities, one would need to make the bath (which is a much larger system) simpler than the cluster (which is a single site). This distinction breaks the translational symmetry of the Hubbard model. As a result, calculations that make use of the translation symmetry of the full model (such as \(k-\)space objects) will require a periodisation operation of an auxiliary model quantity.
+\subsection{Impurity model -- lattice model correspondence in infinite dimensions}
+
 \subsection{DMFT results on the Bethe lattice}
-\subsection{Motivate the impurity-lattice connection}
+, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
 \subsection{Open Questions}
 
 \section{Effect of low dimensionality: Mott MIT in two dimensions}

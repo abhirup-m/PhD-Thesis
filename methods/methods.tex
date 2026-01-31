@@ -2076,40 +2076,58 @@ In the following, we restrict ourselves to the reverse RG analysis of an impurit
 \begin{equation}\begin{aligned}\label{zerothSiteRep}
 	\ket{\Psi_j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{2j}}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},I_{2j+1}}\ket{\nu_d}\ket{\nu_1}\ket{\nu_2}\ldots\ket{\nu_{2j}}\otimes\ket{I_{2j+1}}~,
 \end{aligned}\end{equation}
-where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
+where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = \ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
 
 We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
 \begin{equation}\begin{aligned}
-	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i}\mathcal{T}^{\mu_d}_{\nu_d} \mathcal{T}^{\mu_i}_{\nu_i} c_{2j+1} + K^{\mu_d,\mu_i}_{\nu_d,\nu_i}\mathcal{T}^{\mu_d}_{\nu_d}  \mathcal{T}^{\mu_i}_{\nu_i}c_{2j+2}^\dagger)~,
+	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}\mathcal{T}^{\mu_d}_{\nu_d}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+1}\mathcal{T}^{\mu_i}_{\nu_i}  + K^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+2}^\dagger\mathcal{T}^{\mu_i}_{\nu_i})~,
 \end{aligned}\end{equation}
-where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). The state at the \((j+1)^\text{th}\) step is
+where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). We first obtain the action of the transformation \(U_j^\dagger\) on the basis states. We have
 \begin{equation}\begin{aligned}
-	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},1_{2j+1},0_{2j+2},I_{j+1}}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\otimes\ket{I_{2j+3}} \\
-					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}\ket{\psi_{dz}(j)}\ket{0_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
-					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
+	&\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\
+	&=\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} (-1)^{\mu_d + \sum_{k < i}\nu_i} \ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\ 
+	&=\mathcal{T}^{\nu_d}_{\mu_d} (-1)^{\mu_d + \sum_{k < i}\nu_i} (-1)^{\mu_d + \sum_{k}\nu_i}\ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}\\ 
+	&=(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}~,
+\end{aligned}\end{equation}
+and
+\begin{equation}\begin{aligned}
+	\mathcal{T}^{\nu_d}_{\mu_d} c_{2j+1} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}} =(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{1_{2j+1}}\ket{0_{2j+2}}~.
+\end{aligned}\end{equation}
+Using these expressions, we construct the state at the \((j+1)^\text{th}\) step:
+\begin{equation}\begin{aligned}
+	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
 \end{aligned}\end{equation}
 Gathering similar terms and normalising the state, we can write it as
 \begin{equation}\begin{aligned}
-	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{1_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{1_{2j+2}} \right.\\
-					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{0_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
+	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{2_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{2_{2j+1}}\ket{1_{2j+2}} \right.\\
+					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
 \end{aligned}\end{equation}
 where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
 \begin{equation}\begin{aligned}
-C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}\\
-C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~.
+C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\\
+C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}~.
 \end{aligned}\end{equation}
 
 We can now read off the renormalisation of the state tensor coefficients:
 \begin{equation}\begin{aligned}
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\mu_d - \mu _i + \sum_{k\leq i}\nu_k}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+\end{aligned}\end{equation}
+We now make an important assumption: the coefficients \(K^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) and \(J^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) are uniform for the set of states \(S(\nu_i)\) and zero for other states. That gives
+\begin{equation}\begin{aligned}
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}K\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}J\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
 \end{aligned}\end{equation}
 
 One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
 \begin{equation}\begin{aligned}
-	\braket{\mathcal{O}_{\mu_k}^{\nu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}~(-1)^{\nu_d - \mu _k + \sum_{i\leq k}\nu_i}C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_k,\ldots,\nu_{2j},I_{2j+1}}C^{(j)}_{\nu_d,\nu_1,\ldots,\mu_k,\ldots,\nu_{2j},I_{2j+1}}
+	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}C^{(j)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j)}_{\nu_d,\ldots,\nu_k,\ldots}~,\\
+	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
 \end{aligned}\end{equation}
+
 
 
 
