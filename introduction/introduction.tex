@@ -108,7 +108,118 @@ A tractable auxiliary system for the Hubbard model is the single-impurity Anders
 \end{figure}
 
 It should be noted that any reasonable choice of the cluster and bath would break the translational symmetry of the full model: To allow computing quantities, one would need to make the bath (which is a much larger system) simpler than the cluster (which is a single site). This distinction breaks the translational symmetry of the Hubbard model. As a result, calculations that make use of the translation symmetry of the full model (such as \(k-\)space objects) will require a periodisation operation of an auxiliary model quantity.
-\subsection{Impurity model -- lattice model correspondence in infinite dimensions}
+\subsection{Correspondence between impurity and lattice models in $d=\infty$}
+
+Dynamical Mean-Field Theory (DMFT) provides a nonperturbative framework for treating strong local electronic correlations in lattice models by mapping them onto a self-consistent quantum impurity problem \cite{Metzner1989,Georges1996}. The central idea of DMFT is that in the limit of infinite spatial dimension, or equivalently infinite coordination number, the electronic self-energy becomes purely local while retaining its full dynamical (frequency-dependent) structure. As a result, the many-body lattice problem reduces to an effective single-site problem embedded in a self-consistently determined bath, capturing local quantum fluctuations exactly while neglecting nonlocal correlations. DMFT has become a cornerstone of modern correlated-electron theory, successfully describing Mott metal--insulator transitions, quasiparticle formation, and spectral weight transfer in Hubbard-like models \cite{Georges1996,Kotliar2004,Georges2004}.
+
+In order to motivate the impurity model-lattice model mapping inherited by DMFT, we first recall the textbook example of classical mean-field theory. Mean-field theory provides one of the earliest and most instructive examples of controlled approximations in many-body physics. In its classical incarnation, exemplified by the Ising model,
+\begin{equation}
+	H_{\mathrm{Ising}} = - \sum_{i\neq j} J_{ij} S_i S_j - h \sum_i S_i = -\sum_i S_i(h + \sum_{j \neq i}J_{ij}S_j),
+\end{equation}
+mean-field theory proceeds by replacing the interaction between a given spin and its neighbors by an effective static field proportional to the average magnetization. Writing
+\(
+S_j = \langle S_j \rangle + \delta S_j
+\)
+and neglecting quadratic fluctuations and constant parts, one obtains a mean-field Hamiltonian
+\begin{equation}\begin{aligned}
+	H^{(\text{MF})}_{\mathrm{Ising}} = - \sum_{i} (h + h_\text{MF}(i))S_i~,
+\end{aligned}\end{equation}
+where the mean-field \(h_\text{MF}\) comes out to be
+\begin{equation}\begin{aligned}
+	h_\text{MF}(i) = \sum_{j \neq i}2 \langle S_j \rangle J_{ij}~.
+\end{aligned}\end{equation}
+The above approach assumes two things: (i) the presence of a non-zero order parameter \(m_j = \langle S_j \rangle \) (in this case, a non-zero magnetisation), and (ii) the smallness of the fluctuations \(S_j - \langle S_j \rangle\). The mean-field Hamiltonian can be used to compute the partition function (at inverse temperature \(\beta\)) and hence the magnetisation at a site \(i\) of the lattice:
+\begin{equation}\begin{aligned}
+	m_i = \tanh(\beta(h_\text{MF}(i) + h)) = \tanh(\beta \sum_{j \neq i}2 m_j J_{ij} + \beta h)~.
+\end{aligned}\end{equation}
+
+
+The problem hasn't yet been solved of course; one needs to determine the appropriate value of \(m_j\). We therefore need an additional equation; this is provided by the so-called self-consistency condition. The translation invariance of the lattice ensures that the magnetisation must be uniform across sites \(i\) and \(j\). This allows us to replace \(m_j\) with \(m_i\) in the above equation:
+\begin{equation}
+	m_i = \tanh(\beta m_i\sum_{j \neq i}2 J_{ij} + \beta h)~.
+\end{equation}
+This equation can be solved numerically to obtain the uniform magnetisation \(m_i = m\).
+The mean-field approximation becomes exact in the limit of large coordination, where fluctuations are suppressed  and spatial correlations beyond a single site vanish.
+
+The essential feature of classical mean-field theory is therefore the replacement of a many-body problem by an effective \emph{single-site} problem embedded in a self-consistently determined environment. Quantum lattice models admit a closely analogous construction, but with an important conceptual difference: while the classical mean field is static, quantum fluctuations necessarily introduce a tower of excited states that allow for temporal dynamics. This observation underlies the formulation of dynamical mean-field theory (DMFT), which may be viewed as the natural quantum generalization of classical mean-field theory \cite{metzner_volhardt_1989,georges1996}.
+
+Similar to the previous case of the Ising model, we will now derive the self-consistency equation for a quantum model. Consider an interacting fermionic lattice Hamiltonian, such as the Hubbard model:
+\begin{equation}
+H = -\sum_{ij\sigma} t_{ij} c_{i\sigma}^\dagger c_{j\sigma}
++ U \sum_i n_{i\uparrow} n_{i\downarrow},
+\end{equation}
+defined on a lattice with coordination number \(z\). 
+% To obtain a nontrivial limit as \(z \to \infty\), the hopping amplitudes are scaled as
+% \begin{equation}
+% t_{ij} = \frac{t^\ast}{\sqrt{z}},
+% \end{equation}
+% which ensures a finite kinetic energy per site \cite{MetznerVollhardt1989}.
+
+% In this limit, it can be shown diagrammatically that all nonlocal contributions to the self-energy vanish as inverse powers of \(z\), while local diagrams remain finite. As a result, the exact self-energy becomes purely local,
+% \begin{equation}
+% \Sigma_{ij}(\omega) = \delta_{ij}\,\Sigma(\omega),
+% \end{equation}
+% though it retains its full dynamical (frequency-dependent) character \cite{MetznerVollhardt1989,Georges1996}.
+
+The point of this exercise is to calculate the interacting self-energy \(\Sigma_k(\omega)\) for the fermions. This therefore acts as an "order parameter" and plays the same role as the local magnetisation in the previous exercise. The self-energy defines the interacting \(k\)-space Green's function:
+\begin{equation}
+	G_{\mathbf{k}}(\omega) = \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_{\mathbf{k}}(\omega)},
+\end{equation}
+where \(\varepsilon_{\mathbf{k}}\) denotes the noninteracting dispersion, and a real-space local Green's function, obtained by summing over momentum:
+\begin{equation}\label{eq:localG}
+G_{\text{loc}}(\omega) = \sum_{\mathbf{k}} \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_{\mathbf{k}}(\omega)}.
+\end{equation}
+
+In line with the overall theme of working with auxiliary models, we consider an auxiliary impurity problem describing the dynamics of a single correlated site with the other environment sites integrated out and described by the "bare" Greens function \(G_0\):
+\begin{equation}
+S_{\text{imp}} = -\int_0^\beta d\tau d\tau'\,c^\dagger(\tau)\,G_0^{-1}(\tau-\tau')\,c(\tau') + U \int_0^\beta d\tau\, n_\uparrow(\tau) n_\downarrow(\tau).
+\end{equation}
+Such an impurity problem is solvable, and the impurity Green's function is given by
+\begin{equation}
+G_{\text{imp}}(\omega) =
+\frac{1}{G_0^{-1}(\omega) - \Sigma(\omega)},
+\label{eq:impG}
+\end{equation}
+with the same local self-energy \(\Sigma(\omega)\) as the lattice problem.
+
+The DMFT approximation becomes exact in infinite dimensions by enforcing the condition that the impurity Green's function reproduces the local lattice Green's function,
+\begin{equation}
+G_{\text{imp}}(\omega) = G_{\text{loc}}(\omega).
+\label{eq:dmftSC}
+\end{equation}
+Combining Eqs.~\eqref{eq:localG} and \eqref{eq:impG}, one obtains a self-consistency equation that determines the Weiss field \(\mathcal{G}_0(\omega)\),
+\begin{equation}
+\mathcal{G}_0^{-1}(\omega)
+= \Sigma(\omega) + G_{\text{loc}}^{-1}(\omega).
+\end{equation}
+
+Together with the definition of \(G_{\text{loc}}(\omega)\) as a functional of \(\Sigma(\omega)\), this equation closes the DMFT loop. The interacting lattice problem is thus reduced to the self-consistent solution of a quantum impurity model, capturing all local dynamical correlations exactly while neglecting nonlocal ones \cite{Georges1996,Kotliar2004}.
+
+In direct analogy with classical mean-field theory, DMFT replaces a lattice model by an effective single-site problem embedded in a self-consistent environment. The crucial distinction is that the mean field is now dynamical rather than static, encoding quantum fluctuations exactly while neglecting spatial correlations. This controlled limit provides both a conceptual foundation and a practical starting point for extensions beyond DMFT, as well as for alternative auxiliary-model constructions such as the one developed in this thesis.
+\subsection{Examples of strongly correlated materials}
+Evidently, the route to studying lattice problems via quantum impurity models makes most sense for models with strong local correlations. In practise, the 
+
+\paragraph{Transition Metal Oxides (TMOs)}
+Transition Metal Oxides (TMOs) are defined chemically by the presence of partially filled $d$-shells in transition metals (e.g., Cu$^{2+}$, Mn$^{3+}$, V$^{4+}$) coordinated by oxygen ligands. The physics of TMOs is governed by the competition between the kinetic energy hopping amplitude $t$ and the on-site Coulomb repulsion $U$; due to the small overlap between the localised \(d-\)orbitals, the \(d-\)electrons can delocalise only by hopping onto the ligand atoms. According to the Zaanen-Sawatzky-Allen (ZSA) classification scheme~\cite{Zaanen1985}, these materials are categorized as either Mott-Hubbard insulators, where the charge gap is determined by the $d$-$d$ Coulomb interaction ($E_g \approx U$), or charge-transfer insulators, where the gap is dictated by the energy difference between the oxygen $p$-band and the metal $d$-band. These derive from considerations of several factors, such as crystal field splitting, arrangement of atoms and lattice symmetries. 
+
+For example, in the case of octahedral symmetry, repulsion from the surrounding atoms leads to the raising of energy of the \(d_{x^2 - y^2}\) and \(d_{3z^2-r^2}\) orbitals forming the \(e_g\) doublet, while the other three orbitals (\(d_{xy}, d_{yz}\) and \(d_{zx}\)) form the \(t_{2g}\) multiplet. For the heavier TMOs (Ti, V, Cr...), the Fermi level lies within \(e_{g}\). The increased positive nuclear charge (compared to the lighter elements) lowers the energy of the \(d-\)orbitals and brings them closer to the \(p-\)orbitals, reducing the charge transfer energy \(\Delta = \varepsilon_d - \varepsilon_p\) of transporting an electron from a \(d-\)state to a \(p-\)state, compared to the \(d-\)level repulsion \(U\) (\(|\Delta| < U\)). Geometric reasons (the \(e_g\) orbitals point towards the \(p-\)orbitals) also enhance the hybridisation between \(d-\) and \(p-\)orbitals in such materials. If \(\Delta\) becomes larger than the bandwidth, we obtain a {\it charge-transfer insulator}, where the charge gap is decided by \(\Delta\). In the lighter TMOs, the Fermi level passes through \(t_{2g}\), and because they point away from the \(p-\)orbitals, the hybridisation is weaker. Moreover, the reduced positive nuclear charge leads to an increased \(\Delta > U\); a \(U\) greater than the bandwidth leads to what's called a {\it Mott-Hubbard insulator}.
+
+Experimental studies of transition metal oxides (TMOs) have established metal–insulator transitions (MITs) as a defining consequence of strong electronic correlations in systems with partially filled (d)-electron shells \cite{Imada1998,mcwhan1969}. Early experiments on vanadates such as $V_2O_3$ characterised pressure-driven MITs through the pressure- and temperature-dependent conductivity as well as an anomalous enhancement of the optical conductivity\cite{Limelette2003,Rozenberg1995,Qazilbash2007}. Copper oxides constitute the most extensively studied class of correlated TMOs and provide a canonical example of a doping-driven MIT. Transport measurements on parent compounds such as $La_2CuO_4$ establish a robust insulating state, while carrier doping leads to anomalous metallic behavior characterized by linear-in-temperature resistivity and unconventional superconductivity\cite{Takagi1992,Ando2004,Lemberger2011}. Such metal-insulator transition is also reported from angle-resolved photoemission spectroscopy (ARPES) measurements in doped $La_2CuO_4$ and $Bi_2Sr_2CaCu_2O_8$, along with the emergence of pseudogap near the antinodes at high temperatures and a hole-to-electronlike Fermi surface reconstruction\cite{Damascelli2003,Sobota2021,Vishik_2018}. Nickelates ($LaNiO_2$, $La_3Ni_2O_7$, $La_4Ni_3O_{10}$, etc) exhibit related but distinct experimental signatures. With \(Ni^+\) sharing the same \(3d^9\) valence configuration as \(Cu^{2+}\) in the cuprate superconductors, these materials also display superconductivity, although the mechanism in the nicklelates is different due to the strong coupling between the layers~\cite{Medarde_1997,Wang2025}. The optimal doped regime in thin films shows strange metal behaviour, while infinite-layer nickelates show the absence of long-range antiferromagnetic order~\cite{Puphal2026}.
+
+\paragraph{Transition Metal Dichalcogenides}
+Transition Metal Dichalcogenides (TMDs) are layered van der Waals materials with the stoichiometry $MX_2$, where $M$ is a transition metal (e.g., Mo, W) and $X$ is a chalcogen (e.g. S, Se, Te)~\cite{Manzeli2017,Joseph2023}. Recent interest has focused on the interplay between strong spin-orbit coupling (SOC), electronic correlations and direct bandgap -- properties that make them particularly useful for electronic applications, spintronics and DNA sequencing. Layered TMDs have the structure \(X-M-X\), with the transition metal sandwiched between two hexagonal planes of chalcogenides. Different combinations of the metals with the chalcogens lead to widely varying structures and electronic properties in TMDs. Experimental studies show that metal--insulator transitions (MITs) in TMDs are commonly intertwined with charge density wave (CDW) formation rather than arising from purely on-site Coulomb localization~\cite{Wilson1974PRL,Wilson2001}. In prototypical compounds such as 1T-TaS$_2$, ARPES and transport measurements reveal fluctuating magnetic order parameters in the Mott state and a transition to superconductivity driven by pressure \cite{Fazekas1979,Perfetti2005,Sipos2008}. Scanning tunnelling microscope (STM) pulses have been successfully used to manipulate the metal–insulator transition of 1T-TaS2, demonstrating the macroscopic controllability of the Mott phase\cite{Cho2016}.
+
+ARPES measurements in 2H-NbSe$_2$ and 2H-TaSe$_2$ partial gapping of the Fermi surface restricted to nested momentum regions and a temperature-dependent pseudogap similar to the cuprates\cite{Borisenko2008,Borisenko2009}. This is further supported by optical conductivity experiments that show spectral weight in the midinfrared region along with a low-frequency Drude contribution~\cite{Vescoli1998}. Transport measurements on single crystals of TaSe$_2$ reveal that disorder enhances superconductivity by suppressing other competing orders such as CDW~\cite{Li2017}. Collectively, these experimental results establish TMDs as a distinct class of correlated materials in which reduced dimensionality, band narrowing, and lattice reconstruction cooperate to produce metal--insulator behavior beyond conventional band theory.
+
+\paragraph{Iron-Based Superconductors}
+The iron-based superconductors (FeSCs), discovered in 2008, constitute a broad family of layered materials that share a common structure: a layer of iron atoms joined by tetrahedrally coordinated pnictogen (P, As) or chalcogen (S, Se, Te) anions arranged in a stacked sequence; the layers are separated by alkali, alkaline-earth or rare-earth and oxygen/fluorine ‘blocking layers’\cite{kamihara2008,Paglione2010,Hirschfeld2011,stewart2011}. Doping or applying external pressure reveals coupled antiferromagnetic and structural transitions along with superconducting and nematic orders~\cite{Johnston2010,Kasahara2012,Fernandes2014}. Electrical resistivity measurements in the neighbourhood of the quantum critical point show a crossover from a bad-metal behavior (\(T-\)linear resistivity)  to a Fermi liquid behaviour (\(T^2-\)resistivity) \cite{Analytis2014}. Optical conductivity measurements indicate point to intermediate-to-strong electronic correlations \cite{Qazilbash2009}.
+
+ARPES measurements reveal a \(k-\)dependent superconducting gap and de Haas-van Alphen measurements indicate substantial quasiparticle mass enhancements, shedding more light on the correlated nature of the material\cite{Shishido2010,terashima2009}. Strain-tuning measurements of the nematic susceptibility, and differential elastoresistance measurements have provided compelling evidence for the nematic transition and its surrounding fluctuations being the cause of the structural transition as well as the superconductivity\cite{Chu2012,Kuo2016}. Neutron scattering and NMR measurements further reveal persistent low-energy spin fluctuations across wide regions of the phase diagram, supporting scenarios in which unconventional superconductivity emerges from the interplay of magnetic, orbital, and nematic degrees of freedom \cite{Inosov2010,Chubukov2012}.
+
+\paragraph{Heavy-Fermion / Kondo-Lattice Systems}
+Heavy-fermion materials are a class of strongly correlated electron systems typically realized in intermetallic compounds of rare earth metals (such as Ce, Sm and Yb) and actinides (such as U, Np and Pu), where localized $f$ electrons hybridize with itinerant conduction bands \cite{Stewart1984,Wirth2016}. At high temperatures, these systems exhibit local-moment behavior governed by Curie--Weiss susceptibilities and incoherent transport, while at low temperatures the Kondo effect leads to the formation of a coherent many-body state with extremely large quasiparticle effective masses \cite{hewson1993}. Experimentally, this crossover is most clearly manifested in transport and thermodynamic measurements: the electrical resistivity shows a characteristic maximum followed by a rapid drop signaling the onset of coherence, while the linear specific heat coefficient $\gamma=C/T$ reaches values orders of magnitude larger than in conventional metals, directly reflecting the heavy quasiparticle mass \cite{Lohneysen2007}.
+
+A defining feature of heavy-fermion materials is their proximity to magnetic quantum phase transitions, which can be accessed experimentally by pressure, chemical substitution, or magnetic field~\cite{Gegenwart2008}. Near such quantum critical points (QCPs), transport measurements reveal pronounced non-Fermi-liquid behavior ($T-$linear resistivity) and a vanishing Hall response, along with a divergent effective quasiparticle mass as the transition is approached~\cite{Custers2003,Paschen2004}; these are all indications of the breakdown of electronic excitations near the transition. Neutron scattering experiments provide direct evidence for spin fluctuations down to very low temperatures, interplaying with the itinerant electrons at the QCP and potentially driving the superconducting transition~\cite{Schroder2000,Stockert2011}. Quantum oscillation measurements through de Haas–van Alphen experiments further demonstrate Fermi surface reconstruction across the quantum critical point, highlighting the drastic change in Fermi volume~\cite{Shishido2005}. Together, these experimental observations establish heavy-fermion compounds as paradigmatic systems in which strong local correlations, hybridization-driven coherence, and quantum critical fluctuations conspire to produce emergent low-energy quasiparticles and unconventional metallic behavior~\cite{Si2010}.
 
 \subsection{DMFT results on the Bethe lattice}
 , and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 

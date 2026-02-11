@@ -69,19 +69,22 @@ Substituting into the expression for the lattice Greens function, we get
 	G(\bm k,d;\omega) = C_{+, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,+,d}; \omega - (\epsilon_k - \eta_d/2 + \Delta)) + C_{-, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,-,d}; \omega - (\epsilon_k - \eta_d/2 - \Delta))~.
 \end{aligned}\end{equation}
 
-Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function, in real-space:
+Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function for the \(f-\) and \(d-\)electrons. For that, we define the local diagonal modes \(\nu_\pm\) obtained from the local Hamiltonian
 \begin{equation}\begin{aligned}
-	G&_\text{loc}(\omega)\\
-	=&~ \mathcal{G}(d\sigma; \omega) +\sum_{\bm k} \mathcal{G}(d\sigma,\mathcal{T}_{\bm k,\sigma}; \omega)\\
-						 &+ \sum_{\bm k, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d},d\sigma; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
-						   &+ \sum_{\bm k, \bm q, \alpha=\pm} C_{\alpha, \bm k}\left[\mathcal{G}^>(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega - \epsilon_k + \eta_d/2 + \alpha\Delta) + \mathcal{G}^<(\mathcal{T}_{\bm k,\alpha,d}, \mathcal{T}_{\bm q,\sigma, d}; \omega + \epsilon_k - \eta_d/2 - \alpha\Delta)\right]\\
+	H_\text{loc} = \begin{pmatrix} 0  & -V_\perp\\ -V_\perp & 0 - \eta_d \end{pmatrix}~,
 \end{aligned}\end{equation}
-
-
-
-
-
-
+and their associated energies \(\varepsilon_\pm\). Within the impurity model, these local bonding/antibonding modes can be constructed on the impurity sites (\(\nu_\pm\)) or on the neighbouring bath sites, (\(\nu^Z_\pm\)). The local Greens function can be expressed in terms of these modes:
+\begin{equation}\begin{aligned}
+	G_{dd}(\omega) =& \frac{1}{2}\sum_{\nu}\left[C_{\nu, d} \mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + C_{\nu, d}^* \mathcal{G}(d\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
+								  &+ \frac{1}{2}\sum_{\nu^Z}\left[C^*_{\nu^Z, Z_d} \mathcal{G}(\mathcal{T}_{Z_d, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z}) + C_{\nu^Z, Z_d} \mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
+\end{aligned}\end{equation}
+The presence of local hybridisation between the \(d-\) and \(f-\) orbitals makes the inter-orbital Greens function important as well. Following eq.~\ref{interorbital}, we have
+\begin{equation}\begin{aligned}
+	G_{fd}(\omega) =& \frac{1}{2}\sum_{\nu} \left[C_{\nu, f}\mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + C^*_{\nu,d}\mathcal{G}(f\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
+								  &+ \frac{1}{2}\sum_{\nu^Z}\left[C_{\nu^Z, Z_f}\mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z}) + C_{\nu^Z, Z_d}^* \mathcal{G}(\mathcal{T}_{Z_f, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
+\end{aligned}\end{equation}
+% TODO
+%%%% ACCOUNT FOR F_n in these expressions.
 
 \section{Unitary RG Analysis of The Bilayer Lattice-Embedded ESIAM}
 In the limit of large \(U_\alpha\), we carry out a Schrieffer-Wolff transformation and work with the following low-energy Hamiltonian:
@@ -98,7 +101,7 @@ The particle-hole transformed state \(\bar{\bf q}\) associated with \({\bf q}\) 
 In order to study the low-energy physics of the impurity model, we iteratively integrate out high-energy degrees of freedom using the unitary RG method. Let the momentum states being decoupled from the two layers be \(\ket{{\bf q},\sigma,f}\) and \(\ket{{\bf q},\sigma,d}\) if they are above the Fermi energy (unoccupied in the low-energy configuration) and \(\ket{\bar{\bf q},\sigma,f}\) and \(\ket{\bar{\bf q},\sigma,d}\) if they are below the Fermi energy (occupied in the low-energy configuration)
 For every shell of conduction bath states of width \(\Delta D\) integrated out, the Hamiltonian couplings renormalise by folding in the effects of virtual excitations to these states. We already have the renormalisation group equations for the couplings \(J_\alpha\) in the case of \(J=0\):
 \begin{equation}\begin{aligned}
-	\frac{\Delta J_f({\bf k}_1, {\bf k}_2)}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_f({\bf k}_1, {\bf q})J_f({\bf q}, {\bf k}_2) + J_f({\bf q}, \bar {\bf q})W_f({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right] G_f^{(0)}({\bf q})~,
+	\frac{\Delta J_f({\bf k}_1, {\bf k}_2)}{\Delta D} = -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_f({\bf k}_1, {\bf q})J_f({\bf q}, {\bf k}_2) + 4J_f({\bf q}, \bar {\bf q})W_f({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right] G_f^{(0)}({\bf q})~,
 \end{aligned}\end{equation}
 where \({\bf q}\) sums over the UV states being integrated out, \(\rho({\bf q})\) is the density of states for the momentum states being integrated out and \(G_f^{(0)}\) is the propagator for the excited intermediate state (for \(J=0\)):
 \begin{equation}\begin{aligned}
@@ -172,7 +175,7 @@ where \(\bar\epsilon_\alpha({\bf q}) = \epsilon_f({\bf q}) - \epsilon_f(\bar{\bf
 
 Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
 \begin{equation}\begin{aligned}
-	\frac{\Delta J_\alpha}{\Delta D} = J_\alpha \mathcal{G}_\alpha J_\alpha^\dagger + \mathcal{W}_\alpha\text{Tr}\left[\mathcal{G}^\prime_\alpha\right]~,
+	\frac{\Delta J_\alpha}{\Delta D} = -J_\alpha \mathcal{G}_\alpha J_\alpha^\dagger - 4\mathcal{W}_\alpha\text{Tr}\left[\mathcal{G}^\prime_\alpha\right]~,
 \end{aligned}\end{equation}
 where all objects are matrices. \(J_\alpha\) is the Kondo coupling matrix. \(\mathcal{G}_\alpha\) is a diagonal matrix with matrix elements 
 \begin{equation}\begin{aligned}
