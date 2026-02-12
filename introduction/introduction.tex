@@ -81,7 +81,7 @@ The vacant eigenstate \(\ket{0}\) of \(H({\bf k})\) has zero energy (\(E_0 = 0\)
 
 Upon combining states from other \(k-\)modes, these isolated excitations broaden into bands around \(\pm U/2\) because of the continuum of values available to \(\epsilon({\bf k})\). For large enough \(U\) (compared to the non-interacting bandwidth \(W\)), these bands remain well-separated in energy (Fig.~\ref{HKM-phases} left), forming lower and upper Hubbard bands. The half-filled system results in the lower band being completely filled and the upper band empty, leading to a Mott insulator. The states within this band are all singly-occupied (per \(k-\)state). Upon lowering the correlation strength \(U\), the bands touch each other at the critical value of \(U_c = W\) (obtained by equating the top of the lower band to the bottom of the upper band). For lower values of \(U\), the system is a metal due to the presence of gapless excitations within the combined band (Fig.~\ref{HKM-phases} right). This therefore provides a simple demonstration of a correlation-driven Mott metal-insulator transition.
 
-\section{Warming up: Mott transition in infinite dimensions}
+\section{Strong local correlations and auxiliary models}
 \subsection{Introduction to the auxiliary model approach}
 One of the main results obtained within this thesis is the development of a formalism to study the more realistic case of finite-dimensional interacting models by using appropriately chosen impurity models as auxiliary models. The key to an {\it auxiliary model method} is to construct an appropriate auxiliary model that while being tractable captures some essential property of the full lattice model~\cite{martin_2016}. This involves separating the complete degrees of freedom into a system part (\(H_S\)) which one treats exactly and the rest of the system (\(H_R\)) that one might simplify in order to be able to solve the problem. The non-trivial nature of the problem arises of course from the hybridisation \(H_{SR}\) between the system and the bath:
 \begin{equation}\begin{aligned}
@@ -116,30 +116,36 @@ In order to motivate the impurity model-lattice model mapping inherited by DMFT,
 \begin{equation}
 	H_{\mathrm{Ising}} = - \sum_{i\neq j} J_{ij} S_i S_j - h \sum_i S_i = -\sum_i S_i(h + \sum_{j \neq i}J_{ij}S_j),
 \end{equation}
-mean-field theory proceeds by replacing the interaction between a given spin and its neighbors by an effective static field proportional to the average magnetization. Writing
+mean-field theory proceeds by replacing the interaction between a given spin and its neighbors by an {\it effective static field} proportional to the average magnetization. Writing
 \(
 S_j = \langle S_j \rangle + \delta S_j
 \)
-and neglecting quadratic fluctuations and constant parts, one obtains a mean-field Hamiltonian
+and neglecting quadratic fluctuations and constant parts, one obtains an {\it auxiliary problem} in the form of a mean-field Hamiltonian
 \begin{equation}\begin{aligned}
 	H^{(\text{MF})}_{\mathrm{Ising}} = - \sum_{i} (h + h_\text{MF}(i))S_i~,
 \end{aligned}\end{equation}
 where the mean-field \(h_\text{MF}\) comes out to be
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{mean-field}
 	h_\text{MF}(i) = \sum_{j \neq i}2 \langle S_j \rangle J_{ij}~.
 \end{aligned}\end{equation}
-The above approach assumes two things: (i) the presence of a non-zero order parameter \(m_j = \langle S_j \rangle \) (in this case, a non-zero magnetisation), and (ii) the smallness of the fluctuations \(S_j - \langle S_j \rangle\). The mean-field Hamiltonian can be used to compute the partition function (at inverse temperature \(\beta\)) and hence the magnetisation at a site \(i\) of the lattice:
-\begin{equation}\begin{aligned}
+The above approach assumes two things: (i) the presence of a non-zero {\it order parameter} \(m_j = \langle S_j \rangle \) (in this case, a non-zero magnetisation), and (ii) the smallness of the fluctuations \(S_j - \langle S_j \rangle\). The mean-field Hamiltonian can be used to compute the partition function (at inverse temperature \(\beta\)) and hence the magnetisation at a site \(i\) of the lattice:
+\begin{equation}\begin{aligned}\label{magnetisation}
 	m_i = \tanh(\beta(h_\text{MF}(i) + h)) = \tanh(\beta \sum_{j \neq i}2 m_j J_{ij} + \beta h)~.
 \end{aligned}\end{equation}
 
-
-The problem hasn't yet been solved of course; one needs to determine the appropriate value of \(m_j\). We therefore need an additional equation; this is provided by the so-called self-consistency condition. The translation invariance of the lattice ensures that the magnetisation must be uniform across sites \(i\) and \(j\). This allows us to replace \(m_j\) with \(m_i\) in the above equation:
+The problem hasn't yet been solved of course; one needs to determine the appropriate value of \(m_j\). We therefore need an additional equation; this is provided by the so-called {\it self-consistency condition}. The translation invariance of the lattice ensures that the magnetisation must be uniform across sites \(i\) and \(j\). This allows us to replace \(m_j\) with \(m_i\) in the above equation:
 \begin{equation}
 	m_i = \tanh(\beta m_i\sum_{j \neq i}2 J_{ij} + \beta h)~.
 \end{equation}
 This equation can be solved numerically to obtain the uniform magnetisation \(m_i = m\).
 The mean-field approximation becomes exact in the limit of large coordination, where fluctuations are suppressed  and spatial correlations beyond a single site vanish.
+
+An equivalent way of framing the self-consistency equation is to equate the mean-fields on different lattice sites. Combining eqs.~\ref{magnetisation} and \ref{mean-field}, we have
+\begin{equation}\begin{aligned}
+	h_\text{MF}(i) = \sum_{j \neq i}2 m_j J_{ij} = \sum_{j \neq i}2 \tanh(\beta(h_\text{MF}(j) + h)) J_{ij}~.
+\end{aligned}\end{equation}
+The equation in terms of \(h_\text{MF}(i)\) and \(h_\text{MF}(j)\) can again be solved numerically by claiming that the mean-field has to be uniform across all the sites owing to translation invariance. This form of the self-consistency requirement (in terms of the field) will be useful to us in the upcoming discussion.
+
 
 The essential feature of classical mean-field theory is therefore the replacement of a many-body problem by an effective \emph{single-site} problem embedded in a self-consistently determined environment. Quantum lattice models admit a closely analogous construction, but with an important conceptual difference: while the classical mean field is static, quantum fluctuations necessarily introduce a tower of excited states that allow for temporal dynamics. This observation underlies the formulation of dynamical mean-field theory (DMFT), which may be viewed as the natural quantum generalization of classical mean-field theory \cite{metzner_volhardt_1989,georges1996}.
 
@@ -161,7 +167,7 @@ defined on a lattice with coordination number \(z\).
 % \end{equation}
 % though it retains its full dynamical (frequency-dependent) character \cite{MetznerVollhardt1989,Georges1996}.
 
-The point of this exercise is to calculate the interacting self-energy \(\Sigma_k(\omega)\) for the fermions. This therefore acts as an "order parameter" and plays the same role as the local magnetisation in the previous exercise. The self-energy defines the interacting \(k\)-space Green's function:
+The point of this exercise is to calculate the interacting self-energy \(\Sigma_k(\omega)\) for the fermions. This therefore acts as an ``order parameter" and plays the same role as the local magnetisation in the previous exercise. The self-energy defines the interacting \(k\)-space Green's function for a translation-invariant problem:
 \begin{equation}
 	G_{\mathbf{k}}(\omega) = \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_{\mathbf{k}}(\omega)},
 \end{equation}
@@ -170,34 +176,43 @@ where \(\varepsilon_{\mathbf{k}}\) denotes the noninteracting dispersion, and a 
 G_{\text{loc}}(\omega) = \sum_{\mathbf{k}} \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_{\mathbf{k}}(\omega)}.
 \end{equation}
 
-In line with the overall theme of working with auxiliary models, we consider an auxiliary impurity problem describing the dynamics of a single correlated site with the other environment sites integrated out and described by the "bare" Greens function \(G_0\):
-\begin{equation}
-S_{\text{imp}} = -\int_0^\beta d\tau d\tau'\,c^\dagger(\tau)\,G_0^{-1}(\tau-\tau')\,c(\tau') + U \int_0^\beta d\tau\, n_\uparrow(\tau) n_\downarrow(\tau).
+Similar to the earlier exercise, we need to apply a mean-field decoupling to drop certain fluctuations and obtain a similar effective problem. In the context of interacting electrons, such a decoupling is obtained in the limit of infinite dimensionality or coordination number, where the self-energy becomes \(k-\)independent~\cite{metzner_volhardt_1989}:
+\begin{equation}\begin{aligned}
+	\Sigma_{\mathbf{k}}(\omega) = \Sigma_\text{loc}(\omega), \text{ or (equivalently) }~ \Sigma_{ij}(\omega) = \delta_{ij}\Sigma_\text{loc}(\omega)~.
+\end{aligned}\end{equation}
+The mean-field decoupling here therefore corresponds to ignoring spatial fluctuations of the one-particle self-energy, and leads to a local Greens function that is directly connected to the local self-energy:
+\begin{equation}\begin{aligned}
+G_{\text{loc}}(\omega) = \sum_{\mathbf{k}} \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_\text{loc}(\omega)}.
+\end{aligned}\end{equation}
+It turns out that a local Greens function connected to a local self-energy also defines a quantum impurity problem describing the dynamics of a single correlated site with the other environment sites integrated out:
+\begin{equation}\label{effAction}
+	S_{\text{imp}} = -\int_0^\beta d\tau d\tau'\,c^\dagger(\tau)\,G_\text{MF}^{-1}(\tau-\tau')\,c(\tau') + U \int_0^\beta d\tau\, n_\uparrow(\tau) n_\downarrow(\tau).
 \end{equation}
-Such an impurity problem is solvable, and the impurity Green's function is given by
+This acts as an auxiliary problem for the more complete problem locally interacting electrons on a lattice. The non-interacting Greens function \(G_\text{MF}\) is as of now unknown, and defines the environment of the impurity site and comprises the dynamics of the sites that have been integrated out. Such an impurity problem is solvable, and the impurity Green's function is given by
 \begin{equation}
-G_{\text{imp}}(\omega) =
-\frac{1}{G_0^{-1}(\omega) - \Sigma(\omega)},
-\label{eq:impG}
-\end{equation}
-with the same local self-energy \(\Sigma(\omega)\) as the lattice problem.
-
-The DMFT approximation becomes exact in infinite dimensions by enforcing the condition that the impurity Green's function reproduces the local lattice Green's function,
-\begin{equation}
-G_{\text{imp}}(\omega) = G_{\text{loc}}(\omega).
-\label{eq:dmftSC}
-\end{equation}
-Combining Eqs.~\eqref{eq:localG} and \eqref{eq:impG}, one obtains a self-consistency equation that determines the Weiss field \(\mathcal{G}_0(\omega)\),
-\begin{equation}
-\mathcal{G}_0^{-1}(\omega)
-= \Sigma(\omega) + G_{\text{loc}}^{-1}(\omega).
+	G_{\text{imp}}(\omega) = \frac{1}{G_\text{MF}^{-1}(\omega) - \Sigma_\text{imp}(\omega)},
 \end{equation}
 
-Together with the definition of \(G_{\text{loc}}(\omega)\) as a functional of \(\Sigma(\omega)\), this equation closes the DMFT loop. The interacting lattice problem is thus reduced to the self-consistent solution of a quantum impurity model, capturing all local dynamical correlations exactly while neglecting nonlocal ones \cite{Georges1996,Kotliar2004}.
+The first term in eq.~\ref{effAction} is therefore what makes this problem dynamical -- it represents the probability of electrons hopping into and out of the impurity site, and leads to fluctuations of its occupancy. We can make the identification of the Greens function \(G_\text{MF}\) as the {\it mean-field} encountered in the previous example. More specifically, \(G_\text{MF}\) acts as a ``field" because it is obtained by integrating out the other sites on the lattice, and it acts on the impurity site by affecting its dynamics.
 
-In direct analogy with classical mean-field theory, DMFT replaces a lattice model by an effective single-site problem embedded in a self-consistent environment. The crucial distinction is that the mean field is now dynamical rather than static, encoding quantum fluctuations exactly while neglecting spatial correlations. This controlled limit provides both a conceptual foundation and a practical starting point for extensions beyond DMFT, as well as for alternative auxiliary-model constructions such as the one developed in this thesis.
+The complete set of equations for the solving such a dynamical mean-field problem is finally obtained by equating the impurity local Greens function \(G_\text{imp}\) to the lattice local Greens function \(G_\text{loc}\). As discussed earlier, such a solution exists in an exact fashion only in the limit of infinite dimensions, as long as the correct \(G_\text{MF}\) can be found. In order to find the appropriate \(G_\text{MF}\) that allows equating the impurity model Greens function to a lattice mode Greens function, we require an additional equation: the self-consistency condition. Similar to the case of the Ising model, we require that \(G_\text{MF}\) be equal to \(G_\text{loc}\), owing to translation invariance. The full set of coupled DMFT equations is
+\begin{equation}\begin{aligned}
+	G_\text{MF}	&= G_\text{loc},\\
+	\Sigma_\text{imp}(\omega) &= G_\text{MF}^{-1}(\omega) - G^{-1}_{\text{imp}}(\omega),\\
+	\Sigma_\text{loc}(\omega) &= \Sigma_\text{imp}(\omega),\\
+	G_{\text{loc}}(\omega) &= \sum_{\mathbf{k}} \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_\text{loc}(\omega)}.
+\end{aligned}\end{equation}
+\begin{itemize}
+	\item The first equation is equivalent to the feature in the previous exercise where we equated the mean-fields on \(i\) and \(j\).
+	\item The second equation is equivalent to computing, in the previous exercise, the magnetisation on the \(j^\text{th}\) site from the partition function.
+	\item The third equation is the essential mean-field approximation, where we equate the self-energy of the simpler decoupled problem to that of the more complete lattice problem and is justified in the limit of infinite dimensions.
+	\item The fourth equation is equivalent, in the previous exercise, to using the computed ``magnetisation" of site \(j\) in the second step to further compute the mean-field at site \(i\).
+\end{itemize}
+
+In direct analogy with classical mean-field theory, DMFT replaces a lattice model by an effective single-site problem embedded in a self-consistent environment. The crucial distinction is that the mean field is now dynamical rather than static, encoding quantum fluctuations exactly while neglecting spatial correlations. Importantly, this demonstrates the importance of quantum impurity models in investigating correlated lattice models, particularly in the presence of strong local interactions. This is because the effects of local correlations are captured exactly by such an auxiliary model mapping.
+
 \subsection{Examples of strongly correlated materials}
-Evidently, the route to studying lattice problems via quantum impurity models makes most sense for models with strong local correlations. In practise, the 
+As discussed in the previous section, the route to studying lattice problems via quantum impurity models makes most sense for models with strong local correlations. 
 
 \paragraph{Transition Metal Oxides (TMOs)}
 Transition Metal Oxides (TMOs) are defined chemically by the presence of partially filled $d$-shells in transition metals (e.g., Cu$^{2+}$, Mn$^{3+}$, V$^{4+}$) coordinated by oxygen ligands. The physics of TMOs is governed by the competition between the kinetic energy hopping amplitude $t$ and the on-site Coulomb repulsion $U$; due to the small overlap between the localised \(d-\)orbitals, the \(d-\)electrons can delocalise only by hopping onto the ligand atoms. According to the Zaanen-Sawatzky-Allen (ZSA) classification scheme~\cite{Zaanen1985}, these materials are categorized as either Mott-Hubbard insulators, where the charge gap is determined by the $d$-$d$ Coulomb interaction ($E_g \approx U$), or charge-transfer insulators, where the gap is dictated by the energy difference between the oxygen $p$-band and the metal $d$-band. These derive from considerations of several factors, such as crystal field splitting, arrangement of atoms and lattice symmetries. 
@@ -221,8 +236,25 @@ Heavy-fermion materials are a class of strongly correlated electron systems typi
 
 A defining feature of heavy-fermion materials is their proximity to magnetic quantum phase transitions, which can be accessed experimentally by pressure, chemical substitution, or magnetic field~\cite{Gegenwart2008}. Near such quantum critical points (QCPs), transport measurements reveal pronounced non-Fermi-liquid behavior ($T-$linear resistivity) and a vanishing Hall response, along with a divergent effective quasiparticle mass as the transition is approached~\cite{Custers2003,Paschen2004}; these are all indications of the breakdown of electronic excitations near the transition. Neutron scattering experiments provide direct evidence for spin fluctuations down to very low temperatures, interplaying with the itinerant electrons at the QCP and potentially driving the superconducting transition~\cite{Schroder2000,Stockert2011}. Quantum oscillation measurements through de Haas–van Alphen experiments further demonstrate Fermi surface reconstruction across the quantum critical point, highlighting the drastic change in Fermi volume~\cite{Shishido2005}. Together, these experimental observations establish heavy-fermion compounds as paradigmatic systems in which strong local correlations, hybridization-driven coherence, and quantum critical fluctuations conspire to produce emergent low-energy quasiparticles and unconventional metallic behavior~\cite{Si2010}.
 
+\section{Phenomenology of the Anderson impurity model}
+Within this thesis, we have developed an auxiliary model approach that combines the physics of quantum impurity models with a manybody version of Bloch's theorem to investigate interacting fermionic lattice models. This is motivated by the relative ease in solving impurity models and transparency afforded by such solutions. We now review the phenomenology of some of these impurity models and point out how the various impurity features affect the physics of the lattice models.
+
+The single-impurity Anderson model describes the dynamics of a system of non-interacting itinerant electrons \((c_{k,\sigma})\) hybridising with a localised correlated impurity orbital (\(d_\sigma\))~\cite{Anderson1959}:
+\begin{equation}\begin{aligned}
+	H_\text{AIM} = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + \sum_{k,\sigma}V_k(c^\dagger_{k,\sigma}d_\sigma + \text{h.c.}) + \epsilon_d \sum_\sigma n_{d\sigma} + Un_{d \uparrow} n_{d \downarrow}~.
+\end{aligned}\end{equation}
+\(V_k\) controls the hybridisation strength, and \(\epsilon_d\) and \(U\) control the onsite energy and local correlation respectively of the impurity site. In the limit of large \(U\), the impurity dynamics gets projected onto its spin states, and the model then describes the scattering of non-interacting electrons off magnetic impurities, through the Kondo model:
+\begin{equation}\begin{aligned}
+	H_\text{Kondo} = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J \sum_{k_1,k_2}\sum_{\alpha,\beta}\vec{S}_d \cdot \vec{\sigma}_{\alpha,\beta}c^\dagger_{k_1,\alpha}c_{k_2,\beta}~,
+\end{aligned}\end{equation}
+where \(\vec{S}_d\) is the impurity spin formed by projecting the Hilbert space of the impurity to the singly-occupied states.
+
+Even though the conduction bath is non-interacting, the presence of local repulsion on the impurity site makes the problem {\it many-electron} in nature: it makes it impossible to study the electrons in isolation. This can be seen as follows: imagine two conduction electrons \(\ket{k_1 \uparrow}\) and \(\ket{k_2 \downarrow}\) trying to hybridise with an empty impurity site. The first electron moves onto the impurity site through a scattering process of the form \(c^\dagger_{d \uparrow}c_{k_1 \uparrow}\) and makes the impurity site single occupied (\(\ket{\uparrow}_d\)), but now the second electron \(k_2\) {\it must pay a cost} of the order of \(U\) in order to hybridise with this singly-occupied impurity site through a process of the kind \(c^\dagger_{d \downarrow}c_{k_1 \downarrow}\). This shows that the conduction electrons {\it are aware} of the other electrons, and all of them must be treated together. Another way of seeing this collective behaviour is from the Kondo model. Again imagine two two spin-up electrons \(k_1,k_2\) that are about to scatter off the impurity spin (which is presently down) via a {\it spin-flip} process. The first electron scatters and leaves the impurity spin up while it itself becomes down, but now the second conduction electron cannot spin-flip scatter because the spins cannot be exchanged (both are down!). This is another example of how the conduction electrons can {\it feel} the presence of the other electrons, and this is what makes the problem many-electron in nature.
+
+Despite the interacting nature of the problem, the problem can be solved in an effectively exact fashion, via Wilson's numerical renormalisation group approach~\cite{wilson1975renormalization}, or the method of {\it Bethe ansatz}~\cite{andrei_1980,Wiegmann_1981}. The former solution is more transparent: for any non-zero value of the hybridisation \(V\) (or Kondo coupling \(J\)), the low energy physics of the impurity is described by a strong-coupling fixed point, where the impurity forms a maximally-entangled singlet state with the local spin density of the conduction bath. The low-energy excitations about such a fixed point can be calculated from renormalised perturbation theory, and describe a local Fermi liquid -- one particle excitations in the neighbourhood of the singlet renormalised by a local repulsion term~\cite{nozieres1974fermi}. The crossover from the free local moment at high temperatures to the screened non-magnetic state at low temperatures occurs at an emergent energy scale \(T_K\), the Kondo temperature, which depends exponentially on the strength of the Kondo coupling, and is the only energy scale remaining at low temperatures, so that all thermodynamic quantities must go as a function of \(T/T_K\)~\cite{wilson1975renormalization}.
+
 \subsection{DMFT results on the Bethe lattice}
-, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
+, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model.
 \subsection{Open Questions}
 
 \section{Effect of low dimensionality: Mott MIT in two dimensions}

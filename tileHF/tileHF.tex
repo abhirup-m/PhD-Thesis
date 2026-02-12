@@ -75,14 +75,19 @@ Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression 
 \end{aligned}\end{equation}
 and their associated energies \(\varepsilon_\pm\). Within the impurity model, these local bonding/antibonding modes can be constructed on the impurity sites (\(\nu_\pm\)) or on the neighbouring bath sites, (\(\nu^Z_\pm\)). The local Greens function can be expressed in terms of these modes:
 \begin{equation}\begin{aligned}
-	G_{dd}(\omega) =& \frac{1}{2}\sum_{\nu}\left[C_{\nu, d} \mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + C_{\nu, d}^* \mathcal{G}(d\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
-								  &+ \frac{1}{2}\sum_{\nu^Z}\left[C^*_{\nu^Z, Z_d} \mathcal{G}(\mathcal{T}_{Z_d, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z}) + C_{\nu^Z, Z_d} \mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
+	G_{dd}(\omega) =& \frac{1}{2}\sum_{\nu}C_{\nu, d} \left[\mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + \mathcal{G}(d\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
+								  &+ \frac{1}{2}\sum_{\nu^Z}C_{\nu^Z, Z_d} \left[\mathcal{G}(\mathcal{T}_{Z_d, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z}) + \mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
 \end{aligned}\end{equation}
 The presence of local hybridisation between the \(d-\) and \(f-\) orbitals makes the inter-orbital Greens function important as well. Following eq.~\ref{interorbital}, we have
 \begin{equation}\begin{aligned}
-	G_{fd}(\omega) =& \frac{1}{2}\sum_{\nu} \left[C_{\nu, f}\mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + C^*_{\nu,d}\mathcal{G}(f\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
-								  &+ \frac{1}{2}\sum_{\nu^Z}\left[C_{\nu^Z, Z_f}\mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z}) + C_{\nu^Z, Z_d}^* \mathcal{G}(\mathcal{T}_{Z_f, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
+	G_{fd}(\omega) =& \frac{1}{2}\sum_{\nu} \left[C_{\nu, f}\mathcal{G}(\nu\sigma, d\sigma; \omega - \varepsilon_{\nu}) + C_{\nu,d}\mathcal{G}(f\sigma, \nu\sigma; \omega - \varepsilon_{\nu})\right]\\
+								  &+ \frac{1}{2}\sum_{\nu^Z}\left[C_{\nu^Z, Z_f}\mathcal{G}(\mathcal{T}_{\nu^Z,\sigma}, \mathcal{T}_{Z_d, \sigma}; \omega - \varepsilon_{\nu^Z}) + C_{\nu^Z, Z_d} \mathcal{G}(\mathcal{T}_{Z_f, \sigma}, \mathcal{T}_{\nu^Z,\sigma}; \omega - \varepsilon_{\nu^Z})\right]~.
 \end{aligned}\end{equation}
+Using these, we can construct the hybridised Greens function associated with the states \(\nu\):
+\begin{equation}\begin{aligned}
+	G_{\nu_+}(\omega) = C_{+,d}^2 G_{dd}(\omega) + C_{+,f}^2 G_{ff}(\omega) + C_{+,d}C_{+,f}\left[ G_{df}(\omega) + G_{fd}(\omega)\right]~,
+\end{aligned}\end{equation}
+
 % TODO
 %%%% ACCOUNT FOR F_n in these expressions.
 
