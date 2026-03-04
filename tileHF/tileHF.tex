@@ -66,7 +66,8 @@ the coefficients obtained from diagonalising the matrix
 The energies are given by \(\mathcal{E}_\pm(\bm k) = \epsilon_k -\eta_d/2 \pm \Delta\), with \(\epsilon_k\) being \(-\frac{4V}{Z}(\cos k_x + \cos k_y)\) for a 2D square lattice and \(\Delta = \sqrt{V_\perp^2 + \eta_d^2/4}\).
 Substituting into the expression for the lattice Greens function, we get
 \begin{equation}\begin{aligned}
-	G(\bm k,d;\omega) = C_{+, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,+,d}; \omega - (\epsilon_k - \eta_d/2 + \Delta)) + C_{-, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,-,d}; \omega - (\epsilon_k - \eta_d/2 - \Delta))~.
+	G(\bm k,d;\omega) =& C_{+, \bm k}\mathcal{G}(\mathcal{T}_{\bm k+,d}, \mathcal{T}^\dagger_{\bm k,d}; \omega - \mathcal{E}_+(\bm k)) + C_{-, \bm k}\mathcal{G}(\mathcal{T}_{\bm k-,d}, \mathcal{T}^\dagger_{\bm k,d}; \omega - \mathcal{E}_-(\bm k))\\
+					   &+ C^*_{+, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,d}, \mathcal{T}^\dagger_{\bm k+,d}; \omega - \mathcal{E}_+(\bm k)) + C^*_{-, \bm k}\mathcal{G}(\mathcal{T}_{\bm k,d}, \mathcal{T}^\dagger_{\bm k-,d}; \omega - \mathcal{E}_-(\bm k))	~.
 \end{aligned}\end{equation}
 
 Following eq.~\ref{localTiledGreenF}, we can similarly write down an expression the local lattice Greens function for the \(f-\) and \(d-\)electrons. For that, we define the local diagonal modes \(\nu_\pm\) obtained from the local Hamiltonian
