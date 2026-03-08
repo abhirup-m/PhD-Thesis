@@ -1,4 +1,4 @@
-\chapter{Methods and Preliminaries}
+\chapter{\chapB}
 
 %%%%% COME BACK TO THIS TO SEE IF I CAN ADD SOMETHING ABOUT THE MERG
 \section{The Unitary renormalisation group method}
@@ -1383,8 +1383,73 @@ One can also look at renormalisation of expectation values of operators; this is
 	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
 \end{aligned}\end{equation}
 
-
-
+\section{Kondo model spectral function}
+For the Kondo model defined by the Hamiltonian
+\begin{equation}\begin{aligned}
+	H_K = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J\sum_{k_1,k_2} {\bf S}_d \cdot {\bf \sigma}_{\alpha,\beta} c^\dagger_{k_1,\alpha}c_{k_2,\beta}~,
+\end{aligned}\end{equation}
+the impurity spin \(S_d\) does not have any fermionic operator. In order to define a spectral function for the impurity, we therefore look at the scattering of conduction electrons off it. This is captured by the conduction bath Greens function \(G_{k,k^\prime}\), which can be expressed in terms of a \(T-\)matrix when there are two-particle scattering processes present in the system:
+\begin{equation}\begin{aligned}\label{greensTmatrix}
+	G_{k,k^\prime}(\omega) = G^{(0)}_k(\omega) + G^{(0)}_k(\omega)T_{k,k^\prime}(\omega) G^{(0)}_{k^\prime}(\omega)~,
+\end{aligned}\end{equation}
+where \(T_{k,k^\prime}\) is non-zero because of the presence of the impurity spin which scatters momentum states into each other. Because of the local nature of the impurity scattering, the \(T-\)matrix is also local: \(T_{k,k^\prime}(\omega) = T(\omega)\). We therefore use this to define a spectral function:
+\begin{equation}\begin{aligned}
+	A_\text{imp} = -\frac{1}{\pi}\text{Im}~T(\omega)~.
+\end{aligned}\end{equation}
+In order to calculate \(T(\omega)\), we evaluate \(G_{k,k^\prime}\) using the equation of motion method. It is define as
+\begin{equation}\begin{aligned}
+	G_{k,k^\prime}(t) = -i \theta(t) \langle \langle c_{k,\sigma}(t), c^\dagger_{k^\prime,\sigma} \rangle  \rangle~.
+\end{aligned}\end{equation}
+Differentiating against time gives
+\begin{equation}\begin{aligned}
+	\partial_t G_{k,k^\prime}(t) = -i \delta(t) \langle \langle c_{k,\sigma}, c^\dagger_{k^\prime,\sigma} \rangle  \rangle - \theta(t) \langle \langle [c_{k,\sigma}(t), H_K], c^\dagger_{k^\prime,\sigma} \rangle  \rangle~.
+\end{aligned}\end{equation}
+Evaluating the commutator gives
+\begin{equation}\begin{aligned}
+	[c_{k,\sigma}(t), H_K] = \epsilon_k c_{k,\sigma} + J\sum_{q,\beta} {\bf S}_d\cdot \sigma_{\sigma,\beta} c_{q\beta}~.
+\end{aligned}\end{equation}
+For convenience we define the local bath operator \(c_{0,\beta} = \sum_q c_{q,\beta}\). Substituting the commutator back into the expression gives
+\begin{equation}\begin{aligned}
+	\partial_t G_{k,k^\prime}(t) = -i \delta(t) \delta_{k,k^\prime} - \theta(t) \epsilon_k \langle \langle c_{k,\sigma}(t), c^\dagger_{k^\prime,\sigma} \rangle  \rangle - \theta(t) J \sum_\beta \langle \langle {\bf S}_d\cdot \sigma_{\sigma,\beta} c_{0,\beta}, c^\dagger_{k^\prime,\sigma} \rangle  \rangle(t)~.
+\end{aligned}\end{equation}
+Defining a new Greens function \(\tilde G\),
+\begin{equation}\begin{aligned}
+	\tilde G_{k^\prime}(t) = -i\theta(t)\sum_\beta \langle \langle {\bf S}_d\cdot \sigma_{\sigma,\beta} c_{0,\beta}, c^\dagger_{k^\prime,\sigma} \rangle  \rangle~,
+\end{aligned}\end{equation}
+we have the compact form
+\begin{equation}\begin{aligned}
+	\partial_t G_{k,k^\prime}(t) = -i \delta(t) \delta_{k,k^\prime} - \theta(t) \epsilon_k \langle \langle c_{k,\sigma}(t), c^\dagger_{k^\prime,\sigma} \rangle  \rangle - i \tilde G_{k^\prime}(t)~.
+\end{aligned}\end{equation}
+We now transform to frequency space, using the definition \(f(t) = \int d\omega e^{-i\omega t} g(\omega)\):
+\begin{equation}\begin{aligned}\label{GkkFrequency}
+	\omega G_{k,k^\prime}(\omega) = \delta_{k,k^\prime} + \epsilon_k G_{k,k^\prime}(\omega) + J\tilde G_{k^\prime}(\omega)~.
+\end{aligned}\end{equation}
+We setup the equation of motion for \(\tilde G\) in a similar fashion. We use the Hermitian conjugate \(-i\theta(t)\sum_\beta \langle \langle c_{k^\prime,\sigma}(t), {\bf S}_d\cdot \sigma_{\sigma,\beta} c^\dagger_{0,\beta} \rangle  \rangle\), because it is easier to work with:
+\begin{equation}\begin{aligned}
+	\partial_t\tilde G_{k^\prime}(t) &= -i\delta(t)\sum_\beta \delta_{\sigma,\beta} \langle {\bf S}_d\cdot \sigma_{\sigma,\beta} \rangle - \theta(t)\langle \langle [c_{k^\prime,\sigma}(t), H_K], \sum_\beta {\bf S}_d\cdot \sigma_{\sigma,\beta} c^\dagger_{0,\beta} \rangle  \rangle\\
+									 &=-i\delta(t)\langle {\bf S}^z_d \rangle - \theta(t) \langle \langle (\epsilon_{k^\prime} c_{k^\prime,\sigma}(t) + J\sum_{\alpha} {\bf S}_d\cdot \sigma_{\sigma,\alpha} c_{0,\alpha}), \sum_\beta {\bf S}_d\cdot \sigma_{\sigma,\beta} c^\dagger_{0,\beta} \rangle  \rangle\\
+									 &=-i\delta(t)\langle {\bf S}^z_d \rangle -i \epsilon_{k^\prime} G_{k^\prime}(t) - J \theta(t) \langle \langle \sum_{\alpha} {\bf S}_d\cdot \sigma_{\sigma,\alpha} c_{0,\alpha}, \sum_\beta {\bf S}_d\cdot \sigma_{\sigma,\beta} c^\dagger_{0,\beta} \rangle  \rangle~.
+\end{aligned}\end{equation}
+At this point, we define a Kondo excitation operator \(O_\sigma = J\sum_{\alpha} {\bf S}_d\cdot \sigma_{\sigma,\alpha} c_{0,\alpha}\). Transforming to frequency space gives
+\begin{equation}\begin{aligned}
+	\omega \tilde G_{k^\prime}(\omega) = \langle S_d^z \rangle + \epsilon_{k^\prime} G_{k^\prime}(\omega)  + \frac{1}{J} \langle \langle O_\sigma, O^\dagger_\sigma \rangle  \rangle ~,
+\end{aligned}\end{equation}
+which gives an expression for \(\tilde G_{k^\prime}(\omega)\):
+\begin{equation}\begin{aligned}
+	(\omega - \epsilon_{k^\prime})\tilde G_{k^\prime}(\omega) = \langle S_d^z \rangle + \frac{1}{J} \langle \langle O_\sigma, O^\dagger_\sigma \rangle  \rangle~.
+\end{aligned}\end{equation}
+Substituting this into eq.~\ref{GkkFrequency} and noting that the non-interacting Greens function of the conduction bath is \(G^{(0)}_k = (\omega - \epsilon_k)^{-1}\), we get
+\begin{equation}\begin{aligned}
+	(G^{(0)}_k)^{-1} G_{k,k^\prime}(\omega) = \delta_{k,k^\prime} + J\left[\langle S_d^z \rangle + \frac{1}{J} \langle \langle O_\sigma, O^\dagger_\sigma \rangle  \rangle\right]G^{(0)}_{k^\prime}~,
+\end{aligned}\end{equation}
+which can be finally compared with the general expression in eq.~\ref{greensTmatrix}:
+\begin{equation}\begin{aligned}
+	G_{k,k^\prime}(\omega) = G^{(0)}_k + G^{(0)}_k\left[J\langle S_d^z \rangle + \langle \langle O_\sigma, O^\dagger_\sigma \rangle  \rangle\right]G^{(0)}_{k^\prime}~.
+\end{aligned}\end{equation}
+The \(T-\)matrix for scattering of conduction electrons off the impurity can be read off:
+\begin{equation}\begin{aligned}
+T_\sigma(\omega) = J\langle S_d^z \rangle + \langle \langle O_\sigma, O^\dagger_\sigma \rangle  \rangle~,
+\end{aligned}\end{equation}
 
 \section{Zero temperature Greens function in frequency domain}
 
