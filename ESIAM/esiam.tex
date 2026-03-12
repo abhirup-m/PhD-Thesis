@@ -1,4 +1,4 @@
-\chapter{\chapC}
+\chapter{\chapC}\label{sec:ESIAM}
 \section{Introduction}
 
 The rich physics of metal-insulator transitions in strongly correlated systems has been an active subject of study for quite some time~\cite{Mott_RMP_1968,milligan_1985,imada1998metal}, yet much still remains to be understood. It involves diverse aspects such as spin and charge fluctuations, quasiparticle renormalisation effects, anomalous metallic phases and unconventional superconductivity, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
@@ -410,6 +410,45 @@ However, fourth-order corrections lead to the appearance of scattering processes
 \end{eqnarray}
 where \(E_+^\prime = \frac{U}{4} - \frac{3J}{8} + \sqrt{4V^2 + \left(\frac{U}{4} + \frac{3J}{8}\right)^2}\) is the energy of the state containing the charge isospin triplet zero, and \(\beta = \frac{2V}{\sqrt{4V^2 + \left(U + 3J/4\right)^2}}\). \(\mathcal{P}^4_\text{tot}\) projects on to the \(n_d + n_0 = 4\) subspace.
 The scattering processes in eq.~\eqref{holonLFL} are clearly non-Fermi liquid in nature as they allow the inter-conversion of the charge isospin eigenstates, and therefore reduce the lifetime of the quasiparticle excitations of the local Fermi liquid obtained in eq.~\eqref{holonLFL}. Additional details pertaining to the calculation of this effective Hamiltonian are present in Sec. 5 of the Supplementary Materials~\cite{supp_mat}.
+
+\subsection{Hysteresis and the first-order line}
+
+As discussed above, the localisation of charge in the emergent local moment states \(\ket{1,\sigma,-}\) and \(\ket{3,\sigma,-}\) for \(r > r_{c1}\) means they do not contribute any spectral weight to the impurity spectral function. Instead, they lead to an emergent preformed/optical gap between the central Kondo resonance and the Hubbard sidebands on each side. This {\it optical gap} finally becomes the true Mott gap at \(r = r_{c2}\) when the central peak disappears.
+On the other hand, upon starting from \(r > r_{c2}\) and reducing \(r\), the system is initially in the (doubly degenerate) local moment ground states, and the impurity DOS is of course gapped. In the rest of the subsection, we will show that the presence of these two transitions leads to finite temperature behaviour for the e-SIAM that is qualitatively similar to that of the Hubbard model as seen from DMFT (that was described at the beginning of this section, and can also be seen in Fig.~\ref{coexistence-schematic}).
+
+At non-zero temperatures, the system is described by not only the ground-state but also the excitations. The metallic and insulating solutions become temperature dependent, with energies \(E_M(r,T)\) and \(E_I(r,T)\) respectively. The curve \(r_{c1}(T)\) at a given temperature again represents the values of the parameter \(r\) at which the local moment states enter the spectrum as excited eigenstates, while \(r_{c2}(T)\) marks the point where the metallic ground-state leaves the spectrum: \(E_M(r_{c2}(T), T) = E_I(r_{c2}(T), T)\). As a result, within the parameter range \(r_{c1}(T) < r(T) < r_{c2}(T)\) at a finite temperature \(T\), the low-energy part of the spectrum (states within the central Kondo resonance) involves both the metallic and insulating solutions. These two low-lying solutions then govern the partition function and hence the free energy:
+\begin{eqnarray}
+	Z(r,T) \simeq Z_M(r,T) + Z_I(r,T),\quad F(r,T) \simeq -k_B T \ln \left(Z_M(r,T) + Z_I(r,T)\right),\label{free energy eq}
+\end{eqnarray}
+where \(Z_M(r,T) = \exp{\left(-\beta \mathcal{V}\left(E_M(r,T) - TS_M(r,T)\right)\right)}\) is the partition function corresponding to the metallic state with energy \(E_M(r,T)\) and entropy \(S_M(r,T)\) per unit volume \(\mathcal{V}\), and 
+\begin{equation}\begin{aligned}
+Z_I = \exp{\left(-\beta \mathcal{V}\left(E_I(r,T) - TS_I(r,T)\right)\right)}~,
+\end{aligned}\end{equation}
+is similarly the partition function corresponding to the local moment states.
+
+In the thermodynamic limit, only the larger of \(Z_M\) and \(Z_I\) contributes to the partition function $Z(r,T)$. Given a temperature \(T\), there exists a value \(r_c(T)\) lying in the range \(r_{c1}(T) < r_{c}(T) < r_{c2}(T)\) at which the partition functions \(Z_M(T)\) and \(Z_I(T)\) become equal: \(Z_M(r_c(T),T) = Z_I(r_c(T),T)\). This condition defines a curve \(\left\{ (T, r_c(T)) \right\} \) at which the system undergoes a first-order transition between the metallic and insulating states:
+\begin{eqnarray}
+	\lim_{\mathcal{V} \to \infty} F(r,T) = 
+	\begin{cases}
+	-k_B T \ln Z_M(r,T) \text{ if } r < r_c ~ (Z_M > Z_I)\\
+	-k_B T \ln Z_I(r,T) \text{ if } r > r_c ~ (Z_M < Z_I)
+	\end{cases}~.
+\end{eqnarray}
+The first-order curve \(r_c(T)\) is determined from the partition function equality (or equivalently, the free energy equality) condition between the metal and the insulator:
+\begin{eqnarray}
+	T = \frac{E_M(r_c,T) - E_I(r_c,T)}{S_M(r_c,T) - S_I(r_c,T)}~.
+\end{eqnarray}
+At \(T = 0\), the first-order line \(r_c(T)\) becomes identical to the critical point \(r_{c2}\), as \(E_M(r_c) = E_I(r_c)\) at $T=0$. This simply means that the thermal entropy plays no role at zero temperature, and the transition is purely quantum-mechanical in nature. As temperature is now increased, the large entropy \(S_I\) of the doubly degenerate local moment states comes into play and the insulating state is able to take over at a smaller value of \(r\). This suggests that a first-order transition can take place in the thermodynamic limit at $r_c(T) < r_{c2} (T)$. 
+This has been shown schematically in Fig.~\eqref{coexistence-schematic}.
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=0.35\textwidth]{coexistence-dmft.pdf}
+	\caption{Qualitative structure of the finite temperature coexistence region of the \(J-U_b\) model. The dotted lines on the left and the right represent the spinodals \(r_{c1}\) and \(r_{c2}\) where the insulating and metallic solutions become unstable, respectively. The solid red line represents the first-order line where the free energies and the partition functions of the two solutions become equal, \(Z_M = Z_I\).}
+	\label{coexistence-schematic}
+\end{figure}
+
+Further, away from the thermodynamic limit, the free energy in eq.~\eqref{free energy eq} admits contributions from the stable metallic state as well as the metastable insulating state, and results in the coexistence of the two phases. This is because, depending on whether we are approaching from \(r_{c2}^+\) or \(r_{c1}^-\), the system will remain mostly in the minimum of either \(Z_I\) or \(Z_M\) respectively. There exist finite activation barriers in the free energy for passage into the other minimum, leading to hysteresis. The transition is observed only at \(r_{c1}(T)\) or \(r_{c2}(T)\) where the insulating and metallic solutions, respectively, become unstable. These two lines, therefore, mark the spinodals of the coexistence region. At a sufficiently high temperature \(T_c\), the metallic and insulating solutions become indistinguishable at the first spinodal \(r_{c1}\): \(E_M(r_{c1},T_c) = E_I(r_{c1},T_c), S_M(r_{c1},T_c) = S_I(r_{c1},T_c)\). We recall that of these two equalities, the first (\(E_M = E_I\)) also corresponds to the locus of the second spinodal (corresponding to $r_{c2}$). Moreover, combining the two equalities (energy and entropy) leads to the free energy equality condition, marking the locus of the first-order line \(r_c(T)\). This has the consequence that the two spinodals and the first-order line merge into a second order critical point \(r_c(T_c)\) at temperature \(T_c\). This concludes our discussion of the finite temperature behaviour of the extended SIAM model and its qualitative similarities with the DMFT phase diagram for the half-filled Hubbard model on the Bethe lattice.
 
 \subsection{Zero temperature origin of critical fluctuations above the second order point}
 \label{rc2-corrs}
