@@ -146,6 +146,12 @@ An equivalent way of framing the self-consistency equation is to equate the mean
 \end{aligned}\end{equation}
 The equation in terms of \(h_\text{MF}(i)\) and \(h_\text{MF}(j)\) can again be solved numerically by claiming that the mean-field has to be uniform across all the sites owing to translation invariance. This form of the self-consistency requirement (in terms of the field) will be useful to us in the upcoming discussion.
 
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{isingAuxiliary.pdf}
+	\caption{}
+	\label{ising}
+\end{figure}
 
 The essential feature of classical mean-field theory is therefore the replacement of a many-body problem by an effective \emph{single-site} problem embedded in a self-consistently determined environment. Quantum lattice models admit a closely analogous construction, but with an important conceptual difference: while the classical mean field is static, quantum fluctuations necessarily introduce a tower of excited states that allow for temporal dynamics. This observation underlies the formulation of dynamical mean-field theory (DMFT), which may be viewed as the natural quantum generalization of classical mean-field theory \cite{metzner_volhardt_1989,georges1996}.
 
@@ -155,17 +161,6 @@ H = -\sum_{ij\sigma} t_{ij} c_{i\sigma}^\dagger c_{j\sigma}
 + U \sum_i n_{i\uparrow} n_{i\downarrow},
 \end{equation}
 defined on a lattice with coordination number \(z\). 
-% To obtain a nontrivial limit as \(z \to \infty\), the hopping amplitudes are scaled as
-% \begin{equation}
-% t_{ij} = \frac{t^\ast}{\sqrt{z}},
-% \end{equation}
-% which ensures a finite kinetic energy per site \cite{MetznerVollhardt1989}.
-
-% In this limit, it can be shown diagrammatically that all nonlocal contributions to the self-energy vanish as inverse powers of \(z\), while local diagrams remain finite. As a result, the exact self-energy becomes purely local,
-% \begin{equation}
-% \Sigma_{ij}(\omega) = \delta_{ij}\,\Sigma(\omega),
-% \end{equation}
-% though it retains its full dynamical (frequency-dependent) character \cite{MetznerVollhardt1989,Georges1996}.
 
 The point of this exercise is to calculate the interacting self-energy \(\Sigma_k(\omega)\) for the fermions. This therefore acts as an ``order parameter" and plays the same role as the local magnetisation in the previous exercise. The self-energy defines the interacting \(k\)-space Green's function for a translation-invariant problem:
 \begin{equation}
@@ -202,12 +197,20 @@ The complete set of equations for the solving such a dynamical mean-field proble
 	\Sigma_\text{loc}(\omega) &= \Sigma_\text{imp}(\omega),\\
 	G_{\text{loc}}(\omega) &= \sum_{\mathbf{k}} \frac{1}{\omega - \varepsilon_{\mathbf{k}} - \Sigma_\text{loc}(\omega)}.
 \end{aligned}\end{equation}
+One can map various features of this self-consistent program with the set of equations obtained above for the Ising model:
 \begin{itemize}
 	\item The first equation is equivalent to the feature in the previous exercise where we equated the mean-fields on \(i\) and \(j\).
 	\item The second equation is equivalent to computing, in the previous exercise, the magnetisation on the \(j^\text{th}\) site from the partition function.
 	\item The third equation is the essential mean-field approximation, where we equate the self-energy of the simpler decoupled problem to that of the more complete lattice problem and is justified in the limit of infinite dimensions.
 	\item The fourth equation is equivalent, in the previous exercise, to using the computed ``magnetisation" of site \(j\) in the second step to further compute the mean-field at site \(i\).
 \end{itemize}
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{impurityAuxMapping.pdf}
+	\caption{}
+	\label{auxMapping}
+\end{figure}
 
 In direct analogy with classical mean-field theory, DMFT replaces a lattice model by an effective single-site problem embedded in a self-consistent environment. The crucial distinction is that the mean field is now dynamical rather than static, encoding quantum fluctuations exactly while neglecting spatial correlations. Importantly, this demonstrates the importance of quantum impurity models in investigating correlated lattice models, particularly in the presence of strong local interactions. This is because the effects of local correlations are captured exactly by such an auxiliary model mapping.
 
