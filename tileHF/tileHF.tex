@@ -11,9 +11,9 @@ where \(H_\text{1p}\) is  the Hamiltonian for the non-interacting itinerant elec
 \end{aligned}\end{equation}
 such that \(\alpha\) sums over the two layers \(f\) and \(d\). \(H_f\) and \(H_d\) describe the dynamics of the correlated impurity sites (and their local neighbourhood) in each layer:
 \begin{equation}\begin{aligned}
-	H_f = -\frac{U_f}{2} (n_{f,\uparrow} - n_{f,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{f,\sigma} c_{Z,\sigma,f} + \text{h.c.}\right) + \frac{J}{2}\sum_{\alpha,\beta}{\bf S}_f \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,f}c_{Z,\beta,f} \right.\\
-		 &\left.- \frac{W_f}{2} \left(n_{Z,\uparrow,f} - n_{Z,\downarrow,f}\right)^2\right] ~,\\
-	H_d = -\eta_d n_{d} - \frac{U_d}{2}(n_{d,\uparrow} - n_{d,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{d,\sigma} c_{Z,\sigma,d} + \text{h.c.}\right) + \frac{J}{2}\sum_{\alpha,\beta}{\bf S}_d \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,d}c_{Z,\beta,d}\right] ~,
+	H_f = -\frac{U_f}{2} (n_{f,\uparrow} - n_{f,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{f,\sigma} c_{Z,\sigma,f} + \text{h.c.}\right) + \frac{J}{4}\sum_{\alpha,\beta}{\bf S}_f \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,f}c_{Z,\beta,f} \right.\\
+		 &\left.- \frac{W_f}{4} \left(n_{Z,\uparrow,f} - n_{Z,\downarrow,f}\right)^2\right] ~,\\
+	H_d = -\eta_d n_{d} - \frac{U_d}{2}(n_{d,\uparrow} - n_{d,\downarrow})^2 + \sum_{Z \in \text{NN}}&\left[-V\sum_{\sigma}\left(c^\dagger_{d,\sigma} c_{Z,\sigma,d} + \text{h.c.}\right) + \frac{J}{4}\sum_{\alpha,\beta}{\bf S}_d \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\alpha,d}c_{Z,\beta,d}\right] ~,
 \end{aligned}\end{equation}
 where \(c^\dagger_{\nu,\sigma,\alpha}\) can refer to creation operator for either the \(f-\)layer. Finally, \(H_{fd}\) represents the inter-layer hybridisation:
 \begin{equation}\begin{aligned}
@@ -95,17 +95,49 @@ Using these, we can construct the hybridised Greens function associated with the
 \section{Unitary RG Analysis of The Bilayer Lattice-Embedded ESIAM}
 In the limit of large \(U_\alpha\), we carry out a Schrieffer-Wolff transformation and work with the following low-energy Hamiltonian:
 \begin{equation}\begin{aligned}
-	H_\text{aux} &= \sum_{{\bf k},\sigma,\alpha}\epsilon_{{\bf k},\alpha}n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{2}J_\alpha\sum_{\sigma,\sigma^\prime}{\bf S}_\alpha \cdot {\boldsymbol{\sigma}}_{\alpha\beta}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} - \frac{W_\alpha}{2} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.
+	H_\text{aux} &= \sum_{{\bf k},\sigma,\alpha}\epsilon_{{\bf k},\alpha}n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{4}J_\alpha\sum_{\sigma,\sigma^\prime}{\bf S}_\alpha \cdot {\boldsymbol{\sigma}}_{\sigma\sigma^\prime}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} - \frac{W_\alpha}{4} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.
 \end{aligned}\end{equation}
-The Kondo coupling and bath interaction acquire \(k-\)dependence:
+As we will see, additional terms are generated within the Hamiltonian as we integrate out high-energy degrees of freedom in the conduction baths of the two impurity models. These terms connect the impurity of the \(d-\)(\(f-\))layer to the nearest-neighbour conduction bath sites of the \(f-\)(\(d-\))layer, It is therefore necessary to start with an enlarged impurity model Hamiltonian that contains these couplings as well:
+\begin{equation}\begin{aligned}
+	H_\text{aux} =& \sum_{{\bf k},\sigma,\alpha}\epsilon_{{\bf k},\alpha}n_{{\bf k},\sigma,\alpha} + \sum_\alpha\sum_{Z \in \text{NN}}\left[\frac{1}{4}\sum_{\sigma,\sigma^\prime}\left(J_\alpha {\bf S}_\alpha + K_{\bar\alpha}{\bf S}_{\bar\alpha} \right)\cdot {\boldsymbol{\sigma}}_{\sigma\sigma^\prime}c^\dagger_{Z,\sigma,\alpha}c_{Z,\sigma^\prime,\alpha} \right.\\
+				 &\left. - \frac{W_\alpha}{4} \left(n_{Z,\uparrow,\alpha} - n_{Z,\downarrow,\alpha}\right)^2\right] + J{\bf S}_f \cdot {\bf S}_d~.
+\end{aligned}\end{equation}
+Note the additional couplings \(K_{\bar\alpha}\), where \(\bar\alpha\) stands for the layer opposite to \(\alpha\).
+
+The two Kondo couplings \(J\) and \(K\) and the bath interaction \(W\) acquire \(k-\)dependence:
 \begin{equation}\begin{aligned}
 	J({\bf k}, {\bf q}) &= \frac{J}{2}\left[\cos({\bf k}_x - {\bf q}_x) + \cos({\bf k}_y - {\bf q}_y)\right]~,\\
+	K({\bf k}, {\bf q}) &= \frac{K}{2}\left[\cos({\bf k}_x - {\bf q}_x) + \cos({\bf k}_y - {\bf q}_y)\right]~,\\
 	W({\bf k}, {\bf q}, {\bf k}^\prime, {\bf q}^\prime) &= \frac{W}{2}\left[\cos({\bf k}_x - {\bf q}_x + {\bf k}^\prime_x - {\bf q}^\prime_x) + \cos({\bf k}_y - {\bf q}_y + {\bf k}^\prime_y - {\bf q}^\prime_y)\right]~.
 \end{aligned}\end{equation}
 The particle-hole transformed state \(\bar{\bf q}\) associated with \({\bf q}\) is defined as \(\bar {\bf q} = {\bf q} + \left(\pi, \pi\right)\) if \({\bf q}\) is in the first or third quadrant and \({\bf q} + \left(\pi, -\pi\right)\) is in the second or fourth quadrant.
 
 In order to study the low-energy physics of the impurity model, we iteratively integrate out high-energy degrees of freedom using the unitary RG method. Let the momentum states being decoupled from the two layers be \(\ket{{\bf q},\sigma,f}\) and \(\ket{{\bf q},\sigma,d}\) if they are above the Fermi energy (unoccupied in the low-energy configuration) and \(\ket{\bar{\bf q},\sigma,f}\) and \(\ket{\bar{\bf q},\sigma,d}\) if they are below the Fermi energy (occupied in the low-energy configuration)
-For every shell of conduction bath states of width \(\Delta D\) integrated out, the Hamiltonian couplings renormalise by folding in the effects of virtual excitations to these states. We already have the renormalisation group equations for the couplings \(J_\alpha\) in the case of \(J=0\):
+For every shell of conduction bath states of width \(\Delta D\) integrated out, the Hamiltonian couplings renormalise by folding in the effects of virtual excitations to these states. 
+
+The full set of impurity-mediated scattering processes that lead to UV-IR mixing is:
+\paragraph{Particle sector excitation}
+These involve excited states above the Fermi energy:
+\begin{equation}\begin{aligned}
+	P_\text{dir} = \sum_{\alpha, k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1,f}c_{k,\sigma_2,f}~,\\
+	P_\text{ind} = \sum_{\alpha, k, q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{k,\sigma_2, f}~.
+\end{aligned}\end{equation}
+
+\paragraph{Hole sector}
+These involve excited states below the Fermi energy:
+\begin{equation}\begin{aligned}
+	H_\text{dir} = \sum_{\alpha, k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, f}c_{q,\sigma_2, f}~,\\
+	H_\text{ind} = \sum_{\alpha, k, q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, f}c_{q,\sigma_2, f}~.
+\end{aligned}\end{equation}
+\paragraph{Mixed sector}
+These involve simultaneous particle and hole excitations:
+\begin{equation}\begin{aligned}
+	M_\text{dir} = \sum_{\alpha, q, \bar q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{\bar q,\sigma_2, f}~,\\
+	M_\text{ind} = \sum_{\alpha, q, \bar q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{\bar q,\sigma_2}~.
+\end{aligned}\end{equation}
+
+\subsection{Renormalisation of direct Kondo coupling \(J\)}
+We already have the renormalisation group equations for the couplings \(J_\alpha\) in the case of \(J=K=0\):
 \begin{equation}\begin{aligned}
 	\frac{\Delta J_f({\bf k}_1, {\bf k}_2)}{\Delta D} = -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_f({\bf k}_1, {\bf q})J_f({\bf q}, {\bf k}_2) + 4J_f({\bf q}, \bar {\bf q})W_f({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right] G_f^{(0)}({\bf q})~,
 \end{aligned}\end{equation}
@@ -113,7 +145,7 @@ where \({\bf q}\) sums over the UV states being integrated out, \(\rho({\bf q})\
 \begin{equation}\begin{aligned}
 	G_f^{(0)}({\bf q}) = \frac{1}{\omega - |\epsilon_f({\bf q})| / 2 + J_f({\bf q}) / 4 + W_f({\bf q}) / 2}~.
 \end{aligned}\end{equation}
-An identical equations holds for \(\Delta J_d\), with al \(f-\)quantities replaced with \(d-\)quantities. Switching on \(J\) modifies the excitation energy in the propagator:
+An identical equations holds for \(\Delta J_d\), with all \(f-\)quantities replaced with \(d-\)quantities. Switching on \(J\) modifies the excitation energy in the propagator, while either of the \(K\)s do not enter the denominator because either the impurity or the conduction bath labels do not match the ones fluctuating in this process:
 \begin{equation}\begin{aligned}
 	G_f({\bf q}) = \frac{1}{1/G_f^{(0)} - J \vec{S}_f\cdot\vec{S}_d}~.
 \end{aligned}\end{equation}
@@ -126,11 +158,49 @@ Using these relations, we can write
 	G_f({\bf q}) &= \frac{1}{1/G_f^{(0)} + 3J/4}\mathcal{P}_0 + \frac{1}{1/G_f^{(0)} - J/4}\mathcal{P}_1 \\
 		&= \left(\frac{1/4}{1/G_f^{(0)} + 3J/4} + \frac{3/4}{1/G_f^{(0)} - J/4}\right)\mathbb{I} + \left(\frac{1}{1/G_f^{(0)} + 3J/4} + \frac{1}{1/G_f^{(0)} - J/4}\right)\vec{S}_f\cdot\vec{S}_d~.
 \end{aligned}\end{equation}
-Noting that only the first operator renormalises the Kondo interaction, we get the following modified RG equation for the Kondo coupling \(J_\alpha\):
+Only the first operator renormalises the Kondo interaction:
 \begin{equation}\begin{aligned}
 	\frac{\Delta J_\alpha}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + 3J/4}\right.\\
-																																																										   \left. + \frac{3}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - J/4}\right)~,
+																																																										   \left. + \frac{3}{4}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - J/4}\right)~.
 \end{aligned}\end{equation}
+We now simplify the second term. Taking into account the other spin operators on either side of \(G_f({\bf q})\) in the full scattering process, we have
+\begin{equation}\begin{aligned}
+	\sum_{a,b,c} \sum_{\alpha,\beta} \sum_{\gamma,\delta} S_f^a \sigma^a_{\alpha,\beta} S_f^b S_d^b S_f^c \sigma^c_{\gamma,\delta}\left[\delta_{\beta,\gamma}c^\dagger_{k,\alpha,f}c_{q,\beta,f} c^\dagger_{q,\gamma,f}c_{k^\prime,\delta,f} + \delta_{\alpha,\delta}c^\dagger_{\bar q,\alpha,f}c_{k^\prime,\beta,f} c^\dagger_{k,\gamma,f}c_{\bar q,\delta,f}\right]~.
+\end{aligned}\end{equation}
+Integrating out the UV states using \(n_{\bar q\beta} = 1 - n_{q\beta} = 1\), we get
+\begin{equation}\begin{aligned}
+	\sum_{a,b,c} \sum_{\alpha,\beta,\gamma} S_f^a S_f^b S_d^b S_f^c \left[\sigma^a_{\alpha,\beta} \sigma^c_{\beta,\gamma}c^\dagger_{k,\alpha,f} c_{k^\prime,\gamma,f} + \sigma^a_{\alpha,\beta} \sigma^c_{\gamma,\alpha}c_{k^\prime,\beta,f} c^\dagger_{k,\gamma,f}\right]~.
+\end{aligned}\end{equation}
+Using \(\sum_\beta \sigma^a_{\alpha,\beta} \sigma^c_{\beta,\gamma} = (\sigma^a \sigma^c)_{\alpha,\gamma} = \delta_{ac} + i \epsilon_{acm} \sigma^m_{\alpha,\gamma}\) in the first term and \(\sum_\alpha \sigma^c_{\gamma,\alpha} \sigma^a_{\alpha,\beta} = (\sigma^c \sigma^a)_{\gamma,\beta} = \delta_{ca} - i\epsilon_{acm}\sigma^m_{\gamma,\beta}\) in the second term, relabelling \(\beta \to \gamma\) and \(\gamma \to \alpha\) there and using \(c_{k^\prime,\gamma} c^\dagger_{k,\alpha} = \delta_{k,k^\prime}\delta_{\alpha,\gamma} - c^\dagger_{k,\alpha} c_{k^\prime,\gamma}\), we get
+\begin{equation}\begin{aligned}
+	\sum_{a,b,c} \sum_{\alpha,\gamma} S_f^a S_f^b S_d^b S_f^c \left[\delta_{a,c}\delta_{k,k^\prime}\delta_{\alpha,\gamma} + 2i \epsilon_{acm} \sigma^m_{\alpha,\gamma}c^\dagger_{k,\alpha,f} c_{k^\prime,\gamma,f}\right]~.
+\end{aligned}\end{equation}
+We also use the spin-half identity
+\begin{equation}\begin{aligned}
+	\sigma^a \sigma^b \sigma^c =& (\delta_{ab} + i\epsilon_{abp}\sigma^p)\sigma^c\\
+									  &=\delta_{ab}\sigma^c + i\epsilon_{abp}(\delta_{pc} + i\epsilon_{pcr}\sigma^r)\\
+									  &=\delta_{ab}\sigma^c - \delta_{ac}\sigma^b + \delta_{bc} \sigma^a + i\epsilon_{abc}~,
+\end{aligned}\end{equation}
+which when contracted with \(\epsilon_{acm}\) gives
+\begin{equation}\begin{aligned}
+	\sum_{a,c}\epsilon_{acm}\sigma^a \sigma^b \sigma^c &= \sum_{a,c}\epsilon_{acm}(\delta_{ab}\sigma^c + \delta_{bc} \sigma^a + i\epsilon_{abc}) \\
+													   &= \sum_{a,c}(\epsilon_{acm}\delta_{ab}\sigma^c + \epsilon_{cam}\delta_{ba} \sigma^c - i\epsilon_{acm}\epsilon_{acb})\\
+													   &= - 2i\delta_{bm}~.
+\end{aligned}\end{equation}
+Substituting these in the expression for the renormalisation gives
+\begin{equation}\begin{aligned}
+	&\sum_{a,b,c} \sum_{\alpha,\gamma} S_f^a S_f^b S_d^b S_f^c \left[\delta_{a,c}\delta_{k,k^\prime}\delta_{\alpha,\gamma} + 2i \epsilon_{acm} \sigma^m_{\alpha,\gamma}c^\dagger_{k,\alpha,f} c_{k^\prime,\gamma,f}\right]\\
+	&= -\frac{1}{2}\sum_{b} S_f^b S_d^b \delta_{k,k^\prime} + \frac{1}{2}\sum_{b} \sum_{\alpha,\gamma} S_d^b \sigma^b_{\alpha,\gamma}c^\dagger_{k,\alpha,f} c_{k^\prime,\gamma,f}\\
+	&= -\frac{1}{2}{\bf S}_f \cdot {\bf S}_d \delta_{k,k^\prime} + \frac{1}{2} \sum_{\alpha,\gamma} {\bf S}_d {\bf \sigma}_{\alpha,\gamma}c^\dagger_{k,\alpha,f} c_{k^\prime,\gamma,f}\\
+\end{aligned}\end{equation}
+
+
+
+
+
+
+
+
 
 We now turn to the renormalisation of \(J\), arising from hybridisation of \(f-\) and \(d-\)layers. In order to capture coherent scattering processes between the two layers, we project onto the following rotated basis of excited states:
 \begin{equation}\begin{aligned}

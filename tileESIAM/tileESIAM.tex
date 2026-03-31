@@ -473,15 +473,39 @@ We find that the sum degrees of freedom \(s_{{\bf q},\sigma}\) do not enter the 
 \end{aligned}\end{equation}
 We now proceed to rewrite the other parts of the Hamiltonian in terms of these new degrees of freedom. The kinetic energy can be written as
 \begin{equation}\begin{aligned}\label{kineticEnergy}
-	\tilde H_\text{cbath} &= \sum_{{\bf q},\sigma}\varepsilon_{{\bf N}_1 + {\bf q}}\left(n_{{\bf N}_1 + {\bf q},\sigma} + n_{{\bf N}_1 + {\bf Q}_1 - {\bf q},\sigma}\right)\\
-						  &= \sum_{{\bf q},\sigma}\varepsilon_{{\bf N}_1 + {\bf q}}\left({\psi}^\dagger_{{\bf q},\sigma} {\phi}_{{\bf q},\sigma} + {\phi}^\dagger_{{\bf q},\sigma} \psi_{{\bf q},\sigma}\right)~,
+	\tilde H_\text{cbath} &= \sum_{{\bf q_1,\bf q_2},\sigma}\varepsilon_{{\bf N}_1 + {\bf q}}\left(n_{{\bf N}_1 + {\bf q},\sigma} + n_{{\bf N}_1 + {\bf Q}_1 - {\bf q},\sigma}\right)\\
+						  &= \sum_{{\bf q},\sigma}\varepsilon_{{\bf N}_1 + {\bf q}}\left(s_{{\bf q}, \sigma} + r_{{\bf q},\sigma}\right)~,
 \end{aligned}\end{equation}
-We also consider a simplified form of the bath interaction (for the channel \(l=1\)), taking into account the density-density correlations in \(k-\)space:
+Given that the Kondo coupling acts only on the subspace of the \(\phi\) fields, we consider a simplified form of the bath interaction (for the channel \(l=1\)), taking into account scattering processes restricted to the \(\phi\) fields:
+% \begin{equation}\begin{aligned}
+% 	\tilde H_\text{cbath-int} =& -W\sum_{{\bf q},\sigma}\left(n_{{\bf N}_1 + {\bf q},\sigma} + n_{{\bf N}_1 + {\bf Q}_1 - {\bf q},\sigma}\right) + W\sum_{{\bf q}_1,{\bf q}_2}\left(n_{{\bf N}_{1} + {\bf q}_1, \uparrow} + n_{{\bf N}_{1} + {\bf Q}_{1} - {\bf q}_1, \uparrow} \right) \left( n_{{\bf N}_{1} + {\bf q}_2, \downarrow} + n_{{\bf N}_{1} + {\bf Q}_{1} - {\bf q}_2, \downarrow} \right)~,\\
+% 	=& -W\sum_{{\bf q},\sigma}\left(s_{{\bf q},\sigma} + r_{{\bf q},\sigma}\right) + W\sum_{{\bf q}_1,{\bf q}_2}\left(s_{{\bf q}_1,\uparrow} + r_{{\bf q}_1,\uparrow}\right) \left(s_{{\bf q}_2,\downarrow} + r_{{\bf q}_2,\downarrow}\right)~.
+% \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}
-	\tilde H_\text{cbath-int} =& -W\sum_{{\bf q},\sigma}\left(n_{{\bf N}_1 + {\bf q},\sigma} + n_{{\bf N}_1 + {\bf Q}_1 - {\bf q},\sigma}\right) + W\sum_{{\bf q}_1,{\bf q}_2}\left(n_{{\bf N}_{1} + {\bf q}_1, \uparrow} + n_{{\bf N}_{1} + {\bf Q}_{1} - {\bf q}_1, \uparrow} \right) \left( n_{{\bf N}_{1} + {\bf q}_2, \downarrow} + n_{{\bf N}_{1} + {\bf Q}_{1} - {\bf q}_2, \downarrow} \right)~,\\
-	=& -W\sum_{{\bf q},\sigma}\left(s_{{\bf q},\sigma} + r_{{\bf q},\sigma}\right) + W\sum_{{\bf q}_1,{\bf q}_2}\left(s_{{\bf q}_1,\uparrow} + r_{{\bf q}_1,\uparrow}\right) \left(s_{{\bf q}_2,\downarrow} + r_{{\bf q}_2,\downarrow}\right)~.
+	\tilde H_\text{cbath-int} =& -\frac{1}{2N}\sum^\prime_{{\bf q}_1, {\bf q}_2,\sigma}\frac{W}{2}c^\dagger_{q_1,\sigma}c_{q_2,\sigma} + \frac{1}{4N^2}\sum^\prime_{\{{\bf q}_i\}}Wc^\dagger_{q_1,\uparrow}c_{q_2,\uparrow}c^\dagger_{q_3,\downarrow}c_{q_4,\downarrow}~,
 \end{aligned}\end{equation}
-We used eq.~\ref{numberOperatorRelation} in order to obtain the final form. 
+where the primed summations indicates each \(\{\bf q_i\}\) in both terms sum over the neighbourhoods of \(N_1\) and \(N_1+Q_1\), and each Fourier transform contributes a factor of \(1/\sqrt{2N}\) (if \(N\) is the number of points on a single arm of the Fermi surface, the total number of points in \(l=1\) is \(2N\)). Any single primed summation can be written as
+\begin{equation}\begin{aligned}
+	\sum^\prime_{q}c_{q,\sigma} = \sum_{q}\left(c_{N_1 + q,\sigma} - c_{N_1 + Q_1 - q,\sigma}\right)~,
+\end{aligned}\end{equation}
+where the unprimed summation only sums over the neighborhood of \(N_1\). The change in sign arises because every transfer of momentum from \(N_1\) to \(N_1 + Q_1\) introduces a phase of \(\pi\) within the \(k-\)dependence of \(W\). Noting that \(c_{N_1 + q,\sigma} - c_{N_1 + Q_1 - q,\sigma} = \sqrt 2 \phi^\dagger_q\), we get
+\begin{equation}\begin{aligned}
+	\tilde H_\text{cbath-int} =& -\frac{W}{2}\sum_{{\bf q}_1, {\bf q}_2,\sigma}\phi^\dagger_{q_1,\sigma}\phi_{q_2,\sigma} + \frac{W}{N^2}\sum_{\{{\bf q}_i\}}\phi^\dagger_{q_1,\uparrow}\phi_{q_2,\uparrow}\phi^\dagger_{q_3,\downarrow}\phi_{q_4,\downarrow}~.
+\end{aligned}\end{equation}
+
+We now argue that that the ground state of \(\tilde H_\text{cbath-int}\) is the state
+\begin{equation}\begin{aligned}\label{localInteractingState}
+	\ket{L} = \frac{1}{N}\sum_{{\bf q}_1{\bf q}_2}\phi^\dagger_{{\bf q}_1, \uparrow}\phi^\dagger_{{\bf q}_2, \downarrow} \ket{0}~.
+\end{aligned}\end{equation}
+This can be seen by defining new ``local" degrees of freedom \(\tilde\phi(r)_\sigma) = \frac{1}{\sqrt N}\sum_k e^{i \vec{k} \cdot \vec{r}} \phi_{q,\sigma}\). In terms of them, the Hamiltonian takes the form
+\begin{equation}\begin{aligned}
+	\tilde H_\text{cbath-int} =& -\frac{W}{2}\sum_{\sigma}\phi^\dagger(0)_{\sigma}\phi(0)_{\sigma} + W\phi^\dagger(0)_{\uparrow}\phi(0)_{\uparrow}\phi^\dagger(0)_{\downarrow}\phi(0)_{\downarrow}~.
+\end{aligned}\end{equation}
+This becomes a four-level problem associated with the two number operators \(\phi^\dagger(0)_{\sigma}\phi(0)_{\sigma}\) that commute with the Hamiltonian and since \(W < 0\), the ground state is doubly degenerate between the completely unoccupied and the doubly occupied states. The state in eq.~\ref{localInteractingState} is the doubly occupied state:
+\begin{equation}\begin{aligned}
+	\ket{L} = \phi^\dagger(0)_{\uparrow}\phi^\dagger(0)_{\downarrow} \ket{0}~.
+\end{aligned}\end{equation}
+This can also be verified by working with the momentum-space \(\phi\) operators. 
 
 Since both \(\tilde H_\text{imp-cbath}\) and \(\tilde H_\text{cbath-int}\) commute with \(s_{{\bf q}, \sigma}\), we replace the local objects \(\sum_{\bf q}s_{{\bf q},\sigma}\) in \(\tilde H_\text{cbath-int}\) with \(\frac{1}{2}\) since the bath is always at half-filling. This results in a simplified Hamiltonian for just the \(\phi_{{\bf q},\sigma}\) degrees of freedom:
 \begin{equation}\begin{aligned}
@@ -650,7 +674,8 @@ In order to identify the propagating degrees of freedom, we define an exciton cr
 \begin{equation}\begin{aligned}
 	b^\dagger_{i, \delta} = B\sum_\sigma c^\dagger_{i \sigma}c_{i + \delta, \sigma}n_{i\bar\sigma}(1 - n_{i + \delta,\bar\sigma})~,
 \end{aligned}\end{equation}
-where \(\delta\) is a primitive lattice vector. [CHECK THE ALGEBRA.] This operator creates an exciton: a bound holon-doublon pair between the sites \(i\) and \(i + \delta\). In terms of these operators, the Hamiltonian becomes
+%%% TODO check the algebra
+where \(\delta\) is a primitive lattice vector. This operator creates an exciton: a bound holon-doublon pair between the sites \(i\) and \(i + \delta\). In terms of these operators, the Hamiltonian becomes
 \begin{equation}\begin{aligned}
 	H_\text{eff} = -tB\sum_{i,\delta}(b^\dagger_{i,\delta} + \text{h.c.})~.
 \end{aligned}\end{equation}
