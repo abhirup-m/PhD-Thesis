@@ -120,21 +120,21 @@ The full set of impurity-mediated scattering processes that lead to UV-IR mixing
 \paragraph{Particle sector excitation}
 These involve excited states above the Fermi energy:
 \begin{equation}\begin{aligned}
-	P_\text{dir} = \frac{1}{2}\sum_{\alpha, k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1,f}c_{k,\sigma_2,f}~,\\
-	P_\text{ind} = \frac{1}{2}\sum_{\alpha, k, q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{k,\sigma_2, f}~.
+	P_\text{dir}(\alpha) = \frac{1}{2}\sum_{k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, \alpha}c_{k,\sigma_2, \alpha}~,\\
+	P_\text{ind}(\alpha) = \frac{1}{2}\sum_{k, q} K_{\alpha} {\bf S}_{\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, \bar\alpha}c_{k,\sigma_2, \bar\alpha}~.
 \end{aligned}\end{equation}
 
 \paragraph{Hole sector}
 These involve excited states below the Fermi energy:
 \begin{equation}\begin{aligned}
-	H_\text{dir} = \frac{1}{2}\sum_{\alpha, k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, f}c_{q,\sigma_2, f}~,\\
-	H_\text{ind} = \frac{1}{2}\sum_{\alpha, k, q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, f}c_{q,\sigma_2, f}~.
+	H_\text{dir}(\alpha) = \frac{1}{2}\sum_{k, q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, \alpha}c_{q,\sigma_2, \alpha}~,\\
+	H_\text{ind}(\alpha) = \frac{1}{2}\sum_{k, q} K_{\alpha} {\bf S}_{\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{k,\sigma_1, \bar\alpha}c_{q,\sigma_2, \bar\alpha}~.
 \end{aligned}\end{equation}
 \paragraph{Mixed sector}
 These involve simultaneous particle and hole excitations:
 \begin{equation}\begin{aligned}
-	M_\text{dir} = \frac{1}{2}\sum_{\alpha, q, \bar q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{\bar q,\sigma_2, f}~,\\
-	M_\text{ind} = \frac{1}{2}\sum_{\alpha, q, \bar q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, f}c_{\bar q,\sigma_2}~.
+	M_\text{dir}(\alpha) = \frac{1}{2}\sum_{q, \bar q} J_\alpha {\bf S}_\alpha \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, \alpha}c_{\bar q,\sigma_2, \alpha}~,\\
+	M_\text{ind}(\alpha) = \frac{1}{2}\sum_{q, \bar q} K_{\bar\alpha} {\bf S}_{\bar\alpha} \cdot {\bf \sigma}_{\sigma_1,\sigma_2} c^\dagger_{q,\sigma_1, \bar\alpha}c_{\bar q,\sigma_2, \bar\alpha}~.
 \end{aligned}\end{equation}
 
 \subsection{Particle/hole scattering processes: direct with direct}
@@ -144,11 +144,11 @@ We already have the renormalisation group equations for the couplings \(J_\alpha
 \end{aligned}\end{equation}
 where \({\bf q}\) sums over the UV states being integrated out, \(\rho({\bf q})\) is the density of states for the momentum states being integrated out and \(G_f^{(0)}\) is the propagator for the excited intermediate state (for \(J=0\)):
 \begin{equation}\begin{aligned}
-	G_f^{(0)}({\bf q}) = \frac{1}{\omega - |\epsilon_f({\bf q})| / 2 + J_f({\bf q}) / 4 + W_f({\bf q}) / 2}~.
+	G_\alpha^{(0)}({\bf q}) = \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha({\bf q}) / 4 + W_\alpha({\bf q}) / 2}~.
 \end{aligned}\end{equation}
 An identical equations holds for \(\Delta J_d\), with all \(f-\)quantities replaced with \(d-\)quantities. Switching on \(J\) modifies the excitation energy in the propagator, while either of the \(K\)s do not enter the denominator because either the impurity or the conduction bath labels do not match the ones fluctuating in this process:
 \begin{equation}\begin{aligned}
-	G_f({\bf q}) = \frac{1}{1/G_f^{(0)} - J \vec{S}_f\cdot\vec{S}_d}~.
+	G_\alpha({\bf q}) = \frac{1}{1/G_\alpha^{(0)} - J \vec{S}_f\cdot\vec{S}_d}~.
 \end{aligned}\end{equation}
 This expression can be simplified by noting that the operator in the denominator has only two eigenvalues, \(-3/4\) in the singlet sector and \(1/4\) in the triplet sector. Defining the projectors \(\mathcal{P}_0\) and \(\mathcal{P}_1\) for the two sectors, we have
 \begin{equation}\begin{aligned}
@@ -256,18 +256,58 @@ and reflects the fact the excitations are happening on impurity and bath states 
 \begin{equation}\begin{aligned}
 	\frac{\Delta J_\perp}{\Delta D} = -\frac{1}{4}\int_{UV} d{\bf q} ~\rho({\bf q})~\int_{IR} d{\bf k} \rho({\bf k}) \sum_\alpha K_\alpha({\bf k}, {\bf q})^2\left(\frac{1}{1/G_{\bar\alpha}^{(0)} + 3J/4} + \frac{1}{1/G_{\bar\alpha}^{(0)} - J/4}\right)~.
 \end{aligned}\end{equation}
-The final equation is for the renormalisation of the direct Kondo coupling arising from indirect processes. This occurs through two routes (similar to how the direct Kondo coupling renormalised the indirect coupling through two routes in the previous section). The complete equation is
+The final equation is for the renormalisation of the direct Kondo coupling arising from indirect processes. Similar to how the direct Kondo coupling renormalised the indirect coupling, this occurs through two routes. The complete equation is
 \begin{equation}\begin{aligned}
 	\frac{\Delta J_{\alpha}}{\Delta D} = \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_{\bar\alpha}({\bf k}_1, {\bf q})K_{\bar\alpha}({\bf q}, {\bf k}_2) - 4K_{\bar\alpha}({\bf q}, \bar {\bf q})W_{\alpha}({\bf k}_1, {\bf q},  {\bf q}, {\bf k}_2)\right]& \left(\frac{1}{1/\tilde G_{\alpha}^{(0)} + 3J/4}\right.\\
-&\left.+ \frac{1}{1/\tilde G_{\alpha}^{(0)} - J/4}\right)~,
+&\left.+ \frac{1}{1/\tilde G_{\alpha}^{(0)} - J/4}\right)~.
 \end{aligned}\end{equation}
 
-
-
-
-
+\subsection{Particle/hole scattering processes: direct with indirect}
+These processes are composed of a direct Kondo excitation process followed by an indirect Kondo de-excitation process, or vice versa. They can be of the particle excitation or the hole excitation kind. Within the particle or hole sector, we again have two sets of processes depending on whether the initial process is direct or indirect:
+\begin{itemize}
+	\item[a.] \(P_\text{dir}(d)~G_{d}~H_\text{ind}(f) + \text{h.c.}\)
+	\item[b.] \(P_\text{dir}(f)~G_{f}~H_\text{ind}(d) + \text{h.c.}\)
+	\item[c.] \(H_\text{ind}(f)~G_{d}~P_\text{dir}(d) + \text{h.c.}\)
+	\item[d.] \(H_\text{ind}(d)~G_{f}~P_\text{dir}(f) + \text{h.c.}\)
+\end{itemize}
+As mentioned above, \(a (b)\) and \(c (d)\) are time-reversed partners of each other. We will now show that the contributions from these processes lead to a renormalisation of the inter-layer Kondo term. We suppress the denominator since it is the same for all the terms:
+\begin{equation}\begin{aligned}
+	\frac{1}{1/G^{(0)}_\alpha({\bf q}) + K_{\bar\alpha}/4 - J_\perp / 4}~,
+\end{aligned}\end{equation}
+containing antiferromagnetic contributions from \(J_\alpha\) and \(K_\alpha\) and ferromagnetic contribution in \(J_\perp\).
+The contribution from the pair is of the form
+\begin{equation}\begin{aligned}
+	&\sum_\alpha \left[P_\text{dir}(\alpha)H_\text{ind}(\bar\alpha) + H_\text{ind}(\bar\alpha)P_\text{dir}(\alpha)\right] \\
+	&= \sum_{\alpha, a, b, \beta, \gamma, \delta}\frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q)  \left[{\bf S}^a_\alpha \sigma^a_{\beta,\gamma} c_{k^\prime,\gamma,\alpha} {\bf S}^b_{\bar\alpha}\sigma^b_{\delta, \beta} c^\dagger_{k,\delta,\alpha} + {\bf S}^b_{\bar\alpha}\sigma^b_{\delta, \beta} c^\dagger_{k,\delta,\alpha}{\bf S}^a_\alpha \sigma^a_{\beta,\gamma} c_{k^\prime,\gamma,\alpha} \right]\\
+\end{aligned}\end{equation}
+The sum over \(\beta\) can be carried out:
+\begin{equation}\begin{aligned}
+	& \sum_{\alpha, a, b, \beta, \gamma, \delta}\frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q) \left[{\bf S}^a_\alpha \sigma^a_{\beta,\gamma} c_{k^\prime,\gamma,\alpha} {\bf S}^b_{\bar\alpha}\sigma^b_{\delta, \beta} c^\dagger_{k,\delta,\alpha} + {\bf S}^b_{\bar\alpha}\sigma^b_{\delta, \beta} c^\dagger_{k,\delta,\alpha}{\bf S}^a_\alpha \sigma^a_{\beta,\gamma} c_{k^\prime,\gamma,\alpha} \right] \\
+	&=\sum_{\alpha, a, b, \gamma, \delta}\frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q) (\sigma^b \sigma^a)_{\delta,\gamma}{\bf S}^a_\alpha {\bf S}^b_{\bar\alpha} \left[ c_{k^\prime,\gamma,\alpha} c^\dagger_{k,\delta,\alpha} + c^\dagger_{k,\delta,\alpha} c_{k^\prime,\gamma,\alpha} \right]\\
+																														 &=\sum_{\alpha, a, b, \gamma, \delta}\frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q) (\sigma^b \sigma^a)_{\delta,\gamma}{\bf S}^a_\alpha {\bf S}^b_{\bar\alpha} \delta_{k,k^\prime}\delta_{\delta,\gamma}\\
+																														 &=\sum_{\alpha, a, b}\frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q) \text{Trace}(\sigma^b \sigma^a){\bf S}^a_\alpha {\bf S}^b_{\bar\alpha} \delta_{k,k^\prime}~.
+																														 % &=\sum_{\alpha} \frac{1}{4}J_\alpha(q, k^\prime) K_{\bar\alpha}(k, q){\bf S}_\alpha \cdot {\bf S}_{\bar\alpha} \delta_{k,k^\prime}~,
+\end{aligned}\end{equation}
+Adding the contribution from the hermitian conjugate and restoring the Greens function, we get the total contribution as
+\begin{equation}\begin{aligned}
+	\sum_\alpha \left[P_\text{dir}(\alpha)H_\text{ind}(\bar\alpha) + H_\text{ind}(\bar\alpha)P_\text{dir}(\alpha)\right] + \text{h.c.} = \frac{1}{2}{\bf S}_d \cdot {\bf S}_{f} \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G^{(0)}_\alpha + K_{\bar\alpha}/4 - J_\perp / 4} ~.
+\end{aligned}\end{equation}
+The renormalisation of the inter-layer coupling arising from this process is
+\begin{equation}\begin{aligned}
+	\frac{\Delta J_\perp}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q})~\int_{IR} d{\bf k} \rho({\bf k}) \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G^{(0)}_\alpha + K_{\bar\alpha}/4 - J_\perp / 4}~.
+\end{aligned}\end{equation}
 
 \subsection{Mixed processes}
+We now turn to the renormalisation arising from particle-hole mixed processes (designated as \(M_\alpha\) above). There are four types of process:
+\begin{equation}\begin{aligned}
+	P_1:& \sum_\alpha M_\text{dir}(\alpha) G M_\text{dir}(\alpha)\\
+	P_2:& \sum_\alpha M_\text{ind}(\alpha) G M_\text{ind}(\alpha)\\
+	P_3:& \sum_\alpha \left[M_\text{dir}(\alpha) G M_\text{ind}(\bar\alpha) + \text{h.c.}\right]\\
+	P_4:& \sum_\alpha \left[M_\text{dir}(\alpha) G M_\text{ind}(\alpha) + \text{h.c.}\right]\\
+	P_5:& \sum_\alpha \left[M_\text{dir}(\alpha) G M_\text{dir}(\bar\alpha) + M_\text{ind}(\alpha) G M_\text{ind}(\bar\alpha)\right]~.
+\end{aligned}\end{equation}
+We first note that the second and third processes are very similar to the ones considered in the previous subsection, the only difference being that the dummy variable \(k\) in the previous subsection would now have to range only over the UV subspace.
+
 
 We now turn to the renormalisation of \(J\), arising from hybridisation of \(f-\) and \(d-\)layers. In order to capture coherent scattering processes between the two layers, we project onto the following rotated basis of excited states:
 \begin{equation}\begin{aligned}
