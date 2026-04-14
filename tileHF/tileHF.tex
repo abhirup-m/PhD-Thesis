@@ -245,12 +245,12 @@ Since the bath sites are in the \(f-\)layer, these terms again lead to the renor
 \subsection{Particle/hole scattering processes: indirect with indirect}
 The processes that apply to this class are very similar to those participating in the direct-direct class; the only difference is that the bath degrees of freedom have to be transferred from \(\alpha \to \bar\alpha\), due to the inter-layer nature of this coupling. As a result, we will have straightforward counterparts to the renormalisation equations obtained in the previous section, eqs.~\ref{kondoRenormalisation}, \ref{perpRenormalisation} and \ref{indirectRenorm}. The first equation is for the renormalisation of the indirect coupling through itself,
 \begin{equation}\begin{aligned}
-	\frac{\Delta K_\alpha}{\Delta D} = -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha({\bf k}_1, {\bf q})K_\alpha({\bf q}, {\bf k}_2) + 4K_\alpha({\bf q}, \bar {\bf q})W_{\bar\alpha}({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1}{4}\frac{1}{1/ G_\alpha^K({\bf q}) + 3J/4}\right.\\
-																																																										   \left. + \frac{3}{4}\frac{1}{1/ G_\alpha^K({\bf q}) - J/4}\right)~.
+	\frac{\Delta K_\alpha}{\Delta D} = -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha({\bf k}_1, {\bf q})K_\alpha({\bf q}, {\bf k}_2) + 4K_\alpha({\bf q}, \bar {\bf q})W_{\bar\alpha}({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\left(\frac{1}{4}\frac{1}{1/ G_{\bar\alpha}^K({\bf q}) + 3J/4}\right.\\
+	\left. + \frac{3}{4}\frac{1}{1/ G_{\bar\alpha}^K({\bf q}) - J/4}\right)~.
 \end{aligned}\end{equation}
 where the indirect Greens function \( G^K_\alpha\) is defined as
 \begin{equation}\begin{aligned}
-	 G_\alpha^K({\bf q}) = \frac{1}{\omega - |\epsilon_{\bar\alpha}({\bf q})| / 2 + K_\alpha({\bf q}) / 4 + W_{\bar\alpha}({\bf q}) / 2}~,
+	G_{\bar\alpha}^K({\bf q}) = \frac{1}{\omega - |\epsilon_{\bar\alpha}({\bf q})| / 2 + K_\alpha({\bf q}) / 4 + W_{\bar\alpha}({\bf q}) / 2}~,
 \end{aligned}\end{equation}
 and reflects the fact the excitations are happening on impurity and bath states in opposite layers. The second equation is for the effect of the inter-layer term through the denominator of such processes, leading to a renormalisation of the inter-layer itself:
 \begin{equation}\begin{aligned}
@@ -272,7 +272,7 @@ These processes are composed of a direct Kondo excitation process followed by an
 \end{itemize}
 As mentioned above, \(a (b)\) and \(c (d)\) are time-reversed partners of each other. We will now show that the contributions from these processes lead to a renormalisation of the inter-layer Kondo term. We suppress the Greens function since it is the same for all the terms:
 \begin{equation}\begin{aligned}
-	G^{JK} = \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha/4 + K_{\bar\alpha}/4 - J_\perp / 4}~,
+	G^{JK}_\alpha = \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha/4 + K_{\bar\alpha}/4 + W_\alpha({\bf q})/2 - J_\perp / 4}~,
 \end{aligned}\end{equation}
 containing antiferromagnetic contributions from \(J_\alpha\) and \(K_\alpha\) and ferromagnetic contribution in \(J_\perp\).
 The contribution from the pair is of the form
@@ -290,11 +290,11 @@ The sum over \(\beta\) can be carried out:
 \end{aligned}\end{equation}
 Adding the contribution from the hermitian conjugate and restoring the Greens function, we get the total contribution as
 \begin{equation}\begin{aligned}
-	\sum_\alpha \left[P_\text{dir}(\alpha)H_\text{ind}(\bar\alpha) + H_\text{ind}(\bar\alpha)P_\text{dir}(\alpha)\right] + \text{h.c.} = \frac{1}{2}{\bf S}_d \cdot {\bf S}_{f} \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G^{JK} - J_\perp / 4} ~.
+	\sum_\alpha \left[P_\text{dir}(\alpha)H_\text{ind}(\bar\alpha) + H_\text{ind}(\bar\alpha)P_\text{dir}(\alpha)\right] + \text{h.c.} = \frac{1}{2}{\bf S}_d \cdot {\bf S}_{f} \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G_\alpha^{JK} - J_\perp / 4} ~.
 \end{aligned}\end{equation}
 The renormalisation of the inter-layer coupling arising from this process is
 \begin{equation}\begin{aligned}\label{interRenormalisation}
-	\frac{\Delta J_\perp}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q})~\int_{IR} d{\bf k} \rho({\bf k}) \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G^{JK} - J_\perp / 4}~.
+	\frac{\Delta J_\perp}{\Delta D} = \int_{UV} d{\bf q} ~\rho({\bf q})~\int_{IR} d{\bf k} \rho({\bf k}) \sum_{\alpha,q,k} \frac{J_\alpha(q, k)K_{\bar\alpha}(k, q)}{1/G_\alpha^{JK} - J_\perp / 4}~.
 \end{aligned}\end{equation}
 
 \subsection{Mixed processes}
@@ -375,25 +375,24 @@ we have the total renormalisation
 \subsection{Complete RG Equations}
 \paragraph{Inter-layer Kondo coupling \(J_\perp\)}
 \begin{equation}\begin{aligned}
-	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{4}\int_\text{UV} d{q} \rho(q) \int_\text{UV + IR} d{k} \rho(k) \sum_\alpha \left[J_\alpha^2(q,k)\left(\frac{1}{1/G_\alpha^J + 3J_\perp/4} + \frac{1}{1/G_\alpha^J - J_\perp/4}\right)\right.\\
-									 &\left. K_\alpha^2(q,k)\left(\frac{1}{1/G_\alpha^K + 3J_\perp/4} + \frac{1}{1/G_\alpha^K - J_\perp/4}\right)\right]\\
-									 &+ \int_\text{UV} d{q} \rho(q) \int_\text{UV + IR} d{k} \rho(k)\sum_\alpha \frac{J_\alpha(q,k)K_{\bar\alpha}(k, q)}{1/G^{JK}_\alpha - J_\perp/4}\\
-									 &+ \frac{1}{2} \int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\sum_\alpha \frac{1}{1/G^J_{\alpha\alpha}({\bf q}) - J_\perp/4} \right.\\
-									&~~~\left.+ K_f(\bar{\bf q},{\bf q}) K_d({\bf q},\bar{\bf q})\sum_\alpha \frac{1}{1/G^K_{\alpha\alpha}({\bf q}) - J_\perp/4}\right]
+	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{4}\int_\text{UV} d{\bf q}~\rho(q) \int_\text{UV + IR} d{\bf k}~\rho(k) \sum_\alpha \left[J_\alpha^2(q,k)\left(\frac{1}{1/G_\alpha^J + 3J_\perp/4} + \frac{1}{1/G_\alpha^J - J_\perp/4}\right)\right.\\
+									 &\left. K_\alpha^2(q,k)\left(\frac{1}{1/G_{\bar\alpha}^K + 3J_\perp/4} + \frac{1}{1/G_{\bar\alpha}^K - J_\perp/4}\right)\right]\\
+									 &+ \int_\text{UV} d{\bf q}~\rho(q) \int_\text{UV + IR} d{\bf k}~\rho(k)\sum_\alpha \frac{J_\alpha(q,k)K_{\bar\alpha}(k, q)}{1/G^{JK}_\alpha - J_\perp/4}\\
+									 &+ \frac{1}{2} \int_{UV} d{\bf q} ~\rho({\bf q}) \sum_\alpha \left[\frac{J_\alpha(\bar{\bf q},{\bf q}) J_{\bar\alpha}({\bf q},\bar{\bf q})}{1/G^J_{\alpha\alpha}({\bf q}) - J_\perp/4} + \sum_\alpha \frac{K_\alpha(\bar{\bf q},{\bf q}) K_{\bar\alpha}({\bf q},\bar{\bf q})}{1/G^K_{\alpha\alpha}({\bf q}) - J_\perp/4}\right]
 \end{aligned}\end{equation}
 
 \paragraph{Direct Kondo coupling \(J_\alpha\)}
 \begin{equation}\begin{aligned}
 	\frac{\Delta J_\alpha(k_1, k_2)}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha({\bf k}_1, {\bf q})J_\alpha({\bf q}, {\bf k}_2) + 4J_\alpha({\bf q}, \bar {\bf q})W_\alpha({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\\
 	&\left(\frac{1/4}{1/G_\alpha^J({\bf q}) + 3J/4} + \frac{3/4}{1/G_\alpha^J({\bf q}) - J/4}\right)\\
-	&+ \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_{\bar\alpha}({\bf k}_1, {\bf q})K_{\bar\alpha}({\bf q}, {\bf k}_2) - 4K_{\bar\alpha}({\bf q}, \bar {\bf q})W_{\alpha}({\bf k}_1, {\bf q},  {\bf q}, {\bf k}_2)\right]\\
+	&+ \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_{\bar\alpha}({\bf k}_1, {\bf q})K_{\bar\alpha}({\bf q}, {\bf k}_2) - 4K_{\bar\alpha}({\bf q}, \bar {\bf q})W_{\alpha}({\bf k}_1, {\bf q},  {\bf \bar q}, {\bf k}_2)\right]\\
 	&\left(\frac{1}{1/ G_{\alpha}^K + 3J/4}+ \frac{1}{1/ G_{\alpha}^K - J/4}\right)~.
 \end{aligned}\end{equation}
 
 \paragraph{Indirect Kondo coupling \(K_\alpha\)}
 \begin{equation}\begin{aligned}
 	\frac{\Delta K_\alpha(k_1, k_2)}{\Delta D} &= -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha({\bf k}_1, {\bf q})K_\alpha({\bf q}, {\bf k}_2) + 4K_\alpha({\bf q}, \bar {\bf q})W_{\bar\alpha}({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\\
-	&\left(\frac{1}{4}\frac{1}{1/ G_\alpha^K({\bf q}) + 3J/4} + \frac{3}{4}\frac{1}{1/ G_\alpha^K({\bf q}) - J/4}\right)\\
+											   &\left(\frac{1}{4}\frac{1}{1/ G_{\bar\alpha}^K({\bf q}) + 3J/4} + \frac{3}{4}\frac{1}{1/ G_{\bar\alpha}^K({\bf q}) - J/4}\right)\\
 	&+ \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_{\bar\alpha}({\bf k}_1, {\bf q})J_{\bar\alpha}({\bf q}, {\bf k}_2) - 4J_{\bar\alpha}({\bf q}, \bar {\bf q})W_{\bar\alpha}({\bf k}_1, {\bf q}, \bar {\bf q}, {\bf k}_2)\right]\\
 	&\left(\frac{1}{1/G_{\bar\alpha}^J + 3J/4} + \frac{1}{1/G_{\bar\alpha}^J - J/4}\right)~.
 \end{aligned}\end{equation}
@@ -401,8 +400,8 @@ we have the total renormalisation
 \paragraph{Propagators}
 \begin{equation}\begin{aligned}
 	\text{Intra-layer spin-flip excitation:}~ G_\alpha^J({\bf q}) &= \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha({\bf q}) / 4 + W_\alpha({\bf q}) / 2}~,\\
-	\text{Inter-layer spin-flip excitation:}~ G_\alpha^K({\bf q}) &= \frac{1}{\omega - |\epsilon_{\bar\alpha}({\bf q})| / 2 + K_\alpha({\bf q}) / 4 + W_{\bar\alpha}({\bf q}) / 2}~,\\
-	\text{Both spins, one of the baths:}~ G^{JK}({\bf q}) &= \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha/4 + K_{\bar\alpha}/4 - J_\perp / 4}~,\\
+	\text{Inter-layer spin-flip excitation:}~ G_\alpha^K({\bf q}) &= \frac{1}{\omega - |\epsilon_{\alpha}({\bf q})| / 2 + K_{\bar\alpha}({\bf q}) / 4 + W_{\alpha}({\bf q}) / 2}~,\\
+	\text{Both spins, one of the baths:}~ G^{JK}({\bf q}) &= \frac{1}{\omega - |\epsilon_\alpha({\bf q})| / 2 + J_\alpha({\bf q})/4 + K_{\bar\alpha}({\bf q})/4 + W_\alpha({\bf q})/2}~,\\
 	\text{Intra-layer spin-flip, two UV excitation:}~ G^{J}_{\alpha\alpha}({\bf q}) &= \frac{1}{\omega - \frac{1}{2}\left[\epsilon_\alpha({\bf q}) - \epsilon_\alpha(\bar{\bf q})\right] + \frac{1}{2}J_\alpha({\bf q}) + W_\alpha({\bf q})}~,\\
 	\text{Inter-layer spin-flip, two UV excitation:}~ G^{K}_{\alpha\alpha}({\bf q}) &= \frac{1}{\omega - \frac{1}{2}\left[\epsilon_\alpha({\bf q}) - \epsilon_\alpha(\bar{\bf q})\right] + \frac{1}{2}K_{\bar\alpha}({\bf q}) + W_\alpha({\bf q})}~.
 \end{aligned}\end{equation}
@@ -413,14 +412,38 @@ We have
 	G^J_\alpha = G^K_\alpha = G^{JK} = G_1,~~ G^J_{\alpha\alpha} = G^K_{\alpha\alpha} = G_2\\
 \end{aligned}\end{equation}
 
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{betheEquations}
 	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{2}\int_\text{UV} d{\bf q} \rho({\bf q}) \sum_\alpha \left[(J_\alpha + K_{\bar\alpha})^2 G_1 + G_2(J_f J_d + K_f K_d)\right]\\
 	\frac{\Delta J_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha^2 + 4J_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[K_{\bar\alpha}^2 - 4K_{\bar\alpha}W_{\alpha}\right]~,\\
 	\frac{\Delta K_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha^2 + 4K_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[J_{\bar\alpha}^2 - 4J_{\bar\alpha}W_{\alpha}\right]~.
 \end{aligned}\end{equation}
 In \(\Delta K_\alpha\), if \(K_\alpha\) starts out as vanishingly small, the second term will dominate (\(J \gg K\)), so \(K_\alpha\) will start off ferromagnetic (\(G_1\) is negative). This ferromagnetic \(K_\alpha\) can frustrate \(J_\alpha\) through the second term in \(\Delta J_\alpha\). Moreover, it competes with \(J_\alpha\) in trying to renormalise \(J_\perp\) (in the first term at least).
 
-\clearpage
+\section{RG Flows On The Bethe Lattice}
+To understand the effects of the indirect Kondo coupling, we first simulate the RG equations in a simplified setting: the Bethe lattice, where the momentum-dependence of the couplings can be ignored and all scattering is \(s-\)wave. We first simulate in the absence of the indirect couplings: \(K_\alpha=0\). The other couplings are set as follows, in units of the conduction electron bandwidth: \(J_f = J_d = 0.1, W_d = 0.0\). The results are shown in Fig.~\ref{bilayer1}. The \(d-\)layer Kondo coupling \(J_d\) (central panel) undergoes a suppression at larger values of the inter-layer coupling \(J_\perp\) (roughly around \(J_\perp = 0.15\); it is largely unaffected by the bath correlation of the \(f-\)layer, hence the lack of dependence of the boundary on \(W_f\). The \(f-\)layer coupling \(J_f\) (left panel) instead competes with \(W_f\) as well as \(J_\perp\). This makes its boundary oblique, meaning that \(J_f\) is suppressed with increasing \(|W_f|\) and \(J_\perp\).
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{bilayerHubbard_1.pdf}
+	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\) for \(K_\alpha=0\).}
+	\label{bilayer1}
+\end{figure}
+We next study the situation by adding small {\it negative} seed values of \(K_f\) and \(K_d\); \(K_f = K_d = -10^{-6}\). The rest of the couplings remain unchanged. The corresponding phase diagrams can be seen in Fig.~\ref{bilayer2}. We see that the insertion of the \(K_\alpha\) leads to an emergent competition of the \(d-\)layer Kondo coupling with \(W_f\), likely through the second term in the equation for \(J_\alpha\) in eq.~\ref{betheEquations}: its phase boundary now depends on both \(J_\perp\) and \(|W_f|\). Moreover, the RG flow of \(J_f\) appears to lose its dependence on \(J_\perp\) in this scenario; it is suppressed only by increasing \(|W_f|\).
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{bilayerHubbard_2.pdf}
+	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\) for \(K_\alpha=-10^{-6}\).}
+	\label{bilayer2}
+\end{figure}
+
+Another interesting outcome is that the indirect coupling \(K_d\) appears to be helped by the bath correlation \(W_f\) and suppressed by an increased \(J_\perp\).
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=0.66\textwidth]{bilayerHubbard_3.pdf}
+	\caption{Fixed-point values for the indirect Kondo couplings \(K_\alpha\) for \(K_\alpha=-10^{-6}\).}
+	\label{bilayer3}
+\end{figure}
 
 \section{Numerical Implementation}
 Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
