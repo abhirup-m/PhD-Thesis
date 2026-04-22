@@ -389,16 +389,20 @@ To motivate the construction of a new auxiliary model approach in this thesis, w
 
 Within the thesis, we have developed a new approach towards studying correlated models with strong local interactions. The strategy goes as follows: We first identify a quantum impurity model that represents faithfully the local physics of the lattice model we are targeting. This is done by solving the impurity and studying it's phenomenology. In order to capture specific aspects of the physics, the impurity model may need to be enhanced by, say, allowing for multiple impurities, or embedding it onto a lattice instead of a continuum, etc. Having identifies the appropriate impurity model, we apply manybody translation operators to the impurity model Hamiltonian in order to restore translation invariance and map it to the target lattice Hamiltonian in the process.
 
-Many-body translation operators can be defined~\cite{Calais_1995}
+For single-particle wavefunctions \(\psi_i(r_i)\), the one-particle momentum operator \(p_i\) generates a one-particle translation operator \(T_i({bf a})\) that translates the real-space operators associated with the particle \(i\) by the vector \({\bf a}\). By applying them to the dynamics of local potential wells at each site, these translation operators can be used to construct a translation-invariant Hamiltonians such as the tight-binding model; a similar application on the local wavefunctions generates delocalised translation-invariant Bloch states. Analogous to the single-particle case, one can construct a many-particle translation operator \(T\)~\cite{Calais_1995} that act on an \(N-\)particle state \(\Psi(r_1,r_2,...r_N)\): \(T({\bf a}) = e^{-i \bf a \cdot \bf P} = \prod_{i=1}^N T_i({\bf a})\), where \(\bf P\) is the total momentum operator. The action of \(T\) is to shift all local operators by \({\bf a}\) and to multiply all \(k-\)space operators with a phase shift \(e^{i {\bf a}\cdot{\bf k}}\).
+
+Using such a manybody translation operator, we are able to map both the Hamiltonian as well as eigenstates between the "local" auxiliary impurity model and the translation-invariant lattice model. This leads to specific relations between various observables such as correlations and spectral functions, as well as between entanglement measures. This set of mappings can be used to reconstruct the low-energy physics of the lattice model by starting from that of the auxiliary model.
 
 \subsection{Important features of the ``tiling" auxiliary model approach}
+\paragraph{Local transition as a diagnostic of lattice transition}
+As mentioned in the preceding paragraphs, the approach developed within this thesis maps the low-energy physics of the lattice model to that of an impurity model with local correlation, hence rendering the problem much more tractable. This, for example, means that the presence of local Fermi liquid excitations on the impurity site marked by a broad central Kondo resonance in the local density of states corresponds to a Landau Fermi liquid phase for the lattice model. By inducing a gap in the impurity site density of states and stabilising the local moment states, one can also model a Mott insulator on the lattice model. Finally, more exotic phases such as non-Fermi liquids can be engineered by pseudogapping the impurity density of states via competing tendencies within the impurity model.
+
 \paragraph{Restoring translation symmetry using a many-body Blochs' theorem}
+At the heart of the impurity-lattice model mapping are manybody translation operators \(T\). Indeed, they serve to restore translation invariance lost by the introduction of the impurity site into the lattice: \(H_\text{lat} = \sum_i T^\dagger({\bf r}_i) H_\text{aux} T({\bf r}_i)\). In a similar fashion, the translation operators serve to "extend" the auxiliary model eigenstates into those of the lattice model: \(\Psi = \sum_i T^\dagger({\bf r}_i) \psi_\text{aux}\). This constitutes a manybody version of Bloch's theorem~\cite{stoyanova}, where local impurity model states are superposed to form delocalised wavefunctions that span the lattice. In a crude sense, this step plays the role of the self-consistent loop in numerical implementations of DMFT. This is also seen from the fact that translation operation leads to effective renormalised relations for the lattice model couplings in terms of the auxiliary model quantities. 
 
 \paragraph{Mapping across Greens functions and entanglement measures}
 
-\paragraph{Local transition as a diagnostic of lattice transition}
-
-\paragraph{Lattice-embedding as a route to encoding lattice geometry}
+\paragraph{Lattice-embedding as a route to encoding lattice geometry and band topology}
 
 
 \section{Summary Of Chapters}
