@@ -406,43 +406,64 @@ we have the total renormalisation
 	\text{Inter-layer spin-flip, two UV excitation:}~ G^{K}_{\alpha\alpha}({\bf q}) &= \frac{1}{\omega - \frac{1}{2}\left[\epsilon_\alpha({\bf q}) - \epsilon_\alpha(\bar{\bf q})\right] + \frac{1}{2}K_{\bar\alpha}({\bf q}) + W_\alpha({\bf q})}~.
 \end{aligned}\end{equation}
 
-\subsection{Simplified limit of \(s-\)wave scattering and \(J_\alpha \ll D, K_\alpha \ll D, J_\perp \ll D\)}
-We have
-\begin{equation}\begin{aligned}
-	G^J_\alpha = G^K_\alpha = G^{JK} = G_1,~~ G^J_{\alpha\alpha} = G^K_{\alpha\alpha} = G_2\\
-\end{aligned}\end{equation}
+% \subsection{Simplified limit of \(s-\)wave scattering and \(J_\alpha \ll D, K_\alpha \ll D, J_\perp \ll D\)}
+% We have
+% \begin{equation}\begin{aligned}
+% 	G^J_\alpha = G^K_\alpha = G^{JK} = G_1,~~ G^J_{\alpha\alpha} = G^K_{\alpha\alpha} = G_2\\
+% \end{aligned}\end{equation}
+%
+% \begin{equation}\begin{aligned}\label{betheEquations}
+% 	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{2}\int_\text{UV} d{\bf q} \rho({\bf q}) \sum_\alpha \left[(J_\alpha + K_{\bar\alpha})^2 G_1 + G_2(J_f J_d + K_f K_d)\right]\\
+% 	\frac{\Delta J_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha^2 + 4J_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[K_{\bar\alpha}^2 - 4K_{\bar\alpha}W_{\alpha}\right]~,\\
+% 	\frac{\Delta K_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha^2 + 4K_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[J_{\bar\alpha}^2 - 4J_{\bar\alpha}W_{\alpha}\right]~.
+% \end{aligned}\end{equation}
+% In \(\Delta K_\alpha\), if \(K_\alpha\) starts out as vanishingly small, the second term will dominate (\(J \gg K\)), so \(K_\alpha\) will start off ferromagnetic (\(G_1\) is negative). This ferromagnetic \(K_\alpha\) can frustrate \(J_\alpha\) through the second term in \(\Delta J_\alpha\). Moreover, it competes with \(J_\alpha\) in trying to renormalise \(J_\perp\) (in the first term at least).
 
-\begin{equation}\begin{aligned}\label{betheEquations}
-	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{2}\int_\text{UV} d{\bf q} \rho({\bf q}) \sum_\alpha \left[(J_\alpha + K_{\bar\alpha})^2 G_1 + G_2(J_f J_d + K_f K_d)\right]\\
-	\frac{\Delta J_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha^2 + 4J_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[K_{\bar\alpha}^2 - 4K_{\bar\alpha}W_{\alpha}\right]~,\\
-	\frac{\Delta K_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha^2 + 4K_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[J_{\bar\alpha}^2 - 4J_{\bar\alpha}W_{\alpha}\right]~.
-\end{aligned}\end{equation}
-In \(\Delta K_\alpha\), if \(K_\alpha\) starts out as vanishingly small, the second term will dominate (\(J \gg K\)), so \(K_\alpha\) will start off ferromagnetic (\(G_1\) is negative). This ferromagnetic \(K_\alpha\) can frustrate \(J_\alpha\) through the second term in \(\Delta J_\alpha\). Moreover, it competes with \(J_\alpha\) in trying to renormalise \(J_\perp\) (in the first term at least).
+\section{Analysis for the simplified case of infinite dimensions}
+To understand the effects of the indirect Kondo coupling, we first simulate the RG equations in a simplified setting: the Bethe lattice, where the momentum-dependence of the couplings can be ignored and all scattering is \(s-\)wave. We add small {\it negative} seed values of \(K_f\) and \(K_d\); \(K_f = K_d = -10^{-6}\). The other couplings are set as follows, in units of the conduction electron bandwidth: \(J_f = J_d = 0.1, W_d = 0.0\). The results are shown in Fig.~\ref{bilayer1}. The \(d-\)layer Kondo coupling \(J_d\) (central panel) undergoes a suppression at larger values of the inter-layer coupling \(J_\perp\) (roughly around \(J_\perp = 0.15\); it is largely unaffected by the bath correlation of the \(f-\)layer, hence the lack of dependence of the boundary on \(W_f\). The \(f-\)layer coupling \(J_f\) (left panel) instead competes with \(W_f\) as well as \(J_\perp\). This makes its boundary oblique, meaning that \(J_f\) is suppressed with increasing \(|W_f|\) and \(J_\perp\).
 
-\section{RG Flows On The Bethe Lattice}
-To understand the effects of the indirect Kondo coupling, we first simulate the RG equations in a simplified setting: the Bethe lattice, where the momentum-dependence of the couplings can be ignored and all scattering is \(s-\)wave. We first simulate in the absence of the indirect couplings: \(K_\alpha=0\). The other couplings are set as follows, in units of the conduction electron bandwidth: \(J_f = J_d = 0.1, W_d = 0.0\). The results are shown in Fig.~\ref{bilayer1}. The \(d-\)layer Kondo coupling \(J_d\) (central panel) undergoes a suppression at larger values of the inter-layer coupling \(J_\perp\) (roughly around \(J_\perp = 0.15\); it is largely unaffected by the bath correlation of the \(f-\)layer, hence the lack of dependence of the boundary on \(W_f\). The \(f-\)layer coupling \(J_f\) (left panel) instead competes with \(W_f\) as well as \(J_\perp\). This makes its boundary oblique, meaning that \(J_f\) is suppressed with increasing \(|W_f|\) and \(J_\perp\).
-
-\begin{figure}[!htpb]
-	\centering
-	\includegraphics[width=\textwidth]{bilayerHubbard_1.pdf}
-	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\) for \(K_\alpha=0\).}
-	\label{bilayer1}
-\end{figure}
-We next study the situation by adding small {\it negative} seed values of \(K_f\) and \(K_d\); \(K_f = K_d = -10^{-6}\). The rest of the couplings remain unchanged. The corresponding phase diagrams can be seen in Fig.~\ref{bilayer2}. We see that the insertion of the \(K_\alpha\) leads to an emergent competition of the \(d-\)layer Kondo coupling with \(W_f\), likely through the second term in the equation for \(J_\alpha\) in eq.~\ref{betheEquations}: its phase boundary now depends on both \(J_\perp\) and \(|W_f|\). Moreover, the RG flow of \(J_f\) appears to lose its dependence on \(J_\perp\) in this scenario; it is suppressed only by increasing \(|W_f|\).
+We see that the insertion of the \(K_\alpha\) leads to an emergent competition of the \(d-\)layer Kondo coupling with \(W_f\), likely through the second term in the equation for \(J_\alpha\) in eq.~\ref{betheEquations}: its phase boundary now depends on both \(J_\perp\) and \(|W_f|\). Moreover, the RG flow of \(J_f\) appears to lose its dependence on \(J_\perp\) in this scenario; it is suppressed only by increasing \(|W_f|\).
 
 \begin{figure}[!htpb]
 	\centering
-	\includegraphics[width=\textwidth]{bilayerHubbard_2.pdf}
-	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\) for \(K_\alpha=-10^{-6}\).}
+	\includegraphics[width=\textwidth]{BL-PD.pdf}
+	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\).}
 	\label{bilayer2}
 \end{figure}
 
 Another interesting outcome is that the indirect coupling \(K_d\) appears to be helped by the bath correlation \(W_f\) and suppressed by an increased \(J_\perp\).
+
+\section{Infinite dimensions: Real-space correlation and phase diagram}
 \begin{figure}[!htpb]
 	\centering
-	\includegraphics[width=0.66\textwidth]{bilayerHubbard_3.pdf}
-	\caption{Fixed-point values for the indirect Kondo couplings \(K_\alpha\) for \(K_\alpha=-10^{-6}\).}
-	\label{bilayer3}
+	\includegraphics[width=0.49\textwidth]{BL-RC-32-2001--0.0.pdf}
+	\includegraphics[width=0.49\textwidth]{BL-RC-32-2001--0.03.pdf}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{BL-RCPD-31-1001.pdf}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{BL-I2-31-501--0.03.pdf}
+	\caption{}
+	\label{}
+\end{figure}
+
+\sectio{Infinite dimensions: Spectral function}
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{BL-SF-11-913--0.020000000000000004.pdf}
+	\includegraphics[width=\textwidth]{BL-SF-11-913--0.03.pdf}
+	\caption{}
+	\label{}
 \end{figure}
 
 \section{Numerical Implementation}
