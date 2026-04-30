@@ -420,47 +420,65 @@ we have the total renormalisation
 % In \(\Delta K_\alpha\), if \(K_\alpha\) starts out as vanishingly small, the second term will dominate (\(J \gg K\)), so \(K_\alpha\) will start off ferromagnetic (\(G_1\) is negative). This ferromagnetic \(K_\alpha\) can frustrate \(J_\alpha\) through the second term in \(\Delta J_\alpha\). Moreover, it competes with \(J_\alpha\) in trying to renormalise \(J_\perp\) (in the first term at least).
 
 \section{Analysis for the simplified case of infinite dimensions}
-To understand the effects of the indirect Kondo coupling, we first simulate the RG equations in a simplified setting: the Bethe lattice, where the momentum-dependence of the couplings can be ignored and all scattering is \(s-\)wave. We add small {\it negative} seed values of \(K_f\) and \(K_d\); \(K_f = K_d = -10^{-6}\). The other couplings are set as follows, in units of the conduction electron bandwidth: \(J_f = J_d = 0.1, W_d = 0.0\). The results are shown in Fig.~\ref{bilayer1}. The \(d-\)layer Kondo coupling \(J_d\) (central panel) undergoes a suppression at larger values of the inter-layer coupling \(J_\perp\) (roughly around \(J_\perp = 0.15\); it is largely unaffected by the bath correlation of the \(f-\)layer, hence the lack of dependence of the boundary on \(W_f\). The \(f-\)layer coupling \(J_f\) (left panel) instead competes with \(W_f\) as well as \(J_\perp\). This makes its boundary oblique, meaning that \(J_f\) is suppressed with increasing \(|W_f|\) and \(J_\perp\).
+We first investigate the properties of the impurity model in the limit of infinite dimensions, on a Bethe lattice. This limit suppresses any momentum-space differentiation arising from low-dimensional lattices, and allows the study of real-space local properties.
 
-We see that the insertion of the \(K_\alpha\) leads to an emergent competition of the \(d-\)layer Kondo coupling with \(W_f\), likely through the second term in the equation for \(J_\alpha\) in eq.~\ref{betheEquations}: its phase boundary now depends on both \(J_\perp\) and \(|W_f|\). Moreover, the RG flow of \(J_f\) appears to lose its dependence on \(J_\perp\) in this scenario; it is suppressed only by increasing \(|W_f|\).
-
-\begin{figure}[!htpb]
+\begin{figure}[!b]
 	\centering
 	\includegraphics[width=\textwidth]{BL-PD.pdf}
 	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\).}
-	\label{bilayer2}
+	\label{rgPD}
 \end{figure}
 
-Another interesting outcome is that the indirect coupling \(K_d\) appears to be helped by the bath correlation \(W_f\) and suppressed by an increased \(J_\perp\).
+We simulate the RG equations by adding small {\it negative} seed values of \(K_f\) and \(K_d\). The other couplings are set as follows, in units of the conduction electron bandwidth: \(J_f = J_d = 0.1, W_d = 0.0\). The results are shown in Fig.~\ref{rgPD}, in the form of the renormalised low-energy fixed point values of the Kondo couplings \(J_f\) and \(J_d\) and the inter-layer coupling \(J_\perp\), all as functions of \(W_f\) and \(J_\perp\). We find that the \(d-\)layer Kondo coupling \(J_d\) (central panel) undergoes a suppression at larger values of the inter-layer coupling \(J_\perp\). This coincides with an increase in the renormalised value of \(J_\perp\) (right panel) itself, indicating a transfer of correlations from within the \(d-\)layer to between the \(d-\) and \(f-\)layers. The couplings \(J_d\) is, however, largely unaffected by the bath correlation of the \(f-\)layer, as seen from the lack of any dependence of the boundary on \(W_f\). 
+
+The \(f-\)layer coupling \(J_f\) (left panel) is suppressed with increasing \(|W_f|\) as well as increasing \(J_\perp\). The phase space for \(J_f\) therefore splits, roughly, into four regions. The lower left region involves a dominant \(J_f\) coupling and displays local Fermi liquid excitations within the \(f-\)layer. The upper left region has the in-plane correlation \(W_f\) driving \(J_f\) to irrelevance and leads to a Mott insulator within the layer, which can order magnetically if spontaneous symmetry breaking is allowed. The lower right region has the influence  of both \(J_f\) and \(J_\perp\) and therefore involves the hybridisation of the local Fermi liquids in the two layers. Finally, the upper right region has the Mott state of the \(f-\)layer hybridising with the \(d-\)layer through \(J_\perp\)
 
 \section{Infinite dimensions: Real-space correlation and phase diagram}
+In order to characterise the various phases, we compute a set of real-space correlations involving the impurity sites and the conduction bath sites hybridising with them. For small \(|W_f|\), the \(f-\)layer is highly correlated but still itinerant due to the presence of local Fermi liquid excitations. In order to capture the \(J_\perp\)-driven transition in this regime, we track the inter-impurity compensation factor \(\langle {\bf S}_f \cdot {\bf S}_d \rangle \) that quantifies the strength of the singlet state between these two sites. As seen from the left panel in Fig.~\ref{realCorrBL}, the inter-impurity correlation (red curve) grows to large values as \(J_\perp\) is increased and eventually saturates close to the maximum value. This marks a transition from a phase in which the two metallic layers are decoupled and participate in transport independently, to one in which the local Fermi liquids hybridise and form local bound states.
+
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=0.49\textwidth]{BL-RC-32-2001--0.0.pdf}
 	\includegraphics[width=0.49\textwidth]{BL-RC-32-2001--0.03.pdf}
 	\caption{}
-	\label{}
+	\label{realCorrBL}
 \end{figure}
+
+A complimentary picture is obtained in the same regime by studying the one-particle hybridisation between the \(f-\)impurity and its nearest-neighbour site \(f_0\). While this measure is large for small \(J_\perp\), indicating the presence of in-plane Kondo screening, and it gets suppressed as \(J_\perp\) is increased, revealing that the \(f-\)impurity is no longer hybridising with its own bath.
+
+For large \(|W_f|\), the \(f-\)layer is sufficiently strongly correlated to form a Mott insulator where the charge excitations are gapped, and the low-energy theory is described by a Heisenberg model. Here, we retain the inter-layer compensation factor as a measure but we replace the one-particle hybridisation with the spin-spin correlation \(\langle {\bf S}_f \cdot {\bf s}_{f0} \rangle \) between the \(f-\)spin and it's nearest  spin; this change is necessitated by the charge gap in the spectrum. We again find that the inter-layer correlation grows as \(J_\perp\) is increased, while the intra-layer spin correlation shrinks. This marks a transition between a phase with no Kondo screening between the layers (and where the \(f-\)layer is potentially magnetically ordered) to one where the \(f-\)spin is Kondo screened by the other layer. In the context of heavy fermions, this marks a Kondo breakdown QCP between a magnetically-ordered phase with no (static) Kondo screening versus a heavy Fermi liquid phase where the \(f-\)spin participates in transport through its hybridisation with the other layer.
 
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=0.5\textwidth]{BL-RCPD-31-1001.pdf}
 	\caption{}
-	\label{}
+	\label{realCorrPD}
 \end{figure}
+
+These conclusions are crystallised in the phase diagram in Fig.~\ref{realCorrPD}, computed using the three measures described above. For small \(J_\perp\) and \(|W_f|\) (lower left region), the two layers are metallic and mostly decoupled. Increasing \(J_\perp\) along the \(y-\)axis leads to a heavy Fermi liquid phase, while increasing \(|W_f|\) along the \(x-\)axis leads to the \(f-\)layer becoming insulating and decoupled from the other layer. 
 
 \begin{figure}[!htpb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{BL-I2-31-501--0.03.pdf}
+	\includegraphics[width=0.5\textwidth]{BL-I2-31-3002--0.03-f-d.pdf}
 	\caption{}
-	\label{}
+	\label{BL-I2}
 \end{figure}
 
-\sectio{Infinite dimensions: Spectral function}
+We have also characterised the transition using entanglement measures. Specifically, the mutual information (Fig.~\ref{BL-I2} between the \(f-\) and \(d-\)spins grows during the emergence of the heavy Fermi liquid, as \(J_\perp\) is increased. While this holds for both large and small \(|W_f|\), there's one difference. Upon lowering \(J_\perp\), the \(I_2\) for the case of small \(|W_f|\) vanishes much more rapidly compared to the case of large \(|W_f|\). We believe the former is due to the gapless excitations present within the \(f-\)layer at small \(|W_f|\) that promote strong entanglement within the layer and hence compete with the inter-layer entanglement.
+
+\section{Infinite dimensions: Local spectral function}
+To further investigate the phases, we compute the local spectral functions of the \(f-\) and \(d-\)impurities. For weak \(J_\perp\), the \(d-\)impurity always exhibits a central Kondo resonance, while the \(f-\)layer supports it only for weak \(W_f\). For larger \(J_\perp\), this resonance splits into two bands, in both the layers. These bands correspond to the two hybridised levels formed locally due to the mixing of the \(f-\) and \(d-\)impurities. For weak \(|W_f|\), this is essentially the mixing of the two local Fermi liquids, while for large \(|W_f|\), it arises purely from the LFL of the \(d-\)layer. At half-filling, the splitting of the central resonance into bands leads to a gap at zero frequency, and we get a Kondo insulator.
+
+Away from half-filling, if the chemical potential lies in one of the bands, the systems becomes a heavy Fermi liquid. The value of \(W_f\) determines the amount of correlation in the heavy Fermi liquid. Larger values of \(|W_f|\) lead to narrow bands for the metal.
 
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=\textwidth]{BL-SF-11-913--0.020000000000000004.pdf}
+	\caption{}
+	\label{}
+\end{figure}
+\begin{figure}[!htpb]
+	\centering
 	\includegraphics[width=\textwidth]{BL-SF-11-913--0.03.pdf}
 	\caption{}
 	\label{}
