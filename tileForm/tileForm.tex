@@ -1,38 +1,4 @@
 \chapter{\chapD}\label{sec:tileForm}
-\section{The Philosophy of Auxiliary Models}
-
-In the previous chapter, we extended the Anderson impurity model to host a correlation-driven delocalisation-localisation transition on the impurity site, from a local Fermi liquid state to a local moment state.
-We demonstrated that this transition captures very well the phenomenology of the Hubbard dimension in infinite dimensions (as seen from, say, dynamical mean-field theory (DMFT)).
-In this chapter, we extend this approach by developing a formalism to study the more realistic case of finite-dimensional interacting models by using appropriately chosen impurity models as auxiliary models.
-The key to an {\it auxiliary model method} is to construct an appropriate auxiliary model that while being tractable captures some essential property of the full lattice model~\cite{martin_2016}.
-This involves separating the complete degrees of freedom into a system part (\(H_S\)) which one treats exactly and the rest of the system (\(H_R\)) that one might simplify in order to be able to solve the problem.
-The non-trivial nature of the problem arises of course from the hybridisation \(H_{SR}\) between the system and the bath:
-\begin{equation}\begin{aligned}
-	{H} &= \begin{bmatrix} & {H}_{R} && {H}_{RS} & \\ & {H}_{RS}^* && {H}_{S} & \end{bmatrix}~.
-\end{aligned}\end{equation}
-
-This separation can always be done exactly, if one does not care about tractability. For example, one can take the Hubbard model that describes electrons hopping on a lattice and interacting when two electrons reside on the same lattice site:
-\begin{equation}\begin{aligned}
-	H_\text{hub} = -t\sum_{\langle i,j \rangle,\sigma }(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}n_{i \uparrow}n_{i \downarrow}~,
-\end{aligned}\end{equation}
-and separate this into parts, the system being the local orbitals of a specific site \(l\) and the rest of the system being all the other sites:
-\begin{equation}\begin{aligned}
-	H_S = U n_{l \uparrow} n_{l \downarrow},~~ H_R = -t\sum_{\langle i,j \rangle,\sigma }^\prime(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}) + U\sum_{i}^\prime n_{i \uparrow}n_{i \downarrow},~~ H_{SR} + H_{RS} = -t\sum_{i,\sigma} (c^\dagger_{l,\sigma}c_{i,\sigma} + \text{h.c.})~,
-\end{aligned}\end{equation}
-where the primed summation is carried out over all nearest-neighbour pairs that do not involve \(l\) and the summation in \(H_{SR} + H_{RS}\) is over all sites adjacent to \(l\).
-
-The smaller system \(H_S\) (often called the {\it cluster}) is typically chosen such that its eigenstates are known exactly. Progress is then made by choosing a simpler form for \(H_R\) and its coupling \(H_{RS}\) with the smaller system. This combination of the cluster and the simpler bath is then called the \textit{auxiliary system}.
-A tractable auxiliary system for the Hubbard model is the single-impurity Anderson model (SIAM); the correlated impurity site represents the set of local orbitals of any given site, while the conduction bath represents the rest of the lattice sites in an approximate fashion.  Such a construction is shown in fig.~\ref{cluster-bath}.
-\begin{figure}[!htb]
-	\centering
-    \includegraphics[width=0.9\textwidth]{clusterBath.pdf}
-	\caption{\textit{Left}: Full Hubbard model lattice with onsite repulsion $U^H$ on all sites and hopping between nearest neighbour sites with strength $t^H$. \textit{Right}: Extraction of the auxiliary (cluster+bath) system from the full lattice. The central site on left becomes the impurity site (red) on the right (with an onsite repulsion $\epsilon_d$), while the rest of the $N-1$ sites on the left form a conduction bath (green circles) (with dispersion $\epsilon_k$ and correlation modelled by the self-energy $\Sigma_k(\omega)$) that hybridizes with the impurity through the coupling $V$.}
-	\label{cluster-bath}
-\end{figure}
-
-It should be noted that any reasonable choice of the cluster and bath would break the translational symmetry of the full model: To allow computing quantities, one would need to make the bath (which is a much larger system) simpler than the cluster (which is a single site). This distinction breaks the translational symmetry of the Hubbard model. As a result, calculations that make use of the translation symmetry of the full model (such as \(k-\)space objects) will require a periodisation operation of an auxiliary model quantity.
-
-The present work is aimed towards developing a new auxiliary model method to study correlated electronic systems. As described above, the first step is to identify the correct impurity model which can faithfully capture the physics of the lattice model we are trying to solve. The local behaviour of this impurity model should reflect the essential local physics of the lattice model. Typically, we will consider impurity model geometries where the real-space bath site connected directly to the impurity hosts some local interaction. We will henceforth refer to this site as the {\it zeroth site}. This model must be solved using an impurity solver. In the present work, we use the recently-developed unitary renormalisation group method~\cite{anirbanmott1,anirbanmott2,anirbanurg1,anirbanurg2,siddharthacpi,santanukagome}. The leap to the bulk model is then made by applying {\bf manybody lattice translation operators} on the auxiliary model. This process, referred to as {\it tiling} here, allows us to reconstruct the lattice model Hamiltonian from that of the auxiliary model and restores the translation invariance of the full lattice model. Once the Hamiltonians can be mapped onto one another, it is possible to relate the eigenstates and correlations functions between the auxiliary model and lattice model, using a manybody version of {\bf Bloch's theorem}. 
 
 \section{What Is The Correct Auxiliary Model For Correlated Electrons on a 2D Square Lattice?}\label{identifyModel}
 As discussed in more detail in the previous chapter, it was necessary to extend the single-impurity Anderson model (SIAM) in order to obtain a phase transition on the impurity site. Without any modification, the standard Anderson model (at particle-hole symmetry) leads to the emergence of an \(\omega=0\) Kondo resonance in the impurity (\(d\sigma\)) spectral function at any value of the impurity correlation \(U_d\), at sufficiently low temperatures:
@@ -307,7 +273,7 @@ In order to construct this auxiliary model \(\mathcal{T}-\)matrix, we allow for 
 \begin{equation}\begin{aligned}\label{tmatrix}
 	\mathcal{T}_{{\bm k},\sigma} = \left[c^\dagger_{\bm r_d\sigma} + S_{\bm r_d}^\sigma + C_{\bm r_d}^+ \right]c_{{\bm k}\sigma}~,
 \end{aligned}\end{equation}
-where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively. The first term encodes the local component of the \(k-\)space Greens function by creating an excitation on the impurity site (which is then translated across the lattice), and the rest of the terms encode the non-local components by tracking impurity-bath excitations.
+where \(S_{\bm r_d}^+\) and \(C_{\bm r_d}^+\) are spin and charge flip operators on the impurity site that cause transition from \(\ket{\downarrow} \to \ket{\uparrow}\) and \(\ket{0} \to \ket{\uparrow \downarrow}\) respectively.
 
 Apart from modifying the excitation operator, we will now simplify the time-evolution as well. The first overlap on the right-hand side of eq.~\ref{intermediate} expands to
 \begin{equation}\begin{aligned}
@@ -417,7 +383,9 @@ Several terms have been dropped because those contributions vanish for systems w
 We next treat the time-evolution of the operators exactly as in the \(k-\)space Greens function. We replace the one-particle Hamiltonian \(H_\text{1p}\) with its local component \(H_\text{loc}\) (such as any on-site term of inter-layer hopping, etc). As done previously, we will make use of the eigenstates \(\nu(\bm r)\) of \(H_\text{loc}\), with energy \(\epsilon_\nu^\text{loc}\).  Without repeating the details, we state the final result here, for the frequency-domain real-space local Greens function:
 \begin{equation}\begin{aligned}\label{localTiledGreenF}
 	G_\text{loc}(\omega) =& \frac{1}{2}\sum_\nu \left[C_{\nu,\bm r_d} \mathcal{G}(\nu(r_d)\sigma, c^\dagger_{r_d,\sigma}; \tilde\omega) + C^*_{\nu,\bm r_d} \mathcal{G}(c_{r_d,\sigma}, \nu^\dagger(r_d)\sigma; \tilde\omega)\right] \\
-						  &+ \frac{1}{2}\sum_{\bm r_1,\bm r_2 \neq r_d, \nu} F_n(\bm r_1 - \bm r_2)^* \left[C_{\bm r_1, \nu} \mathcal{G}(\mathcal{T}_{\nu(\bm r_1)\sigma},\mathcal{T}^\dagger_{\bm r_2\sigma}; \tilde\omega) + C^*_{\bm r_1, \nu} \mathcal{G}(\mathcal{T}_{\bm r_1\sigma},\mathcal{T}^\dagger_{\nu(\bm r_2)\sigma}; \tilde\omega)\right]~,
+						  &+ \frac{1}{2}\sum_{\bm r \neq r_d, \nu} F_n(\bm r - \bm r_d)^* \left[C_{\bm r, \nu} \mathcal{G}(\mathcal{T}_{\nu(\bm r)\sigma},c^\dagger_{\bm r_d\sigma}; \tilde\omega) + C^*_{\bm r_d, \nu} \mathcal{G}(\mathcal{T}_{\bm r\sigma},\nu^\dagger(r_d)\sigma; \tilde\omega)\right]\\
+						  &+ \frac{1}{2}\sum_{\bm r \neq r_d, \nu} F_n(\bm r - \bm r_d)^* \left[C_{\bm r_d, \nu} \mathcal{G}(\nu(\bm r_d)\sigma,\mathcal{T}^\dagger_{\bm r\sigma}; \tilde\omega) + C^*_{\bm r, \nu} \mathcal{G}(c_{\bm r_d\sigma},\mathcal{T}^\dagger_{\nu(r)\sigma}; \tilde\omega)\right]\\
+						  &+ \frac{1}{2}\sum_{\bm r_1,\bm r_2 \neq r_d, \nu} F_n(\bm r_1 - \bm r_2)^* \left[C_{\bm r_1, \nu} \mathcal{G}(\mathcal{T}_{\nu(\bm r_1)\sigma},\mathcal{T}^\dagger_{\bm r_2\sigma}; \tilde\omega) + C^*_{\bm r_2, \nu} \mathcal{G}(\mathcal{T}_{\bm r_1\sigma},\mathcal{T}^\dagger_{\nu(\bm r_2)\sigma}; \tilde\omega)\right]~,
 \end{aligned}\end{equation}
 where the hermitian conjugate in each part comes from considering the second term in eq.~\ref{realFull}. The shifted frequency \(\tilde \omega = \omega - \epsilon_\nu^\text{loc}\) captures the effect of local terms in \(H_\text{1p}\); the shift is defined as \(e^{i \epsilon_\nu^\text{loc}t} c^\dagger_\nu = e^{i H_\text{loc} t} c^\dagger_\nu e^{-i H_\text{loc} t}\). The operator \(\nu^\dagger(\bm r)\) represents the eigenstates of \(H_\text{loc}\) at any site \(\bm r\). The coefficients \(C_{\nu,\bm r}\) express the eigenstates in terms of local states: \(c_{\bm r} = \sum_{\nu} C_{\nu, \bm r} c_{\nu(\bm r)}\).
 

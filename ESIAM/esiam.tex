@@ -653,19 +653,20 @@ while the diagonal part is given by \(H_D = \epsilon_{\vec q} \tau_{q\uparrow} +
 Note that we have ignored potential scattering terms in the off-diagonal part \(T_{\vec q\beta}\). In order to allow both spin-flip and charge transfer scattering processes, we start from initial states with \(\tau_{q \uparrow} = -\tau_{q \downarrow}\). As a result, the contribution to \(H_D\) from the kinetic energy is \(\epsilon_q \tau_{q \uparrow} = \left(\pm D\right)\times\left(\pm\frac{1}{2}\right) = D/2\), while the contribution from \(U_b\) is \(-\frac{1}{2}U_b\left(\pm\frac{1}{2} - \left( \mp\frac{1}{2} \right) \right)^2 = -U_b/2 \).
 
 \subsection{Renormalisation of \(U_b\)}
-\(U_b\) can renormalise only via itself. The relevant renormalisation term in the particle sector is
-\begin{eqnarray}
-	U_b^2 \sum_{q\beta}\sum_{k_1,k_2,k_3,\atop{k_1^\prime,k_2^\prime,k_3^\prime}} c^\dagger_{q\beta}c_{k_1\beta}c^\dagger_{k_3\overline\beta}c_{k_1^\prime\overline\beta}\frac{1}{\omega - H_D}c^\dagger_{k_2^\prime\overline\beta}c_{k_3^\prime\overline\beta}c^\dagger_{k_2\beta}c_{q\beta}~.
-\end{eqnarray}
-In order to renormalise \(U_b\), we need to contract one more pair of momenta. There are two choices. The first is by setting \(k_3 = k_3^\prime = q\). The two internal states, then, are \(q\beta\) and \(q\overline\beta\). As discussed above, the intermediate state energy is \(-U_b/4\). We therefore have
-\begin{eqnarray}
-	\frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_1^\prime,k_2^\prime} c_{k_1\beta}c_{k_1^\prime\overline\beta}c^\dagger_{k_2^\prime\overline\beta}c^\dagger_{k_2\beta} = \frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_1^\prime,k_2^\prime} c^\dagger_{k_2^\prime\overline\beta}c_{k_1^\prime\overline\beta}c^\dagger_{k_2\beta}c_{k_1\beta}~.
-\end{eqnarray}
-Another way to contract the momenta is by setting \(k_1^\prime = k_2^\prime = q\), which gives a renormalisation of
-\begin{eqnarray}
-	\frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_3,k_3^\prime} c_{k_1\beta}c^\dagger_{k_3 \overline\beta}c_{k_3\prime\overline\beta}c^\dagger_{k_2\beta} = -\frac{U_b^2 n_j}{\omega - D/2}\sum_{\beta}\sum_{k_1,k_2,k_3,k_3^\prime} c^\dagger_{k_3 \overline\beta}c_{k_3\prime\overline\beta}c^\dagger_{k_2\beta}c_{k_1\beta}~.
-\end{eqnarray}
-The two contributions cancel each other. The same cancellation happens in the hole sector as well.
+Renormalisation to the bath interaction \(U_b\) can arise purely from itself, because of the lack of any impurity operators. We show in Section~\ref{tileRG} that this coupling is in fact marginal. 
+% \(U_b\) can renormalise only via itself. The relevant renormalisation term in the particle sector is
+% \begin{eqnarray}
+% 	U_b^2 \sum_{q\beta}\sum_{k_1,k_2,k_3,\atop{k_1^\prime,k_2^\prime,k_3^\prime}} c^\dagger_{q\beta}c_{k_1\beta}c^\dagger_{k_3\overline\beta}c_{k_1^\prime\overline\beta}\frac{1}{\omega - H_D}c^\dagger_{k_2^\prime\overline\beta}c_{k_3^\prime\overline\beta}c^\dagger_{k_2\beta}c_{q\beta}~.
+% \end{eqnarray}
+% In order to renormalise \(U_b\), we need to contract one more pair of momenta. There are two choices. The first is by setting \(k_3 = k_3^\prime = q\). The two internal states, then, are \(q\beta\) and \(q\overline\beta\). As discussed above, the intermediate state energy is \(-U_b/4\). We therefore have
+% \begin{eqnarray}
+% 	\frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_1^\prime,k_2^\prime} c_{k_1\beta}c_{k_1^\prime\overline\beta}c^\dagger_{k_2^\prime\overline\beta}c^\dagger_{k_2\beta} = \frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_1^\prime,k_2^\prime} c^\dagger_{k_2^\prime\overline\beta}c_{k_1^\prime\overline\beta}c^\dagger_{k_2\beta}c_{k_1\beta}~.
+% \end{eqnarray}
+% Another way to contract the momenta is by setting \(k_1^\prime = k_2^\prime = q\), which gives a renormalisation of
+% \begin{eqnarray}
+% 	\frac{U_b^2 n_j}{\omega - D/2 + \frac{U_b}{2}}\sum_{\beta}\sum_{k_1,k_2,k_3,k_3^\prime} c_{k_1\beta}c^\dagger_{k_3 \overline\beta}c_{k_3\prime\overline\beta}c^\dagger_{k_2\beta} = -\frac{U_b^2 n_j}{\omega - D/2}\sum_{\beta}\sum_{k_1,k_2,k_3,k_3^\prime} c^\dagger_{k_3 \overline\beta}c_{k_3\prime\overline\beta}c^\dagger_{k_2\beta}c_{k_1\beta}~.
+% \end{eqnarray}
+% The two contributions cancel each other. The same cancellation happens in the hole sector as well.
 
 \subsection{Renormalisation of the impurity correlation \(U\)}
 The coupling \(U\) is renormalised by two kinds of vertices: \(V^2\) and \(J^2\). We will consider these processes one at a time. For convenience, we define \(\epsilon_d = -U/2\).
@@ -730,9 +731,11 @@ The contributions from the hole sector are obtained by making the transformation
 \begin{eqnarray}
 	-\frac{3n_j}{8}V J \left(\frac{1}{\omega +U_b/4 - \frac{D}{2} + \frac{J}{4}} + \frac{1}{\omega +U_b/4 - \frac{D}{2} + U/2 + \frac{J}{4}}\right)\sum_{k\beta}\left(c^\dagger_{d\beta} c_{k\beta} + \text{h.c.}\right)~.
 \end{eqnarray}
-The renormalisation in \(V\) from \(U_b\) arises through terms of \(V U_b\) and \(U_b V\) kind. One particular scattering process in this category involves adding an electron on the impurity site:
+The renormalisation in \(V\) from \(U_b\) arises through terms of \(V U_b\) and \(U_b V\) kind. We now show that this contribution vanishes entirely.
+
+One particular scattering process in this category involves adding an electron on the impurity site:
 \begin{equation}\begin{aligned}\label{VUb1}
-	\sum_{k,\beta,q}Vc^\dagger_{d\beta}c_{q\beta} \frac{1}{\omega - H_D} U_b c^\dagger_{q\beta}c_{k\beta} n_{\bar q,\bar\beta} = \sum_{k,\beta,q,i}Vc^\dagger_{d\beta}c_{q\beta} \frac{1}{2}\left(\frac{n_{d\bar\beta}}{\omega^1_i - E_1} + \frac{1 - n_{d\bar\beta}}{\omega^0_i - E_0}\right) U_b c^\dagger_{q\beta}c_{k\beta} n_{\bar q,\bar\beta}~,
+	\sum_{k,q}Vc^\dagger_{d\uparrow}c_{q\uparrow} \frac{1}{\omega - H_D} U_b \sum_{\alpha,\alpha^\prime}\alpha\alpha^\prime c^\dagger_{q\alpha}c_{k\alpha} n_{q^\prime,\alpha^\prime} %= \sum_{k,\beta,q,i}Vc^\dagger_{d\beta}c_{q\beta} \frac{1}{2}\left(\frac{n_{d\bar\beta}}{\omega^1_i - E_1} + \frac{1 - n_{d\bar\beta}}{\omega^0_i - E_0}\right) U_b c^\dagger_{q\beta}c_{k\beta} n_{\bar q,\bar\beta}~,
 \end{aligned}\end{equation}
 where \(E_1 \) and \(E_0\) are excited state energies associated with the occupied and unoccupied configurations of \(d\bar\beta\), while \(\omega^{1/0}_0\) and \(\omega^{1/0}_1\) represent the energy associated with the initial and final states in the scattering process, for the particle and hole projectors of \(d\bar\beta\) respectively. When projected by \(n_{d\bar\beta}\), the initial and excited states have \(n_d = 1\), leading to \(E_1 = D/2 - U_b/2 - U/2 - J/4\) and \(\omega^1_0 = \omega - U/2\) while the final state has \(n_d = 2\) which gives \(\omega_1^1 = \omega\). When projected by \(1 - n_{d\bar\beta}\), we have \(n_d = 0\) in the initial and excited state resulting in \(E_0 = D/2 - U_b/2\) and \(\omega^0_0 = \omega\) while the final state has \(n_d=1\) leading to \(\omega^0_1 = \omega - U/2\). Combing them gives
 \begin{equation}\begin{aligned}
