@@ -5,34 +5,31 @@
 \input{preamble.tex}
 \begin{document}
 
-\include{frontmatter/frontpage.tex}
+% \include{frontmatter/frontpage.tex}
 % \include{frontmatter/declaration.tex}
 % \include{frontmatter/certificate.tex}
 % \include{frontmatter/dedication.tex}
 % \include{frontmatter/acknowledgements.tex}
 % \include{frontmatter/publications.tex}
-% \include{frontmatter/abstract.tex}
+\include{frontmatter/abstract.tex}
 {\hypersetup{linkcolor=black}  \tableofcontents }
 \include{introduction/introduction.tex}
-% \include{methods/methods.tex}
+\include{methods/methods.tex}
 \include{ESIAM/esiam.tex}
 \include{tileForm/tileForm.tex}
 \include{tileESIAM/tileESIAM.tex}
-% \include{tileHF/tileHF.tex}
-% \include{metalsRG/metalsRG.tex}
-% \include{conclusions/conclusions.tex}
-% \include{appendices/appendices.tex}
+\include{tileHF/tileHF.tex}
+\include{metalsRG/metalsRG.tex}
+\include{conclusions/conclusions.tex}
+\include{appendices/appendices.tex}
 
 \bibliography{thesis_cleaned}
 \bibliographystyle{unsrt}
 \end{document}
 
 %%%%%%%% TODO
-%% Fix \Delta V Rg equation and derivation
 %% glue between chapters, improve beginning of each chapter before work sections
 %% finalise methods chapter
-%% Add renormalised perturbation theory to methods
-%% Fix star graph URG in methods
 %% Summary of main results in thesis
 
 %%%%%%% TODO Done
@@ -44,3 +41,6 @@
 %% remove repeated tiling of esiam into extended Hubbard (current appears in both formalism and tiling esiam chapters)
 %% check out the expression for G_local in tiling formalism, seems like it's incorrect (it appears to be missing the G(r_d, r) contributions
 %% rectify incorrect description below definition of impurity-bath T operator (c + S + C) c_k
+%% Fix \Delta V Rg equation and derivation
+%% Add renormalised perturbation theory to methods
+%% Fix star graph URG in methods

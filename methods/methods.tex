@@ -349,133 +349,8 @@ The renormalization due to the entire shell is obtained by summing over all stat
 These equations will now need to be simplified. For example, in the particle sector, we can set \(\hat n_{q\beta}=0\) in the numerator, because there is no such excitation in the initial state. Similarly, in  the hole sector, we can set \(\hat n_{q\beta}=1\) because that state was occupied in the initial state. Another simplification we typically employ is that \(\mathcal{H}^d_{0,1}\) will, in general, have the energies of all the electrons. But we consider only the energy of the on-shell electrons in the denominator. After integrating out these electrons, we can rearrange the remaining operators to determine which term in the Hamiltonian it renormalizes and what is the renormalization.
 
 At first sight, one might think that we must evaluate lots of traces to obtain the terms in \(\Delta \mathcal{H}\). A little thought reveals that the terms in the numerator are simply the off-diagonal terms in the Hamiltonian; \(\text{Tr}\left(c^\dagger_{q\beta}\mathcal{H} \right)c_{q\beta}\) is the off-diagonal term that has \(c_{q\beta}\) in it, and \(c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\) is the off-diagonal term that has \(c^\dagger_{q\beta}\) in it. \(\mathcal{H}^D\) is just the diagonal part of the Hamiltonian.
-\section{Example I: URG analysis of the star graph model}
-\begin{minipage}{0.5\textwidth}
-	The star graph problem has already been analyzed using URG and an extensive study of its entanglement properties has already been carried out, in ref.~\cite{Patra2023MCK}. Here we focus on just deriving the RG equations. The system consists of \(N\) spin-like degrees of freedom (labeled 1 through N) individually talking to a spin at the center (labeled 0). Each spin \(i\) (\(\in \left[0,N\right]\)) has an on-site energy \(\epsilon_i\). The coupling strength between 0 and \(i\) (\(\in \left[1,N\right]\)) is \(J_i\). We choose the on-site energies such that \(\epsilon_{i+1} > \epsilon_i, i\in\left[N-1,1\right]\). In this way, \(\epsilon_1\) is the infrared limit and \(\epsilon_N\) is the ultraviolet limit.
-\begin{equation}\begin{aligned}
-	\mathcal{H} = \epsilon_0 S^z_0 + \sum_{i=1}^N\left[\epsilon_i S^z_i + J_i \vec{S}_0 \cdot \vec{S}_i\right]
-\end{aligned}\end{equation}
-\end{minipage}
-\hfill
-\begin{minipage}{0.4\textwidth}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{stargraph_.png}
-\captionof{figure}{Star Graph model}
-\end{center}
-\end{minipage}
 
-By converting the last term into \(S^z\) and \(S^\pm\), we can write the Hamiltonian as
-\begin{equation}\begin{aligned}
-	\mathcal{H} = \epsilon_0 S^z_0 + \sum_{i=1}^N\left[\epsilon_i S^z_i + J_i\left(S^z_0 S^z_i + \frac{1}{2}\left(S_0^+ S^-_i + S_0^- S^+_i\right)\right)\right]
-\end{aligned}\end{equation}
-
-\subsection*{Calculation of Renormalization}
-
-The RG involves decoupling the nodes \(N\) through 1, and looking at the resultant renormalization in \(\epsilon_i\) and \(J_i\). As a simplification, we will ignore the lower nodes in the denominator and keep only the node currently being decoupled, ie node \(N\). Since node \(0\) is connected to node \(N\), we will keep node \(0\) in the denominator as well. Making this simplification gives
-\begin{equation}\begin{aligned}
-	\label{stardiag}
-\mathcal{H}^D =\epsilon_0 S^z_0 + \epsilon_N S^z_N + J_NS^z_0 S^z_N 
-\end{aligned}\end{equation}
-The off-diagonal part in the subspace of the node \(N\) is
-\begin{equation}\begin{aligned}
-\mathcal{H}_X = S_N^+ T + T^\dagger S_N^- = \frac{1}{2}J_N \left(S_N^+ S_0^- + S_N^- S_0^+\right)
-\end{aligned}\end{equation}
-The renormalization on doing one step of the URG is given by
-\begin{equation}\begin{aligned}
-	\Delta \mathcal{H} &=  S_N^+ T \frac{1}{\omega_0^1 - \mathcal{H}^D}T^\dagger  S_N^- + T^\dagger  S_N^- \frac{1}{\omega_1^0 - \mathcal{H}^D} S_N^+ T\\
-			   &= \frac{J_N^2}{4}S_N^+ S_0^- \frac{1}{\omega_0^1 - \epsilon_0 S^z_0 - \epsilon_N S^z_N - J_NS^z_0 S^z_N}S_0^+  S_N^- + \frac{J_N^2}{4}S_0^+  S_N^- \frac{1}{\omega_1^0 - \epsilon_0 S^z_0 - \epsilon_N S^z_N - J_NS^z_0 S^z_N} S_N^+ S_0^-
-\end{aligned}\end{equation}
-There, \(N\) refers to the spin being decoupled. The first Greens function has \(S_0^+\) and \(S_N^-\) in front of it, so we substitute \(S_0^z = \frac{1}{2}, S_N^z = -\frac{1}{2}\) in that Greens function. For the other Greens function we do the opposite.
-\begin{equation}\begin{aligned}
-	\Delta \mathcal{H} &= \frac{J_N^2}{4}S_N^+ S_0^- \frac{1}{\omega_1^0 - \frac{1}{2}\epsilon_0  + \frac{1}{2}\epsilon_N + \frac{1}{4}J_N}S_0^+  S_N^- + \frac{J_N^2}{4}S_0^+  S_N^- \frac{1}{\omega_0^1 + \frac{1}{2}\epsilon_0 - \frac{1}{2}\epsilon_N + \frac{1}{4}J_N} S_N^+ S_0^-
-\end{aligned}\end{equation}
-
-To relate \(\omega_1^0\) and \(\omega_0^1\), we use eq.~\ref{omegarel}:
-\begin{equation}\begin{aligned}
-	\omega_1^0 + \omega_0^1 = \mathcal{H}^D_0 + \mathcal{H}^D_1 = -\frac{1}{2}J_N \implies \omega_1^0 \equiv \omega, ~ ~\omega_0^1 \equiv \omega^\prime = -\frac{1}{2}J_N - \omega
-\end{aligned}\end{equation}
-So, the renormalization becomes
-\begin{equation}
-	\Delta \mathcal{H} = \frac{J_N^2}{4}\frac{1}{\omega - \frac{1}{2}\epsilon_0  + \frac{1}{2}\epsilon_N + \frac{1}{4}J_N}\left(S_N^+ S_0^- S_0^+  S_N^- - S_0^+  S_N^- S_N^+ S_0^-\right) = \frac{J_N^2}{4}\frac{1}{\omega - \frac{1}{2}\epsilon_0  + \frac{1}{2}\epsilon_N + \frac{1}{4}J_N}\left(S_N^z - S_0^z\right)
-\end{equation}
-There we used  \(S^+ S^- = \frac{1}{2} + S^z\) and \(S^- S^+ = \frac{1}{2} - S^z\).
-
-We can now read off the renormalizations in \(\epsilon_N\) and \(\epsilon_0\).
-\begin{equation}\begin{aligned}
-	\Delta \epsilon_N &= \frac{1}{4}J_N^2 \frac{1}{\omega - \frac{1}{2}\epsilon_0 + \frac{1}{2}\epsilon_N + \frac{1}{4}J_N}\\
-	\Delta \epsilon_0 &= -\frac{1}{4}J_N^2 \frac{1}{\omega - \frac{1}{2}\epsilon_0 + \frac{1}{2}\epsilon_N + \frac{1}{4}J_N}
-\end{aligned}\end{equation}
-\subsection*{Nature of flows}
-We are interested in looking at the renormalization of the central node energy \(\epsilon_0\), upon removing the nodes \(N\) through 1. We will hence concentrate on the second RG equation. We first make some simplifying assumptions: \(J_i = J, \epsilon_i = \epsilon\) for all \(i\in\{1,N\}\).
-\begin{equation}\begin{aligned}
-	\label{stareq}
-	\Delta \epsilon_0 &= -\frac{1}{4}J^2 \frac{1}{\omega - \frac{1}{2}\epsilon_0 + \frac{1}{2}\epsilon + \frac{1}{4}J}
-\end{aligned}\end{equation}
-Define \(\tilde\omega = \omega + \frac{1}{2}\epsilon + \frac{1}{4}J\).
-\begin{equation}\begin{aligned}
-	\Delta \epsilon_0 &= -\frac{1}{4}J^2 \frac{1}{\tilde \omega - \frac{1}{2}\epsilon_0}
-\end{aligned}\end{equation}
-Our goal here is to look for a fixed-point condition such that the denominator vanishes at some point of the RG. If we start with a bare of \(\epsilon_0\) such that \(\tilde \omega - \frac{1}{2}\epsilon_0 > 0\), the denominator will be positive and the RG equation will be irrelevant. This means that \(\epsilon_0\) will keep on decreasing, and the denominator will keep on becoming more and more positive, meaning there cannot be a fixed point in this situation.
-
-If, on other hand, we start with a bare of \(\epsilon_0\) such that \(\tilde \omega - \frac{1}{2}\epsilon_0 < 0\), the denominator will be negative and the RG equation will be relevant. This means that \(\epsilon_0\) will keep on increasing, and the denominator will keep on becoming more and more negative, meaning there cannot be a fixed point in this situation either. These situations are depicted in figure \ref{star1}.
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.35]{star}
-	\hfill
-	\vline
-	\hfill
-	\includegraphics[scale=0.35]{star3}
-	\caption{Left: RG flow for the two cases. The green line is the distance between the bare values of the two couplings, and hence also the magnitude of the denominator. The red arrow denotes the direction in which \(\epsilon_0\) will flow. Upward flow is increase. In both cases, the flow is such that the distance between the two quantities (and hence the magnitude of the denominator) increases. The RG fixed point occurs when the magnitude of the denominator goes to 0. This happens if the distance vanishes. Since the distance necessarily increases, we cannot get a fixed point in this way. Right: RG flow for the two cases with the new \(-\tilde \omega = \omega^\prime - \frac{1}{2}\epsilon + \frac{1}{4}J\). Now we can see that in both cases, the flow is such that the distance (green dotted line) between the couplings decreases. A fixed point is reached when this distance vanishes.}
-	\label{star1}
-\end{figure}
-
-Since we cannot find a fixed point, we will use a different \(\omega\). Instead of \(\omega_1^0\), we will use \(\omega_1^1\). From eq.~\ref{omegarel}, we have 
-\begin{equation}\begin{aligned}
-	\omega_1^0  - \omega_1^1 = \mathcal{H}^D_0 - \mathcal{H}^D_1 = \epsilon_0 - \epsilon_N = \epsilon_0 - \epsilon
-\end{aligned}\end{equation}
-Defining \(\omega_1^1 = \omega^\prime\) and substituting this in eq.~\ref{stareq} gives
-\begin{equation}\begin{aligned}
-	\Delta \epsilon_0 = -\frac{1}{4}J^2 \frac{1}{\omega^\prime - \frac{1}{2}\epsilon + \frac{1}{2}\epsilon_0 + \frac{1}{4}J}
-\end{aligned}\end{equation}
-We again define \(-\tilde \omega = \omega^\prime - \frac{1}{2}\epsilon + \frac{1}{4}J\).
-\begin{equation}\begin{aligned}
-	\Delta \epsilon_0 = \frac{1}{4}J^2 \frac{1}{\tilde \omega - \frac{1}{2}\epsilon_0}
-\end{aligned}\end{equation}
-We now repeat the exercise of determining the relevance of the flows under various regime. If we start with a bare \(\epsilon_0\) such that \(\tilde \omega + \frac{1}{2}\epsilon_0 > 0\), then the denominator is positive so the renormalization will be irrelevant. \(\epsilon_0\) will decrease until we reach \(\tilde \omega + \frac{1}{2}\epsilon_0 = 0\). This will be a fixed point. However, if we start with a bare \(\epsilon_0\) such that \(\tilde \omega + \frac{1}{2}\epsilon_0 < 0\), then the denominator is negative so the renormalization will be relevant. \(\epsilon_0\) will increase until we reach \(\tilde \omega + \frac{1}{2}\epsilon_0 = 0\). This will again be a fixed point. This new situation is depicted in right panel of figure \ref{star1}.
-%\begin{center}
-%\end{center}
-\subsection*{Effective Hamiltonians}
-If \(\tilde\omega\) and \(\epsilon_0\) are of the same sign at the bare level, then it is easy to see that since the fixed point is defined by \(\tilde\omega = \frac{1}{2}\epsilon_0^*\) (* denotes value at fixed point), the effective Hamiltonian at the fixed point will be
-\begin{equation}\begin{aligned}
-	\mathcal{H}^* = 2\tilde\omega S_0^z +  \epsilon \sum_i S_i^z + J\sum_i \vec S_i \cdot \vec S_0, && \text{ if }\tilde\omega \epsilon_0 > 0
-\end{aligned}\end{equation}
-If, at the bare level, \(\epsilon_0\) and \(\tilde\omega\) are of opposite signs, then \(\epsilon_0\) would undergo a change in sign at some point as it flows towards \(\tilde \omega\). Since we do not expect a coupling to change sign under RG, we will restrict it to 0 in such cases.
-\begin{equation}\begin{aligned}
-	\mathcal{H}^* = \epsilon \sum_i S_i^z + J\sum_i \vec S_i \cdot \vec S_0, && \text{ if }\tilde\omega \epsilon_0 < 0
-\end{aligned}\end{equation}
-Things get much more simpler if we assume the onsite energies of the surrounding nodes are zero.
-\begin{equation}\begin{aligned}
-	\mathcal{H}^* &= 2\tilde\omega S_0^z + J\sum_i \vec S_i \cdot \vec S_0, && \text{ if }\tilde\omega \epsilon_0 > 0\\
-	\mathcal{H}^* &= J\sum_i \vec S_i \cdot \vec S_0, && \text{ if }\tilde\omega \epsilon_0 < 0
-\end{aligned}\end{equation}
-\subsection*{Fixed points}
-The fixed points are obtained numerically by solving the RG equation. As mentioned before, there are two types of solutions: The first kind is those in which \(\epsilon_0\) and \(\tilde \omega\) are of the same sign, and the former flows to the latter without crossing the 0 axis. These flows are shown (obtained numerically) in fig.~\ref{plot1}. The second kind are those where the two couplings have different signs, and so \(\epsilon_0\) flows to 0. These are shown in fig.~\ref{plot2}.
-\begin{center}
-	\includegraphics[width=0.45\textwidth]{notzero1.pdf}
-	\hspace*{\fill}
-	\includegraphics[width=0.45\textwidth]{notzero2.pdf}
-	\captionof{figure}{Flows where \(\epsilon_0\) and \(\tilde\omega\) have same sign. The left and right panels show flows starting from negative and positive values respectively. The two plots in each panel correspond to different values of \(\tilde \omega\), one greater than the bare \(\epsilon_0\), the other less than that. The fixed point value is \(2\tilde\omega\).}
-	\label{plot1}
-\end{center}
-\begin{center}
-	\includegraphics[width=0.45\textwidth]{zero2.pdf}
-	\hspace*{\fill}
-	\includegraphics[width=0.45\textwidth]{zero1.pdf}
-	\captionof{figure}{Flows where \(\epsilon_0\) and \(\tilde\omega\) have opposite sign. The left and right panels show flows starting from negative and positive values respectively. The two plots in each panel correspond to different values of \(\tilde \omega\), one greater than the bare \(\epsilon_0\), the other less than that. The fixed point value is 0.}
-	\label{plot2}
-\end{center}
-
-\section{Example II: URG analysis of the two-channel Kondo problem}
+\section{Example I: URG analysis of the two-channel Kondo problem}
 
 The Hamiltonian for the channel-isotropic MCK model is:
 \begin{eqnarray}
@@ -629,7 +504,7 @@ The total renormalisation in \(J\) after combining all orders is
 	\Delta J = -\frac{n(D) J^2}{\omega - \frac{D}{2} + \frac{J}{4}} + \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3~.
 \end{eqnarray}
 
-\section{Example III: Particle in a periodic potential}
+\section{Example II: Particle in a periodic potential}
 We consider electrons moving in one dimension in the presence of a periodic potential \(V(x)\) satisfying \(V(x+a) = V(x)\). The full Hamiltonian can be represented as
 \begin{equation}\begin{aligned}
 	\mathcal{H} = \int_{-\infty}^{\infty}\mathrm{dx}~c^\dagger(x)\left[\hat p^2/2m + V(x)\right]c(x)~,
@@ -699,9 +574,9 @@ By nothing  that we have the boundary condition \(\psi(\theta=0) = \psi(\theta=2
 	\caption{The full problem reduces to that of a particle on a circle, in the presence of potential with period \(2\pi\), and a flux \(\Phi\).}
 \end{figure}
 
-Even when reduced to the simpler POC, the problem cannot be simply integrated to obtain the eigenstates. This is because the complete Hamiltonian does not commute with either the position or the momentum operator; it contains quantum fluctuations that need to be resolved in order to obtain the ground state energy. One way of obtaining the energy is to calculate the propagator for transition from \(\theta=0\) to \(\theta=2\pi\), using the method of path integrals~\cite{rajaraman1982solitons,Weigert1994}. This is shown in Appendix~\ref{appendix_instanton}. We, however, will attack the problem using a renormalisation group method, called the unitary renormalisation group in order to track the emergence of the tight-binding metal in the limit when the effective amplitude of the single-particle periodic potential at low-energies has become much larger than the typical kinetic energy of the electron.
+Even when reduced to the simpler POC, the problem cannot be simply integrated to obtain the eigenstates. This is because the complete Hamiltonian does not commute with either the position or the momentum operator; it contains quantum fluctuations that need to be resolved in order to obtain the ground state energy. One way of obtaining the energy is to calculate the propagator for transition from \(\theta=0\) to \(\theta=2\pi\), using the method of path integrals~\cite{rajaraman1982solitons,Weigert1994}. We, however, will attack the problem using a renormalisation group method, called the unitary renormalisation group in order to track the emergence of the tight-binding metal in the limit when the effective amplitude of the single-particle periodic potential at low-energies has become much larger than the typical kinetic energy of the electron.
 \subsection*{URG analysis of the particle on a circle problem}
-A summary of the unitary RG method is provided in Appendix~\ref{appendix_urg}. For the purposes of studying the model under renormalisation group, we write the particle on a circle Hamiltonian in momentum\((Q-)\)space. For that, we introduce the Fourier modes 
+A summary of the unitary RG method is provided at the beginning of this chapter. For the purposes of studying the model under renormalisation group, we write the particle on a circle Hamiltonian in momentum\((Q-)\)space. For that, we introduce the Fourier modes 
 \begin{equation}\begin{aligned}
 	c(\theta) = \frac{1}{\sqrt{2\pi}}\int dQ e^{iQ\theta}c(Q),~ \text{ and }~U(\theta) = \int dQ e^{iQ\theta}\mathcal{U}(Q)~,
 \end{aligned}\end{equation}
@@ -762,7 +637,7 @@ This is computed for a specific value \(\Phi=0\) for the flux (or the crystal mo
 \begin{equation}\begin{aligned}
 H_{TB}=	\varepsilon^{*}(2\pi)\sum_{j=0}^{N_\text{well}-1}\hat n(ja) + \frac{1}{2}\varepsilon^{*}(a)\sum_{j=0}^{N_\text{well}-1}\left(c^\dagger(ja)c((j+1)a) + \text{h.c.}\right)~,
 \end{aligned}\label{TB}\end{equation}
-where the first term corresponds to a constant chemical potential applied to the tight-binding metal in one dimension with a single-particle dispersion $\varepsilon (k) = -\varepsilon^{*}(a) \cos(ka)$ where $k$ corresponds to the set of crystal momenta $k\in\left[-\frac{\pi}{a},\frac{\pi}{a}\right]$. The exercise, therefore, shows the emergence of nearest-neighbour hopping in the lowest band by starting from a more microscopic model of a particle in a periodic potential. (An alternate derivation of the tight-binding metal has also been shown from path-integral methods in Appendix \ref{appendix_instanton}).
+where the first term corresponds to a constant chemical potential applied to the tight-binding metal in one dimension with a single-particle dispersion $\varepsilon (k) = -\varepsilon^{*}(a) \cos(ka)$ where $k$ corresponds to the set of crystal momenta $k\in\left[-\frac{\pi}{a},\frac{\pi}{a}\right]$. The exercise, therefore, shows the emergence of nearest-neighbour hopping in the lowest band by starting from a more microscopic model of a particle in a periodic potential.
 
 \section{Comparison of renormalisation group approaches based on canonical transformations}
 We have considered three canonical transformations in this section: the Poor Man's scaling (PMS), the Schrieffer-Wolff transformation (SWT) and the continuous unitary transformation renormalization group (CUT-RG). PMS and SWT are more or less identical; they differ in the context in which they are used. PMS is used when there is an entire spectrum of energies in the model, ranging from a low energy limit to a high energy; it is then employed to decouple the highest energy modes in an iterative fashion. SWT is used when the Hamiltonian can be split into one high and one low energy part, and we need to decouple these two modes. It is clear when seen from this perspective that SWT is like a one-shot PMS; it decouples the UV from the IR in one step, compared to the iterative approach of PMS. However, as has been shown in the previous subsections, both PMS and SWT can be formalized in an identical fashion, so that one can be switched for the other in both contexts.
@@ -941,19 +816,28 @@ Let the starting Hamiltonian be \(H_0(L_0)\), consisting of \(L_0\) single-parti
 \item[{\it S6.}] Using the transformed operators \(c_{L_0+1},\ldots,c_{L_0 + L_\Delta}\) for the new sites, construct the difference Hamiltonian matrix \(\Delta H_0\) and hence the updated Hamiltonian \(H_1 = H_0 + \Delta H_0\) for the next step. Repeat the process starting from step 2 with the new Hamiltonian \(H_1\), the new operators \(c_j\) and the new matrix \(S(L_1)\) replacing the old counterparts.
 \end{itemize}
 
-\subsection*{Static correlations}
+\subsection{Static correlations}
 We are in general interested in \(n-\)point correlations of the form \(\left<\mathcal{O}_1 \mathcal{O}_2 \ldots \mathcal{O}_n\right>\), where \(\mathcal{O}_i\) are operators that act on 1-particle Hilbert spaces. Let the earliest step of the iterative diagonalisation procedure at which all these operators have entered the system be \(r\). At this step \(r\), construct the correlation operator \(\mathcal{O}_1 \mathcal{O}_2 \ldots \mathcal{O}_n\) using the fermionic matrices \(c_j\) at that step (recall that these matrices will be highly rotated versions of the matrices we started with). Having constructed the operator \(O\), we expand and rotate it after the completion of every future step: \(O_{n+1} = (R_n^\dagger O_n R_n)\otimes \mathbb{I}(2^{L_\Delta})\), where \(R_n\) is the rotation matrix for the \(n^\text{th}\) step. The last step \(n^*\) of the iterative diagonalisation consists of only a diagonalisation and no expansion, resulting in a final set of eigenstates \(\left\{ X_i \right\} \). The form of the correlation operator in this basis is \(O_{n^*} = R^\dagger_{n^*-1} O_{n^*-1} R_{n^*}\). The expectation value can now be calculated using the matrix \(O_{n^*}\) and the ground state of \(\left\{ X_i \right\} \).
 
-\subsection*{Reduced density matrices}
+\subsection{Entanglement measures}
+In Section~\ref{rdmCorr}, we show how the matrix elements of reduced density matrices can be expressed as expectation values of certain local operators. Using such relations, the computation of reduced density matrix effective boils down to the calculation of specific correlations, which is covered in the previous section.
 
 
 \section{Optimising Fermi Surface Calculations}
+The below is an algorithm for reducing computational cost of carrying out iterative diagonalisation processes focused on the Fermi surface of a quantum impurity model, by rotating the interaction matrix to a sparser form. It is useful then the Hamiltonian has certain symmetry properties arising from specific lattice geometries.
+
 \subsection*{Rotated basis for simplified representation}
 At the renormalisation group fixed point, we have a renormalised theory for the interaction of the impurity spin \(S_f\) with the \(f-\)layer Fermi surface:
 \begin{equation}\begin{aligned}
 	H^* = \sum_{\alpha,\beta}{\bf S}_f\cdot{\boldsymbol\sigma}_{\alpha,\beta}\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}f_{{\bf q},\beta}~.
 \end{aligned}\end{equation}
-We will now obtain a more minimal representation of this interaction. Each momentum label is summed over all four quadrants \(\mathcal{Q}_1\) through \(\mathcal{Q}_4\); eq.~\ref{oppositeQ} relates \(\mathcal{Q}_1\) with \(\mathcal{Q}_3\) and \(\mathcal{Q}_2\) with \(\mathcal{Q}_4\):
+We will now obtain a more minimal representation of this interaction. Each momentum label is summed over all four quadrants \(\mathcal{Q}_1\) through \(\mathcal{Q}_4\). We assume the lattice structure is such that the following equation relates \(\mathcal{Q}_1\) with \(\mathcal{Q}_3\) and \(\mathcal{Q}_2\) with \(\mathcal{Q}_4\):
+\begin{equation}
+\begin{aligned}
+J_{{\bf k},{\bf k'}}= -J_{{\bf k}+{\bf Q},{\bf k'}}=-J_{{\bf k},{\bf k'}+{\bf Q}}, \quad {\bf Q} = (\pi,\pi).
+\end{aligned}
+\end{equation}
+With this, we can write
 \begin{equation}\begin{aligned}
 	\sum_{{\bf k}, {\bf q}} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}f_{{\bf q},\beta} 
 	&= \sum_{\bf q}\left[\sum_{{\bf k} \in \mathcal{Q}_1,\mathcal{Q}_2} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha} + \sum_{{\bf k} \in \mathcal{Q}_3,\mathcal{Q}_4} J_f^*({\bf k},{\bf q}) f^\dagger_{{\bf k},\alpha}\right] f_{{\bf q},\beta}\\
@@ -1025,7 +909,7 @@ If we have to calculate a certain correlation \(C_{k,q}\), we instead calculate 
 \section{Measures of entanglement and their computation}
 The present millennium has seen a rapid surge in the use of quantum entanglement towards the study of quantum and condensed matter systems~\cite{terhal_physicstoday_2003,horodecki2009quantum,eisert_entanglement_2010,laflorencie2016quantum,zeng2019,Erhard2020}. By tracking quantum correlations among particles across both small and large distances, entanglement measures offer valuable insights into the nature of the ground state and low-energy excitations. This, for example, allows us to distinguish strongly-correlated topologically ordered states characterised by long-ranged entanglement (in the form of a sub-leading topological term in their entanglement entropy~\cite{wen_1990,Wen_fqhe_1990,wen1995topological,niu1985quantized}) from weakly-interacting topologically trivial phases that have short-ranged area-law entanglement~\cite{das_shankaranarayanan_2006,cramer_eisert_2006,eisert_entanglement_2010}.
 
-\subsection{Reduced density matrix elements as equal-time correlation functions}
+\subsection{Reduced density matrix elements as equal-time correlation functions}\label{rdmCorr}
 A density matrix plays the role of a probability density function (PDF) for a quantum system. A classical variable $ X $ that can take values $ x \in [-X^*, X^*] $ has a PDF $ F(X=x) $, which is used, for example, for calculating the average value (expectation value) of the variable:
 \begin{equation}\begin{aligned}
 \braket{X} = \int_{-X^*}^{X^*} xF(x)dx ~.
@@ -1121,12 +1005,7 @@ This result is significant because it guarantees that in order to calculate the 
 \end{aligned}\end{equation}
 where the blank entries can be determined from hermiticity. To see how the operators  are determined, take the example of the top right element. The two basis states for that matrix element are \(\ket{0, 0}\) and \(\ket{1, 1}\). 
 
-
-
-
-
-
-\subsection*{Quantum Fisher information: a witness of multipartite entanglement}
+\subsection{Quantum Fisher information: a witness of multipartite entanglement}
 The quantum Fisher information (QFI) \(F_Q\)~\cite{braunstein1994statistical,Hauke2016} quantifies how sensitive a state \(\rho\) is to unitary transformations generated by an observable \(\hat O\).
 For a pure state \(\rho = \ket{\psi}\bra{\psi}\), \(F_Q (\psi,\hat O)\) is defined in terms of the variance of the operator $\hat O$ (i.e., the connected correlation function):
 \begin{eqnarray}
