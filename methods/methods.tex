@@ -350,294 +350,522 @@ These equations will now need to be simplified. For example, in the particle sec
 
 At first sight, one might think that we must evaluate lots of traces to obtain the terms in \(\Delta \mathcal{H}\). A little thought reveals that the terms in the numerator are simply the off-diagonal terms in the Hamiltonian; \(\text{Tr}\left(c^\dagger_{q\beta}\mathcal{H} \right)c_{q\beta}\) is the off-diagonal term that has \(c_{q\beta}\) in it, and \(c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\) is the off-diagonal term that has \(c^\dagger_{q\beta}\) in it. \(\mathcal{H}^D\) is just the diagonal part of the Hamiltonian.
 
-\section{Example I: URG analysis of the two-channel Kondo problem}
-
-The Hamiltonian for the channel-isotropic MCK model is:
-\begin{eqnarray}
-	H = \sum_l\left[\sum_{\substack{k\\\alpha=\uparrow,\downarrow}}\epsilon_{k,l} \hat n_{k\alpha,l} + \frac{\mathcal{J}}{2}\sum_{\substack{kk^\prime\\\alpha,\alpha^\prime= \uparrow,\downarrow}} \vec{S_d}\cdot\vec{\sigma}_{\alpha\alpha^\prime}c_{k\alpha,l}^\dagger c_{k^\prime\alpha^\prime, l}\right]~.
-\end{eqnarray}
-
-The URG equation for the single-channel Kondo model \cite{kondo_urg} shows a stable strong coupling fixed point. Ferromagnetic interactions are irrelevant. Strictly speaking, that RG equation already encodes, in principle, the multi-channel behaviour, through a modified \(\hat \omega\). To extract this information, we consider the strong coupling fixed-point \(J \gg D\) as a fixed point and analyze its stability from the star graph perspective. For the exactly-screened case, the star graph decouples from the conduction bath, leaving behind a local Fermi liquid interaction on the first site. Similarly, in the under-screened regime, the ground state is composed of states where the impurity spin is only partially screened by the conduction channels. If a particular configuration of the bath-impurity system has the total conduction bath spin down, the impurity will have a residual up spin. This induces a ferromagnetic super-exchange coupling that is irrelevant under RG, so this fixed point is stable as well. 
-
-We now come to the over-screened case, where there is a residual spin on the conduction channel site. The neighbouring electrons will now hop in with spins opposite to that of the impurity, so an antiferromagnetic interaction will be induced, and such an interaction is relevant under the RG. This shows that the over-screened regime cannot have a stable strong coupling fixed point, and we need to search for an intermediate coupling fixed point. We therefore need the generator of the unitary transformation that incorporates third order scattering scatterings explicitly. We should take account of all possible processes that render the set of states \(\left\{\ket{\hat n_{q\beta}=1},\ket{\hat n_{q\beta}=0}\right\}\) diagonal. The higher order generator itself has two scattering processes, such that the entire renormalisation term \(c^\dagger_{q\beta} T \eta\) has in total three coherent processes. The complete generator up to third order can be written as
-\begin{eqnarray}
-	\eta = \frac{1}{\hat \omega - H_D}T^\dagger c \simeq \frac{1}{\omega^\prime - H_D}T^\dagger c + \frac{1}{\omega^\prime - H_D}H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X~,
-\end{eqnarray}
-where \(H_X = J \sum_{k,k^\prime < \Lambda_j, \alpha,\alpha^\prime}\vec{S_d}\cdot\vec{s}_{\alpha \alpha^\prime}c^\dagger_{k\alpha}c_{k^\prime\alpha^\prime}\) is scattering between the entangled electrons. There are two third order terms in the above equation corresponding to the two possible sequences in which the processes can occur while keeping the total renormalisation \(c^\dagger_{q\beta}T \eta\) diagonal in \(q\beta\). The second order processes remain unchanged. The total renormalisation takes the form:
-\begin{eqnarray}
-	\label{full_ren}
-	\Delta H_{(j)} = &\underbrace{c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c  + \left(c^\dagger \leftrightarrow c\right)}_{\Delta H^{(2)}_{(j)}} \nonumber\\
-			 &+ \underbrace{c^\dagger T \frac{1}{\omega^\prime - H_D} H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X + \left(c^\dagger \leftrightarrow c\right)}_{\Delta H^{(3)}_{(j)}}.\qquad
-\end{eqnarray}
-\(\Delta H^{(2)}_{(j)}\) and \(\Delta H^{(3)}_{(j)}\) are the renormalisation arising from the second and third order processes respectively.
-
-It is easier to see the RG flow of the couplings if we write the Hamiltonian in terms of the eigenstates of \(S_d^z\). These eigenstates are defined by \(S_d^z\ket{m_d} = m_d\ket{m_d}, m_d \in \left[-S, S\right]\). In terms of these eigenstates, the Hamiltonian becomes
-\begin{eqnarray}
-	\label{H_spin_S}
-	\mathcal{H} = \sum_{k\sigma}\epsilon_{k}\tau_{k\sigma} + \sum_{m_d=-S}^S \sum_{kl,\atop{\sigma=\uparrow,\downarrow}} J^\sigma_{m_d} \ket{m_d}\bra{m_d} c^\dagger_{k \sigma}c_{l \sigma} + \sum_{kl} \sum_{m_d=-S}^{S-1} J^t_{m_d} \left(\ket{m_d+1}\bra{m_d} s^-_{kl}  + \text{h.c.}\right)~,
-\end{eqnarray}
-where \(k,l\) sum over the momentum states, \(\sigma\) sums over the spin indices, \(J^\sigma_m = \frac{1}{2} \sigma m J\) in the UV Hamiltonian, and \(J^t_{m} = J\frac{1}{2}\sqrt{S(S+1) - m(m+1)}\) is the coupling that connects \(\ket{m}\) and \(\ket{m+1}\). We first calculate \(\Delta H^{(2)}_{(j)}\). There will be two types of processes - those processes that start from an occupied state (particle sector) and those that start from a vacant state (hole sector). Due to particle hole symmetry of the Hamiltonian, they will be equal to each other and we will only calculate the particle sector contribution. 
-
-In the particle sector, we have (\(\hat n_{q\beta}=1\)), so we will work at a negative energy  shell \(\epsilon_q = -D\). The renormalisation can schematically represented as \(H^I_0 \frac{1}{\omega - H^D_{q\beta}} H^I_1\). Both \(H^I_0\) and \(H^I_1\) have all three operators \(S_d^z, S_d^\pm\). We first consider specifically the case of spin-\(\frac{1}{2}\) impurity. Those terms that have identical operators on both sides can be ignored because \({S_d^z}^2 = \text{constant}\) and \({S^\pm}^2 = 0\). All the six terms that \textit{will} renormalise the Hamiltonian have a spin flip operator on at least one side of the Greens function. This means that in the denominator of the Greens function, \(S_d^z\) and \(s^z_{qq}\) have to be anti-parallel in order to produce a non-zero result for that term. This means we can identically replace \(S_d^z s^z_{qq} = -\frac{1}{4}\). Also, in the particle sector, the Greens function always has \(c_{q\beta}\) in front of it, so \(\epsilon_q \tau_{q\beta} = \frac{D}{2}\). The upshot of all this is that the denominator of all scattering processes for the spin-\(\frac{1}{2}\) impurity Hamiltonian will be \(\omega - \frac{D}{2} + \frac{J}{4}\).
-
-We now come to the general case of spin-\(S\) impurity. The various terms that renormalise the Hamiltonian can be described in terms of the bath spin operators that come into them. For example, the term that has \(s^z\) on both sides of the intervening Greens function can be represented as \(z|z\). There are 7 such terms: \(z|z, \pm|\mp, z|\pm, \pm|z\). Each of these terms occurs both in the particle and the hole sectors. We will demonstrate the calculation of two of these terms. The \(z|z\) \(+|-\) terms evaluate in the following manner.
-
-\begin{equation}\begin{aligned}
-	z|z: & \sum_{kk^\prime,m,\sigma} c^\dagger_{q \sigma} c_{k^\prime \sigma} \ket{m}\bra{m}\frac{{J^\sigma_m}^2}{\omega - \frac{D}{2} + \frac{J}{2}\sigma S_d^z}\ket{m}\bra{m} c^\dagger_{k \sigma}c_{q \sigma} = -\sum_{kk^\prime,m,\sigma}n_{q \sigma}\frac{{J^\sigma_m}^2 c^\dagger_{k \sigma}c_{k^\prime\sigma} \ket{m}\bra{m}}{\omega_{m, \sigma} - \frac{D}{2} + \frac{J}{2}\sigma m}~,\\
-	+|-: & \sum_{kk^\prime,m} c^\dagger_{q \uparrow} c_{k^\prime \downarrow} \ket{m}\bra{m+1}\frac{{J^t_m}^2}{\omega - \frac{D}{2} + \frac{J}{2}S_d^z}\ket{m+1}\bra{m} c^\dagger_{k \downarrow}c_{q \uparrow} = -n_{q \uparrow}\sum_{kk^\prime,m}\frac{{J^t_m}^2 c^\dagger_{k \downarrow}c_{k^\prime\downarrow} \ket{m}\bra{m}}{\omega_{m+1, \uparrow} - \frac{D}{2} + \frac{J}{2}\left( m+1 \right) }~.
-\end{aligned}\end{equation}
-
-We similarly compute the rest of the terms. We again define \(\sum_q \hat n_{q\sigma} = n(D)\). To compare with the spin-\(\frac{1}{2}\) RG equations, we will transform the general spin-\(S\) \(\omega\) to the spin-\(\frac{1}{2}\) \( \omega\), using \(\omega_{m,\sigma} \to \omega - \frac{J}{2}\left(m\sigma - \frac{1}{2}\right)\).
-The renormalisation in \(J^\sigma_m\) is
-\begin{eqnarray}
-	\Delta J^\sigma_{m} = - n(D) \frac{\left( J^\sigma_m \right) ^2 + \left( J^t_{m-\frac{1+\sigma}{2}} \right) ^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-Here, we have defined \(J^t_m = 0\) for \( |m| > S\). Two relations can be obtained from this RG equation, the RG equations for the sum and difference of the couplings: \(J^\pm_m = \frac{1}{2}\left(J^\uparrow_m \pm J^\downarrow_m\right) \). The RG equation for the sum of the couplings is
-\begin{eqnarray}
-	\Delta J^+_m = -n(D)\frac{\sum_\sigma \left( J^\sigma_m \right) ^2 + \sum_\sigma \left( J^t_{m-\frac{1+\sigma}{2}} \right) ^2}{2\left(\omega - \frac{D}{2} + \frac{J}{4}\right)} = -n(D)\frac{J^2}{4}\frac{S(S+1)}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-This is an \(m-\)independent piece, so it can be summed over to produce an impurity-independent potential scattering term, which we ignore. 
-
-The second is the RG equation for the difference of the couplings:
-\begin{eqnarray}
-	\Delta J^-_m = -n(D)\frac{1}{2}\frac{\left( J^t_{m-1} \right) ^2 - \left(J^t_{m}\right) ^2}{\omega - \frac{D}{2} + \frac{J}{4}} = -\frac{1}{4}\frac{n(D) m J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-The usual \(J\) Kondo coupling is recovered through \(J = 2J^-_m/m\). Substituting this gives 
-\begin{eqnarray}
-	\Delta_\text{p sector} J = -\frac{1}{2}n(D)\frac{J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-We can also obtain the RG equation for \(J\) from the transverse renormalisation:
-\begin{eqnarray}
-	\Delta J^t_m &= - \frac{n(D)J^t_m \left( J^\downarrow_m + J^\uparrow_{m+1} \right) }{\omega - \frac{D}{2} + \frac{J}{4}} = -\frac{1}{2}\frac{n(D)J^t_m J}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-Since \(J^t_m \propto J\), we have
-\begin{eqnarray}
-	\Delta J_\text{p sector} &= -\frac{1}{2}\frac{n(D)J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-The total renormalisation from both particle and hole sectors, at this order, is
-\begin{eqnarray}
-	\Delta J^{(2)} &= -\frac{n(D)J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-
-We now come to the third-order renormalisation.
-Following eq.~\eqref{full_ren}, the next order renormalisation is
-\begin{eqnarray}
-	\label{psector_3rd_ren}
-	\Delta H^{(3)}_j = c^\dagger T \frac{1}{\omega^\prime - H_D} H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X~.
-\end{eqnarray}
-The first term will be of the form
-\begin{equation}\begin{aligned}
-\sum_{q,k,l_1} c^\dagger_{q\beta, l_1}c_{k \alpha, l_1}\ket{m_1}\bra{m_2} \frac{1}{\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J}{4}S_d^z} \ket{m_2} c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2} \bra{m_3}\frac{1}{\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J}{4}S_d^z}\\
-\ket{m_3}\bra{m_4}c^\dagger_{k\alpha, l_1}c_{q\beta, l_1}.
-\end{aligned}\end{equation}
-We have not bothered to write all the summations and the couplings correctly, because we will only simplify the denominator here. Evaluating the inner products gives
-\begin{eqnarray}
-	\sum_{qk,l_1} \frac{\ket{m_1}\bra{m_4}c^\dagger_{q\beta}c_{k \alpha}c^\dagger_{k_1 \sigma_1, l_2}}{\omega_{m_2,\beta} - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J m_2}{4}}  \frac{c_{k_2 \sigma_2,l_2}c^\dagger_{k\alpha}c_{q\beta}}{\omega_{m_3,\beta} - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J m_3}{4}}~.
-\end{eqnarray}
-We again use \(\omega_{m,\sigma} \to \omega - \frac{J}{2}\left(m\sigma - \frac{1}{2}\right)\).
-\begin{eqnarray}
-	\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}\sum_{qk,l_1} \frac{\hat n_{q\beta}\left(1 - \hat n_{k\alpha}\right)}{\left(\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{J}{4}\right)^2}~.
-\end{eqnarray}
-We define \(\sum_q \hat n_{q\beta} = n(D)\). Performing the sums over \(k\) and \(l_1\) gives
-\begin{eqnarray}
-	-\frac{1}{2}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2} \frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}~.
-\end{eqnarray}
-\(\rho\) is the density of states which we have taken to be constant. Reinstating the complete summation and the couplings gives
-\begin{eqnarray}
-	\label{first_group}
-	-\frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\sum_{m_1,m_4,k_1,k_2,\atop{l_2,\sigma_1\sigma_2}}\lambda_{1}\lambda_{2}\lambda_{3}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}~.
-\end{eqnarray}
-There is no sum over \(m_2\) and \(m_3\) because they are constrained by \(m_1\) and \(m_4\) respectively. \(\lambda_i\) represent the couplings present at the three interaction vertices. \(k_{1,2}\) sum over the momenta, \(\sigma_{1,2}\) sum over the spin indices and \(l_2\) sums over the channels.
-
-The second term in eq.~\eqref{psector_3rd_ren} can be evaluated in an almost identical fashion. The integral here will be negative of the first term, because of an exchange in the scattering processes.
-\begin{eqnarray}
-	\label{second_group}
-	\frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\sum_{m_1,m_4,k_1,k_2,\atop{l_2,\sigma_1\sigma_2}}\lambda_{1}\lambda_{3}\lambda_{2}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}~.
-\end{eqnarray}
-The first group of terms (those that appear in \eqref{first_group}) in the particle sector can be represented as \(a|b^\prime|c\), where \(a,b,c \in \left\{z,+,-\right\} \) and represent the operator for the conduction electrons in the three connected processes. The \(\prime\) on \(b\) indicates that it is the state of the electrons \textit{not being decoupled}. The second group of terms (those that appear in \eqref{second_group}) are therefore represented as \(a|b|c^\prime\), because in this group, the interaction \(H_X\) between the electrons that are not being decoupled occur at the very end.
-We will only calculate the terms in the particle sector, the ones in hole sector will be equal to these because of particle-hole symmetry. The full list of terms is: 
-
-$z|z^\prime|z\quad$
-$z|z|z^\prime\quad$
-$-|z^\prime|+\quad$
-$-|+|z^\prime\quad$
-$+|z^\prime|-\quad$
-$+|-|z^\prime\quad$
-$ z|+^\prime|z\quad$
-$z|-^\prime|z\quad$
-$+|+^\prime|-\quad$
-$-|+^\prime|+\quad$
-$z|z|+^\prime\quad$
-$z|z|-^\prime\quad$
-$ +|-|+^\prime\quad$
-$+|-|-^\prime\quad$
-$-|+|+^\prime\quad$
-$z|z^\prime|z\quad$
-$z|z|z^\prime\quad$
-$-|z^\prime|+\quad$
-$ -|+|z^\prime\quad$
-$+|z^\prime|-\quad$
-$+|-|z^\prime\quad$
-$z|+^\prime|z\quad$
-$z|-^\prime|z\quad$
-$+|+^\prime|-\quad$
-$-|+^\prime|+\quad$
-$z|z|+^\prime\quad$
-$z|z|-^\prime\quad$
-$+|-|+^\prime\quad$
-$+|-|-^\prime\quad$
-$-|+|+^\prime\quad$
-.
-
-The total renormalisation in  \(J^\sigma_m\) is
-\begin{equation}\begin{aligned}
-	\Delta J^\sigma_m &= \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\left[\left( J^t_{m-1} \right)^2 J^\sigma_m + \left( J^t_m \right)^2 J^\sigma_m - \left( J^t_{m-1} \right)^2 J^\sigma_{m-1} - \left(J^t_m\right)^2 J^\sigma_{m+1} \right] \\
-									 &= \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3 m \sigma~.
-\end{aligned}\end{equation}
-Since we had defined \(J^\sigma_m \equiv \frac{1}{2}J m \sigma\), we have \(\Delta J = \frac{2}{m\sigma}\Delta J^\sigma_m\), and we get \(\Delta_\text{p sector} J = \frac{1}{4}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3\).
-Combining with the hole sector renormalisation, we get
-\begin{eqnarray}
-	\Delta J^{(3)} = \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3~.
-\end{eqnarray}
-The total renormalisation in \(J\) after combining all orders is
-\begin{eqnarray}
-	\Delta J = -\frac{n(D) J^2}{\omega - \frac{D}{2} + \frac{J}{4}} + \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3~.
-\end{eqnarray}
-
-\section{Example II: Particle in a periodic potential}
-We consider electrons moving in one dimension in the presence of a periodic potential \(V(x)\) satisfying \(V(x+a) = V(x)\). The full Hamiltonian can be represented as
-\begin{equation}\begin{aligned}
-	\mathcal{H} = \int_{-\infty}^{\infty}\mathrm{dx}~c^\dagger(x)\left[\hat p^2/2m + V(x)\right]c(x)~,
-\end{aligned}\end{equation}
-where \(c(x)\) destroys a fermion at the position \(x\). 
+% \section{Example I: URG analysis of the two-channel Kondo problem}
+%
+% The Hamiltonian for the channel-isotropic MCK model is:
+% \begin{eqnarray}
+% 	H = \sum_l\left[\sum_{\substack{k\\\alpha=\uparrow,\downarrow}}\epsilon_{k,l} \hat n_{k\alpha,l} + \frac{\mathcal{J}}{2}\sum_{\substack{kk^\prime\\\alpha,\alpha^\prime= \uparrow,\downarrow}} \vec{S_d}\cdot\vec{\sigma}_{\alpha\alpha^\prime}c_{k\alpha,l}^\dagger c_{k^\prime\alpha^\prime, l}\right]~.
+% \end{eqnarray}
+%
+% The URG equation for the single-channel Kondo model \cite{kondo_urg} shows a stable strong coupling fixed point. Ferromagnetic interactions are irrelevant. Strictly speaking, that RG equation already encodes, in principle, the multi-channel behaviour, through a modified \(\hat \omega\). To extract this information, we consider the strong coupling fixed-point \(J \gg D\) as a fixed point and analyze its stability from the star graph perspective. For the exactly-screened case, the star graph decouples from the conduction bath, leaving behind a local Fermi liquid interaction on the first site. Similarly, in the under-screened regime, the ground state is composed of states where the impurity spin is only partially screened by the conduction channels. If a particular configuration of the bath-impurity system has the total conduction bath spin down, the impurity will have a residual up spin. This induces a ferromagnetic super-exchange coupling that is irrelevant under RG, so this fixed point is stable as well. 
+%
+% We now come to the over-screened case, where there is a residual spin on the conduction channel site. The neighbouring electrons will now hop in with spins opposite to that of the impurity, so an antiferromagnetic interaction will be induced, and such an interaction is relevant under the RG. This shows that the over-screened regime cannot have a stable strong coupling fixed point, and we need to search for an intermediate coupling fixed point. We therefore need the generator of the unitary transformation that incorporates third order scattering scatterings explicitly. We should take account of all possible processes that render the set of states \(\left\{\ket{\hat n_{q\beta}=1},\ket{\hat n_{q\beta}=0}\right\}\) diagonal. The higher order generator itself has two scattering processes, such that the entire renormalisation term \(c^\dagger_{q\beta} T \eta\) has in total three coherent processes. The complete generator up to third order can be written as
+% \begin{eqnarray}
+% 	\eta = \frac{1}{\hat \omega - H_D}T^\dagger c \simeq \frac{1}{\omega^\prime - H_D}T^\dagger c + \frac{1}{\omega^\prime - H_D}H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X~,
+% \end{eqnarray}
+% where \(H_X = J \sum_{k,k^\prime < \Lambda_j, \alpha,\alpha^\prime}\vec{S_d}\cdot\vec{s}_{\alpha \alpha^\prime}c^\dagger_{k\alpha}c_{k^\prime\alpha^\prime}\) is scattering between the entangled electrons. There are two third order terms in the above equation corresponding to the two possible sequences in which the processes can occur while keeping the total renormalisation \(c^\dagger_{q\beta}T \eta\) diagonal in \(q\beta\). The second order processes remain unchanged. The total renormalisation takes the form:
+% \begin{eqnarray}
+% 	\label{full_ren}
+% 	\Delta H_{(j)} = &\underbrace{c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c  + \left(c^\dagger \leftrightarrow c\right)}_{\Delta H^{(2)}_{(j)}} \nonumber\\
+% 			 &+ \underbrace{c^\dagger T \frac{1}{\omega^\prime - H_D} H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X + \left(c^\dagger \leftrightarrow c\right)}_{\Delta H^{(3)}_{(j)}}.\qquad
+% \end{eqnarray}
+% \(\Delta H^{(2)}_{(j)}\) and \(\Delta H^{(3)}_{(j)}\) are the renormalisation arising from the second and third order processes respectively.
+%
+% It is easier to see the RG flow of the couplings if we write the Hamiltonian in terms of the eigenstates of \(S_d^z\). These eigenstates are defined by \(S_d^z\ket{m_d} = m_d\ket{m_d}, m_d \in \left[-S, S\right]\). In terms of these eigenstates, the Hamiltonian becomes
+% \begin{eqnarray}
+% 	\label{H_spin_S}
+% 	\mathcal{H} = \sum_{k\sigma}\epsilon_{k}\tau_{k\sigma} + \sum_{m_d=-S}^S \sum_{kl,\atop{\sigma=\uparrow,\downarrow}} J^\sigma_{m_d} \ket{m_d}\bra{m_d} c^\dagger_{k \sigma}c_{l \sigma} + \sum_{kl} \sum_{m_d=-S}^{S-1} J^t_{m_d} \left(\ket{m_d+1}\bra{m_d} s^-_{kl}  + \text{h.c.}\right)~,
+% \end{eqnarray}
+% where \(k,l\) sum over the momentum states, \(\sigma\) sums over the spin indices, \(J^\sigma_m = \frac{1}{2} \sigma m J\) in the UV Hamiltonian, and \(J^t_{m} = J\frac{1}{2}\sqrt{S(S+1) - m(m+1)}\) is the coupling that connects \(\ket{m}\) and \(\ket{m+1}\). We first calculate \(\Delta H^{(2)}_{(j)}\). There will be two types of processes - those processes that start from an occupied state (particle sector) and those that start from a vacant state (hole sector). Due to particle hole symmetry of the Hamiltonian, they will be equal to each other and we will only calculate the particle sector contribution. 
+%
+% In the particle sector, we have (\(\hat n_{q\beta}=1\)), so we will work at a negative energy  shell \(\epsilon_q = -D\). The renormalisation can schematically represented as \(H^I_0 \frac{1}{\omega - H^D_{q\beta}} H^I_1\). Both \(H^I_0\) and \(H^I_1\) have all three operators \(S_d^z, S_d^\pm\). We first consider specifically the case of spin-\(\frac{1}{2}\) impurity. Those terms that have identical operators on both sides can be ignored because \({S_d^z}^2 = \text{constant}\) and \({S^\pm}^2 = 0\). All the six terms that \textit{will} renormalise the Hamiltonian have a spin flip operator on at least one side of the Greens function. This means that in the denominator of the Greens function, \(S_d^z\) and \(s^z_{qq}\) have to be anti-parallel in order to produce a non-zero result for that term. This means we can identically replace \(S_d^z s^z_{qq} = -\frac{1}{4}\). Also, in the particle sector, the Greens function always has \(c_{q\beta}\) in front of it, so \(\epsilon_q \tau_{q\beta} = \frac{D}{2}\). The upshot of all this is that the denominator of all scattering processes for the spin-\(\frac{1}{2}\) impurity Hamiltonian will be \(\omega - \frac{D}{2} + \frac{J}{4}\).
+%
+% We now come to the general case of spin-\(S\) impurity. The various terms that renormalise the Hamiltonian can be described in terms of the bath spin operators that come into them. For example, the term that has \(s^z\) on both sides of the intervening Greens function can be represented as \(z|z\). There are 7 such terms: \(z|z, \pm|\mp, z|\pm, \pm|z\). Each of these terms occurs both in the particle and the hole sectors. We will demonstrate the calculation of two of these terms. The \(z|z\) \(+|-\) terms evaluate in the following manner.
+%
+% \begin{equation}\begin{aligned}
+% 	z|z: & \sum_{kk^\prime,m,\sigma} c^\dagger_{q \sigma} c_{k^\prime \sigma} \ket{m}\bra{m}\frac{{J^\sigma_m}^2}{\omega - \frac{D}{2} + \frac{J}{2}\sigma S_d^z}\ket{m}\bra{m} c^\dagger_{k \sigma}c_{q \sigma} = -\sum_{kk^\prime,m,\sigma}n_{q \sigma}\frac{{J^\sigma_m}^2 c^\dagger_{k \sigma}c_{k^\prime\sigma} \ket{m}\bra{m}}{\omega_{m, \sigma} - \frac{D}{2} + \frac{J}{2}\sigma m}~,\\
+% 	+|-: & \sum_{kk^\prime,m} c^\dagger_{q \uparrow} c_{k^\prime \downarrow} \ket{m}\bra{m+1}\frac{{J^t_m}^2}{\omega - \frac{D}{2} + \frac{J}{2}S_d^z}\ket{m+1}\bra{m} c^\dagger_{k \downarrow}c_{q \uparrow} = -n_{q \uparrow}\sum_{kk^\prime,m}\frac{{J^t_m}^2 c^\dagger_{k \downarrow}c_{k^\prime\downarrow} \ket{m}\bra{m}}{\omega_{m+1, \uparrow} - \frac{D}{2} + \frac{J}{2}\left( m+1 \right) }~.
+% \end{aligned}\end{equation}
+%
+% We similarly compute the rest of the terms. We again define \(\sum_q \hat n_{q\sigma} = n(D)\). To compare with the spin-\(\frac{1}{2}\) RG equations, we will transform the general spin-\(S\) \(\omega\) to the spin-\(\frac{1}{2}\) \( \omega\), using \(\omega_{m,\sigma} \to \omega - \frac{J}{2}\left(m\sigma - \frac{1}{2}\right)\).
+% The renormalisation in \(J^\sigma_m\) is
+% \begin{eqnarray}
+% 	\Delta J^\sigma_{m} = - n(D) \frac{\left( J^\sigma_m \right) ^2 + \left( J^t_{m-\frac{1+\sigma}{2}} \right) ^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% Here, we have defined \(J^t_m = 0\) for \( |m| > S\). Two relations can be obtained from this RG equation, the RG equations for the sum and difference of the couplings: \(J^\pm_m = \frac{1}{2}\left(J^\uparrow_m \pm J^\downarrow_m\right) \). The RG equation for the sum of the couplings is
+% \begin{eqnarray}
+% 	\Delta J^+_m = -n(D)\frac{\sum_\sigma \left( J^\sigma_m \right) ^2 + \sum_\sigma \left( J^t_{m-\frac{1+\sigma}{2}} \right) ^2}{2\left(\omega - \frac{D}{2} + \frac{J}{4}\right)} = -n(D)\frac{J^2}{4}\frac{S(S+1)}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% This is an \(m-\)independent piece, so it can be summed over to produce an impurity-independent potential scattering term, which we ignore. 
+%
+% The second is the RG equation for the difference of the couplings:
+% \begin{eqnarray}
+% 	\Delta J^-_m = -n(D)\frac{1}{2}\frac{\left( J^t_{m-1} \right) ^2 - \left(J^t_{m}\right) ^2}{\omega - \frac{D}{2} + \frac{J}{4}} = -\frac{1}{4}\frac{n(D) m J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% The usual \(J\) Kondo coupling is recovered through \(J = 2J^-_m/m\). Substituting this gives 
+% \begin{eqnarray}
+% 	\Delta_\text{p sector} J = -\frac{1}{2}n(D)\frac{J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% We can also obtain the RG equation for \(J\) from the transverse renormalisation:
+% \begin{eqnarray}
+% 	\Delta J^t_m &= - \frac{n(D)J^t_m \left( J^\downarrow_m + J^\uparrow_{m+1} \right) }{\omega - \frac{D}{2} + \frac{J}{4}} = -\frac{1}{2}\frac{n(D)J^t_m J}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% Since \(J^t_m \propto J\), we have
+% \begin{eqnarray}
+% 	\Delta J_\text{p sector} &= -\frac{1}{2}\frac{n(D)J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% The total renormalisation from both particle and hole sectors, at this order, is
+% \begin{eqnarray}
+% 	\Delta J^{(2)} &= -\frac{n(D)J^2}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+%
+% We now come to the third-order renormalisation.
+% Following eq.~\eqref{full_ren}, the next order renormalisation is
+% \begin{eqnarray}
+% 	\label{psector_3rd_ren}
+% 	\Delta H^{(3)}_j = c^\dagger T \frac{1}{\omega^\prime - H_D} H_X \frac{1}{\omega^\prime - H_D} T^\dagger c + c^\dagger T \frac{1}{\omega^\prime - H_D} T^\dagger c \frac{1}{\omega^\prime - H_D} H_X~.
+% \end{eqnarray}
+% The first term will be of the form
+% \begin{equation}\begin{aligned}
+% \sum_{q,k,l_1} c^\dagger_{q\beta, l_1}c_{k \alpha, l_1}\ket{m_1}\bra{m_2} \frac{1}{\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J}{4}S_d^z} \ket{m_2} c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2} \bra{m_3}\frac{1}{\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J}{4}S_d^z}\\
+% \ket{m_3}\bra{m_4}c^\dagger_{k\alpha, l_1}c_{q\beta, l_1}.
+% \end{aligned}\end{equation}
+% We have not bothered to write all the summations and the couplings correctly, because we will only simplify the denominator here. Evaluating the inner products gives
+% \begin{eqnarray}
+% 	\sum_{qk,l_1} \frac{\ket{m_1}\bra{m_4}c^\dagger_{q\beta}c_{k \alpha}c^\dagger_{k_1 \sigma_1, l_2}}{\omega_{m_2,\beta} - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J m_2}{4}}  \frac{c_{k_2 \sigma_2,l_2}c^\dagger_{k\alpha}c_{q\beta}}{\omega_{m_3,\beta} - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{\beta J m_3}{4}}~.
+% \end{eqnarray}
+% We again use \(\omega_{m,\sigma} \to \omega - \frac{J}{2}\left(m\sigma - \frac{1}{2}\right)\).
+% \begin{eqnarray}
+% 	\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}\sum_{qk,l_1} \frac{\hat n_{q\beta}\left(1 - \hat n_{k\alpha}\right)}{\left(\omega - \frac{D}{2} - \frac{\epsilon_k}{2} + \frac{J}{4}\right)^2}~.
+% \end{eqnarray}
+% We define \(\sum_q \hat n_{q\beta} = n(D)\). Performing the sums over \(k\) and \(l_1\) gives
+% \begin{eqnarray}
+% 	-\frac{1}{2}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2} \frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}~.
+% \end{eqnarray}
+% \(\rho\) is the density of states which we have taken to be constant. Reinstating the complete summation and the couplings gives
+% \begin{eqnarray}
+% 	\label{first_group}
+% 	-\frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\sum_{m_1,m_4,k_1,k_2,\atop{l_2,\sigma_1\sigma_2}}\lambda_{1}\lambda_{2}\lambda_{3}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}~.
+% \end{eqnarray}
+% There is no sum over \(m_2\) and \(m_3\) because they are constrained by \(m_1\) and \(m_4\) respectively. \(\lambda_i\) represent the couplings present at the three interaction vertices. \(k_{1,2}\) sum over the momenta, \(\sigma_{1,2}\) sum over the spin indices and \(l_2\) sums over the channels.
+%
+% The second term in eq.~\eqref{psector_3rd_ren} can be evaluated in an almost identical fashion. The integral here will be negative of the first term, because of an exchange in the scattering processes.
+% \begin{eqnarray}
+% 	\label{second_group}
+% 	\frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\sum_{m_1,m_4,k_1,k_2,\atop{l_2,\sigma_1\sigma_2}}\lambda_{1}\lambda_{3}\lambda_{2}\ket{m_1}\bra{m_4}c^\dagger_{k_1 \sigma_1, l_2}c_{k_2 \sigma_2,l_2}~.
+% \end{eqnarray}
+% The first group of terms (those that appear in \eqref{first_group}) in the particle sector can be represented as \(a|b^\prime|c\), where \(a,b,c \in \left\{z,+,-\right\} \) and represent the operator for the conduction electrons in the three connected processes. The \(\prime\) on \(b\) indicates that it is the state of the electrons \textit{not being decoupled}. The second group of terms (those that appear in \eqref{second_group}) are therefore represented as \(a|b|c^\prime\), because in this group, the interaction \(H_X\) between the electrons that are not being decoupled occur at the very end.
+% We will only calculate the terms in the particle sector, the ones in hole sector will be equal to these because of particle-hole symmetry. The full list of terms is: 
+%
+% $z|z^\prime|z\quad$
+% $z|z|z^\prime\quad$
+% $-|z^\prime|+\quad$
+% $-|+|z^\prime\quad$
+% $+|z^\prime|-\quad$
+% $+|-|z^\prime\quad$
+% $ z|+^\prime|z\quad$
+% $z|-^\prime|z\quad$
+% $+|+^\prime|-\quad$
+% $-|+^\prime|+\quad$
+% $z|z|+^\prime\quad$
+% $z|z|-^\prime\quad$
+% $ +|-|+^\prime\quad$
+% $+|-|-^\prime\quad$
+% $-|+|+^\prime\quad$
+% $z|z^\prime|z\quad$
+% $z|z|z^\prime\quad$
+% $-|z^\prime|+\quad$
+% $ -|+|z^\prime\quad$
+% $+|z^\prime|-\quad$
+% $+|-|z^\prime\quad$
+% $z|+^\prime|z\quad$
+% $z|-^\prime|z\quad$
+% $+|+^\prime|-\quad$
+% $-|+^\prime|+\quad$
+% $z|z|+^\prime\quad$
+% $z|z|-^\prime\quad$
+% $+|-|+^\prime\quad$
+% $+|-|-^\prime\quad$
+% $-|+|+^\prime\quad$
+% .
+%
+% The total renormalisation in  \(J^\sigma_m\) is
+% \begin{equation}\begin{aligned}
+% 	\Delta J^\sigma_m &= \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}\left[\left( J^t_{m-1} \right)^2 J^\sigma_m + \left( J^t_m \right)^2 J^\sigma_m - \left( J^t_{m-1} \right)^2 J^\sigma_{m-1} - \left(J^t_m\right)^2 J^\sigma_{m+1} \right] \\
+% 									 &= \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3 m \sigma~.
+% \end{aligned}\end{equation}
+% Since we had defined \(J^\sigma_m \equiv \frac{1}{2}J m \sigma\), we have \(\Delta J = \frac{2}{m\sigma}\Delta J^\sigma_m\), and we get \(\Delta_\text{p sector} J = \frac{1}{4}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3\).
+% Combining with the hole sector renormalisation, we get
+% \begin{eqnarray}
+% 	\Delta J^{(3)} = \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3~.
+% \end{eqnarray}
+% The total renormalisation in \(J\) after combining all orders is
+% \begin{eqnarray}
+% 	\Delta J = -\frac{n(D) J^2}{\omega - \frac{D}{2} + \frac{J}{4}} + \frac{1}{2}\frac{\rho n(D) K}{\omega - \frac{D}{2} + \frac{J}{4}}J^3~.
+% \end{eqnarray}
+%
+% \section{Example II: Particle in a periodic potential}
+% We consider electrons moving in one dimension in the presence of a periodic potential \(V(x)\) satisfying \(V(x+a) = V(x)\). The full Hamiltonian can be represented as
+% \begin{equation}\begin{aligned}
+% 	\mathcal{H} = \int_{-\infty}^{\infty}\mathrm{dx}~c^\dagger(x)\left[\hat p^2/2m + V(x)\right]c(x)~,
+% \end{aligned}\end{equation}
+% where \(c(x)\) destroys a fermion at the position \(x\). 
+% % \begin{figure}[htpb]
+% % 	\centering
+% % 	\includegraphics[width=0.75\textwidth]{potential.pdf}
+% % 	\caption{The particle in a periodic potential problem: A free electron moves in the presence of a one dimensional periodic potential \(V(x)\) of period \(a\).}
+% % \end{figure}
+%
+% Physically, the model represents a set of \(N_\text{well}\) number of wells (located at the minima of the potential) linked to each other through hopping (brought about by the kinetic energy term). Each well is described a potential \(V(x)\), whose spectrum consists of \(N_\text{levs}\) single particle levels. These levels are localised in real space (around each minima of width \(a\)), so the corresponding momentum states are widely separated; each of these momentum states eventually give rise to an energy band, we therefore represent them using the band index: \(k_n = nG~(n=0,1,\ldots,N_\text{levs}-1)\), where \(G\) is the spacing between the momentum states arising from a single potential well, and is equal to the reciprocal lattice vector \(2\pi/a\).
+%
+% These are of course not the only momentum states in the problem; since each potential well is spaced far apart (at distances greater than \(a\)), the multiplicity of the wells leads to closely spaced momentum states, \(N_\text{well}\) in number (the number of potential wells). Since these are closely spaced, they lead to the dense set of states within each band: \(k_{n,j} = nG + \frac{2\pi j}{N_\text{well}}~(j=0,1,\ldots,N_\text{well}-1)\). The spacing \(2\pi/N_\text{well}\) between the states within the band is imposed by applying periodic boundary conditions on the system: \(\psi(x=0) = \psi(x=aN_\text{well})\). We take the thermodynamic limit by allowing \(N_\text{well} \to \infty\), keeping all other independent parameters unchanged. Because of the periodicity of the real space potential, it can only scatter states that are separated by a reciprocal lattice vector \(G\); this means that states within a band (that are within a reciprocal lattice vector of each other) do not scatter off each other: \(\braket{k_{n+m,j+l} | \hat V | k_{n,j}} = \delta_{l,0}\braket{k_{n+m,j} | \hat V | k_{n,j}}\).
 % \begin{figure}[htpb]
 % 	\centering
-% 	\includegraphics[width=0.75\textwidth]{potential.pdf}
-% 	\caption{The particle in a periodic potential problem: A free electron moves in the presence of a one dimensional periodic potential \(V(x)\) of period \(a\).}
+% 	\includegraphics[width=0.6\textwidth]{momentum_states.pdf}
+% 	\caption{The complete set of momentum states in the system. Each row represents a band of states. Each column contains the set of momenta that are connected by a reciprocal lattice vector \(nG\). The states in the lowest band give rise to the crystal momenta. All the momentum states in a column are connected to each other through the potential term (green dotted line). Any two states within a band, on the other hand, are decoupled from each other.}
 % \end{figure}
-
-Physically, the model represents a set of \(N_\text{well}\) number of wells (located at the minima of the potential) linked to each other through hopping (brought about by the kinetic energy term). Each well is described a potential \(V(x)\), whose spectrum consists of \(N_\text{levs}\) single particle levels. These levels are localised in real space (around each minima of width \(a\)), so the corresponding momentum states are widely separated; each of these momentum states eventually give rise to an energy band, we therefore represent them using the band index: \(k_n = nG~(n=0,1,\ldots,N_\text{levs}-1)\), where \(G\) is the spacing between the momentum states arising from a single potential well, and is equal to the reciprocal lattice vector \(2\pi/a\).
-
-These are of course not the only momentum states in the problem; since each potential well is spaced far apart (at distances greater than \(a\)), the multiplicity of the wells leads to closely spaced momentum states, \(N_\text{well}\) in number (the number of potential wells). Since these are closely spaced, they lead to the dense set of states within each band: \(k_{n,j} = nG + \frac{2\pi j}{N_\text{well}}~(j=0,1,\ldots,N_\text{well}-1)\). The spacing \(2\pi/N_\text{well}\) between the states within the band is imposed by applying periodic boundary conditions on the system: \(\psi(x=0) = \psi(x=aN_\text{well})\). We take the thermodynamic limit by allowing \(N_\text{well} \to \infty\), keeping all other independent parameters unchanged. Because of the periodicity of the real space potential, it can only scatter states that are separated by a reciprocal lattice vector \(G\); this means that states within a band (that are within a reciprocal lattice vector of each other) do not scatter off each other: \(\braket{k_{n+m,j+l} | \hat V | k_{n,j}} = \delta_{l,0}\braket{k_{n+m,j} | \hat V | k_{n,j}}\).
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{momentum_states.pdf}
-	\caption{The complete set of momentum states in the system. Each row represents a band of states. Each column contains the set of momenta that are connected by a reciprocal lattice vector \(nG\). The states in the lowest band give rise to the crystal momenta. All the momentum states in a column are connected to each other through the potential term (green dotted line). Any two states within a band, on the other hand, are decoupled from each other.}
-\end{figure}
-
-\subsection*{Decomposition into sum of zero-dimensional problems}
-We begin by writing the Hamiltonian completely in momentum space. A general momentum is represented as \(k + nG\), where \(n\) is the band index goes from \(0\) to \(N-1\), and \(k\) is the crystal momentum that spans through the lowest band. With this notation, we have
-\begin{equation}\begin{aligned}
-	\mathcal{H} =& \frac{\hbar^2}{2m}\int\mathrm{dk}~\sum_n c^\dagger(k+nG) \left( k + nG \right)^2 c(k+nG) \\
-				&+ \int\mathrm{dk}~\sum_{m,n} \left[\mathcal{V}(nG)c^\dagger(k+nG+mG) c(k+mG) + \text{h.c.}\right] \\
-				=& \frac{2\pi}{a}\int\mathrm{dk}~\mathcal{H}(k)\label{hamiltonianDecoupling}
-\end{aligned}\end{equation}
-where
-\begin{equation}\begin{aligned}
-	\mathcal{H}(k) =& \frac{a}{2\pi}\frac{\hbar^2}{2m}\sum_n c^\dagger(k+nG) \left( k + nG \right)^2 c(k+nG) \\
-				   &+ \frac{a}{2\pi}\sum_{m,n} \left[v(nG)c^\dagger(k+nG+mG) c(k+mG) + \text{h.c.}\right]\\
-	=&\frac{a}{2\pi}\int\mathrm{d{x}^\prime}~c^\dagger({x}^\prime) \left[\frac{1}{2m}\left(-i\hbar\partial_{x^\prime} + \hbar k\right)^2 + V(x^\prime)\right]c(x^\prime)~.
-\end{aligned}\end{equation}
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.5\textwidth]{decomposition.pdf}
-	\caption{Because of the periodicity of the potential, the problem splits into a sum of particle on a circle (POC) problems, each formed by a specific crystal momentum and other momentum states that are related to it by a reciprocal vector.}
-\end{figure}
-We have used \(x^\prime\) to symbolise the position variable conjugate to the new set of momenta \(\left\{ nG \right\} = -i\partial_{x^\prime}\) that span the restricted Hilbert space of \(\mathcal{H}(k)\). Also, \(\mathcal{V}(k)\) is the Fourier transform of the real space potential \(V(x)\).
-
-This decoupling of the full Hamiltonian \(\mathcal{H}\) into a block-diagonal form (each block indexed by the crystal momentum \(k\)) can be attributed to the discrete translation symmetry present in the problem and could have been anticipated very generally, as we now show. The Hamiltonian satisfies \(\left[\mathcal{H}, T(a)\right] = 0\), where \(T(x) = e^{i \hat p x}\) is the translation operator. By choosing a starting location \(x=0\), applying the translation operator cycles through the set of states \(\ket{x=na}; ~n=0,1,\ldots,N_\text{well}\); this set is closed under the application of \(T(a)\). It is easy enough to guess the eigenstates of \(T(a)\). Since the application of \(T(a)\) increases the position monotonically, the only way to create an eigenstate is to involve all states. With that in mind, the simplest ansatz is of the form \(\ket{\Phi}= \sum_n e^{-i\Phi n} \ket{an}\). Applying the translation operator on this state gives 
-\begin{equation}\begin{aligned}
-	T(a)\ket{\Phi} = \sum_{n=0}^{N_\text{well}-2} e^{-i\Phi n} \ket{a(n+1)} + e^{-i\Phi\left(N_\text{well} - 1\right) } \ket{aN_\text{well}} = e^{i\Phi}\left[e^{-i\Phi N_\text{well}} \ket{aN_\text{well}} + \sum_{n=1}^{N_\text{well}-1} e^{-i\Phi n} \ket{an}\right] 
-\end{aligned}\end{equation}
-Since we have applied PBC on the system, we used \(\ket{aN_\text{well}}\) for \(\ket{0}\). If the values of \(\Phi\) are chosen to be some integer multiple of \(2\pi/N_\text{well}\), we would have \(e^{-i\Phi N_\text{well}} = 1\), and the entire state can be resummed into the form
-\begin{equation}\begin{aligned}
-	T(a)\ket{\Phi} = e^{i\Phi}\ket{\Phi}
-\end{aligned}\end{equation}
-This shows that \(\ket{\Phi}\) is an eigenstate of the translation operator. Since the set of states has a dimension of \(N_\text{well}\), the number of eigenstates and the number of possible values of \(\Phi\) will also be \(N_\text{well}\). This fixes the eigenvalues to \(\Phi = 2\pi m/N_\text{well}, m=0,1,\ldots,N_\text{well}-1\). These will also be eigenstates of the Hamiltonian, because they are indexed by different values of \(\Phi\)  and the Hamiltonian cannot change \(\Phi\) (because it commutes with \(T\)). As will be shown later, the eigenvalues \(\Phi\) are actually related to the crystal momentum, through \(\Phi=ka\). The set of allowed values of \(\Phi\) form the first Brillouin zone.
-
-However, \(\ket{\Phi}\) as defined above is not the only eigenstate with eigenvalue \(e^{i\Phi}\). One can simply shift the starting location \(x=0\) by any distance smaller than \(a\), and repeat the entire procedure. The eigenstates hence obtained will have the same eigenvalues as above:
-\begin{gather}
-	\ket{\Phi, \delta}= \sum_n e^{-i\Phi n} \ket{an+\delta},~ 0\leq \delta < a;\\
-	T(a)\ket{\Phi, \delta} = \sum_{n=0}^{N_\text{well}-2} e^{-i\Phi n} \ket{a(n+1) + \delta} + e^{-i\Phi\left(N_\text{well} - 1\right) + \delta} \ket{aN_\text{well} + \delta} = e^{i\Phi}\ket{\Phi, \delta}
-\end{gather}
-The translation operator is therefore able to at most classify the complete set of states into \(N_\text{well}\) number of blocks, each labelled by a specific value of \(\Phi\). Each block has a large number of states \((N_\text{levs})\), and the Hamiltonian will general scatter these states into each other. The Hamiltonian for each of these blocks can be represented as \(\mathcal{H}(\Phi) = \mathcal{P}_\Phi \mathcal{H} \mathcal{P}_\Phi\) (where \(\mathcal{P}_\Phi\) projects onto the block of states with eigenvalue \(e^{i\Phi}\)), such that the total Hamiltonian can be represented as \(\mathcal{H} = \sum_{\Phi} \mathcal{H}(\Phi)\). Upon rescaling by \(2\pi/a\) and taking the limit of \(N_\text{well} \to \infty\), this is the same Hamiltonian decoupling relation as that obtained in eq.~\ref{hamiltonianDecoupling}.
-
-
-Since the spacing between two adjacent momentum is \(G\), the maximum value of \(x^\prime\) has to be \(2\pi/G = a\), with the ends identified with each other: \(\psi(x^\prime=0) = \psi(x^\prime=a)\). We can then define a dimensionless variable \(\theta = 2\pi x^\prime/a\) that goes from \(0\) to \(2\pi\), and is conjugate to the angular wave number \(Q = -i\partial_\theta\). This definition ensures \(\left[\theta,Q\right] = i\). For reasons that will become clear very soon, we will also define a dimensionless crystal momentum \(\Phi = ka\). With these modifications, the Hamiltonian takes the simpler form
-\begin{equation}\begin{aligned}
-	\mathcal{H}(k) &= \int_0^{2\pi}\mathrm{d\theta}~c^\dagger(\theta) \left[\frac{\hbar^2}{2ma^2}\left(\hat Q + \Phi/2\pi\right)^2 + U(\theta)\right]c(\theta)~.
-\end{aligned}\end{equation}
-By nothing  that we have the boundary condition \(\psi(\theta=0) = \psi(\theta=2\pi)\), we can recognise this Hamiltonian as that describing the dynamics of a particle moving on a circle (POC) with a potential \(U(\theta) = \frac{a}{2\pi}V(a\theta/2\pi)\), in the presence of an Aharonov-Bohm flux \(\Phi\). Note that \(U(\theta)\) has a period of \(2\pi\).
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.7\textwidth]{POC.pdf}
-	\caption{The full problem reduces to that of a particle on a circle, in the presence of potential with period \(2\pi\), and a flux \(\Phi\).}
-\end{figure}
-
-Even when reduced to the simpler POC, the problem cannot be simply integrated to obtain the eigenstates. This is because the complete Hamiltonian does not commute with either the position or the momentum operator; it contains quantum fluctuations that need to be resolved in order to obtain the ground state energy. One way of obtaining the energy is to calculate the propagator for transition from \(\theta=0\) to \(\theta=2\pi\), using the method of path integrals~\cite{rajaraman1982solitons,Weigert1994}. We, however, will attack the problem using a renormalisation group method, called the unitary renormalisation group in order to track the emergence of the tight-binding metal in the limit when the effective amplitude of the single-particle periodic potential at low-energies has become much larger than the typical kinetic energy of the electron.
-\subsection*{URG analysis of the particle on a circle problem}
-A summary of the unitary RG method is provided at the beginning of this chapter. For the purposes of studying the model under renormalisation group, we write the particle on a circle Hamiltonian in momentum\((Q-)\)space. For that, we introduce the Fourier modes 
-\begin{equation}\begin{aligned}
-	c(\theta) = \frac{1}{\sqrt{2\pi}}\int dQ e^{iQ\theta}c(Q),~ \text{ and }~U(\theta) = \int dQ e^{iQ\theta}\mathcal{U}(Q)~,
-\end{aligned}\end{equation}
-so that the Hamiltonian becomes
-\begin{equation}\begin{aligned}
-\mathcal{H}(k) &= \int\mathrm{dQ}~\varepsilon\left(Q + \Phi/2\pi\right)\hat n(Q) + \int\mathrm{dQ_1}~\mathrm{dQ_2}~c^\dagger(Q_1)c(Q_2)\mathcal{U}\left( Q_1 - Q_2 \right) ~.
-\end{aligned}\end{equation}
-where we have defined the dispersion \(\varepsilon(Q) = \hbar^2 Q^2/(2ma^2)\).
-The second term involves scattering between momentum states \(Q_1\) and \(Q_2\). The quantum fluctuations that connect the low-energy states to the high-energy states can be integrated out using the URG method~\cite{AnirbanThesis}. This proceeds through a reduction in the momentum cutoff, ultimately leading to an IR theory. As the large momenta are integrated out, the potential term for scattering between the lower momenta undergo renormalisation.
+%
+% \subsection*{Decomposition into sum of zero-dimensional problems}
+% We begin by writing the Hamiltonian completely in momentum space. A general momentum is represented as \(k + nG\), where \(n\) is the band index goes from \(0\) to \(N-1\), and \(k\) is the crystal momentum that spans through the lowest band. With this notation, we have
+% \begin{equation}\begin{aligned}
+% 	\mathcal{H} =& \frac{\hbar^2}{2m}\int\mathrm{dk}~\sum_n c^\dagger(k+nG) \left( k + nG \right)^2 c(k+nG) \\
+% 				&+ \int\mathrm{dk}~\sum_{m,n} \left[\mathcal{V}(nG)c^\dagger(k+nG+mG) c(k+mG) + \text{h.c.}\right] \\
+% 				=& \frac{2\pi}{a}\int\mathrm{dk}~\mathcal{H}(k)\label{hamiltonianDecoupling}
+% \end{aligned}\end{equation}
+% where
+% \begin{equation}\begin{aligned}
+% 	\mathcal{H}(k) =& \frac{a}{2\pi}\frac{\hbar^2}{2m}\sum_n c^\dagger(k+nG) \left( k + nG \right)^2 c(k+nG) \\
+% 				   &+ \frac{a}{2\pi}\sum_{m,n} \left[v(nG)c^\dagger(k+nG+mG) c(k+mG) + \text{h.c.}\right]\\
+% 	=&\frac{a}{2\pi}\int\mathrm{d{x}^\prime}~c^\dagger({x}^\prime) \left[\frac{1}{2m}\left(-i\hbar\partial_{x^\prime} + \hbar k\right)^2 + V(x^\prime)\right]c(x^\prime)~.
+% \end{aligned}\end{equation}
 % \begin{figure}[htpb]
 % 	\centering
-% 	\includegraphics[width=0.4\textwidth]{URG_poc.pdf}
-% 	\caption{As the URG transformations are applied on the POC Hamiltonian, the connectivities with the high-energy momentum states (lighter gray) get integrated out, and these momentum states become integrals of motion. }
+% 	\includegraphics[width=0.5\textwidth]{decomposition.pdf}
+% 	\caption{Because of the periodicity of the potential, the problem splits into a sum of particle on a circle (POC) problems, each formed by a specific crystal momentum and other momentum states that are related to it by a reciprocal vector.}
 % \end{figure}
-Let, at the \(l^\text{th}\) RG step, the momentum cutoff be \(Q_l\). At this step, fluctuations between all momentum states more energetic than \(Q_l\) have been integrated out. The RG equations for the renormalisation of the potential \(\mathcal{U}^{(l)}_{ij}\) that scatters any two lower momenta \(Q_i\) and \(Q_j\) \(\left( Q_i,Q_j < Q_l \right) \) is given by~\cite{AnirbanThesis}
+% We have used \(x^\prime\) to symbolise the position variable conjugate to the new set of momenta \(\left\{ nG \right\} = -i\partial_{x^\prime}\) that span the restricted Hilbert space of \(\mathcal{H}(k)\). Also, \(\mathcal{V}(k)\) is the Fourier transform of the real space potential \(V(x)\).
+%
+% This decoupling of the full Hamiltonian \(\mathcal{H}\) into a block-diagonal form (each block indexed by the crystal momentum \(k\)) can be attributed to the discrete translation symmetry present in the problem and could have been anticipated very generally, as we now show. The Hamiltonian satisfies \(\left[\mathcal{H}, T(a)\right] = 0\), where \(T(x) = e^{i \hat p x}\) is the translation operator. By choosing a starting location \(x=0\), applying the translation operator cycles through the set of states \(\ket{x=na}; ~n=0,1,\ldots,N_\text{well}\); this set is closed under the application of \(T(a)\). It is easy enough to guess the eigenstates of \(T(a)\). Since the application of \(T(a)\) increases the position monotonically, the only way to create an eigenstate is to involve all states. With that in mind, the simplest ansatz is of the form \(\ket{\Phi}= \sum_n e^{-i\Phi n} \ket{an}\). Applying the translation operator on this state gives 
+% \begin{equation}\begin{aligned}
+% 	T(a)\ket{\Phi} = \sum_{n=0}^{N_\text{well}-2} e^{-i\Phi n} \ket{a(n+1)} + e^{-i\Phi\left(N_\text{well} - 1\right) } \ket{aN_\text{well}} = e^{i\Phi}\left[e^{-i\Phi N_\text{well}} \ket{aN_\text{well}} + \sum_{n=1}^{N_\text{well}-1} e^{-i\Phi n} \ket{an}\right] 
+% \end{aligned}\end{equation}
+% Since we have applied PBC on the system, we used \(\ket{aN_\text{well}}\) for \(\ket{0}\). If the values of \(\Phi\) are chosen to be some integer multiple of \(2\pi/N_\text{well}\), we would have \(e^{-i\Phi N_\text{well}} = 1\), and the entire state can be resummed into the form
+% \begin{equation}\begin{aligned}
+% 	T(a)\ket{\Phi} = e^{i\Phi}\ket{\Phi}
+% \end{aligned}\end{equation}
+% This shows that \(\ket{\Phi}\) is an eigenstate of the translation operator. Since the set of states has a dimension of \(N_\text{well}\), the number of eigenstates and the number of possible values of \(\Phi\) will also be \(N_\text{well}\). This fixes the eigenvalues to \(\Phi = 2\pi m/N_\text{well}, m=0,1,\ldots,N_\text{well}-1\). These will also be eigenstates of the Hamiltonian, because they are indexed by different values of \(\Phi\)  and the Hamiltonian cannot change \(\Phi\) (because it commutes with \(T\)). As will be shown later, the eigenvalues \(\Phi\) are actually related to the crystal momentum, through \(\Phi=ka\). The set of allowed values of \(\Phi\) form the first Brillouin zone.
+%
+% However, \(\ket{\Phi}\) as defined above is not the only eigenstate with eigenvalue \(e^{i\Phi}\). One can simply shift the starting location \(x=0\) by any distance smaller than \(a\), and repeat the entire procedure. The eigenstates hence obtained will have the same eigenvalues as above:
+% \begin{gather}
+% 	\ket{\Phi, \delta}= \sum_n e^{-i\Phi n} \ket{an+\delta},~ 0\leq \delta < a;\\
+% 	T(a)\ket{\Phi, \delta} = \sum_{n=0}^{N_\text{well}-2} e^{-i\Phi n} \ket{a(n+1) + \delta} + e^{-i\Phi\left(N_\text{well} - 1\right) + \delta} \ket{aN_\text{well} + \delta} = e^{i\Phi}\ket{\Phi, \delta}
+% \end{gather}
+% The translation operator is therefore able to at most classify the complete set of states into \(N_\text{well}\) number of blocks, each labelled by a specific value of \(\Phi\). Each block has a large number of states \((N_\text{levs})\), and the Hamiltonian will general scatter these states into each other. The Hamiltonian for each of these blocks can be represented as \(\mathcal{H}(\Phi) = \mathcal{P}_\Phi \mathcal{H} \mathcal{P}_\Phi\) (where \(\mathcal{P}_\Phi\) projects onto the block of states with eigenvalue \(e^{i\Phi}\)), such that the total Hamiltonian can be represented as \(\mathcal{H} = \sum_{\Phi} \mathcal{H}(\Phi)\). Upon rescaling by \(2\pi/a\) and taking the limit of \(N_\text{well} \to \infty\), this is the same Hamiltonian decoupling relation as that obtained in eq.~\ref{hamiltonianDecoupling}.
+%
+%
+% Since the spacing between two adjacent momentum is \(G\), the maximum value of \(x^\prime\) has to be \(2\pi/G = a\), with the ends identified with each other: \(\psi(x^\prime=0) = \psi(x^\prime=a)\). We can then define a dimensionless variable \(\theta = 2\pi x^\prime/a\) that goes from \(0\) to \(2\pi\), and is conjugate to the angular wave number \(Q = -i\partial_\theta\). This definition ensures \(\left[\theta,Q\right] = i\). For reasons that will become clear very soon, we will also define a dimensionless crystal momentum \(\Phi = ka\). With these modifications, the Hamiltonian takes the simpler form
+% \begin{equation}\begin{aligned}
+% 	\mathcal{H}(k) &= \int_0^{2\pi}\mathrm{d\theta}~c^\dagger(\theta) \left[\frac{\hbar^2}{2ma^2}\left(\hat Q + \Phi/2\pi\right)^2 + U(\theta)\right]c(\theta)~.
+% \end{aligned}\end{equation}
+% By nothing  that we have the boundary condition \(\psi(\theta=0) = \psi(\theta=2\pi)\), we can recognise this Hamiltonian as that describing the dynamics of a particle moving on a circle (POC) with a potential \(U(\theta) = \frac{a}{2\pi}V(a\theta/2\pi)\), in the presence of an Aharonov-Bohm flux \(\Phi\). Note that \(U(\theta)\) has a period of \(2\pi\).
+% \begin{figure}[htpb]
+% 	\centering
+% 	\includegraphics[width=0.7\textwidth]{POC.pdf}
+% 	\caption{The full problem reduces to that of a particle on a circle, in the presence of potential with period \(2\pi\), and a flux \(\Phi\).}
+% \end{figure}
+%
+% Even when reduced to the simpler POC, the problem cannot be simply integrated to obtain the eigenstates. This is because the complete Hamiltonian does not commute with either the position or the momentum operator; it contains quantum fluctuations that need to be resolved in order to obtain the ground state energy. One way of obtaining the energy is to calculate the propagator for transition from \(\theta=0\) to \(\theta=2\pi\), using the method of path integrals~\cite{rajaraman1982solitons,Weigert1994}. We, however, will attack the problem using a renormalisation group method, called the unitary renormalisation group in order to track the emergence of the tight-binding metal in the limit when the effective amplitude of the single-particle periodic potential at low-energies has become much larger than the typical kinetic energy of the electron.
+% \subsection*{URG analysis of the particle on a circle problem}
+% A summary of the unitary RG method is provided at the beginning of this chapter. For the purposes of studying the model under renormalisation group, we write the particle on a circle Hamiltonian in momentum\((Q-)\)space. For that, we introduce the Fourier modes 
+% \begin{equation}\begin{aligned}
+% 	c(\theta) = \frac{1}{\sqrt{2\pi}}\int dQ e^{iQ\theta}c(Q),~ \text{ and }~U(\theta) = \int dQ e^{iQ\theta}\mathcal{U}(Q)~,
+% \end{aligned}\end{equation}
+% so that the Hamiltonian becomes
+% \begin{equation}\begin{aligned}
+% \mathcal{H}(k) &= \int\mathrm{dQ}~\varepsilon\left(Q + \Phi/2\pi\right)\hat n(Q) + \int\mathrm{dQ_1}~\mathrm{dQ_2}~c^\dagger(Q_1)c(Q_2)\mathcal{U}\left( Q_1 - Q_2 \right) ~.
+% \end{aligned}\end{equation}
+% where we have defined the dispersion \(\varepsilon(Q) = \hbar^2 Q^2/(2ma^2)\).
+% The second term involves scattering between momentum states \(Q_1\) and \(Q_2\). The quantum fluctuations that connect the low-energy states to the high-energy states can be integrated out using the URG method~\cite{AnirbanThesis}. This proceeds through a reduction in the momentum cutoff, ultimately leading to an IR theory. As the large momenta are integrated out, the potential term for scattering between the lower momenta undergo renormalisation.
+% % \begin{figure}[htpb]
+% % 	\centering
+% % 	\includegraphics[width=0.4\textwidth]{URG_poc.pdf}
+% % 	\caption{As the URG transformations are applied on the POC Hamiltonian, the connectivities with the high-energy momentum states (lighter gray) get integrated out, and these momentum states become integrals of motion. }
+% % \end{figure}
+% Let, at the \(l^\text{th}\) RG step, the momentum cutoff be \(Q_l\). At this step, fluctuations between all momentum states more energetic than \(Q_l\) have been integrated out. The RG equations for the renormalisation of the potential \(\mathcal{U}^{(l)}_{ij}\) that scatters any two lower momenta \(Q_i\) and \(Q_j\) \(\left( Q_i,Q_j < Q_l \right) \) is given by~\cite{AnirbanThesis}
+% \begin{equation}\begin{aligned}
+% 	\Delta \mathcal{U}_{ij}^{(l)}(\omega) = \frac{\mathcal{U}_{il}\mathcal{U}_{lj}}{\omega - \varepsilon(Q_l + \Phi/2\pi)}~,
+% \end{aligned}\end{equation}
+% where \(\omega\) is an energy scale that tracks the amount of quantum fluctuations present in the system, and is characteristic of the URG method. The dispersion also undergoes renormalisation::
+% \begin{equation}\begin{aligned}
+% 	\Delta \varepsilon^{(l)}(Q_i,\omega) = \frac{|\mathcal{U}_{il}|^2}{\omega - \varepsilon(Q_l + \Phi/2\pi)}~,
+% \end{aligned}\end{equation}
+%
+% \subsection*{Effective description at low energies}
+% \subsubsection*{Appearance of bands and band gaps}
+% As the URG proceeds, the quantum fluctuations between the momentum states are resolved, leading to a simpler theory for the IR. We focus on the final two states \(\ket{Q_0 + \Phi/2\pi}, \ket{Q_1 + \Phi/2\pi}\), for \(\Phi=0\) (Brillouin zone edge). The Hamiltonian for their dynamics, just prior to the decoupling of \(Q_j\), is
+% \begin{equation}\begin{aligned}
+% 	H_{01}^* = \varepsilon^*(Q_0)\ket{Q_0}\bra{Q_0} + \varepsilon^{*}(Q_1)\ket{Q_1}\bra{Q_1} + \left(\mathcal{U}_{01}^{*}\ket{Q_1}\bra{Q_0} + \text{h.c.}\right)\label{fixed_point_two}
+% \end{aligned}\end{equation}
+% Since both the states are at the edge of the band, we can assume \(\varepsilon^{*}(Q_0) \simeq \varepsilon^{*}(Q_1)\), in which case the problem becomes that of a symmetric double well with tunnelling. The eigenstates are \(\ket{Q_0} \pm \ket{Q_1}\), with energies \(\varepsilon^{*}(Q_0) \pm |\mathcal{U}_{01}^{*}|\). We can substitute this estimate of the energy eigenvalues into the RG equations in the form of the quantum fluctuation scale \(\omega\). At the last decoupling, the shifts in the kinetic energy are therefore
+% \begin{equation}\begin{aligned}
+% 	\Delta \varepsilon^{*}(Q_i,\omega^\pm) \simeq \frac{|\mathcal{U}^{*}_{01}|^2}{\varepsilon^{*}(Q_0) \pm |\mathcal{U}_{01}^{*}| - \varepsilon(Q_0)} = \pm |\mathcal{U}^{*}_{01}| = \pm |\mathcal{U}^{*}(G)|~,
+% \end{aligned}\end{equation}
+% where we used \(\mathcal{U}_{01} = \mathcal{U}\left(Q_1 - Q_0\right) = \mathcal{U}(G)\).
+% The difference between the two shifts gives the energy difference between the two lowest states of the POC. In this way, the above RG equation shows the emergence of the single-particle band gap and the formation of the band insulator (if the chemical potential is placed within the gap). If we now reintroduce the flux degree of freedom, the lowest energy eigenstates of all the POCs can be combined to form a band of closely spaced energy levels \(\left\{\varepsilon^{*}(Q_0 + \Phi_j/2\pi)\right\}, \Phi=k_{0,j}a \) (see Fig.\ref{fig:URGSpectrum-pdf}). These levels are indexed by \(k_{0,j}\) with \(j\) ranging through the first Brillouin zone; \(k_{0,j}\) are the crystal momenta of the system.
+%
+% The second band of states is formed similarly by considering the first excited of the POCs:\(\left\{\varepsilon^{*}(Q_1 + \Phi_j/2\pi)\right\}, \Phi=k_{0,j}a\). The gap between the first and second band is set by the energy difference between the ground state and first excited state of the POC at \(\Phi=0\). This difference, and hence the gap, is equal to \(2|\mathcal{U}_{01}^{*}|\).
+%
+% \begin{figure}[htpb]
+% 	\centering
+% 	\includegraphics[width=0.6\textwidth]{URGSpectrum.pdf}
+% 	\caption{Spectral flow transformations on the POC by tuning the flux $\Phi$ generates the full band of delocalised single-particle electronic states whose crystal momenta correpond to 
+% $\hbar\Phi/a$.}
+% 	\label{fig:URGSpectrum-pdf}
+% \end{figure}
+%
+% \subsubsection*{Dispersion relation of the lowest band}\label{disper}
+% In order to derive the dispersion for the lowest band, we note that the final fixed point Hamiltonian (obtained upon decoupling all higher momentum states) is described by the single momentum state \(\ket{Q_0}\). In terms of real space hopping, this means that all short wavelength processes have been removed, and the only process that remains is the longest hopping, that from \(0\) to \(2\pi\). The fixed point Hamiltonian can be written in terms of this process:
+% \begin{equation}\begin{aligned}
+% 	\varepsilon^{*}(Q_0) \ket{Q_0}\bra{Q_0} = \frac{1}{2}\varepsilon^{*}(2\pi)\left( \ket{\theta=0} +  \ket{\theta=2\pi}\right) \left( \bra{\theta=0} +  \bra{\theta=2\pi}\right) = \frac{1}{2}\varepsilon^{*}(2\pi)\left( \hat n(0) + \hat n(2\pi) \right) \\
+% 	+ \frac{1}{2}\varepsilon^{*}(2\pi)\left(c^\dagger(0)c(2\pi) + \text{h.c.}\right) 
+% \end{aligned}\end{equation}
+% We now recall that we had mapped the spatial point \(x=0\left(x=a\right)\) to the angular point \(\theta=0 \left(\theta=2\pi\right)\) point. We now transform back to spatial coordinates to get
+% \begin{equation}\begin{aligned}
+% \frac{1}{2}\varepsilon^{*}(2\pi)\left( \hat n(0) + \hat n(a) \right) + \frac{1}{2}\varepsilon^{*}(a)\left(c^\dagger(0)c(a) + \text{h.c.}\right)~.
+% \end{aligned}\end{equation}
+% This is computed for a specific value \(\Phi=0\) for the flux (or the crystal momentum). The POC corresponding to a particular flux is built from the states within a particular well. Changing the flux is then equivalent to studying the POC corresponding to the states within a different well. What this means is that tuning the flux by one interval amounts to translating the fixed point Hamiltonian by one period \(a\) of the potential. Adding the contributions from all the values of the flux leads to the following tight-binding Hamiltonian:
+% \begin{equation}\begin{aligned}
+% H_{TB}=	\varepsilon^{*}(2\pi)\sum_{j=0}^{N_\text{well}-1}\hat n(ja) + \frac{1}{2}\varepsilon^{*}(a)\sum_{j=0}^{N_\text{well}-1}\left(c^\dagger(ja)c((j+1)a) + \text{h.c.}\right)~,
+% \end{aligned}\label{TB}\end{equation}
+% where the first term corresponds to a constant chemical potential applied to the tight-binding metal in one dimension with a single-particle dispersion $\varepsilon (k) = -\varepsilon^{*}(a) \cos(ka)$ where $k$ corresponds to the set of crystal momenta $k\in\left[-\frac{\pi}{a},\frac{\pi}{a}\right]$. The exercise, therefore, shows the emergence of nearest-neighbour hopping in the lowest band by starting from a more microscopic model of a particle in a periodic potential.
+
+\section{Example: Unitary RG analysis of the Kondo model}
+We now describe the implementation of the unitary RG method in a simple paradigmatic model, the single-channel Kondo model. It describes the scattering of itinerant non-interacting electrons off a magnetic impurity \({\bf S}_d\), and is defined by the Hamiltonian
 \begin{equation}\begin{aligned}
-	\Delta \mathcal{U}_{ij}^{(l)}(\omega) = \frac{\mathcal{U}_{il}\mathcal{U}_{lj}}{\omega - \varepsilon(Q_l + \Phi/2\pi)}~,
+	H_K = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k_1, k_2} c^\dagger_{k_1,\alpha}c_{k_2,\beta}~.
 \end{aligned}\end{equation}
-where \(\omega\) is an energy scale that tracks the amount of quantum fluctuations present in the system, and is characteristic of the URG method. The dispersion also undergoes renormalisation::
+Because of spin-flip scattering processes, the problem is manybody in nature. In order to obtain the low-energy physics, we will progressively integrate out high-energy modes in the conduction bath and approach the low-energy degrees of freedom. Such an approach is needed because the high and low-energy states interact with each other through the impurity spin and cannot be trivially removed from the problem. The way this works is that the process of integrating out high-energy states generates additional scattering processes within the low-energy states; if these processes already exist in the Hamiltonian, the new contributions {\it renormalise} the existing couplings, but if the processes don't exist, then the Hamiltonian generates new terms as low energies are approached.
+
+Consider an arbitrary \(j^\text{th}\) step of the process where we wish to integrate out the conduction bath states within a narrow shell about the energies \(\pm E_j\) and retain only the states at \(|E| < |E_j|\). We designate the states on this shell by the momentum index \(q\), and the states below it by indices \(k_1 \) and \(k_2\). We need to first separate the Hamiltonian into diagonal and off-diagonal terms from the perspective of the shell being integrated out:
 \begin{equation}\begin{aligned}
-	\Delta \varepsilon^{(l)}(Q_i,\omega) = \frac{|\mathcal{U}_{il}|^2}{\omega - \varepsilon(Q_l + \Phi/2\pi)}~,
+	H_D &= \sum_{q,\sigma} \epsilon_q n_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
+	H_X &= J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
+\end{aligned}\end{equation}
+In order to make the particle-hole symmetry in the kinetic energy term manifest, we replace the number operators with pseudospin operators \(\tau = n - 1/2\) and drop the constant term:
+\begin{equation}\begin{aligned}
+	H_D &= E_j\sum_{q,\sigma} \tau_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
+	H_X &= J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
+\end{aligned}\end{equation}
+This ensures that particle and hole excitations both cost the same energy. We now describe how to obtain the renormalisation in the Hamiltonian arising from unitarily decoupling the states on the shell. 
+
+
+
+
+\section{Renormalised perturbation theory about fixed points}
+In this section, we will describe the technique of carrying out renormalised theory about a gapless fixed point theory towards obtaining a low-energy effective Hamiltonian for the excitations above the ground state. This is useful for characterising metallic phases, and detecting whether the metal is, say, a Landau Fermi liquid or a non-Fermi liquid.
+
+We consider here the case of the single-channel Kondo model. We would like to demonstrate the method by deriving a local Fermi liquid theory for the gapless excitations above the ground state, as obtained by Nozières~\cite{nozieres1974fermi}. In its simplest form, the Kondo model features a spin-\(1/2\) local moment undergoing antiferromagnetic spin-exchange scattering with the local spin-density of a non-interacting electronic conduction bath:
+\begin{equation}\begin{aligned}\label{kondoHam}
+	H_\text{K} = J {\bf S}_d \cdot {\bf s} + \sum_{k,\sigma}\epsilon_k n_{k,\sigma}~,
+\end{aligned}\end{equation}
+where \(S_d\) and \(s\) are the spins of the impurity and the conduction bath. For any non-zero value of the Kondo coupling \(J\) (the coupling for the impurity-bath spin exchange processes), it can be shown that \(J\) is relevant under a renormalisation group flow from high energy to low-energy, and the coupling effectively diverges as the fixed point is approached~\cite{wilson1975}. At the fixed point, the kinetic energy of the conduction bath can be ignored relative to the Kondo coupling, and the ground state is a spin-singlet between the impurity \({\bf S}_d\) and the conduction bath local spin density \({\bf s}\):
+\begin{equation}\begin{aligned}
+	\ket{\Psi}_0 = \frac{1}{\sqrt 2}\left(\ket{\uparrow_d, \Downarrow} - \ket{\downarrow_d, \Uparrow}\right)~,
+\end{aligned}\end{equation}
+where \(\uparrow_d\) represents the configuration of the impurity and the thick arrow is the configuration of the conduction bath spin.
+
+In order to obtain the excitations, we now note that because of the RG-relevance of \(J\), the first term in the Hamiltonian in eq.~\ref{kondoHam} can only have finite energy excitations. Since we are looking for excitations that cost vanishingly small energy, we focus on the second term. With an eye towards developing a perturbation theory over \(1/J\), we recast the kinetic energy term in real-space as a tight-binding Hamiltonian connected to the local density that hybridises with the impurity:
+\begin{equation}\begin{aligned}
+	H_\text{KE} = -t^* \sum_{i,\sigma}(c^\dagger_{i,\sigma}c_{i+1,\sigma} + \text{h.c.})~.
+\end{aligned}\end{equation}
+Hopping processes from the zeroth site modify the singlet ground state and lead to virtual excitations. We will now obtain the effect of this Hamiltonian by obtaining its renormalisation effects within the ground state subspace.
+
+To better frame the perturbation theory which we will use to obtain the renormalisation effects, we clarify the zeroth Hamiltonian \(H_0\) and perturbation \(V\):
+\begin{equation}\begin{aligned}
+	H_0 &= J^* {\bf S}_d \cdot {\bf s},\\
+	V &= -t^* \sum_{i,\sigma}(c^\dagger_{i,\sigma}c_{i+1,\sigma} + \text{h.c.})~.
+\end{aligned}\end{equation}
+The goal is to obtain the shifts in the energies of \(H_0\) arising from the perturbation term. The eigenstates of \(H_0\) are
+\begin{equation}\begin{aligned}
+	\ket{\Psi}_{0,0,2} &= \frac{1}{\sqrt 2}\left(\ket{\uparrow_d, \Downarrow} - \ket{\downarrow_d, \Uparrow}\right):~ &&E = -3J^*/4\\
+	\ket{\Psi}_{\frac{1}{2}, \frac{\sigma}{2}, 1} &= \ket{\sigma_d, 0}:~ &&E = 0\\
+	\ket{\Psi}_{\frac{1}{2}, \frac{\sigma}{2}, 3} &= \ket{\sigma_d, 2}:~ &&E = 0\\
+	\ket{\Psi}_{1,0,2} &= \frac{1}{\sqrt 2}\left(\ket{\uparrow_d, \Downarrow} + \ket{\downarrow_d, \Uparrow}\right):~ &&E = J^*/4\\
+	\ket{\Psi}_{1,\sigma,2} &= \ket{\sigma_d, \sigma}:~ &&E = J^*/4,
+\end{aligned}\end{equation}
+where the quantum numbers in the subscript are the total spin \(S = S_d + s\), the \(z-\)component of the total spin \(S^z = S_d^z + s^z\), and the total occupancy \(N = n_d + n\). The second, third and fifth states are doubly degenerate with \(\sigma\) taking values \(\pm 1\). The ground state is of course \(\ket{\Psi}_{0,0,2}\). However, this only takes into account the zeroth site in the conduction bath. In order to consider perturbative processes where an electron hops from the zeroth site to the next (first) site, we need to involve the first site as well. Since the first site does not have any energy in \(H_0\), the eigenstates simply become four-fold degenerate, due to the four possible configurations of the first site. The eigenstates are then labelled as \(\Psi_{S,S^z,N,c_1} = \ket{\Psi_{S,S^z,N}}\otimes\ket{c_1}\) where \(c_1\) can be \(0\), \(\uparrow\), \(\downarrow\) or \(2\) depending on the configuration of the first site.
+
+To obtain the excitations, we will calculate the perturbative shifts in the four-fold degenerate ground state subspace spanned by the states \(\{\Psi_{0,0,2,0}, \Psi_{0,0,2,\uparrow}, \Psi_{0,0,2,\downarrow}, \Psi_{0,0,2,2}\}\). We will do this order by order, stopping when we obtain the lowest order non-trivial Hamiltonian. At first and third order, the energy shifts are given by
+\begin{equation}\begin{aligned}
+	\Delta E_n^{(1)} &= \braket{\Psi_n | V | \Psi_n}~,\\
+	\Delta E_n^{(3)} &= \sum_{k_2 \neq n, k_3 \neq n} \frac{\braket{\Psi_n | V | \Psi_{k_3}}\braket{\Psi_{k_3} | V | \Psi_{k_2}}\braket{\Psi_{k_2} | V | \Psi_n}}{\left(E_n - E_{k_3}\right)\left(E_n - E_{k_2}\right)} - \Delta E_n^{(1)} \sum_{k_3 \neq n} \frac{|\braket{\Psi_n | V | \Psi_{k_3}}|^2}{\left(E_n - E_{k_3}\right)^2}~.
+\end{aligned}\end{equation}
+Both these contributions vanish because of mismatched quantum numbers: upon applying the perturbation Hamiltonian \(V\) any odd number of times, the final resultant state will have a different occupancy on the impurity+zeroth site  compared to the starting state. Since \(H_0\) conserves the occupancy of the impurity+zeroth site complex, the overlap between such states is zero. More specifically, what this means for the first term of \(\Delta E_n^{(3)}\) is the following:
+\begin{itemize}
+	\item the excited state \(k_2\) will have either 1 or 3 electrons on the \(d+0\) complex (because the ground state hosts 2 electrons there, and \(V\) will either add an electron there or remove one electron from it).
+	\item Another application of \(V\) means that \(k_3\) will have 0, 2 or 4 electrons.
+	\item A final application of \(V\) means that the terminal state will have an odd number of electrons -- 1, 3 or 5,
+\end{itemize}
+The overlap of this state with the ground state -- \(\braket{\Psi_n | V | \Psi_{k_3}}\) -- will therefore vanish.
+
+We therefore focus on the second and fourth order effects. At second order, the renormalisation is given by
+\begin{equation}\begin{aligned}
+	\Delta E_n^{(2)} &= \sum_{k_2 \neq n} \frac{|\braket{\Psi_n | V | \Psi_{k_2}}|^2}{E_n - E_{k_2}}~.
+\end{aligned}\end{equation}
+We work with the shifts in the \((0,0,2,0)\) and \((0,0,2,\uparrow)\) states, because the shifts of \((0,0,2)\) and \((0,0,\downarrow)\) can be inferred, respectively, from them using particle-hole symmetry and spin-rotation symmetry. For the state \((0,0,2,0)\), we have
+\begin{equation}\begin{aligned}
+	V \ket{\Psi_{0,0,2,0}} = -t^* \frac{1}{\sqrt 2}\left(\ket{\uparrow_d,0,\downarrow_1} - \ket{\downarrow_d,0,\uparrow_1}\right) = \frac{-t^*}{\sqrt 2}\ket{\Psi}_{\frac{1}{2},\frac{1}{2},1,\downarrow} + \frac{t^*}{\sqrt 2}\ket{\Psi}_{\frac{1}{2},-\frac{1}{2},1,\uparrow}~.
+\end{aligned}\end{equation}
+Summing \(k_2\) over the states \(\frac{1}{2},\frac{1}{2},1,\downarrow\) and \(\frac{1}{2},-\frac{1}{2},1,\uparrow\) with energies \(E_n - E_{k_2} = -3J^*/4\), the total shift comes out to be
+\begin{equation}\begin{aligned}
+	\Delta E^{(2)}_{(0,0,2,0)} = 2 \frac{{t^*}^2}{2}\times \frac{1}{-3J^*/4} = -\frac{4{t^*}^2}{3J^*}~.
+\end{aligned}\end{equation}
+For the state \((0,0,2,\uparrow)\), we have
+\begin{equation}\begin{aligned}
+	V \ket{\Psi_{0,0,2,\uparrow}} = t^* \frac{1}{\sqrt 2}\left(\ket{\uparrow_d,0,2} + \ket{\uparrow_d,2,0}\right) = \frac{t^*}{\sqrt 2}\ket{\Psi}_{\frac{1}{2},\frac{1}{2},1,2} + \frac{t^*}{\sqrt 2}\ket{\Psi}_{\frac{1}{2},\frac{1}{2},1,0}~.
+\end{aligned}\end{equation}
+Summing \(k_2\) over the appropriate eigenstates and using \(E_n - E_{k_2} = -3J^*/4\) gives the same shift:
+\begin{equation}\begin{aligned}
+	\Delta E^{(2)}_{(0,0,2,\uparrow)} = -\frac{4{t^*}^2}{3J^*}~.
+\end{aligned}\end{equation}
+Using symmetries, we also have
+\begin{equation}\begin{aligned}
+	\Delta E^{(2)}_{(0,0,2,\downarrow)} = \Delta E^{(2)}_{(0,0,2,2)} = -\frac{4{t^*}^2}{3J^*}~.
+\end{aligned}\end{equation}
+W also note that off-diagonal matrix elements are zero in such a setup, because any two states in the ground state subspace will differ by at least one of the two conserved quantum numbers \(s_1^z\) and \(n_1\).
+
+We now need to convert these shifts into a renormalised Hamiltonian that describes the excitations arising from such virtual scattering processes. In the absence of shift of any off-diagonal matrix element, the diagonal shifts will only lead to the generation of number-conserving operators. For example, the shift \(\Delta E^{(2)}_{(0,0,2,0)} = -\frac{4{t^*}^2}{3J^*}\) means that the energy of the null-occupied state of the first site is lowered by that amount. This can be represented through the operator
+\begin{equation}\begin{aligned}
+	-\frac{4{t^*}^2}{3J^*} (1 - n_{1 \uparrow})(1 - n_{1 \downarrow})~.
+\end{aligned}\end{equation}
+Writing down operator forms for the other shifts as well, we get
+\begin{equation}\begin{aligned}
+	\Delta H^{(2)} = -\frac{4{t^*}^2}{3J^*} \left[(1 - n_{1 \uparrow})(1 - n_{1 \downarrow}) + n_{1 \uparrow}(1 - n_{1 \downarrow}) + (1 - n_{1 \uparrow})n_{1 \downarrow} + n_{1 \uparrow}n_{1 \downarrow}\right]~.
+\end{aligned}\end{equation}
+However, because the shifts in all the states are identical, adding up all the operators reduces the renormalisation to a constant shift:
+\begin{equation}\begin{aligned}
+	\Delta H^{(2)} = -\frac{4{t^*}^2}{3J^*}~.
+\end{aligned}\end{equation}
+So we conclude that there's no non-trivial renormalisation at second order.
+
+We now extend the perturbation theory to fourth order. Since the first and third order corrections vanish, and the second order correction only produces a constant shift, the first potentially non-trivial renormalisation arises at fourth order.
+
+For a non-degenerate state, the fourth-order energy shift is
+\begin{equation}\begin{aligned}\label{fourthexpr}
+\Delta E_n^{(4)}
+&=
+\sum_{k_1,k_2,k_3\neq n}
+\frac{
+\braket{\Psi_n|V|\Psi_{k_3}}
+\braket{\Psi_{k_3}|V|\Psi_{k_2}}
+\braket{\Psi_{k_2}|V|\Psi_{k_1}}
+\braket{\Psi_{k_1}|V|\Psi_n}
+}{
+(E_n-E_{k_1})(E_n-E_{k_2})(E_n-E_{k_3})
+}
+-
+\Delta E_n^{(2)}
+\sum_{k_2\neq n}
+\frac{
+|\braket{\Psi_n|V|\Psi_{k_2}}|^2
+}{
+(E_n-E_{k_2})^2
+}~.
+\end{aligned}\end{equation}
+We first calculate it for the state \(\Psi_{0,0,2,0}\), where the first site is unoccupied. We initially focus on the first term. One application of \(V\) gives
+\begin{equation}\begin{aligned}
+	V\ket{\Psi}_{0,0,2,0} = -\frac{t}{\sqrt 2}(\ket{\uparrow_d, 0, \downarrow_1} - \ket{\downarrow_d,0,\uparrow})~.
+\end{aligned}\end{equation}
+This allows two possible states in \(k_2\): \(\ket{\uparrow_d, 0, \downarrow_1}\) and \(\ket{\downarrow_d,0,\uparrow}\), with overlaps \(\pm t/\sqrt 2\). They are linked by particle-hole symmetry, so we will calculate the subsequent contribution from only the first and then double the result.
+
+With \(k_2 = \ket{\uparrow_d, 0, \downarrow_1}\), applying \(V\) once more gives
+\begin{equation}\begin{aligned}
+	V\ket{k_2} = -t \ket{\uparrow_d,\downarrow,0_1}~.
+\end{aligned}\end{equation}
+This has overlap with the triplet state with zero spin, leading to \(k_3 = \Psi_{1,0,2,0}\), with an overlap \(-t/\sqrt 2\). A third application of \(V\) gives
+\begin{equation}\begin{aligned}
+	V\ket{k_3} = -\frac{t}{\sqrt 2}(\ket{\uparrow_d, 0, \downarrow_1} + \ket{\downarrow_d, 0, \uparrow_1})~.
+\end{aligned}\end{equation}
+The final excited states \(k_4\) are therefore the same as \(k_2\). A final application of \(V\) on the two possible \(k_4\) gives
+\begin{equation}\begin{aligned}
+	V\ket{\uparrow_d, 0, \downarrow_1} = -t \ket{\uparrow_d, \downarrow, 0_1},\\
+	V\ket{\downarrow_d, 0, \uparrow_1} = -t \ket{\downarrow_d, \uparrow, 0_1}~.
+\end{aligned}\end{equation}
+The two final states have overlaps with opposite sign with the ground state. Since the excitation energies in the denominator in the first term of eq.~\ref{fourthexpr} are the same for each of the paths, the sum over \(k_4\) reduces to a sum over it's overlap with the ground state. As obtained above, this overlap is of different signs for the two possibilities of \(k_4\), leading to this vanishing of the first term of eq.~\ref{fourthexpr}.
+
+For the second term, we have already calculated the overlap \(\braket{\Psi_n | V | k_2}\) as well as the second order shift. Plugging those in gives
+\begin{equation}\begin{aligned}
+	\Delta E^{(4)}_{0,0,2,0} = - \frac{-4{t^*}^2}{3J^*} \times 2\frac{{t^*}^2/2}{(-3J^*/4)^2} = \frac{64{t^*}^4}{27{J^*}^3}~.
+\end{aligned}\end{equation}
+This is the total fourth order shift for the state \(\Psi_{0,0,2,0}\).
+
+We next look at the state \(\Psi_{0,0,2,\uparrow}\), starting with the first term. One application of the perturbation Hamiltonian gives
+\begin{equation}\begin{aligned}
+	V\ket{\Psi_{0,0,2,\uparrow}} = \frac{-t^*}{\sqrt 2}\left(-\ket{\uparrow_d,0,2_1} - \ket{\uparrow,2,0_1}\right)~.
+\end{aligned}\end{equation}
+Proceeding exactly as before, the possible excited states \(k_2\) are \(\ket{\uparrow_d,0,2_1}\) and \(\ket{\uparrow,2,0_1}\). The overlaps and denominators for both states are \(t^*/\sqrt 2\) and \(-3J^*/4\) respectively. We now focus henceforth on the state \(\ket{\uparrow_d,0,2_1}\) because the contribution from the other will be identical. Applying the perturbation on this state gives
+\begin{equation}\begin{aligned}
+	V\ket{\uparrow_d,0,2_1} = -t^* \left(\ket{\uparrow_d,\uparrow,\downarrow_1} - \ket{\uparrow_d,\downarrow,\uparrow_1}\right)~.
+\end{aligned}\end{equation}
+These gives two choices for \(k_3\): the \(S^z=1\) triplet state for \(d+0\) \(\ket{\uparrow_d,\uparrow,\downarrow_1}\), and the \(S^z=0\) triplet state \(\Psi_{1,0,2,\uparrow}\). While the denominators are \(-J^*\) for both the states, the overlaps are \(-t^*\) and \(t^*/\sqrt 2\) respectively. 
+
+Following the first state and applying \(V\) on it, we get
+\begin{equation}\begin{aligned}
+	V\ket{\uparrow_d,\uparrow,\downarrow_1} = -t^* \left(\ket{\uparrow,0,2_1} + \ket{\uparrow, 2, 0_1}\right)~.
+\end{aligned}\end{equation}
+The final set of excited states, \(k_4\), therefore work out to be \(\ket{\uparrow,0,2_1}\) and \(\ket{\uparrow, 2, 0_1}\), giving denominators \(-3J^*/4\) and overlaps \(-t^*\). The final application of \(V\) on either of these states gives \(-t^*\left(\ket{\uparrow_d,\uparrow,\downarrow_1} - \ket{\uparrow_d,\downarrow,\uparrow_1}\right)\), and the final overlap with the ground state is \(t^*/\sqrt 2\). The total contribution from the excitation branch \(\Psi_{0,0,2,\uparrow} \to \ket{\uparrow_d,0,2_1} \to \ket{\uparrow_d,\uparrow,\downarrow_1} \to \ldots\)~ therefore comes out to be
+\begin{equation}\begin{aligned}
+	S_1 = 2 (t^*/\sqrt 2) (-t^*)^2 (t^*/\sqrt 2) / ((-3J^*/4)^2 (-J^*)) = -\frac{16{t^*}^4}{9{J^*}^3}~.
 \end{aligned}\end{equation}
 
-\subsection*{Effective description at low energies}
-\subsubsection*{Appearance of bands and band gaps}
-As the URG proceeds, the quantum fluctuations between the momentum states are resolved, leading to a simpler theory for the IR. We focus on the final two states \(\ket{Q_0 + \Phi/2\pi}, \ket{Q_1 + \Phi/2\pi}\), for \(\Phi=0\) (Brillouin zone edge). The Hamiltonian for their dynamics, just prior to the decoupling of \(Q_j\), is
+We now focus on the other excitation branch, \(\Psi_{0,0,2,\uparrow} \to \ket{\uparrow_d,0,2_1} \to \Psi_{1,0,2,\uparrow} \to \ldots\) Applying \(V\) on this excited state gives
 \begin{equation}\begin{aligned}
-	H_{01}^* = \varepsilon^*(Q_0)\ket{Q_0}\bra{Q_0} + \varepsilon^{*}(Q_1)\ket{Q_1}\bra{Q_1} + \left(\mathcal{U}_{01}^{*}\ket{Q_1}\bra{Q_0} + \text{h.c.}\right)\label{fixed_point_two}
+	V\Psi_{1,0,2,\uparrow} = \frac{t^*}{\sqrt 2}\left(\ket{\uparrow_d,0,2_1} + \ket{\uparrow_d,2,0_1}\right)~.
 \end{aligned}\end{equation}
-Since both the states are at the edge of the band, we can assume \(\varepsilon^{*}(Q_0) \simeq \varepsilon^{*}(Q_1)\), in which case the problem becomes that of a symmetric double well with tunnelling. The eigenstates are \(\ket{Q_0} \pm \ket{Q_1}\), with energies \(\varepsilon^{*}(Q_0) \pm |\mathcal{U}_{01}^{*}|\). We can substitute this estimate of the energy eigenvalues into the RG equations in the form of the quantum fluctuation scale \(\omega\). At the last decoupling, the shifts in the kinetic energy are therefore
+This gives the same \(k_3\) as the contribution from the other branch, but with a reduced overlap \(t^*/\sqrt 2\) instead of \(t^*\). Since we have already carried out the previous calculation, we can directly write down the result:
 \begin{equation}\begin{aligned}
-	\Delta \varepsilon^{*}(Q_i,\omega^\pm) \simeq \frac{|\mathcal{U}^{*}_{01}|^2}{\varepsilon^{*}(Q_0) \pm |\mathcal{U}_{01}^{*}| - \varepsilon(Q_0)} = \pm |\mathcal{U}^{*}_{01}| = \pm |\mathcal{U}^{*}(G)|~,
+S_2 = S_1/2 = -\frac{8{t^*}^4}{9{J^*}^3}~.
 \end{aligned}\end{equation}
-where we used \(\mathcal{U}_{01} = \mathcal{U}\left(Q_1 - Q_0\right) = \mathcal{U}(G)\).
-The difference between the two shifts gives the energy difference between the two lowest states of the POC. In this way, the above RG equation shows the emergence of the single-particle band gap and the formation of the band insulator (if the chemical potential is placed within the gap). If we now reintroduce the flux degree of freedom, the lowest energy eigenstates of all the POCs can be combined to form a band of closely spaced energy levels \(\left\{\varepsilon^{*}(Q_0 + \Phi_j/2\pi)\right\}, \Phi=k_{0,j}a \) (see Fig.\ref{fig:URGSpectrum-pdf}). These levels are indexed by \(k_{0,j}\) with \(j\) ranging through the first Brillouin zone; \(k_{0,j}\) are the crystal momenta of the system.
+The factor of \(1/2\) arises because the second and third overlaps are suppressed by \(1/\sqrt 2\) compared to the first branch \(S_1\). Combining \(S_1\) and \(S_2\), the total contribution to the first term in the fourth order expression arising from the branch \(\Psi_{0,0,2,\uparrow} \to \ket{\uparrow_d,0,2_1} \to \ldots\) is
+\begin{equation}\begin{aligned}
+-\frac{8{t^*}^4}{3{J^*}^3}~.
+\end{aligned}\end{equation}
+By particle-hole symmetry, the contribution from the other branch \(\Psi_{0,0,2,\uparrow} \to \ket{\uparrow_d,2,0_1} \to \ldots\) is identical. Together, the total fourth order renormalisation from the first term is
+\begin{equation}\begin{aligned}
+-\frac{16{t^*}^4}{3{J^*}^3}~.
+\end{aligned}\end{equation}
+We now compute the second term in the fourth order expression. Again, the components have already been calculated during the second order calculation, so we just plug them in:
+\begin{equation}\begin{aligned}
+	- \frac{-4{t^*}^2}{3J^*} \times 2\frac{{t^*}^2/2}{(-3J^*/4)^2} = \frac{64{t^*}^4}{27{J^*}^3}~.
+\end{aligned}\end{equation}
+Adding the two parts, we get for the total fourth order shift:
+\begin{equation}\begin{aligned}
+\Delta E^{(4)}_{0,0,2,\uparrow} = -\frac{80{t^*}^4}{27{J^*}^3}
+\end{aligned}\end{equation}
 
-The second band of states is formed similarly by considering the first excited of the POCs:\(\left\{\varepsilon^{*}(Q_1 + \Phi_j/2\pi)\right\}, \Phi=k_{0,j}a\). The gap between the first and second band is set by the energy difference between the ground state and first excited state of the POC at \(\Phi=0\). This difference, and hence the gap, is equal to \(2|\mathcal{U}_{01}^{*}|\).
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.6\textwidth]{URGSpectrum.pdf}
-	\caption{Spectral flow transformations on the POC by tuning the flux $\Phi$ generates the full band of delocalised single-particle electronic states whose crystal momenta correpond to 
-$\hbar\Phi/a$.}
-	\label{fig:URGSpectrum-pdf}
-\end{figure}
-
-\subsubsection*{Dispersion relation of the lowest band}\label{disper}
-In order to derive the dispersion for the lowest band, we note that the final fixed point Hamiltonian (obtained upon decoupling all higher momentum states) is described by the single momentum state \(\ket{Q_0}\). In terms of real space hopping, this means that all short wavelength processes have been removed, and the only process that remains is the longest hopping, that from \(0\) to \(2\pi\). The fixed point Hamiltonian can be written in terms of this process:
+Using particle-hole and spin rotation symmetries, we can now write down the fourth order shifts for all four states in the low-energy manifold:
 \begin{equation}\begin{aligned}
-	\varepsilon^{*}(Q_0) \ket{Q_0}\bra{Q_0} = \frac{1}{2}\varepsilon^{*}(2\pi)\left( \ket{\theta=0} +  \ket{\theta=2\pi}\right) \left( \bra{\theta=0} +  \bra{\theta=2\pi}\right) = \frac{1}{2}\varepsilon^{*}(2\pi)\left( \hat n(0) + \hat n(2\pi) \right) \\
-	+ \frac{1}{2}\varepsilon^{*}(2\pi)\left(c^\dagger(0)c(2\pi) + \text{h.c.}\right) 
+	\Delta E^{(4)}_{0,0,2,0} &= \Delta E^{(4)}_{0,0,2,2} = \frac{64{t^*}^4}{27{J^*}^3}\\
+	\Delta E^{(4)}_{0,0,2,\uparrow} &= \Delta E^{(4)}_{0,0,2,\downarrow} = -\frac{80{t^*}^4}{27{J^*}^3}~.
 \end{aligned}\end{equation}
-We now recall that we had mapped the spatial point \(x=0\left(x=a\right)\) to the angular point \(\theta=0 \left(\theta=2\pi\right)\) point. We now transform back to spatial coordinates to get
+We can already see that the singly-occupied states experience a lowering of energy due to virtual excitations of the singlet state, while the doubly-occupied state has its energy raised. This effectively means if an electron is already present on the first site, a second incoming electron experiences a repulsion due to it. Replacing each state with the appropriate operator, we can convert this intuition into an effective Hamiltonian for the excitations:
 \begin{equation}\begin{aligned}
-\frac{1}{2}\varepsilon^{*}(2\pi)\left( \hat n(0) + \hat n(a) \right) + \frac{1}{2}\varepsilon^{*}(a)\left(c^\dagger(0)c(a) + \text{h.c.}\right)~.
+	\Delta H^{(4)} &= \frac{16{t^*}^4}{27{J^*}^3}\ket{\Psi_{0,0,2}}\bra{\Psi_{0,0,2}}\left[4(1-n_{1,\uparrow})(1-n_{1,\downarrow}) + 4n_{1,\uparrow})n_{1,\downarrow} -5 n_{1,\uparrow}(1 - n_{1,\downarrow})-5n_{1,\downarrow}(1 - n_{1,\uparrow})\right]\\
+				   &= \frac{16{t^*}^4}{27{J^*}^3}\ket{\Psi_{0,0,2}}\bra{\Psi_{0,0,2}}\left[-u \sum_\sigma n_{1\sigma} + u n_{1 \uparrow}n_{1 \downarrow}\right]~,
 \end{aligned}\end{equation}
-This is computed for a specific value \(\Phi=0\) for the flux (or the crystal momentum). The POC corresponding to a particular flux is built from the states within a particular well. Changing the flux is then equivalent to studying the POC corresponding to the states within a different well. What this means is that tuning the flux by one interval amounts to translating the fixed point Hamiltonian by one period \(a\) of the potential. Adding the contributions from all the values of the flux leads to the following tight-binding Hamiltonian:
-\begin{equation}\begin{aligned}
-H_{TB}=	\varepsilon^{*}(2\pi)\sum_{j=0}^{N_\text{well}-1}\hat n(ja) + \frac{1}{2}\varepsilon^{*}(a)\sum_{j=0}^{N_\text{well}-1}\left(c^\dagger(ja)c((j+1)a) + \text{h.c.}\right)~,
-\end{aligned}\label{TB}\end{equation}
-where the first term corresponds to a constant chemical potential applied to the tight-binding metal in one dimension with a single-particle dispersion $\varepsilon (k) = -\varepsilon^{*}(a) \cos(ka)$ where $k$ corresponds to the set of crystal momenta $k\in\left[-\frac{\pi}{a},\frac{\pi}{a}\right]$. The exercise, therefore, shows the emergence of nearest-neighbour hopping in the lowest band by starting from a more microscopic model of a particle in a periodic potential.
+where \(u = 9\). This is the local Fermi liquid Hamiltonian for excitations above the Kondo screened ground state; the repulsive \(n_\uparrow n_\downarrow\) term ensures that the excitations are electronic in nature.
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Comparison of renormalisation group approaches based on canonical transformations}
 We have considered three canonical transformations in this section: the Poor Man's scaling (PMS), the Schrieffer-Wolff transformation (SWT) and the continuous unitary transformation renormalization group (CUT-RG). PMS and SWT are more or less identical; they differ in the context in which they are used. PMS is used when there is an entire spectrum of energies in the model, ranging from a low energy limit to a high energy; it is then employed to decouple the highest energy modes in an iterative fashion. SWT is used when the Hamiltonian can be split into one high and one low energy part, and we need to decouple these two modes. It is clear when seen from this perspective that SWT is like a one-shot PMS; it decouples the UV from the IR in one step, compared to the iterative approach of PMS. However, as has been shown in the previous subsections, both PMS and SWT can be formalized in an identical fashion, so that one can be switched for the other in both contexts.
