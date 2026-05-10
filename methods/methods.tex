@@ -642,21 +642,54 @@ At first sight, one might think that we must evaluate lots of traces to obtain t
 \section{Example: Unitary RG analysis of the Kondo model}
 We now describe the implementation of the unitary RG method in a simple paradigmatic model, the single-channel Kondo model. It describes the scattering of itinerant non-interacting electrons off a magnetic impurity \({\bf S}_d\), and is defined by the Hamiltonian
 \begin{equation}\begin{aligned}
-	H_K = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k_1, k_2} c^\dagger_{k_1,\alpha}c_{k_2,\beta}~.
+	H_K = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J {\bf S}_d \cdot \frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k_1, k_2} c^\dagger_{k_1,\alpha}c_{k_2,\beta}~.
 \end{aligned}\end{equation}
+Note that the Kondo term is effectively of the form \({\bf S}_1 \cdot {\bf S}_2\) with the local spin density of the conduction bath making up the second spin:
+\begin{equation}\begin{aligned}
+	\frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k_1, k_2} c^\dagger_{k_1,\alpha}c_{k_2,\beta} = \frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta} c^\dagger_{0,\alpha}c_{0,\beta} = {\bf s}_0~.
+\end{aligned}\end{equation}
+As a result, the Kondo term can be written in the form
+\begin{equation}\begin{aligned}
+S_d^z s_0^z + \frac{1}{2}S_d^+ s_0^- + \frac{1}{2}S_d^- s_0^+~.
+\end{aligned}\end{equation}
+We will make use of this form.
+
 Because of spin-flip scattering processes, the problem is manybody in nature. In order to obtain the low-energy physics, we will progressively integrate out high-energy modes in the conduction bath and approach the low-energy degrees of freedom. Such an approach is needed because the high and low-energy states interact with each other through the impurity spin and cannot be trivially removed from the problem. The way this works is that the process of integrating out high-energy states generates additional scattering processes within the low-energy states; if these processes already exist in the Hamiltonian, the new contributions {\it renormalise} the existing couplings, but if the processes don't exist, then the Hamiltonian generates new terms as low energies are approached.
 
 Consider an arbitrary \(j^\text{th}\) step of the process where we wish to integrate out the conduction bath states within a narrow shell about the energies \(\pm E_j\) and retain only the states at \(|E| < |E_j|\). We designate the states on this shell by the momentum index \(q\), and the states below it by indices \(k_1 \) and \(k_2\). We need to first separate the Hamiltonian into diagonal and off-diagonal terms from the perspective of the shell being integrated out:
 \begin{equation}\begin{aligned}
-	H_D &= \sum_{q,\sigma} \epsilon_q n_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
-	H_X &= J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
+	H_D &= \sum_{q,\sigma} \epsilon_q n_{q,\sigma} + J {\bf S}_d^z \frac{1}{2}\sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
+	H_X &= J {\bf S}_d \cdot \frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
 \end{aligned}\end{equation}
 In order to make the particle-hole symmetry in the kinetic energy term manifest, we replace the number operators with pseudospin operators \(\tau = n - 1/2\) and drop the constant term:
 \begin{equation}\begin{aligned}
 	H_D &= E_j\sum_{q,\sigma} \tau_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
 	H_X &= J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
 \end{aligned}\end{equation}
-This ensures that particle and hole excitations both cost the same energy. We now describe how to obtain the renormalisation in the Hamiltonian arising from unitarily decoupling the states on the shell. 
+This ensures that particle and hole excitations both cost the same energy. We now describe how to obtain the renormalisation in the Hamiltonian arising from unitarily decoupling the states on the shell. As mentioned earlier, this happens because the process of integrating out the states \(q\) generates interactions between the other states \(\left\{k\right\}\) and this modifies the Hamiltonian couplings.
+
+To keep things brief, we focus on obtaining the renormalisation of the following spin-flip term in the Kondo Hamiltonian:
+\begin{equation}\begin{aligned}
+	\frac{1}{2}J S_d^+\sum_{k_1,k_2}c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}
+\end{aligned}\end{equation}
+For that, we need to figure out which combinations of off-diagonal terms in \(H_X\) can result in such terms, when the \(q-\)states are integrated out. One possibility is
+\begin{equation}\begin{aligned}
+	\frac{1}{4}\sum_{q, k_1, k_2} J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} \frac{1}{\omega - H_D} J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow}~.
+\end{aligned}\end{equation}
+In order evaluate \(H_D\) in the denominator, we note that the hole excitation of \(q \uparrow\) at the right (i) indicates that \(\epsilon_q\) is positive, and the configuration \(n_{q, \uparrow} = 0\) in the intermediate state means that \(\epsilon_q \tau_{q, \uparrow}\) works out to be \(|E_j|/2\), and (ii) the impurity and bath spins are antiparallel in the intermediate state because of the opposite spins of their excitations, and so the \(J-\)term in the denominator evaluates to \(J(1/2)(-1/2) = -J/4\). Substituting these in the expression (and noting the minus sign in front of \(H_D\)) gives
+\begin{equation}\begin{aligned}
+	\frac{1}{4}J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} \frac{1}{\omega - |E_j|/2 + J/4} J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} = -\frac{J^2 / 4}{\omega - |E_j|/2 + J/4} S_d^z c^\dagger_{k_2, \downarrow} c_{k_1, \uparrow} n_{q, \uparrow}~.
+\end{aligned}\end{equation}
+In order to truly integrate out the mode \(q\), we set \(n_{q,\uparrow}=1\), guided by the fact that the mode was initially occupied. 
+
+Additional processes can be constructed by allowing the initial excitation to be of the particle kind:
+\begin{equation}\begin{aligned}
+	\sum_{q, k_1, k_2} J S_d^z c^\dagger_{k_1, \uparrow} c_{q, \uparrow} \frac{1}{\omega - H_D} J S_d^+ c^\dagger_{q,\downarrow} c_{q, \uparrow}~.
+\end{aligned}\end{equation}
+
+
+
+
 
 
 
