@@ -640,7 +640,7 @@ At first sight, one might think that we must evaluate lots of traces to obtain t
 % where the first term corresponds to a constant chemical potential applied to the tight-binding metal in one dimension with a single-particle dispersion $\varepsilon (k) = -\varepsilon^{*}(a) \cos(ka)$ where $k$ corresponds to the set of crystal momenta $k\in\left[-\frac{\pi}{a},\frac{\pi}{a}\right]$. The exercise, therefore, shows the emergence of nearest-neighbour hopping in the lowest band by starting from a more microscopic model of a particle in a periodic potential.
 
 \section{Example: Unitary RG analysis of the Kondo model}
-We now describe the implementation of the unitary RG method in a simple paradigmatic model, the single-channel Kondo model. It describes the scattering of itinerant non-interacting electrons off a magnetic impurity \({\bf S}_d\), and is defined by the Hamiltonian
+We now describe the implementation of the unitary RG method in a simple paradigmatic model, the single-channel Kondo model~\cite{anirban_kondo}. It describes the scattering of itinerant non-interacting electrons off a magnetic impurity \({\bf S}_d\)~\cite{kondo1964resistance,anderson1970poor,wilson1975}, and is defined by the Hamiltonian
 \begin{equation}\begin{aligned}
 	H_K = \sum_{k,\sigma}\epsilon_k n_{k,\sigma} + J {\bf S}_d \cdot \frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k_1, k_2} c^\dagger_{k_1,\alpha}c_{k_2,\beta}~.
 \end{aligned}\end{equation}
@@ -656,43 +656,76 @@ We will make use of this form.
 
 Because of spin-flip scattering processes, the problem is manybody in nature. In order to obtain the low-energy physics, we will progressively integrate out high-energy modes in the conduction bath and approach the low-energy degrees of freedom. Such an approach is needed because the high and low-energy states interact with each other through the impurity spin and cannot be trivially removed from the problem. The way this works is that the process of integrating out high-energy states generates additional scattering processes within the low-energy states; if these processes already exist in the Hamiltonian, the new contributions {\it renormalise} the existing couplings, but if the processes don't exist, then the Hamiltonian generates new terms as low energies are approached.
 
-Consider an arbitrary \(j^\text{th}\) step of the process where we wish to integrate out the conduction bath states within a narrow shell about the energies \(\pm E_j\) and retain only the states at \(|E| < |E_j|\). We designate the states on this shell by the momentum index \(q\), and the states below it by indices \(k_1 \) and \(k_2\). We need to first separate the Hamiltonian into diagonal and off-diagonal terms from the perspective of the shell being integrated out:
+Consider an arbitrary \(j^\text{th}\) step of the process where we wish to integrate out the conduction bath states within a narrow shell about the energies \(\pm \epsilon_j\) and retain only the states at \(|\epsilon| < |\epsilon_j|\). We designate the states on this shell by the momentum index \(q\), and the states below it by indices \(k_1 \) and \(k_2\). We need to first separate the Hamiltonian into diagonal and off-diagonal terms from the perspective of the shell being integrated out:
 \begin{equation}\begin{aligned}
 	H_D &= \sum_{q,\sigma} \epsilon_q n_{q,\sigma} + J {\bf S}_d^z \frac{1}{2}\sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
 	H_X &= J {\bf S}_d \cdot \frac{1}{2}\sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
 \end{aligned}\end{equation}
 In order to make the particle-hole symmetry in the kinetic energy term manifest, we replace the number operators with pseudospin operators \(\tau = n - 1/2\) and drop the constant term:
 \begin{equation}\begin{aligned}
-	H_D &= E_j\sum_{q,\sigma} \tau_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
+	H_D &= \sum_{q,\sigma} \epsilon_q \tau_{q,\sigma} + J {\bf S}_d^z \sum_q \left(n_{q,\uparrow} - n_{q,\downarrow}\right)~,\\
 	H_X &= J {\bf S}_d \cdot \sum_{\alpha,\beta}{\bf \sigma}_{\alpha,\beta}\sum_{k, q} \left(c^\dagger_{k,\alpha}c_{q,\beta} + c^\dagger_{q,\alpha}c_{k,\beta}\right)~.
 \end{aligned}\end{equation}
 This ensures that particle and hole excitations both cost the same energy. We now describe how to obtain the renormalisation in the Hamiltonian arising from unitarily decoupling the states on the shell. As mentioned earlier, this happens because the process of integrating out the states \(q\) generates interactions between the other states \(\left\{k\right\}\) and this modifies the Hamiltonian couplings.
 
 To keep things brief, we focus on obtaining the renormalisation of the following spin-flip term in the Kondo Hamiltonian:
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{+-term}
 	\frac{1}{2}J S_d^+\sum_{k_1,k_2}c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}
 \end{aligned}\end{equation}
 For that, we need to figure out which combinations of off-diagonal terms in \(H_X\) can result in such terms, when the \(q-\)states are integrated out. One possibility is
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{proc1}
 	\frac{1}{4}\sum_{q, k_1, k_2} J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} \frac{1}{\omega - H_D} J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow}~.
 \end{aligned}\end{equation}
-In order evaluate \(H_D\) in the denominator, we note that the hole excitation of \(q \uparrow\) at the right (i) indicates that \(\epsilon_q\) is positive, and the configuration \(n_{q, \uparrow} = 0\) in the intermediate state means that \(\epsilon_q \tau_{q, \uparrow}\) works out to be \(|E_j|/2\), and (ii) the impurity and bath spins are antiparallel in the intermediate state because of the opposite spins of their excitations, and so the \(J-\)term in the denominator evaluates to \(J(1/2)(-1/2) = -J/4\). Substituting these in the expression (and noting the minus sign in front of \(H_D\)) gives
+The factor of \(1/4\) in front appears due to the two factors of \(1/2\) coming from the \(zz\) and \(+-\) terms in the Kondo terms in \(H_X\).
+
+In order evaluate \(H_D\) in the denominator, we note that the hole excitation of \(q \uparrow\) at the right (i) indicates that \(\epsilon_q\) is positive, and the configuration \(n_{q, \uparrow} = 0\) in the intermediate state means that \(\epsilon_q \tau_{q, \uparrow}\) works out to be \(|\epsilon_j|/2\), and (ii) the impurity and bath spins are antiparallel in the intermediate state because of the opposite spins of their excitations, and so the \(J-\)term in the denominator evaluates to \(J(1/2)(-1/2) = -J/4\). Substituting these in the expression (and noting the minus sign in front of \(H_D\)) gives
 \begin{equation}\begin{aligned}
-	\frac{1}{4}J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} \frac{1}{\omega - |E_j|/2 + J/4} J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} = -\frac{J^2 / 4}{\omega - |E_j|/2 + J/4} S_d^z c^\dagger_{k_2, \downarrow} c_{k_1, \uparrow} n_{q, \uparrow}~.
+	\frac{1}{4}\sum_{q, k_1, k_2}J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} \frac{1}{\omega - |\epsilon_j|/2 + J/4} J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} = -\frac{J^2 / 4}{\omega - |\epsilon_j|/2 + J/4} \sum_{q, k_1, k_2}\left(\frac{1}{2}S_d^+\right) c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow} n_{q, \uparrow}~,
 \end{aligned}\end{equation}
-In order to truly integrate out the mode \(q\), we set \(n_{q,\uparrow}=1\), guided by the fact that the mode was initially occupied. 
+where we used the identity \(S_d^z S_d^+ = \frac{1}{2}S_d^+\).
 
-Additional processes can be constructed by allowing the initial excitation to be of the particle kind:
+In order to truly integrate out the mode \(q\), we set \(n_{q,\uparrow}=1\), guided by the fact that the mode was initially occupied. The sum over \(q\) then simply evaluates to the number of momentum states available at the energy \(\epsilon_j\), which is the density of states \(\rho(\epsilon_j)\):
 \begin{equation}\begin{aligned}
-	\sum_{q, k_1, k_2} J S_d^z c^\dagger_{k_1, \uparrow} c_{q, \uparrow} \frac{1}{\omega - H_D} J S_d^+ c^\dagger_{q,\downarrow} c_{q, \uparrow}~.
+	-\frac{1}{2}\frac{\rho(\epsilon_j)J^2 / 4}{\omega - |\epsilon_j|/2 + J/4} \sum_{k_1, k_2}S_d^+ c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}~.
 \end{aligned}\end{equation}
 
+A partner process can be constructed by exchanging the roles of \(q\) and \(k\):
+\begin{equation}\begin{aligned}\label{proc2}
+	-\frac{1}{4}\sum_{q, k_1, k_2} J S_d^z c^\dagger_{k_1, \downarrow} c_{q, \downarrow} \frac{1}{\omega - H_D} J S_d^+ c^\dagger_{q,\downarrow} c_{k_2, \uparrow}~,
+\end{aligned}\end{equation}
+where the minus sign in front arises from the fact that the term before the Greens function is the spin down component of \(s_0^z\). In this case, the intermediate state has a particle excitation of the \(q-\) state, which means \(\tau_{q.\downarrow} = \frac{1}{2}\), but the energy \(\epsilon_q\) of the state must also flip sign because the state was initially occupied, so the net contribution again works out to \(|E_j|/2\). The \(J-\)term is also unchanged from the previous process, because the spin orientations are again antiferromagnetic. Together, we get
+\begin{equation}\begin{aligned}
+	\sum_{q, k_1, k_2}J S_d^z c^\dagger_{k_1, \downarrow} c_{q, \downarrow} \frac{-J^2/4}{\omega - |\epsilon_j|/2 + J/4} S_d^+ c^\dagger_{q,\downarrow} c_{k_2, \uparrow} = -\frac{1}{2}\frac{\rho(\epsilon_j)J^2 / 4}{\omega - |\epsilon_j|/2 + J/4} \sum_{k_1, k_2}S_d^+ c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}~.
+\end{aligned}\end{equation}
 
+Additional contributions are obtained by considering the time-reversed forms of these processes. From the first process above (eq.~\ref{proc1}), we have:
+\begin{equation}\begin{aligned}
+	\frac{1}{4}\sum_{q, k_1, k_2}J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} \frac{1}{\omega - H_D} J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow}~.
+\end{aligned}\end{equation}
+In this case, the intermediate state has a particle excitation of the \(q-\) state, which means \(\tau_{q.\uparrow} = \frac{1}{2}\), but the energy \(\epsilon_q\) of the state must also flip sign because the state was initially occupied, so the net contribution again works out to \(|\epsilon_j|/2\). The \(J-\)term is also of the same value, because the spin orientations are again antiferromagnetic. Together, we get
+\begin{equation}\begin{aligned}
+	\frac{1}{4}J \sum_{q, k_1, k_2}S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} \frac{1}{\omega - |\epsilon_j|/2 + J/4} J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow} = \frac{-\frac{1}{2} \rho(\epsilon_j)J^2 / 4}{\omega - |\epsilon_j|/2 + J/4} \sum_{k_1, k_2}S_d^+ c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}~.
+\end{aligned}\end{equation}
+In this case, we used the identity \(S_d^+ S_d^z = -\frac{1}{2}S_d^+\). 
 
+We finally consider the time-reversed partner of eq.~\ref{proc2}:
+\begin{equation}\begin{aligned}
+	\frac{1}{4}\sum_{q, k_1, k_2}J S_d^+ c^\dagger_{k_1,\downarrow} c_{q, \uparrow} \frac{1}{\omega - H_D} J S_d^z c^\dagger_{q, \uparrow} c_{k_2, \uparrow}~.
+\end{aligned}\end{equation}
+Evaluating this similarly gives
+\begin{equation}\begin{aligned}
+\frac{-\frac{1}{2} \rho(\epsilon_j)J^2 / 4}{\omega - |\epsilon_j|/2 + J/4} \sum_{k_1, k_2}S_d^+ c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}
+\end{aligned}\end{equation}
 
-
-
-
+Combining all four contributions, the total renormalisation to the \(S_d^+ s_0^-\) term comes out to be
+\begin{equation}\begin{aligned}
+-\rho(\epsilon_j)J^2\frac{1}{\omega - |\epsilon_j|/2 + J/4} \frac{1}{2}\sum_{k_1, k_2}S_d^+ c^\dagger_{k_1, \downarrow} c_{k_2, \uparrow}~.
+\end{aligned}\end{equation}
+By comparing with the term in the original Hamiltonian (eq.~\ref{+-term}), we can read off the renormalisation in the coupling \(J\) for the \(j^\text{th}\) step:
+\begin{equation}\begin{aligned}
+	\Delta J^{(j)} = -\frac{\rho(\epsilon_j)J^2}{\omega - |\epsilon_j|/2 + J/4}~.
+\end{aligned}\end{equation}
+This is the URG equation for the Kondo coupling \(J\). It differs from the perturbative "Poor Man's scaling" equations~\cite{anderson1970poor} through the appearance of the Kondo coupling in the denominator. Expanding the URG equation in powers of \(J/\epsilon_j\) recovers the perturbative form.
 
 \section{Renormalised perturbation theory about fixed points}
 In this section, we will describe the technique of carrying out renormalised theory about a gapless fixed point theory towards obtaining a low-energy effective Hamiltonian for the excitations above the ground state. This is useful for characterising metallic phases, and detecting whether the metal is, say, a Landau Fermi liquid or a non-Fermi liquid.
