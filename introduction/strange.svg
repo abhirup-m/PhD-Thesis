@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="108.50108mm"
+   height="111.54411mm"
+   viewBox="0 0 108.50108 111.54411"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   sodipodi:docname="strange.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.70110129"
+     inkscape:cx="360.14768"
+     inkscape:cy="335.90011"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1" />
+    <rect
+       x="165.45398"
+       y="740.26392"
+       width="376.55045"
+       height="212.5228"
+       id="rect2" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect1-9"
+       is_visible="true"
+       lpeversion="1" />
+    <rect
+       x="165.45398"
+       y="740.26392"
+       width="376.55045"
+       height="212.5228"
+       id="rect2-1" />
+    <rect
+       x="165.45398"
+       y="740.26392"
+       width="376.55045"
+       height="212.5228"
+       id="rect2-3" />
+    <rect
+       x="165.45398"
+       y="740.26392"
+       width="376.55045"
+       height="212.5228"
+       id="rect2-3-3" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-18.431578,-46.593238)">
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#d07050;stroke-width:2;stroke-dasharray:4, 2;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 31.700126,67.551461 H 148.68869"
+       id="path3"
+       inkscape:path-effect="#path-effect3"
+       inkscape:original-d="m 31.700126,67.551461 c 38.744598,0 116.988564,0 116.988564,0"
+       transform="matrix(0.8095238,0,0,1,5.8476442,0)" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#404040;stroke-width:2;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 31.700126,53.588308 V 147.93392"
+       id="path1"
+       inkscape:path-effect="#path-effect1"
+       inkscape:original-d="m 31.700126,53.588308 c 0,31.700128 0,94.345612 0,94.345612" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#404040;stroke-width:2;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 31.700126,53.588308 V 147.93392"
+       id="path1-8"
+       inkscape:path-effect="#path-effect1-9"
+       inkscape:original-d="m 31.700126,53.588308 c 0,31.700128 0,94.345612 0,94.345612"
+       transform="matrix(0,1,-1.02,0,181.59273,115.23379)" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#3070a0;stroke-width:2.47123;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+       d="M 31.700126,138.49936 93.77954,76.419947"
+       id="path2"
+       inkscape:path-effect="#path-effect2"
+       inkscape:original-d="M 31.700126,138.49936 C 52.393265,117.80623 93.77954,76.419947 93.77954,76.419947"
+       transform="matrix(1.2139706,0,0,1.2139706,3.9351144,-36.956357)" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-14.73454,-47.072694)"
+       id="text2"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:34.6667px;line-height:1.1;font-family:'Stack Sans Headline';-inkscape-font-specification:'Stack Sans Headline, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;letter-spacing:0.1px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);opacity:1;fill:#303030;fill-opacity:1;stroke:none;stroke-width:7.55906;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"><tspan
+         x="251.81103"
+         y="768.6637"
+         id="tspan3">temperature</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-22.999463,-149.90319)"
+       id="text2-9"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:34.6667px;line-height:1.1;font-family:'Stack Sans Headline';-inkscape-font-specification:'Stack Sans Headline, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;letter-spacing:0.1px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-3);display:inline;fill:#303030;fill-opacity:1;stroke:none;stroke-width:7.55906;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"><tspan
+         x="256.95824"
+         y="768.6637"
+         id="tspan4">Mott-Ioffe-
+</tspan><tspan
+         x="250.61505"
+         y="806.79706"
+         id="tspan5">Regel bound</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,5.284899,-98.814718)"
+       id="text2-9-5"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:34.6667px;line-height:1.1;font-family:'Stack Sans Headline';-inkscape-font-specification:'Stack Sans Headline, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;letter-spacing:0.1px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-3-3);display:inline;fill:#303030;fill-opacity:1;stroke:none;stroke-width:7.55906;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"><tspan
+         x="285.03227"
+         y="768.6637"
+         id="tspan6">linear-T
+</tspan><tspan
+         x="274.3444"
+         y="806.79706"
+         id="tspan7">resistivity</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0,-0.26458333,0.26458333,0,-178.06485,195.73443)"
+       id="text2-3"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:34.6667px;line-height:1.1;font-family:'Stack Sans Headline';-inkscape-font-specification:'Stack Sans Headline, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-decoration-color:#000000;letter-spacing:0.1px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-1);display:inline;fill:#303030;fill-opacity:1;stroke:none;stroke-width:7.55906;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"><tspan
+         x="274.3444"
+         y="768.6637"
+         id="tspan8">resistivity</tspan></text>
+  </g>
+</svg>

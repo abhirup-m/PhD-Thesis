@@ -409,26 +409,13 @@ we have the total renormalisation
 	\text{Inter-layer spin-flip, two UV excitation:}~ G^{K}_{\alpha\alpha}({\bf q}) &= \frac{1}{\omega - \frac{1}{2}\left[\epsilon_\alpha({\bf q}) - \epsilon_\alpha(\bar{\bf q})\right] + \frac{1}{2}K_{\bar\alpha}({\bf q}) + W_\alpha({\bf q})}~.
 \end{aligned}\end{equation}
 
-% \subsection{Simplified limit of \(s-\)wave scattering and \(J_\alpha \ll D, K_\alpha \ll D, J_\perp \ll D\)}
-% We have
-% \begin{equation}\begin{aligned}
-% 	G^J_\alpha = G^K_\alpha = G^{JK} = G_1,~~ G^J_{\alpha\alpha} = G^K_{\alpha\alpha} = G_2\\
-% \end{aligned}\end{equation}
-%
-% \begin{equation}\begin{aligned}\label{betheEquations}
-% 	\frac{\Delta J_\perp}{\Delta D} =& -\frac{1}{2}\int_\text{UV} d{\bf q} \rho({\bf q}) \sum_\alpha \left[(J_\alpha + K_{\bar\alpha})^2 G_1 + G_2(J_f J_d + K_f K_d)\right]\\
-% 	\frac{\Delta J_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[J_\alpha^2 + 4J_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[K_{\bar\alpha}^2 - 4K_{\bar\alpha}W_{\alpha}\right]~,\\
-% 	\frac{\Delta K_\alpha}{\Delta D} =& -\int_{UV} d{\bf q} ~\rho({\bf q}) \left[K_\alpha^2 + 4K_\alpha W_\alpha\right]G_1 + \frac{1}{2}\int_{UV} d{\bf q} ~\rho({\bf q}) G_1\left[J_{\bar\alpha}^2 - 4J_{\bar\alpha}W_{\alpha}\right]~.
-% \end{aligned}\end{equation}
-% In \(\Delta K_\alpha\), if \(K_\alpha\) starts out as vanishingly small, the second term will dominate (\(J \gg K\)), so \(K_\alpha\) will start off ferromagnetic (\(G_1\) is negative). This ferromagnetic \(K_\alpha\) can frustrate \(J_\alpha\) through the second term in \(\Delta J_\alpha\). Moreover, it competes with \(J_\alpha\) in trying to renormalise \(J_\perp\) (in the first term at least).
-
 \section{Analysis for the simplified case of infinite dimensions}
 We first investigate the properties of the impurity model in the limit of infinite dimensions, on a Bethe lattice. This limit suppresses any momentum-space differentiation arising from low-dimensional lattices, and allows the study of real-space local properties.
 
 \begin{figure}[!b]
 	\centering
 	\includegraphics[width=\textwidth]{BL-PD.pdf}
-	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\).}
+	\caption{Fixed-point values for the direct Kondo couplings \(J_\alpha\) and \(J_\perp\). The \(f-\)layer Kondo coupling is highly suppressed by increasing both \(|W_f|\) and \(J_\perp\). The conduction layer coupling \(J_d\) is mildly suppressed by \(J_\perp\). The inter-layer coupling \(J_\perp\) itself grows as its bare value is increased. Going from left to right therefore represents a heavy fermion transition from intra-orbital screening at small \(J_\perp\) to inter-orbital Kondo screening at large \(J_\perp\).}
 	\label{rgPD}
 \end{figure}
 
@@ -443,7 +430,7 @@ In order to characterise the various phases, we compute a set of real-space corr
 	\centering
 	\includegraphics[width=0.49\textwidth]{BL-RC-11-998--0.020000000000000004.pdf}
 	\includegraphics[width=0.49\textwidth]{BL-RC-11-998--0.03.pdf}
-	\caption{}
+	\caption{Characterisation of the transition for small and large \(|W_f|\) in terms of real-space correlation measures. Left: For small \(|W_f|\), the \(f-\)layer is weakly correlated and Kondo screening involves both spin and charge degrees of freedom. Accordingly, we track the transition using the charge compensation factor (blue) and the inter-layer spin correlation (red). The charge compensation is suppressed as \(J_\perp\) is increased and is replaced with the inter-layer correlation, showing the buildup of inter-layer Kondo screening. Right: For large \(|W_f|\), the \(f-\)spins are localised and interact with each other through intra-orbital spin correlation \(\langle S_f \cdot s_f \rangle \). As \(J_\perp\) is increased, these intra-orbital spin correlations are again replaced by inter-orbital spin correlations. In this way, our analysis shows how the inter-orbital correlations replace intra-orbital correlations for both small and large \(|W_f|\).}
 	\label{realCorrBL}
 \end{figure}
 
@@ -454,7 +441,7 @@ For large \(|W_f|\), the \(f-\)layer is sufficiently strongly correlated to form
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=0.6\textwidth]{BL-RCPD-13-2502.pdf}
-	\caption{}
+	\caption{Phase diagram of the infinite dimensional impurity model on the Bethe lattice, derived from real-space correlations. The three colors represent three different correlations, defined through the labels. The left half is mostly dominated by the weakly correlated intra-orbital Kondo screened phase where the one-particle correlation between the \(f-\)electrons is active (blue colorbar). At small \(|W_f|\), this phase transitions into the inter-orbital screened }
 	\label{realCorrPD}
 \end{figure}
 
@@ -464,60 +451,84 @@ These conclusions are crystallised in the phase diagram in Fig.~\ref{realCorrPD}
 	\centering
 	\includegraphics[width=0.49\textwidth]{BL-I2-11-2099-f-d.pdf}
 	\includegraphics[width=0.49\textwidth]{BL-I2-31-499-f0-d0.pdf}
-	\caption{}
+	\caption{Left: Transfer of entanglement during the transition from intra-orbital screened phase to inter-orbital screened phase. For both small (red) and large (blue) \(|W_f|\), the mutual information between the two impurities grows as the inter-orbital screening increases. Right: Close to the transition, we detect an increase in the range of entanglement, through a rise in the value of the mutual information between the zeroth site of the conduction layer and that of the \(f-\)layer. This suggests that the transition is marked by a critical point.}
 	\label{BL-I2}
 \end{figure}
 
 We have also characterised the transition using entanglement measures. Specifically, the mutual information (Fig.~\ref{BL-I2} between the \(f-\) and \(d-\)spins grows during the emergence of the heavy Fermi liquid, as \(J_\perp\) is increased. While this holds for both large and small \(|W_f|\), there's one difference. Upon lowering \(J_\perp\), the \(I_2\) for the case of small \(|W_f|\) vanishes much more rapidly compared to the case of large \(|W_f|\). We believe the former is due to the gapless excitations present within the \(f-\)layer at small \(|W_f|\) that promote strong entanglement within the layer and hence compete with the inter-layer entanglement.
 
 \section{Infinite dimensions: Local spectral function}
-To further investigate the phases, we compute the local spectral functions of the \(f-\) and \(d-\)impurities. For weak \(J_\perp\), the \(d-\)impurity always exhibits a central Kondo resonance, while the \(f-\)layer supports it only for weak \(W_f\). For larger \(J_\perp\), this resonance splits into two bands, in both the layers. These bands correspond to the two hybridised levels formed locally due to the mixing of the \(f-\) and \(d-\)impurities. For weak \(|W_f|\), this is essentially the mixing of the two local Fermi liquids, while for large \(|W_f|\), it arises purely from the LFL of the \(d-\)layer. At half-filling, the splitting of the central resonance into bands leads to a gap at zero frequency, and we get a Kondo insulator.
+To further investigate the phases, we compute the local spectral functions of the \(f-\) and \(d-\)impurities, for large (Fig.~\ref{SF-large}) and small (Fig.~\ref{SF-small}) \(|W_f|\). From our earlier work on the extended Anderson impurity model~\cite{Mukherjee_2023}, we know that the \(f-\)impurity can support a Kondo resonance only for \(|W_f|\) below the critical value, and it displays a Mott gap above it. Our calculations now show how this central resonance hybridises with the resonance of the \(d-\)layer through the inter-orbital Kondo coupling.
+
+\begin{figure}[!htpb]
+	\centering
+	\includegraphics[width=\textwidth]{BL-SF-11-602--0.03.pdf}
+	\caption{Spectral functions of the \(d-\) (left) and \(f-\)impurity (right), for large \(|W_f|\). The \(d-\)impurity shows a splitting of the central resonance because of spin-flip scattering processes with the \(f-\)impurity. The \(f\) spectral function initially has a Mott gap for small \(J_\perp\). At large \(J_\perp\), scattering processes with the \(d-\)layer lead to states at low energies in the form of a pseudogap. Further increasing \(J_\perp\) leads to a Kondo insulator.}
+	\label{SF-large}
+\end{figure}
+
+For large \(|W_f|\) (Fig.~\ref{SF-large}), we find no effect of the inter-orbital hybridisation \(J_\perp\) at small values, because of the hard gap in the spectrum. At larger values of \(J_\perp\), fluctuations of the \(f-\)impurity through the gapless excitations of the \(d-\)layer lead  to some spectral weight near \(\omega=0\). This a pseudogap phase of matter. For larger values, the inter-orbital hybridisation is large enough to open a gap in the spectrum, and we obtain a Kondo insulator. 
+
+For weak \(|W_f|\), both the \(f-\) and \(d-\)impurities exhibit a central Kondo resonance at small \(J_\perp\). For larger \(J_\perp\), this resonance splits into two bands, in both the layers. At half-filling, the lower bands are filled. These bands correspond to the two hybridised levels formed locally due to the mixing of the \(f-\) and \(d-\)impurities. We therefore again get a Kondo insulator. Similar to the large \(|W_f|\) case, the formation of the Kondo insulator again passes through a pseudogap in both the \(d-\) and \(f-\) spectral functions.
 
 Away from half-filling, if the chemical potential lies in one of the bands, the systems becomes a heavy Fermi liquid. The value of \(W_f\) determines the amount of correlation in the heavy Fermi liquid. Larger values of \(|W_f|\) lead to narrow bands for the metal.
 
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=\textwidth]{BL-SF-11-602--0.020000000000000004.pdf}
-	\caption{}
-	% \label{}
-\end{figure}
-\begin{figure}[!htpb]
-	\centering
-	\includegraphics[width=\textwidth]{BL-SF-11-602--0.03.pdf}
-	\caption{}
-	% \label{}
+	\caption{Spectral functions of the \(d-\) (left) and \(f-\)impurity (right), for small \(|W_f|\). The \(d-\)impurity again shows a splitting of the central resonance because of spin-flip scattering processes with the \(f-\)impurity. In this case, the \(f-\)resonance is initially gapless because \(|W_f|\) is below its critical value, and it shows behaviour to the \(d\) impurity. At large \(J_\perp\), both the spectral functions acquire a hybridisation gap in the spectrum and a Kondo insulator emerges.}
+	\label{SF-small}
 \end{figure}
 
-\section{Renormalisation Group Flows of Kondo Couplings: RG Phase Diagram}
+\section{Renormalisation Group Flows For the 2D Lattice-Embedded Impurity Model}
 \begin{figure}[!t]
-	\includegraphics[width=\textwidth]{PD_33.pdf}
+	\includegraphics[width=\textwidth]{PD_33_small.pdf}
 	\caption{RG phase diagrams for various Kondo couplings: \(f-\)layer (left), \(d-\)layer (middle) and inter-layer (right). For each plot, the background color (quantified by the right colorbar) tracks the fixed point value of the coupling as a function of the inter-layer couplings \(J_\perp\) and the \(f-\)layer bath interaction \(|W_f|\). The marker color complements this by tracking whether the coupling is relevant, intermediate-coupling or irrelevant in the RG sense, by taking the values 1, \(1/2\) or 0 respectively.}
 	\label{couplingRG}
 \end{figure}
-We first analyse the model by obtaining unitary RG flows of three kinds of Kondo couplings. Fig.~\ref{couplingRG} shows the fixed point values of the couplings under renormalisation to a low-energy theory. We view these values as a function of the \(f-\)layer bath interaction \(W_f\) and inter-layer Kondo coupling \(J_\perp\). In each panel, the right (left) colorbar quantifies the background (marker) color of the plot. The background displays the fixed point value of each coupling whereas the marker color tracks whether the couplings is relevant (1), intermediate coupling (0.5) or irrelevant (0). 
+We now extend our analysis to capture the more realistic case of two dimensions, on a square lattice. We focus on the renormalisation group flows of the couplings.
 
-The Kondo coupling \(J_d\) (middle panel) of the \(d-\)layer remains relevant for the entirety of the chosen parameter regime. The Kondo coupling \(J_f\) (left panel) of the \(f-\)layer becomes RG-irrelevant for larger values of \(|W_f|\); this leads to an in-plane Mott transition of the kind observed in our earlier work, where the local Fermi liquid excitations of the \(f-\)impurity give way to a pseudogapped non-Fermi liquid Mott metal phase which ultimately destabilises into a local moment phase. The RG flow of \(J_f\) does not appear to be significantly affected by the variation of \(J_\perp\). Concomitant with the irrelevance of \(J_f\) under increasing \(|W_f|\), the inter-plane coupling \(J_\perp\) (right panel) becomes RG-relevant, as seen from the darkening markers as we go to higher \(|W_f|\). 
+Fig.~\ref{couplingRG} shows the fixed point values of the couplings \(J_f\) and \(J_\perp\) under unitary renormalisation group flow. We view these values as a function of the \(f-\)layer bath interaction \(W_f\) and inter-layer Kondo coupling \(J_\perp\). In each panel, the right (left) colorbar quantifies the background (marker) color of the plot. The background displays the fixed point value of each coupling whereas the marker color tracks whether the couplings is relevant (1), intermediate coupling (0.5) or irrelevant (0). 
 
-These simulations motivate an RG-based phase diagram with the following regimes: (i) weak \(J_\perp\), weak \(|W_f|\): decoupled metallic layers, each layer participating in transport independently, (ii) strong \(J_\perp\), strong \(|W_f|\): Kondo insulator regime, where the local moments of the \(f-\)layer hybridise with the itinerant electrons of the \(d-\)layer to form a band insulator with the chemical potential situated in the hybridisation gap, and (iii) weak \(J_\perp\), strong \(|W_f|\): the so-called RKKY regime, where the \(f-\)layer forms local moments which decouple from the \(d-\)layer and are then free to order magnetically, and (iv) strong \(J_\perp\), weak \(|W_f|\): this is similar to the Kondo insulator regime, except here the \(f-\)electrons remain itinerant and it is they who hybridise with the \(d-\)electrons to again form two bands separated by a hybridisation gap.
+The Kondo coupling \(J_f\) (left panel) of the \(f-\)layer becomes RG-irrelevant for larger values of \(|W_f|\); this leads to an in-plane Mott transition of the kind observed in our earlier work, where the local Fermi liquid excitations of the \(f-\)impurity give way to a pseudogapped non-Fermi liquid Mott metal phase which ultimately destabilises into a local moment phase. The RG flow of \(J_f\) does not appear to be significantly affected by the variation of \(J_\perp\). Concomitant with the irrelevance of \(J_f\) under increasing \(|W_f|\), the inter-plane coupling \(J_\perp\) (right panel) becomes RG-relevant, as seen from the darkening markers as we go to higher \(|W_f|\). 
 
-\section{Results at half-filling}
+These simulations motivate an RG-based phase diagram that can be compared with the phase diagram (Fig.~\ref{realCorrPD}) obtained in infinite dimensions in the previous sections: (i) weak \(J_\perp\), weak \(|W_f|\): decoupled metallic layers, each layer participating in transport independently, (ii) strong \(J_\perp\), strong \(|W_f|\): Kondo insulator regime, where the local moments of the \(f-\)layer hybridise with the itinerant electrons of the \(d-\)layer to form a band insulator with the chemical potential situated in the hybridisation gap, (iii) strong \(J_\perp\), weak \(|W_f|\): Kondo insulator regime but where the \(f-\)impurity entangles not only with the \(d-\)impurity but with other electrons in the \(f-\)layer as well, and (iv) weak \(J_\perp\), strong \(|W_f|\): the so-called RKKY regime, where the \(f-\)layer forms local moments which decouple from the \(d-\)layer and are then free to order magnetically.
+
+\section{Lattice spectral functions}
+We now compute real-space and \(k-\)space spectral functions within the lattice model by using our tiling framework. 
+
+Within real-space, we first compute the local spectral functions of the \(f-\) and \(d-\)layers (Fig.~\ref{latticeReal}). As expected, the \(d-\)layer spectral function shows a central metallic peak at \(J_\perp=0\) which opens hybridisation gap at large \(J_\perp\), leading to a Kondo insulator. The \(f-\)spectral function behaves similarly. This clearly shows the transition from an in-plane metal/insualtor (depending on the value of \(|W_f|\)), to an inter-plane hybridised state.
+
+To further understand the nature of the states that are occupied in the Kondo insulator, we obtain local spectral functions in the bonding and antibonding basis (Fig.~\ref{plusminus}): \(c_{i,\sigma,\pm} = c_{i,\sigma,f} \pm c_{i,\sigma,d}\). In the absence of \(J_\perp\) (left plots), both are equal to each other, and show metallic behaviour, indicating that they are both half-filled in the ground state. At large \(J_\perp\), the central resonance of \(A_+\) and \(A_-\) gets shifted to positive and negative frequencies respectively. This clearly shows the formation of the two bands due to the inter-layer hybridisation. In the ground state, only one of them is occupied while the other is empty, and this is what makes it an insulator. Tuning the chemical potential into one of the bands can lead to a heavy Fermi liquid.
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.4\textwidth]{locCorr_33_1299.pdf}
-	\caption{Left: Real-space spin correlations for the auxiliary model. Background colour (right colourbar) represents that between the \(f-\)impurity and its nearest-neighbour sites, while the marker colour (left colourbar) represents that between the \(f-\)impurity and the \(d-\)impurity. While the former shrinks as \(J_\perp\) or \(|W_f|\) is increased, the latter grows. This marks a transfer of entanglement from intra-plane channel into inter-plane channel. Right: }
+	\includegraphics[width=0.8\textwidth]{specFunc_node_d_33_1555.pdf}\\
+	\includegraphics[width=0.8\textwidth]{specFunc_node_f_33_1555.pdf}
+	\caption{Spectral functions \(A_d\) (top) and \(A_f\) (bottom) of the lattice model, for excitations in the \(d-\) and \(f-\)layers respectively. Both show a central Kondo resonance for \(J_\perp=0\) which splits into two bands upon adding a non-zero \(J_\perp\). Increasing \(|W_f|\) to large values gaps out the local Fermi liquid excitations of \(A_f\).}
+	\label{latticeReal}
 \end{figure}
 
 \begin{figure}[!ht]
-	\includegraphics[width=0.49\textwidth]{specFunc_node_+_33_1555.pdf}
-	\includegraphics[width=0.49\textwidth]{specFunc_node_-_33_1555.pdf}
+	\centering
+	\includegraphics[width=0.8\textwidth]{specFunc_node_+_33_1555.pdf}\\
+	\includegraphics[width=0.8\textwidth]{specFunc_node_-_33_1555.pdf}
 		\caption{Spectral functions of the tiled model, for excitations in the bonding (two on the left) and antibonding (two on the right) basis, defined by the Greens function \(G_{k,\pm} = G(k_d \pm k_f; \omega)\). There is no hybridisation for \(J_\perp=0\) (first and third plots), and the only effect of \(W_f\) is to shrink the height of the central resonance. Introducing a non-zero \(J_\perp\) splits the central resonance into an upper band (second from left) and a lower band (first from right). This leads to a Kondo insulator, where \(\omega=0\) resides inside the hybridisation gap.
 		}
+		\label{plusminus}
+\end{figure}
+
+We next focus on the \(k-\)space spectral functions, in order to identify any momentum-space differentiation arising from the inter-layer hybridisation. We have already seen within our earlier work on the extended Hubbard mode in two dimension~\cite{mukherjee2026} that tuning the bath correlation \(|W|\) leads to a pseudogapping transition that starts with the selecting gapping of the antinodes and ends with the gapping of the nodes. In order to investigate similar phenomena here, we obtain the lattice nodal and antinodal spectral functions, as a function of \(W_f\) and \(J_\perp\) (Fig.~\ref{SFK}).
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{SFK-33-299.pdf}
+	\caption{Spectral functions of the nodal (left) and antinodal (right) \(k-\)space point in the \(f-\)layer. \(|W_f|\) increases from the top panel to the bottom panel, while \(J_\perp\) increases within each panel. For small \(|W_f\), the effect of \(J_\perp\) is to create a pseudogap at both \(k-\)points. As }
+	\label{SFK}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.49\textwidth]{specFunc_node_d_33_1555.pdf}
-	\includegraphics[width=0.49\textwidth]{specFunc_node_f_33_1555.pdf}
-	\caption{Spectral functions \(A_d\) and \(A_f\) of the auxiliary model, for excitations in the \(d-\) and \(f-\)layers respectively. Both show a central Kondo resonance for \(J_\perp=0\) which splits into two bands upon adding a non-zero \(J_\perp\). Increasing \(|W_f|\) to large values gaps out the local Fermi liquid excitations of \(A_f\).
-	}
+	\includegraphics[width=0.5\textwidth]{SFK-MAP-33-399.pdf}
+	\caption{Difference in the \(\omega=0\) values of the nodal and antinodal spectral functions for the lattice model. For small \(|W_f|\), we can see an increase in momentum-space differentiation as \(J_\perp\) is increased. For large \(|W_f|\), it is instead restricted to small \(J_\perp\). At larger values of \(|W_f|\), the differentiation disappears (gray patch).}
+	\label{SFKMAP}
 \end{figure}

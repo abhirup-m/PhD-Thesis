@@ -216,9 +216,9 @@ Group 2 becomes
 To simplify this, we use the relation
 \begin{equation}\begin{aligned}
  \eta c_q^\dagger  T \eta &= \frac{1}{\omega_i^0 - \mathcal{H}^d}T^\dagger c_q c_q^\dagger  T \eta\\
-			  &= T^\dagger c_q \frac{1}{\omega_i^1 - \mathcal{H}^d}c_q^\dagger  T \eta && \left[\text{eq.~\ref{constraint}}\right]\\
-			  &= T^\dagger c_q \eta^\dagger\eta &&\left[\text{eq.~\ref{etadagdef}}\right]\\
-			  &= T^\dagger c_q \hat n_q &&\left[\text{eq.~\ref{antic}}\right]
+			  &= T^\dagger c_q \frac{1}{\omega_i^1 - \mathcal{H}^d}c_q^\dagger  T \eta && \left[\text{using eq.~\ref{constraint}}\right]\\
+			  &= T^\dagger c_q \eta^\dagger\eta &&\left[\text{using eq.~\ref{etadagdef}}\right]\\
+			  &= T^\dagger c_q \hat n_q &&\left[\text{using eq.~\ref{antic}}\right]
 \end{aligned}\end{equation}
 which gives
 \begin{equation}\begin{aligned}
@@ -745,28 +745,21 @@ One last thing to note is that URG, being unitarily implemented with a well-defi
 \end{center}
 
 \section{Numerical Implementation of Unitary RG Equations}
-Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
-\begin{equation}\begin{aligned}
-	\frac{\Delta J_\alpha}{\Delta D} = -J_\alpha \mathcal{G}_\alpha J_\alpha^\dagger - 4\mathcal{W}_\alpha\text{Tr}\left[\mathcal{G}^\prime_\alpha\right]~,
-\end{aligned}\end{equation}
-where all objects are matrices. \(J_\alpha\) is the Kondo coupling matrix. \(\mathcal{G}_\alpha\) is a diagonal matrix with matrix elements 
-\begin{equation}\begin{aligned}
-\mathcal{G}_\alpha[q, q] = \begin{cases}
-	\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 - J/4}\right),~{\bf q}\in\text{PS}~,\\
-\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 - J/4}\right),~{\bf q}\in\text{HS}~~,
-\end{cases}
-\end{aligned}\end{equation}
-if \(q\) is in the UV subspace and zero otherwise. \(\mathcal{W}_\alpha\) is the bath interaction matrix whose matrix elements are given by \(\mathcal{W}_\alpha[k, k^\prime] = \frac{W}{2}\left[\cos(k_x - k^\prime_x) + \cos(k_y - k^\prime_y)\right]\). Finally, \(\mathcal{G}^\prime_\alpha\) is another diagonal matrix whole matrix elements are defined as \(\mathcal{G}^\prime_\alpha[q,q] = \mathcal{G}[q, q] J_\alpha[q,\bar q]\).
+The unitary RG equations are usually relatively simple and computationally light to implement. However, in certain models where the number of couplings scales with the system size, a brute force approach might not be feasible for large systems. This occurs, for example, in models that have momentum-differentiated couplings \(g_{k,k^\prime}\) that describe the scattering between two scattering states and the renormalisation at each step is not uniform for all choices of \((k,k^\prime)\). In this case, one needs to solve the RG equations for all pairs of \((k,k^\prime)\). One then needs to come up with more optimal ways of simulating such RG equations. We show here one such approach to this. Different problems might require different approaches to dealing with this.
 
-The RG equation for the inter-layer coupling \(J\) can be written as
+We consider here an abstract RG equation of the form
 \begin{equation}\begin{aligned}
-	\frac{\Delta J}{\Delta D} &= \frac{1}{2} {\bf J} \cdot \mathcal{\bf G}~,
+	\Delta g_{k_1,k_2}/\Delta D = -\sum_q \left(g_{k_1,q}g_{q,k_2} - 4 g_{q,\bar q}W_{k_1, k_2}\right)G_q~,
 \end{aligned}\end{equation}
-where \({\bf J}\) and \(\mathcal{\bf G}\) are vectors defined by the elements \({\bf J}[q] = J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\) and 
-\begin{equation}\begin{aligned}
-	\mathcal{\bf G}[q] = \rho({\bf q}) \left[\frac{1}{\omega - \frac{1}{2}\bar\epsilon_f({\bf q}) + \frac{1}{2}J_f({\bf q}) + W_f({\bf q}) - \frac{1}{4}J} + \frac{1}{\omega - \frac{1}{2}\bar\epsilon_d({\bf q}) + \frac{1}{2}J_d({\bf q}) + W_d({\bf q}) - \frac{1}{4}J}\right]~.
-\end{aligned}\end{equation}
+where \(g\) is the momentum-dependent coupling we are trying to simulate, \(W\) is another coupling that depends on the momenta but itself does not flow, and \(G\) is a propagator that depends only the momenta \(q\) that are being integrated out at this step. The specific form of \(G\) is not necessary for this demonstration. \(\bar q\) is the particle-hole transformed partner of the state \(q\). 
 
+One approach is to "loop" over the couplings \(g_{k_1,k_2}\) for every pair \(k_1, k_2\) that lie within the set of states that will renormalise. However, this approach scales very poorly with the number of available \(k-\)states (which is essentially the number of lattice sites being considered). A more efficient approach is to write the RG equation in a matrix form:
+\begin{equation}\begin{aligned}\label{matrixEq}
+	\frac{\Delta \bar g}{\Delta D} = -\bar g \bar G \bar g^\dagger - 4\bar W\text{Tr}\left[\bar G^\prime\right]~,
+\end{aligned}\end{equation}
+where the bars above the couplings indicate that those are matrices. The matrix \(\bar g\) is defined by the matrix element \(\langle k_1 | \bar g | k_2 \rangle = g_{k_1,k_2}\), while \(\bar W\) is defined as \(\langle k_1 | \bar W | k_2 \rangle = W_{k_1,k_2}\). The propagators \(\bar G\) and \(\bar G^\prime\) are diagonal matrices defined by the elements \(\langle q | \bar G | q \rangle = G_q\) and \(\langle q | \bar G^\prime | q \rangle = G_q g_{q,\bar q}\). Importantly, the elements of \(\bar G\) and \(\bar G^\prime\) are zero for momenta that are not being integrated out: \(\langle k_1 | \bar G | k_2 \rangle = \langle k_1 | \bar G^\prime | k_2 \rangle = 0\); this is important for efficiency.
+
+The simulation of the RG equation has now been reduced to a matrix multiplication. More specifically, one needs to construct two coupling matrices \(\bar g\)  and \(\bar W\) and two propagator matrices \(\bar G\) and \(\bar G^\prime\). At every step, we use eq.~\ref{matrixEq} to update \(\bar g\), and we redefine \(\bar G\) and \(\bar G^\prime\) at evert step depending on the states \(q\) being  integrated out at that step. 
 
 \section{Renormalised perturbation theory about fixed points}
 In this section, we will describe the technique of carrying out renormalised theory about a gapless fixed point theory towards obtaining a low-energy effective Hamiltonian for the excitations above the ground state. This is useful for characterising metallic phases, and detecting whether the metal is, say, a Landau Fermi liquid or a non-Fermi liquid.
@@ -1465,7 +1458,7 @@ where we have assumed \(N\) is even in order to drop the global phase factor \((
 \section{Wavefunction Renormalisation Group}
 
 \subsection{General idea}
-A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions.
+A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions. This approach was pioneered through applications on the 2D Hubbard model in the form of the momentum-space entanglement renormalisation group (MERG) method, in order to characterise its various phases ~\cite{anirban_mott_2022,PatraEntanglement2023}, and has also been used to study a number of quantum impurity models~\cite{anirban_kondo,Patra2023MCK}.
 
 We will start with a very simple IR ground state wavefunction, and then go back towards the UV ground state by applying the inverse unitary operator \(U^\dagger\):
 \begin{equation*}\begin{aligned}
