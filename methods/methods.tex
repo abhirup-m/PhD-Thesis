@@ -84,7 +84,7 @@ wher \(G_j\) is the propagator \(\frac{1}{\omega_i^j- \mathcal{H}^d}\). We can w
 	\label{etadagdef}
 \eta(\hat \omega) = GT^\dagger c_{q\beta} = \frac{1}{\hat \omega_i- \mathcal{H}^d}T^\dagger c_{q\beta}
 \end{aligned}\end{equation}
-where \(\hat \omega_i = \omega_i^0\left(1 - \hat n_{q\beta}\right) + \omega_i^1\hat n_{q\beta} = \begin{pmatrix} \omega_i^1 & \\ & \omega_i^0 \end{pmatrix}\) is a 2x2 matrix and \(\mathcal{H}^d = \mathcal{H}^d_0\left(1 - \hat n_{q\beta}\right) + \mathcal{H}^d_1\hat n_{q\beta}\) and \(G = \left(\hat \omega - \mathcal{H}^d\right)^{-1}\). It is easy to check that this reproduces the previous forms of \(\eta_0\) and \(\eta_1^\dagger\).
+where \(\hat \omega_i = \omega_i^0\left(1 - \hat n_{q\beta}\right) + \omega_i^1\hat n_{q\beta} = \begin{pmatrix} \omega_i^1 & \\ & \omega_i^0 \end{pmatrix}\) is a 2x2 matrix and \(\mathcal{H}^d = \mathcal{H}^d_0\left(1 - \hat n_{q\beta}\right) + \mathcal{H}^d_1\hat n_{q\beta}\) and \(G = \left(\hat \omega - \mathcal{H}^d\right)^{-1}\). It is easy to check that this reproduces the previous forms of \(\eta_0(\omega^0_i)\) and \(\eta_1^\dagger(\omega^1_i)\).
 We will later find that it is important to demand that these two be Hermitian conjugates of each other; that constraint is imposed on the denominators:
 \begin{equation}\begin{aligned}
 	\label{constraint}
@@ -198,7 +198,7 @@ For reasons that will become apparent, we will split the terms into two groups:
 \begin{equation}\begin{aligned}
 	\tilde{\mathcal{H}} &= \frac{1}{2}\left(\underbrace{\mathcal{H}^d + \mathcal{H}^i + \left[\eta^\dagger - \eta,\mathcal{H}\right] + \eta^\dagger\mathcal{H}\eta + \eta \mathcal{H} \eta^\dagger}_\text{group 1} + \overbrace{\mathcal{H}^I - \eta^\dagger \mathcal{H}\eta^\dagger - \eta \mathcal{H} \eta}^\text{group 2}\right)\\
 \end{aligned}\end{equation}
-Group 2 can be easily shown to be 0. Note that terms that have two \(\eta\) or two \(\eta^\dagger\) sandwiching a \(\mathcal{H}\) can only be nonzero if the intervening \(\mathcal{H}\) has an odd number of creation or destruction operators.
+Group 2 can be easily shown to be 0. Note that terms that have two \(\eta\) or two \(\eta^\dagger\) sandwiching a \(\mathcal{H}\) can only be nonzero if the intervening \(\mathcal{H}\) has an odd number of creation or destruction operators:
 \begin{equation}\begin{aligned}
 	\label{beats}
 \eta \mathcal{H} \eta = \eta c_q^\dagger  T \eta
@@ -319,15 +319,15 @@ From eq.~\ref{final2}, the first two terms in the rotated Hamiltonian are just t
 \end{aligned}\end{equation}
 Since this assumes we have obtained this from \(U_1\), it is fair to tag the \(\eta\) with a suitable label:
 \begin{equation}\begin{aligned}
-	\Delta \mathcal{H} = c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\eta_1 - \eta_1 c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)
+	\Delta \mathcal{H} = c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\eta_1 - \eta_1 c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)~.
 \end{aligned}\end{equation}
-It is clear that the first term takes into account virtual excitations that start from a filled state (\(\hat n_{q\beta}=1\) initially) - such a term is said to be a part of the \textit{particle sector}.
+It is clear that the first term takes into account virtual excitations that start from a filled state (\(\hat n_{q\beta}=1\) initially) - such a term is said to be a part of the \textit{particle sector}:
 \begin{equation}\begin{aligned}
-	\Delta_1 \mathcal{H} = c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\eta_1
+	\Delta_1 \mathcal{H} = c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\eta_1~.
 \end{aligned}\end{equation}
-The second term, on the other hand, considers excitations that start from an empty state. They constitute the \textit{hole sector}.
+The second term, on the other hand, considers excitations that start from an empty state. They constitute the \textit{hole sector}:
 \begin{equation}\begin{aligned}
-	\Delta_0 \mathcal{H} = -\eta_1 c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)
+	\Delta_0 \mathcal{H} = -\eta_1 c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)~.
 \end{aligned}\end{equation}
 To write the total renormalization in a particle-hole symmetric form, we can use the relation \(\eta_0=-\eta_1\), such that both the terms will now come with a positive sign:
 \begin{equation}\begin{aligned}
@@ -348,7 +348,7 @@ The renormalization due to the entire shell is obtained by summing over all stat
 \end{aligned}\end{equation}
 These equations will now need to be simplified. For example, in the particle sector, we can set \(\hat n_{q\beta}=0\) in the numerator, because there is no such excitation in the initial state. Similarly, in  the hole sector, we can set \(\hat n_{q\beta}=1\) because that state was occupied in the initial state. Another simplification we typically employ is that \(\mathcal{H}^d_{0,1}\) will, in general, have the energies of all the electrons. But we consider only the energy of the on-shell electrons in the denominator. After integrating out these electrons, we can rearrange the remaining operators to determine which term in the Hamiltonian it renormalizes and what is the renormalization.
 
-At first sight, one might think that we must evaluate lots of traces to obtain the terms in \(\Delta \mathcal{H}\). A little thought reveals that the terms in the numerator are simply the off-diagonal terms in the Hamiltonian; \(\text{Tr}\left(c^\dagger_{q\beta}\mathcal{H} \right)c_{q\beta}\) is the off-diagonal term that has \(c_{q\beta}\) in it, and \(c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\) is the off-diagonal term that has \(c^\dagger_{q\beta}\) in it. \(\mathcal{H}^D\) is just the diagonal part of the Hamiltonian.
+At first sight, one might think that we must evaluate lots of traces to obtain the terms in \(\Delta \mathcal{H}\). A little thought reveals that the terms in the numerator are simply the off-diagonal terms in the Hamiltonian: \(\text{Tr}\left(c^\dagger_{q\beta}\mathcal{H} \right)c_{q\beta}\) is the off-diagonal term that has \(c_{q\beta}\) in it, and \(c_{q\beta}^\dagger \text{Tr}\left(\mathcal{H} c_{q\beta}\right)\) is the off-diagonal term that has \(c^\dagger_{q\beta}\) in it. Finally, \(\mathcal{H}^D\) is just the diagonal part of the Hamiltonian.
 
 % \section{Example I: URG analysis of the two-channel Kondo problem}
 %
@@ -654,7 +654,7 @@ S_d^z s_0^z + \frac{1}{2}S_d^+ s_0^- + \frac{1}{2}S_d^- s_0^+~.
 \end{aligned}\end{equation}
 We will make use of this form.
 
-Because of spin-flip scattering processes, the problem is manybody in nature. In order to obtain the low-energy physics, we will progressively integrate out high-energy modes in the conduction bath and approach the low-energy degrees of freedom. Such an approach is needed because the high and low-energy states interact with each other through the impurity spin and cannot be trivially removed from the problem. The way this works is that the process of integrating out high-energy states generates additional scattering processes within the low-energy states; if these processes already exist in the Hamiltonian, the new contributions {\it renormalise} the existing couplings, but if the processes don't exist, then the Hamiltonian generates new terms as low energies are approached.
+Because of spin-flip scattering processes, the problem is many-body in nature. In order to obtain the low-energy physics, we will progressively integrate out high-energy modes in the conduction bath and approach the low-energy degrees of freedom. Such an approach is needed because the high and low-energy states interact with each other through the impurity spin and cannot be trivially removed from the problem. The way this works is that the process of integrating out high-energy states generates additional scattering processes within the low-energy states; if these processes already exist in the Hamiltonian, the new contributions {\it renormalise} the existing couplings, but if the processes don't exist, then the Hamiltonian generates new terms as low energies are approached.
 
 Consider an arbitrary \(j^\text{th}\) step of the process where we wish to integrate out the conduction bath states within a narrow shell about the energies \(\pm \epsilon_j\) and retain only the states at \(|\epsilon| < |\epsilon_j|\). We designate the states on this shell by the momentum index \(q\), and the states below it by indices \(k_1 \) and \(k_2\). We need to first separate the Hamiltonian into diagonal and off-diagonal terms from the perspective of the shell being integrated out:
 \begin{equation}\begin{aligned}
@@ -759,7 +759,7 @@ One approach is to "loop" over the couplings \(g_{k_1,k_2}\) for every pair \(k_
 \end{aligned}\end{equation}
 where the bars above the couplings indicate that those are matrices. The matrix \(\bar g\) is defined by the matrix element \(\langle k_1 | \bar g | k_2 \rangle = g_{k_1,k_2}\), while \(\bar W\) is defined as \(\langle k_1 | \bar W | k_2 \rangle = W_{k_1,k_2}\). The propagators \(\bar G\) and \(\bar G^\prime\) are diagonal matrices defined by the elements \(\langle q | \bar G | q \rangle = G_q\) and \(\langle q | \bar G^\prime | q \rangle = G_q g_{q,\bar q}\). Importantly, the elements of \(\bar G\) and \(\bar G^\prime\) are zero for momenta that are not being integrated out: \(\langle k_1 | \bar G | k_2 \rangle = \langle k_1 | \bar G^\prime | k_2 \rangle = 0\); this is important for efficiency.
 
-The simulation of the RG equation has now been reduced to a matrix multiplication. More specifically, one needs to construct two coupling matrices \(\bar g\)  and \(\bar W\) and two propagator matrices \(\bar G\) and \(\bar G^\prime\). At every step, we use eq.~\ref{matrixEq} to update \(\bar g\), and we redefine \(\bar G\) and \(\bar G^\prime\) at evert step depending on the states \(q\) being  integrated out at that step. 
+The simulation of the RG equation has now been reduced to a matrix multiplication. More specifically, one needs to construct two coupling matrices \(\bar g\)  and \(\bar W\) and two propagator matrices \(\bar G\) and \(\bar G^\prime\). At every step, we use eq.~\ref{matrixEq} to update \(\bar g\), and we redefine \(\bar G\) and \(\bar G^\prime\) at every step depending on the states \(q\) being  integrated out at that step. 
 
 \section{Renormalised perturbation theory about fixed points}
 In this section, we will describe the technique of carrying out renormalised theory about a gapless fixed point theory towards obtaining a low-energy effective Hamiltonian for the excitations above the ground state. This is useful for characterising metallic phases, and detecting whether the metal is, say, a Landau Fermi liquid or a non-Fermi liquid.
@@ -778,7 +778,7 @@ In order to obtain the excitations, we now note that because of the RG-relevance
 \begin{equation}\begin{aligned}
 	H_\text{KE} = -t^* \sum_{i,\sigma}(c^\dagger_{i,\sigma}c_{i+1,\sigma} + \text{h.c.})~.
 \end{aligned}\end{equation}
-Hopping processes from the zeroth site modify the singlet ground state and lead to virtual excitations. We will now obtain the effect of this Hamiltonian by obtaining its renormalisation effects within the ground state subspace.
+Hopping processes from the zeroth site modify the singlet ground state and lead to virtual excitations. in this sense, the zeroth site corresponds to the low-energy electronic excitations with the longest wavelength. We will now obtain the effect of this Hamiltonian by obtaining its renormalisation effects within the ground state subspace. 
 
 To better frame the perturbation theory which we will use to obtain the renormalisation effects, we clarify the zeroth Hamiltonian \(H_0\) and perturbation \(V\):
 \begin{equation}\begin{aligned}
@@ -834,7 +834,7 @@ Using symmetries, we also have
 \end{aligned}\end{equation}
 W also note that off-diagonal matrix elements are zero in such a setup, because any two states in the ground state subspace will differ by at least one of the two conserved quantum numbers \(s_1^z\) and \(n_1\).
 
-We now need to convert these shifts into a renormalised Hamiltonian that describes the excitations arising from such virtual scattering processes. In the absence of shift of any off-diagonal matrix element, the diagonal shifts will only lead to the generation of number-conserving operators. For example, the shift \(\Delta E^{(2)}_{(0,0,2,0)} = -\frac{4{t^*}^2}{3J^*}\) means that the energy of the null-occupied state of the first site is lowered by that amount. This can be represented through the operator
+We now need to convert these shifts into a renormalised Hamiltonian that describes the excitations arising from such virtual scattering processes. In the absence of any shift in off-diagonal matrix element, the diagonal shifts will only lead to the generation of number-conserving operators. For example, the shift \(\Delta E^{(2)}_{(0,0,2,0)} = -\frac{4{t^*}^2}{3J^*}\) means that the energy of the null-occupied state of the first site is lowered by that amount. This can be represented through the operator
 \begin{equation}\begin{aligned}
 	-\frac{4{t^*}^2}{3J^*} (1 - n_{1 \uparrow})(1 - n_{1 \downarrow})~.
 \end{aligned}\end{equation}
@@ -957,7 +957,7 @@ where \(u = 9\). This is the local Fermi liquid Hamiltonian for excitations abov
 
 \section{Iterative Diagonalisation of Quantum Impurity Models}
 
-The broad idea is the following. We have a Hamiltonian describing an interacting set of states (in real or momentum space). We can express the total Hamiltonian in an incremental fashion: \(H = \sum_i H_i\), where \(H_{i+1}\) involves more number of states than \(H_i\). For example, a tight-binding model can be written in that form, with the definition \(H_i = c^\dagger_{i+1}c_i + \text{h.c.}\). The iterative diagonalisation method obtains the low-energy spectrum of this problem in the following manner: We first diagonalise the Hamiltonian \(H\) for a smaller value of \(i\), small enough such that this can be done exactly. We then truncate the spectrum to a predefined size, and rotate all existing operators to this truncated basis, including the Hamiltonian \(H\). We then consider the "bonding Hamiltonian" \(\Delta H\) between the existing sites and the new sites, and rotate the same into the truncated basis. Adding the previous rotated Hamiltonian \(H\) and the rotated increment Hamiltonian \(\Delta H\) gives us a truncated but effective Hamiltonian for the increased number of sites. We again diagonalise this, and again retain only a fixed number of states in the spectrum. We keep repeating this until we reach the required number of sites.
+The broad idea is the following. We have a Hamiltonian describing an interacting set of states (in real or momentum space). We can express the total Hamiltonian in an incremental fashion: \(H = \sum_i H_i\), where \(H_{i+1}\) involves more number of states than \(H_i\). For example, a tight-binding model can be written in that form, with the definition \(H_i = c^\dagger_{i+1}c_i + \text{h.c.}\). The iterative diagonalisation method obtains the low-energy spectrum of this problem in the following manner: We first diagonalise the Hamiltonian \(H\) for a smaller value of \(i\), small enough such that this can be done exactly. We then truncate the spectrum to a predefined size, and rotate all existing operators to this truncated basis, including the Hamiltonian \(H\). We then consider the "bonding Hamiltonian" \(\Delta H\) between the existing sites and the new sites, and rotate the same into the truncated basis. Adding the previous rotated Hamiltonian \(H\) and the rotated increment Hamiltonian \(\Delta H\) gives us a truncated but effective Hamiltonian for the increased number of sites. We again diagonalise this, and again retain only a fixed number of states in the spectrum. We keep repeating this until we reach the required number of sites. A similar strategy is employed in numerical renormalisation group~\cite{wilson1975} and density matrix renormalisation group~\cite{white_1992,schollwock2005}
 
 \subsection*{Jordan-Wigner Matrix Representation of Fermionic Operators}
 For a single qubit, the creation/annihilation matrices are
@@ -1123,7 +1123,7 @@ In Section~\ref{rdmCorr}, we show how the matrix elements of reduced density mat
 
 
 \section{Optimising Fermi Surface Calculations}
-The below is an algorithm for reducing computational cost of carrying out iterative diagonalisation processes focused on the Fermi surface of a quantum impurity model, by rotating the interaction matrix to a sparser form. It is useful then the Hamiltonian has certain symmetry properties arising from specific lattice geometries.
+Below, we outline an algorithm for reducing computational cost of carrying out iterative diagonalisation processes focused on the Fermi surface of a quantum impurity model, by rotating the interaction matrix to a sparser form. It is useful when the Hamiltonian has certain symmetry properties arising from specific lattice geometries.
 
 \subsection*{Rotated basis for simplified representation}
 At the renormalisation group fixed point, we have a renormalised theory for the interaction of the impurity spin \(S_f\) with the \(f-\)layer Fermi surface:
@@ -1200,7 +1200,7 @@ The prescription is therefore as follows. We compute the unitary transformation 
 \begin{equation}\begin{aligned}
 	\vec{S}_f \cdot \sum_{\alpha,\beta}\vec{\sigma}_{\alpha,\beta}\sum_i K_i \gamma^\dagger_{i,\alpha}\gamma_{i,\beta}~.
 \end{aligned}\end{equation}
-If we have to calculate a certain correlation \(C_{k,q}\), we instead calculate the correlation matrix \(\tilde C_{i,j}\), and then transform back using the unitary transformation:
+If we have to calculate a certain correlation \(C_{k,q}\), we instead calculate the correlation matrix \(\tilde C_{i,j}\) in the rotated basis, and then transform back using the unitary transformation:
 \begin{equation}\begin{aligned}
 	C = \Lambda \tilde C \Lambda^\dagger~.
 \end{aligned}\end{equation}
@@ -1373,6 +1373,7 @@ This allows us to connect the QFI with the imaginary part of the Kubo correlatio
 \begin{equation}\begin{aligned}
 F_Q(\rho, \hat O) = \frac{1}{\pi i}\int_{-\infty}^\infty d\omega \tanh \left( \beta \omega/2 \right)\left(\mathcal{C}_{\hat O}(\omega) - \mathcal{C}_{\hat O}(\omega)^*\right) ~.
 \end{aligned}\end{equation}
+These relations will be useful in Chapter 3 (~\hyperref[sec:ESIAM]{\it\chapC}) and Chapter 5 (~\hyperref[sec:ESIAM]{\it\chapE}) to provide an entanglement-based description of correlation-driven metal-insulator transitions.
 
 \subsection{Decomposition of entanglement entropy in terms of multipartite information \(I_n\)}\label{entanglementDecomposition}
 We first define a partitioning of the entire system into \(N\) disjoint regions, \(\mathcal{S}_N = \left\{ \nu_1, \nu_2,\ldots\nu_N\right\} \). Going beyond bipartite mutual information, one can define the \(n-\)partite information \(I_n\) between the members of \(\mathcal{S}_n = \left\{\nu_1,\nu_2,\ldots,\nu_n\right\} \), which is itself a subset of the exhaustive set of regions \(\mathcal{S}_N\):
@@ -1396,7 +1397,7 @@ The expression for \(\bar I_n\) can be simplified by splitting the summation ove
 \begin{equation}\begin{aligned}
 	\bar I_n &= \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)} I_n(S_n) = \frac{(N-n)! n!}{N!}\sum_{S_n \in C_n(\mathcal{S}_N)}\sum_{m=1}^n \sum_{\sigma_m \in \mathcal{P}_m\left(\mathcal{S}_n\right)} (-1)^{1 + |\sigma|} S_\text{EE}(\sigma_m)~,
 \end{aligned}\end{equation}
-where \(\mathcal{P}_m\) represents all subsets of the power set that have \(m\) elements. With some combinatorial magic, it can be shown that
+where \(\mathcal{P}_m\) represents all subsets of the power set that have \(m\) elements. With some combinatorial manipulations, it can be shown that
 \begin{equation}\begin{aligned}
 	\sum_{S_n \in C_n(\mathcal{S}_N)} \sum_{\sigma_m \in \mathcal{P}_m\left(\mathcal{S}_n\right)} = \binom{N-m}{n-m}\sum_{\sigma_m \in C_m(\mathcal{S}_N)}~.
 \end{aligned}\end{equation}
@@ -1411,7 +1412,7 @@ where we have define the average entanglement entropy \(S_\text{EE}^{(m)}\) for 
 	S_\text{EE}^{(m)} = \frac{1}{\binom{N}{m}}\sum_{\sigma_m \in C_m(\mathcal{S}_N)} S_\text{EE}(\sigma_m)~.
 \end{aligned}\end{equation}
 
-With most of the machinery in place, we would now like to express the entanglement entropy \(S_\text{EE}\) purely in terms multipartite measures \(I_n\), for the reasons stated above. For a system that is invariant under real-space translation (as our lattice model is), the entanglement entropy of any real-space interval should only depend on the extent of the interval. It therefore suffices to calculate the entanglement entropy averaged over all such intervals, and the corresponding measure in our formulation is \(S_\text{EE}^{(1)}\). 
+With most of the machinery in place, we would now like to express the entanglement entropy \(S_\text{EE}\) purely in terms of multipartite measures \(I_n\). For a system that is invariant under real-space translation (as our lattice model is), the entanglement entropy of any real-space interval should only depend on the extent of the interval. It therefore suffices to calculate the entanglement entropy averaged over all such intervals, and the corresponding measure in our formulation is \(S_\text{EE}^{(1)}\). 
 
 We will now express \(S_\text{EE}^{(1)}\) in terms of \(\bar I_n\), by eliminating \(S_\text{EE}^{(m)} (m > 1)\) from the equations. We adopt the ansatz
 \begin{equation}\begin{aligned}\label{expansion}
@@ -1455,113 +1456,115 @@ The decomposition of entanglement entropy into multipartite measures is now comp
 \end{aligned}\end{equation}
 where we have assumed \(N\) is even in order to drop the global phase factor \((-1)^N\).
 
-\section{Wavefunction Renormalisation Group}
-
-\subsection{General idea}
-A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions. This approach was pioneered through applications on the 2D Hubbard model in the form of the momentum-space entanglement renormalisation group (MERG) method, in order to characterise its various phases ~\cite{anirban_mott_2022,PatraEntanglement2023}, and has also been used to study a number of quantum impurity models~\cite{anirban_kondo,Patra2023MCK}.
-
-We will start with a very simple IR ground state wavefunction, and then go back towards the UV ground state by applying the inverse unitary operator \(U^\dagger\):
-\begin{equation*}\begin{aligned}
-	U : \underbrace{\ket{1,2,...,N}}_\text{UV ground state} \rightarrow \ket{1,2,...,N-1}\ket{N} \rightarrow ... \rightarrow \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state}
-\end{aligned}\end{equation*}
-\begin{equation*}\begin{aligned}
-	U^\dagger : \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state} \rightarrow \ket{1,2,...,N^*+1}\ket{N^*+2}...\ket{N} \rightarrow ... \rightarrow\underbrace{\ket{1,,2,...,N}}_\text{UV ground state}
-\end{aligned}\end{equation*}
-The first process is the forward RG which we used to obtain the scaling equations.
-The second process is the reverse RG which we will undertake now. The method has already been applied to study the renormalisation of entanglement in various models of strong correlation.
-In general, we start with an IR wavefunction that consists a certain number of momentum states \(n_1\) still entangled with the impurity, and the remaining momentum states \(n_2\) disentangled from the impurity.
-The former are said to be part of the emergent Kondo cloud, while the latter are said to be part of the integrals of motion (IOMs) and appear in direct product with the cloud+impurity system in the ground state wavefunction.
-Each momentum state is tagged with two conduction bath levels, one above the Fermi surface and one below.
-These will be represented as \(k,\pm\). If we represent the emergent cloud momentum states as \(\left\{k_i\right\} \) and the IOM states as \(\left\{q_i\right\}\), the ground state wavefunction can be written as 
-\begin{equation}\begin{aligned}
-	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{q_i,-,\uparrow}\ket{q_i,-,\downarrow}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{q_i,+,\uparrow}\ket{q_i,+,\downarrow}\right)
-\end{aligned}\end{equation}
-Throughout, we have assumed that the IOMs below the Fermi surface are occupied while those above are unoccupied. This means:
-\begin{equation}\begin{aligned}
-	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,-,\uparrow}=1}\ket{\hat n_{q_i,-,\downarrow}=1}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,+,\uparrow}=0}\ket{\hat n_{q_i,+,\downarrow}=0}\right)
-\end{aligned}\end{equation}
-\(\ket{\Phi}_\text{cloud}\) will be obtained by diagonalising a small system of \(n_1\) conduction bath \(k\) states. This completes the construction of the IR ground state \(\ket{\Psi}_0\). The algorithm of reverse RG then involves applying unitary transformations on this IR wavefunction; the unitary transformations will be the inverse of those that were applied during the forward RG algorithm. Since the forwards RG transformations decoupled \(k\) states and transformed them into the IOMS, the inverse transformations will take the momentum states in the IOMs and re-entangle them with the impurity+cloud system, one at a time. This is shown in fig.~\ref{rev-rg}.
-\begin{figure}[!htbp]
-	\centering
-	\includegraphics[width=0.4\textwidth]{reverse-rg.png}
-	\caption{We start with a Hamiltonian with an impurity site (red) coupled with two conduction electrons (dark green), with four other decoupled electrons (bright green). The dotted rectangle represents the emergent window \(\left( -\Lambda_j, \Lambda_j \right) \) at each step; the electrons inside that rectangle are still entangled with the impurity, while the ones inside have been decoupled. The next step of reverse RG involves applying the inverse transformation on the Hamiltonian, which will couple two more electrons from the IOMS (hence four dark green circles in the second step), leading to an enlargement of the emergent window. The unitary varies for each step, hence the notation \(U_j\).}
-	\label{rev-rg}
-\end{figure}
-
-The next step is to write down the unitaries that will take us from the IR ground state to the UV ground state. In the forward RG, we used the following unitary for decoupling the shell \(\epsilon_q\) and spin \(\beta\) is
-\begin{equation}\begin{aligned}
-	U_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta} + \eta_{1\beta}^\dagger\right]~.
-\end{aligned}\end{equation}
-Here, the subscripts \(0\) and \(1\) indicate it decouples an electron above and below the Fermi surface respectively. The inverse transformation for re-entangling \(q\beta\) is
-\begin{equation}\begin{aligned}
-	U^\dagger_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta}^\dagger + \eta_{1\beta}\right]~.
-\end{aligned}\end{equation}
-
-The wavefunction after reversing one step of the RG will thus be
-\begin{equation}\begin{aligned}
-	\ket{\Psi}_1 = U^\dagger_{q \uparrow}U^\dagger_{q \downarrow}\ket{\Psi}_0
-\end{aligned}\end{equation}
-Here, \(q\) is the first momentum state immediately outside the emergent cloud. Re-entangling further momentum states using their respective unitaries lead to the sequence of wavefunctions \(\ket{\Psi}_2, \ket{\Psi}_3\) and so on.
-A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
-
-\subsection{Evolution equation for state tensor coefficients}
-In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. At every step, we allow two states from the IOMS to interact with the already-entangled states (one above the Fermi energy and one below, in order to maintain particle-hole symmetry). After the \(j^\text{th}\) application of the reverse RG transformation, \(2j\) number of states are entangled with the impurity site, and the state can be represented as
-\begin{equation}\begin{aligned}\label{zerothSiteRep}
-	\ket{\Psi_j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{2j}}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},I_{2j+1}}\ket{\nu_d}\ket{\nu_1}\ket{\nu_2}\ldots\ket{\nu_{2j}}\otimes\ket{I_{2j+1}}~,
-\end{aligned}\end{equation}
-where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = \ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
-
-We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
-\begin{equation}\begin{aligned}
-	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}\mathcal{T}^{\mu_d}_{\nu_d}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+1}\mathcal{T}^{\mu_i}_{\nu_i}  + K^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+2}^\dagger\mathcal{T}^{\mu_i}_{\nu_i})~,
-\end{aligned}\end{equation}
-where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). We first obtain the action of the transformation \(U_j^\dagger\) on the basis states. We have
-\begin{equation}\begin{aligned}
-	&\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\
-	&=\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} (-1)^{\mu_d + \sum_{k < i}\nu_i} \ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\ 
-	&=\mathcal{T}^{\nu_d}_{\mu_d} (-1)^{\mu_d + \sum_{k < i}\nu_i} (-1)^{\mu_d + \sum_{k}\nu_i}\ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}\\ 
-	&=(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}~,
-\end{aligned}\end{equation}
-and
-\begin{equation}\begin{aligned}
-	\mathcal{T}^{\nu_d}_{\mu_d} c_{2j+1} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}} =(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{1_{2j+1}}\ket{0_{2j+2}}~.
-\end{aligned}\end{equation}
-Using these expressions, we construct the state at the \((j+1)^\text{th}\) step:
-\begin{equation}\begin{aligned}
-	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
-					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
-					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
-\end{aligned}\end{equation}
-Gathering similar terms and normalising the state, we can write it as
-\begin{equation}\begin{aligned}
-	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{2_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{2_{2j+1}}\ket{1_{2j+2}} \right.\\
-					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
-\end{aligned}\end{equation}
-where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
-\begin{equation}\begin{aligned}
-C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\\
-C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}~.
-\end{aligned}\end{equation}
-
-We can now read off the renormalisation of the state tensor coefficients:
-\begin{equation}\begin{aligned}
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
-\end{aligned}\end{equation}
-We now make an important assumption: the coefficients \(K^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) and \(J^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) are uniform for the set of states \(S(\nu_i)\) and zero for other states. That gives
-\begin{equation}\begin{aligned}
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}K\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
-	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}J\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
-\end{aligned}\end{equation}
-
-One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
-\begin{equation}\begin{aligned}
-	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}C^{(j)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j)}_{\nu_d,\ldots,\nu_k,\ldots}~,\\
-	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
-\end{aligned}\end{equation}
+% \section{Wavefunction Renormalisation Group}
+%
+% \subsection{General idea}
+% A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions. This approach was pioneered through applications on the 2D Hubbard model in the form of the momentum-space entanglement renormalisation group (MERG) method, in order to characterise its various phases ~\cite{anirban_mott_2022,PatraEntanglement2023}, and has also been used to study a number of quantum impurity models~\cite{anirban_kondo,Patra2023MCK}.
+%
+% We will start with a very simple IR ground state wavefunction, and then go back towards the UV ground state by applying the inverse unitary operator \(U^\dagger\):
+% \begin{equation*}\begin{aligned}
+% 	U : \underbrace{\ket{1,2,...,N}}_\text{UV ground state} \rightarrow \ket{1,2,...,N-1}\ket{N} \rightarrow ... \rightarrow \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state}
+% \end{aligned}\end{equation*}
+% \begin{equation*}\begin{aligned}
+% 	U^\dagger : \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state} \rightarrow \ket{1,2,...,N^*+1}\ket{N^*+2}...\ket{N} \rightarrow ... \rightarrow\underbrace{\ket{1,,2,...,N}}_\text{UV ground state}
+% \end{aligned}\end{equation*}
+% The first process is the forward RG which we used to obtain the scaling equations.
+% The second process is the reverse RG which we will undertake now. The method has already been applied to study the renormalisation of entanglement in various models of strong correlation.
+% In general, we start with an IR wavefunction that consists a certain number of momentum states \(n_1\) still entangled with the impurity, and the remaining momentum states \(n_2\) disentangled from the impurity.
+% The former are said to be part of the emergent Kondo cloud, while the latter are said to be part of the integrals of motion (IOMs) and appear in direct product with the cloud+impurity system in the ground state wavefunction.
+% Each momentum state is tagged with two conduction bath levels, one above the Fermi surface and one below.
+% These will be represented as \(k,\pm\). If we represent the emergent cloud momentum states as \(\left\{k_i\right\} \) and the IOM states as \(\left\{q_i\right\}\), the ground state wavefunction can be written as 
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{q_i,-,\uparrow}\ket{q_i,-,\downarrow}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{q_i,+,\uparrow}\ket{q_i,+,\downarrow}\right)
+% \end{aligned}\end{equation}
+% Throughout, we have assumed that the IOMs below the Fermi surface are occupied while those above are unoccupied. This means:
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,-,\uparrow}=1}\ket{\hat n_{q_i,-,\downarrow}=1}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,+,\uparrow}=0}\ket{\hat n_{q_i,+,\downarrow}=0}\right)
+% \end{aligned}\end{equation}
+% \(\ket{\Phi}_\text{cloud}\) will be obtained by diagonalising a small system of \(n_1\) conduction bath \(k\) states. This completes the construction of the IR ground state \(\ket{\Psi}_0\). The algorithm of reverse RG then involves applying unitary transformations on this IR wavefunction; the unitary transformations will be the inverse of those that were applied during the forward RG algorithm. Since the forwards RG transformations decoupled \(k\) states and transformed them into the IOMS, the inverse transformations will take the momentum states in the IOMs and re-entangle them with the impurity+cloud system, one at a time. This is shown in fig.~\ref{rev-rg}.
+% \begin{figure}[!htbp]
+% 	\centering
+% 	\includegraphics[width=0.4\textwidth]{reverse-rg.png}
+% 	\caption{We start with a Hamiltonian with an impurity site (red) coupled with two conduction electrons (dark green), with four other decoupled electrons (bright green). The dotted rectangle represents the emergent window \(\left( -\Lambda_j, \Lambda_j \right) \) at each step; the electrons inside that rectangle are still entangled with the impurity, while the ones inside have been decoupled. The next step of reverse RG involves applying the inverse transformation on the Hamiltonian, which will couple two more electrons from the IOMS (hence four dark green circles in the second step), leading to an enlargement of the emergent window. The unitary varies for each step, hence the notation \(U_j\).}
+% 	\label{rev-rg}
+% \end{figure}
+%
+% The next step is to write down the unitaries that will take us from the IR ground state to the UV ground state. In the forward RG, we used the following unitary for decoupling the shell \(\epsilon_q\) and spin \(\beta\) is
+% \begin{equation}\begin{aligned}
+% 	U_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta} + \eta_{1\beta}^\dagger\right]~.
+% \end{aligned}\end{equation}
+% Here, the subscripts \(0\) and \(1\) indicate it decouples an electron above and below the Fermi surface respectively. The inverse transformation for re-entangling \(q\beta\) is
+% \begin{equation}\begin{aligned}
+% 	U^\dagger_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta}^\dagger + \eta_{1\beta}\right]~.
+% \end{aligned}\end{equation}
+%
+% The wavefunction after reversing one step of the RG will thus be
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi}_1 = U^\dagger_{q \uparrow}U^\dagger_{q \downarrow}\ket{\Psi}_0
+% \end{aligned}\end{equation}
+% Here, \(q\) is the first momentum state immediately outside the emergent cloud. Re-entangling further momentum states using their respective unitaries lead to the sequence of wavefunctions \(\ket{\Psi}_2, \ket{\Psi}_3\) and so on.
+% A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
+%
+% \subsection{Evolution equation for state tensor coefficients}
+% In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. At every step, we allow two states from the IOMS to interact with the already-entangled states (one above the Fermi energy and one below, in order to maintain particle-hole symmetry). After the \(j^\text{th}\) application of the reverse RG transformation, \(2j\) number of states are entangled with the impurity site, and the state can be represented as
+% \begin{equation}\begin{aligned}\label{zerothSiteRep}
+% 	\ket{\Psi_j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{2j}}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},I_{2j+1}}\ket{\nu_d}\ket{\nu_1}\ket{\nu_2}\ldots\ket{\nu_{2j}}\otimes\ket{I_{2j+1}}~,
+% \end{aligned}\end{equation}
+% where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = \ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
+%
+% We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
+% \begin{equation}\begin{aligned}
+% 	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}\mathcal{T}^{\mu_d}_{\nu_d}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+1}\mathcal{T}^{\mu_i}_{\nu_i}  + K^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+2}^\dagger\mathcal{T}^{\mu_i}_{\nu_i})~,
+% \end{aligned}\end{equation}
+% where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). We first obtain the action of the transformation \(U_j^\dagger\) on the basis states. We have
+% \begin{equation}\begin{aligned}
+% 	&\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\
+% 	&=\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} (-1)^{\mu_d + \sum_{k < i}\nu_i} \ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\ 
+% 	&=\mathcal{T}^{\nu_d}_{\mu_d} (-1)^{\mu_d + \sum_{k < i}\nu_i} (-1)^{\mu_d + \sum_{k}\nu_i}\ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}\\ 
+% 	&=(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}~,
+% \end{aligned}\end{equation}
+% and
+% \begin{equation}\begin{aligned}
+% 	\mathcal{T}^{\nu_d}_{\mu_d} c_{2j+1} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}} =(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{1_{2j+1}}\ket{0_{2j+2}}~.
+% \end{aligned}\end{equation}
+% Using these expressions, we construct the state at the \((j+1)^\text{th}\) step:
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+% 					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+% 					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
+% \end{aligned}\end{equation}
+% Gathering similar terms and normalising the state, we can write it as
+% \begin{equation}\begin{aligned}
+% 	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{2_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{2_{2j+1}}\ket{1_{2j+2}} \right.\\
+% 					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
+% \end{aligned}\end{equation}
+% where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
+% \begin{equation}\begin{aligned}
+% C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\\
+% C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}~.
+% \end{aligned}\end{equation}
+%
+% We can now read off the renormalisation of the state tensor coefficients:
+% \begin{equation}\begin{aligned}
+% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
+% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+% \end{aligned}\end{equation}
+% We now make an important assumption: the coefficients \(K^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) and \(J^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) are uniform for the set of states \(S(\nu_i)\) and zero for other states. That gives
+% \begin{equation}\begin{aligned}
+% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}K\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
+% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}J\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
+% \end{aligned}\end{equation}
+%
+% One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
+% \begin{equation}\begin{aligned}
+% 	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}C^{(j)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j)}_{\nu_d,\ldots,\nu_k,\ldots}~,\\
+% 	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
+% \end{aligned}\end{equation}
 
 \section{Kondo model spectral function}
+We will now obtain forms for spectral functions for the single-channel Kondo model and a two-impurity Kondo model. The former will be used in our work on the extended Anderson impurity model (Chapter 3) and the lattice embedded impurity model (Chapter 5), while the latter will be used in our work on the heavy fermions (Chapter 6).
+
 \subsection{Single-impurity Kondo model}
 For the Kondo model defined by the Hamiltonian
 \begin{equation}\begin{aligned}
@@ -1751,7 +1754,7 @@ With this definition, the integral in \(G_{d\sigma}(\omega)\) becomes
 									     &=\frac{1}{2\pi}\lim_{\eta \to 0^+} \int_{-\infty}^\infty dx\frac{1}{x+ i\eta} 2\pi \delta\left( \omega + i0^+ + E_m - E_n - x\right) \\
 									     &=\frac{1}{\omega + E_m - E_n + i0^+}~.
 \end{aligned}\end{equation}
-The frequency-domain Green's function is thus
+The frequency-domain Green's function is thus~\cite{bruus2004}
 \begin{equation}\begin{aligned}
 	G_{d d}^\sigma(\omega) = \frac{1}{Z}\sum_{m,n}||\bra{m}\mathcal{O}_{\sigma}\ket{n}||^2\left( e^{-\beta E_m} + e^{-\beta E_n}\right)\frac{1}{\omega + E_m - E_n + i0^+}
 \end{aligned}\end{equation}

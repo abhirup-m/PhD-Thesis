@@ -28,7 +28,7 @@ Tiling the impurity model leads to a bilayer extended Hubbard model on the 2D sq
 \begin{equation}\begin{aligned}
 	H_\text{clust}(\bm r_d) = H_f(\bm r_d) + H_d(\bm r_d) + H_{fc}(\bm r_d)~.
 \end{aligned}\end{equation}
-The details of tiling a cluster Hamiltonian were already shown in Sec.~\ref{hamiltonianTile}; the general idea is to use manybody translation operators (details in Sec.~\ref{translationOperators}) to center the cluster Hamiltonian at various sites of the lattice, such that combining all such terms leads to a periodised Hamiltonian. we write down the final result here:
+The details of tiling a cluster Hamiltonian were already shown in Sec.~\ref{hamiltonianTile}; the general idea is to use many-body translation operators (details in Sec.~\ref{translationOperators}) to center the cluster Hamiltonian at various sites of the lattice, such that combining all such terms leads to a periodised Hamiltonian. we write down the final result here:
 \begin{equation}\begin{aligned}
 	H_\text{latt} =& \sum_r T^\dagger(\bm r) H_\text{clust}(\bm r_d) T(\bm r)\\
 	=& -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(c^\dagger_{i,\sigma}c_{j,\sigma} + \text{h.c.}\right) - \sum_i \left[\eta_d n_{i,d} + \frac{U_d}{2}(n_{i,\uparrow,d} - n_{i,\downarrow,d})^2\right] + \frac{2J}{Z}\sum_{\langle i,j \rangle}{\bm S}_{i,d}\cdot{\bm S}_{j,d}\\
@@ -513,15 +513,18 @@ To further understand the nature of the states that are occupied in the Kondo in
 	\centering
 	\includegraphics[width=0.8\textwidth]{specFunc_node_+_33_1555.pdf}\\
 	\includegraphics[width=0.8\textwidth]{specFunc_node_-_33_1555.pdf}
-		\caption{Spectral functions of the tiled model, for excitations in the bonding (two on the left) and antibonding (two on the right) basis, defined by the Greens function \(G_{k,\pm} = G(k_d \pm k_f; \omega)\). There is no hybridisation for \(J_\perp=0\) (first and third plots), and the only effect of \(W_f\) is to shrink the height of the central resonance. Introducing a non-zero \(J_\perp\) splits the central resonance into an upper band (second from left) and a lower band (first from right). This leads to a Kondo insulator, where \(\omega=0\) resides inside the hybridisation gap.
-		}
-		\label{plusminus}
+	\caption{Spectral functions of the tiled model, for excitations in the bonding (two on the left) and antibonding (two on the right) basis, defined by the Greens function \(G_{k,\pm} = G(k_d \pm k_f; \omega)\). There is no hybridisation for \(J_\perp=0\) (first and third plots), and the only effect of \(W_f\) is to shrink the height of the central resonance. Introducing a non-zero \(J_\perp\) splits the central resonance into an upper band (second from left) and a lower band (first from right). This leads to a Kondo insulator, where \(\omega=0\) resides inside the hybridisation gap.
+	}
+	\label{plusminus}
 \end{figure}
 
-We next focus on the \(k-\)space spectral functions, in order to identify any momentum-space differentiation arising from the inter-layer hybridisation. We have already seen within our earlier work on the extended Hubbard mode in two dimension~\cite{mukherjee2026} that tuning the bath correlation \(|W|\) leads to a pseudogapping transition that starts with the selecting gapping of the antinodes and ends with the gapping of the nodes. In order to investigate similar phenomena here, we obtain the lattice nodal and antinodal spectral functions, as a function of \(W_f\) and \(J_\perp\) (Fig.~\ref{SFK}).
+We next focus on the \(k-\)space spectral functions, in order to identify any momentum-space differentiation arising from the inter-layer hybridisation. We have already seen within our earlier work on the extended Hubbard mode in two dimension~\cite{mukherjee2026} that tuning the bath correlation \(|W|\) leads to a pseudogapping transition that starts with the selecting gapping of the antinodes and ends with the gapping of the nodes. In order to investigate similar phenomena here, we obtain the lattice nodal and antinodal spectral functions, as a function of \(W_f\) and \(J_\perp\) (Fig.~\ref{SFK}). 
+
+Prompted by this, we calculate the difference between the nodal and antinodal spectral functions at zero frequency, to get a more complete picture of the \(k-\)space differentiation for various parameter regimes. From Fig.~\ref{SFKMAP}, we find that at small \(|W_f|\), the differentiation increases as \(J_\perp\) is increased, which means that hybridisation gap opens at different values of \(J_\perp\) for different points on the Fermi surface. In contrast, at large \(|W_f|\), the differentiation is suppressed at large \(J_\perp\), which suggests that the hybridisation gap there opens uniformly over the Fermi surface.
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=\textwidth]{SFK-33-299.pdf}
+	\includegraphics[width=\textwidth]{SFK-33-399.pdf}
 	\caption{Spectral functions of the nodal (left) and antinodal (right) \(k-\)space point in the \(f-\)layer. \(|W_f|\) increases from the top panel to the bottom panel, while \(J_\perp\) increases within each panel. For small \(|W_f\), the effect of \(J_\perp\) is to create a pseudogap at both \(k-\)points. As }
 	\label{SFK}
 \end{figure}

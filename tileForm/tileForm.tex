@@ -31,11 +31,11 @@ where \(Z\) is the coordination number of the lattice, and the second summation 
 Various enhancements can be applied to such a model. The lattice can be modified to study different materials. More complicated geometries such as a two-layer model can be studied using a two-impurity auxiliary model, where each impurity couples with it's own conduction bath as well as to each other.
 
 \section{Mapping Auxiliary Model To Lattice Model}
-In this subsection, we provide an explicit example of constructing a lattice model from a lattice-embedded impurity model. This will involve the use of manybody lattice translation operators, so we begin with a brief discussion of them.
+In this subsection, we provide an explicit example of constructing a lattice model from a lattice-embedded impurity model. This will involve the use of many-body lattice translation operators, so we begin with a brief discussion of them.
 
-\subsection{Manybody Translation Operators}\label{translationOperators}
+\subsection{Many-body translation operators}\label{translationOperators}
 
-In order to create the bulk model, we need to translate the local auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bm a})\) that translate all positions by a vector \({\bm a}\). In terms of manybody states and operators, their action is defined as 
+In order to create the bulk model, we need to translate the local auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bm a})\) that translate all positions by a vector \({\bm a}\). In terms of many-body states and operators, their action is defined as 
 \begin{equation}\begin{aligned}\label{translationDefinition}
 	&T^\dagger({\bm a}) \ket{{\bm r}_1, {\bm r}_2,\ldots} = \ket{{\bm r}_1 + {\bm a}}\otimes\ket{{\bm r}_2 + {\bm a}}\ldots\otimes\ket{{\bm r}_n + {\bm a}}\\
 	&T^\dagger({\bm a}) \mathcal{O}\left({\bm r}_1, {\bm r}_2,\ldots\right)T({\bm a}) = \mathcal{O}\left({\bm r}_1 + {\bm a}, {\bm r}_2 + {\bm a},\ldots\right)~,
@@ -78,7 +78,7 @@ Applying the translation operator to this decomposition, we get
 
 \subsection{Periodisation of Auxiliary Model Into Extended Hubbard Model}\label{hamiltonianTile}
 We recall the lattice-embedded impurity model defined in eq.~\ref{LE-ESIAM}.
-As discussed above, the route to restoring translation symmetry and reconstructing the lattice model is to translate the auxiliary model using manybody translation operators.
+As discussed above, the route to restoring translation symmetry and reconstructing the lattice model is to translate the auxiliary model using many-body translation operators.
 Accordingly, we identify the ``unit cell'' of translation.
 Since we expect the impurity site to capture most of the physics arising from the correlated electrons, a good choice for the unit cell is the impurity site and it's surrounding correlated environment. In order to retain information of the lattice geometry, we convert the hybridisation and bath interaction terms from real space to \(k-\)space. The Hamiltonian for the unit cell is therefore
 \begin{equation}\begin{aligned}\label{clusterHamiltonian}
@@ -138,7 +138,7 @@ t = \frac{2V}{Z}, ~J = \frac{2J_K}{Z},~U=U_d - W,~\mu = -\varepsilon_d + \frac{W
 \end{aligned}\end{equation}
 
 \subsection{Form Of The Eigenstates: Bloch's Theorem}
-The tiled Hamiltonian defined in eq.~\ref{tilingPrescription} is manifestly symmetric under discrete translation, given that it's expressed in terms of the translation operators. The fact that the Hamiltonian \(H_\text{latt}\) commutes with the manybody translation operator implies that the total crystal momentum is a conserved quantity. We will now use this to write down a ``tiling" relation between the eigenstates of the auxiliary model and those of the lattice model.
+The tiled Hamiltonian defined in eq.~\ref{tilingPrescription} is manifestly symmetric under discrete translation, given that it's expressed in terms of the translation operators. The fact that the Hamiltonian \(H_\text{latt}\) commutes with the many-body translation operator implies that the total crystal momentum is a conserved quantity. We will now use this to write down a ``tiling" relation between the eigenstates of the auxiliary model and those of the lattice model.
 
 In the tight-binding approach to lattice problems, the full Hamiltonian is obtained by translating the dynamics of the localised orbitals at each site over the entire lattice. The full eigenstate \(\ket{\Psi}\) is obtained by constructing liner combinations of the eigenstates \(\ket{\psi(i)}\) of the local Hamiltonians. According to Bloch's theorem, \(\ket{\Psi}\) is of the form \(\ket{\Psi_{n,\bm K}} = \sum_{i} e^{i {\bm K}\cdot{\bm r}_i} \ket{\psi_n(i)}\), where \({\bm K}\) is the single-particle crystal momentum, \(n\) is the band-index that labels various states within the local orbital, and \({\bm r}_i\) sums over the positions of the local Hamiltonians. Bloch's theorem ensures that eigenstates satisfy the following relation under a translation operation by an arbitrary number of lattice spacings \({n\bm a}\):
 \begin{equation}\begin{aligned}
