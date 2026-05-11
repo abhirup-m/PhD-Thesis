@@ -727,6 +727,47 @@ By comparing with the term in the original Hamiltonian (eq.~\ref{+-term}), we ca
 \end{aligned}\end{equation}
 This is the URG equation for the Kondo coupling \(J\). It differs from the perturbative "Poor Man's scaling" equations~\cite{anderson1970poor} through the appearance of the Kondo coupling in the denominator. Expanding the URG equation in powers of \(J/\epsilon_j\) recovers the perturbative form.
 
+\section{Comparison of renormalisation group approaches based on canonical transformations}
+We have considered three canonical transformations in this section: the Poor Man's scaling (PMS), the Schrieffer-Wolff transformation (SWT) and the continuous unitary transformation renormalization group (CUT-RG). PMS and SWT are more or less identical; they differ in the context in which they are used. PMS is used when there is an entire spectrum of energies in the model, ranging from a low energy limit to a high energy; it is then employed to decouple the highest energy modes in an iterative fashion. SWT is used when the Hamiltonian can be split into one high and one low energy part, and we need to decouple these two modes. It is clear when seen from this perspective that SWT is like a one-shot PMS; it decouples the UV from the IR in one step, compared to the iterative approach of PMS. However, as has been shown in the previous subsections, both PMS and SWT can be formalized in an identical fashion, so that one can be switched for the other in both contexts.
+
+Now that we have established that PMS and SWT are formally identical, we can relate them to URG. URG is similar in philosophy to PMS in the fact that URG also successively decouples high energy modes from the low energy ones. The difference is that URG takes care of the quantum fluctuations, at least in principle, by introducing a new set of energy scales \(\omega\). These \(\omega\) then parameterise the RG flows of URG, compared to the single RG flow of PMS. Since SWT is formally the same as PMS, these is also a comparison between SWT and URG. Both PMS and SWT trivialize the quantum fluctuation scales of URG by replacing it with the bare energy values.
+
+CUT-RG is philosophically different from the other transformations. Its goal is to gradually reduce the contributions of the off-diagonal terms by making them decay along a certain scale \(l\). Off-diagonal terms that connect states with large energy differences decay faster. In this sense, there is no sequential dropping out of off-diagonal terms; all off-diagonal terms disappear at \(l=\infty\). In this sense, it is like a continuous version of SWT. While SWT strives to remove an entire off-diagonal term in one-shot, CUT RG does this gradually by introducing a scale \(l\). This separation of scales is absent in SWT. It does exist in URG and PMS, albeit in a different fashion. There, the separation comes in when we decouple single electron states starting from the Brillouin zone boundary \(\Lambda_N\) and come down to the Fermi surface \(\Lambda_0\). Each \(\Lambda\) provides a natural energy scale for separating the high and low energy physics.
+
+If one integrates the continuum generator \(\eta\) over all the scales, one should recover something analogous to the SWT generator. This generator is however necessarily perturbative in the off-diagonal term, since by definition \(\eta\) will only be of first order in \(\mathcal{H}_X\). This is in contrast to the non-perturbative generators in URG and, at least in principle, PMS. This non-perturbative form is encapsulated in the presence of a second completely different set of energy scales \(\omega\) (or \(E\) in PMS). This second energy scale is absent in CUT RG because it takes care of at most the second order term.
+
+Another point to note is that since SWT keeps the entire off-diagonal piece in the generator, new terms will almost certainly by generated at every step, and they have to be truncated. This is not the case with URG or PMS, becasue in those methods, we decouple just a single-electron at each step, and so those electrons become integrals of motion at that step, leading to their removal from the off-diagonal piece, and very often the Hamiltonian retains the same form as the bare model. This makes the philosophy of URG and PMS easier to work with. Tied to this is the fact that CUT RG often takes a certain type of interaction in the generator part, and not the entire off-diagonal piece. Hence, at the limit of the flow parameter going to \(\infty\), the chosen off-diagonal piece goes to zero but the remaining off-diagonal pieces still remain. As a result, the Hamiltonian is atmost block diagonal at this stage. On the other hand, URG progressively decouples single electrons, meaning all scattering terms corresponding to that electron vanish at each step. 
+
+One last thing to note is that URG, being unitarily implemented with a well-defined generator, does not accomodate for spontaneous symmetry breaking (SSB). In order to see SSB, the symmetry-breaking term has to be added to the bare model explicitly; if this term grows under the RG, then the ground state will be symmetry-broken. CUT RG, however, does allow for SSB through the idea that the generator is not uniquely defined. If the generator commutes with a particular symmetry, then the family of Hamiltonians will also have the symmetry \cite{kehrein2007flow}. However, if the generator is replaced by something that is normal ordered w.r.t a particular expectation value, then the CUT RG flow will usually be towards either the symmetry-preserved state or the symmetry-broken state, depending on whichever is stable \cite{wegner1994flow}.
+\begin{center}
+	\includegraphics[scale=0.22]{unitaries.png}
+	\captionof{figure}{Comparison of the various unitary transformations and their relationships to each other.}
+\end{center}
+
+\section{Numerical Implementation of Unitary RG Equations}
+Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
+\begin{equation}\begin{aligned}
+	\frac{\Delta J_\alpha}{\Delta D} = -J_\alpha \mathcal{G}_\alpha J_\alpha^\dagger - 4\mathcal{W}_\alpha\text{Tr}\left[\mathcal{G}^\prime_\alpha\right]~,
+\end{aligned}\end{equation}
+where all objects are matrices. \(J_\alpha\) is the Kondo coupling matrix. \(\mathcal{G}_\alpha\) is a diagonal matrix with matrix elements 
+\begin{equation}\begin{aligned}
+\mathcal{G}_\alpha[q, q] = \begin{cases}
+	\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 - J/4}\right),~{\bf q}\in\text{PS}~,\\
+\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 - J/4}\right),~{\bf q}\in\text{HS}~~,
+\end{cases}
+\end{aligned}\end{equation}
+if \(q\) is in the UV subspace and zero otherwise. \(\mathcal{W}_\alpha\) is the bath interaction matrix whose matrix elements are given by \(\mathcal{W}_\alpha[k, k^\prime] = \frac{W}{2}\left[\cos(k_x - k^\prime_x) + \cos(k_y - k^\prime_y)\right]\). Finally, \(\mathcal{G}^\prime_\alpha\) is another diagonal matrix whole matrix elements are defined as \(\mathcal{G}^\prime_\alpha[q,q] = \mathcal{G}[q, q] J_\alpha[q,\bar q]\).
+
+The RG equation for the inter-layer coupling \(J\) can be written as
+\begin{equation}\begin{aligned}
+	\frac{\Delta J}{\Delta D} &= \frac{1}{2} {\bf J} \cdot \mathcal{\bf G}~,
+\end{aligned}\end{equation}
+where \({\bf J}\) and \(\mathcal{\bf G}\) are vectors defined by the elements \({\bf J}[q] = J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\) and 
+\begin{equation}\begin{aligned}
+	\mathcal{\bf G}[q] = \rho({\bf q}) \left[\frac{1}{\omega - \frac{1}{2}\bar\epsilon_f({\bf q}) + \frac{1}{2}J_f({\bf q}) + W_f({\bf q}) - \frac{1}{4}J} + \frac{1}{\omega - \frac{1}{2}\bar\epsilon_d({\bf q}) + \frac{1}{2}J_d({\bf q}) + W_d({\bf q}) - \frac{1}{4}J}\right]~.
+\end{aligned}\end{equation}
+
+
 \section{Renormalised perturbation theory about fixed points}
 In this section, we will describe the technique of carrying out renormalised theory about a gapless fixed point theory towards obtaining a low-energy effective Hamiltonian for the excitations above the ground state. This is useful for characterising metallic phases, and detecting whether the metal is, say, a Landau Fermi liquid or a non-Fermi liquid.
 
@@ -920,35 +961,6 @@ We can already see that the singly-occupied states experience a lowering of ener
 				   &= \frac{16{t^*}^4}{27{J^*}^3}\ket{\Psi_{0,0,2}}\bra{\Psi_{0,0,2}}\left[-u \sum_\sigma n_{1\sigma} + u n_{1 \uparrow}n_{1 \downarrow}\right]~,
 \end{aligned}\end{equation}
 where \(u = 9\). This is the local Fermi liquid Hamiltonian for excitations above the Kondo screened ground state; the repulsive \(n_\uparrow n_\downarrow\) term ensures that the excitations are electronic in nature.
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Comparison of renormalisation group approaches based on canonical transformations}
-We have considered three canonical transformations in this section: the Poor Man's scaling (PMS), the Schrieffer-Wolff transformation (SWT) and the continuous unitary transformation renormalization group (CUT-RG). PMS and SWT are more or less identical; they differ in the context in which they are used. PMS is used when there is an entire spectrum of energies in the model, ranging from a low energy limit to a high energy; it is then employed to decouple the highest energy modes in an iterative fashion. SWT is used when the Hamiltonian can be split into one high and one low energy part, and we need to decouple these two modes. It is clear when seen from this perspective that SWT is like a one-shot PMS; it decouples the UV from the IR in one step, compared to the iterative approach of PMS. However, as has been shown in the previous subsections, both PMS and SWT can be formalized in an identical fashion, so that one can be switched for the other in both contexts.
-
-Now that we have established that PMS and SWT are formally identical, we can relate them to URG. URG is similar in philosophy to PMS in the fact that URG also successively decouples high energy modes from the low energy ones. The difference is that URG takes care of the quantum fluctuations, at least in principle, by introducing a new set of energy scales \(\omega\). These \(\omega\) then parameterise the RG flows of URG, compared to the single RG flow of PMS. Since SWT is formally the same as PMS, these is also a comparison between SWT and URG. Both PMS and SWT trivialize the quantum fluctuation scales of URG by replacing it with the bare energy values.
-
-CUT-RG is philosophically different from the other transformations. Its goal is to gradually reduce the contributions of the off-diagonal terms by making them decay along a certain scale \(l\). Off-diagonal terms that connect states with large energy differences decay faster. In this sense, there is no sequential dropping out of off-diagonal terms; all off-diagonal terms disappear at \(l=\infty\). In this sense, it is like a continuous version of SWT. While SWT strives to remove an entire off-diagonal term in one-shot, CUT RG does this gradually by introducing a scale \(l\). This separation of scales is absent in SWT. It does exist in URG and PMS, albeit in a different fashion. There, the separation comes in when we decouple single electron states starting from the Brillouin zone boundary \(\Lambda_N\) and come down to the Fermi surface \(\Lambda_0\). Each \(\Lambda\) provides a natural energy scale for separating the high and low energy physics.
-
-If one integrates the continuum generator \(\eta\) over all the scales, one should recover something analogous to the SWT generator. This generator is however necessarily perturbative in the off-diagonal term, since by definition \(\eta\) will only be of first order in \(\mathcal{H}_X\). This is in contrast to the non-perturbative generators in URG and, at least in principle, PMS. This non-perturbative form is encapsulated in the presence of a second completely different set of energy scales \(\omega\) (or \(E\) in PMS). This second energy scale is absent in CUT RG because it takes care of at most the second order term.
-
-Another point to note is that since SWT keeps the entire off-diagonal piece in the generator, new terms will almost certainly by generated at every step, and they have to be truncated. This is not the case with URG or PMS, becasue in those methods, we decouple just a single-electron at each step, and so those electrons become integrals of motion at that step, leading to their removal from the off-diagonal piece, and very often the Hamiltonian retains the same form as the bare model. This makes the philosophy of URG and PMS easier to work with. Tied to this is the fact that CUT RG often takes a certain type of interaction in the generator part, and not the entire off-diagonal piece. Hence, at the limit of the flow parameter going to \(\infty\), the chosen off-diagonal piece goes to zero but the remaining off-diagonal pieces still remain. As a result, the Hamiltonian is atmost block diagonal at this stage. On the other hand, URG progressively decouples single electrons, meaning all scattering terms corresponding to that electron vanish at each step. 
-
-One last thing to note is that URG, being unitarily implemented with a well-defined generator, does not accomodate for spontaneous symmetry breaking (SSB). In order to see SSB, the symmetry-breaking term has to be added to the bare model explicitly; if this term grows under the RG, then the ground state will be symmetry-broken. CUT RG, however, does allow for SSB through the idea that the generator is not uniquely defined. If the generator commutes with a particular symmetry, then the family of Hamiltonians will also have the symmetry \cite{kehrein2007flow}. However, if the generator is replaced by something that is normal ordered w.r.t a particular expectation value, then the CUT RG flow will usually be towards either the symmetry-preserved state or the symmetry-broken state, depending on whichever is stable \cite{wegner1994flow}.
-\begin{center}
-	\includegraphics[scale=0.22]{unitaries.png}
-	\captionof{figure}{Comparison of the various unitary transformations and their relationships to each other.}
-\end{center}
 
 \section{Iterative Diagonalisation of Quantum Impurity Models}
 
@@ -1246,7 +1258,7 @@ If we now measure the state of the second spin, it will collapse into one of it'
 \begin{equation}\begin{aligned}
 \rho_1 = \text{Tr}_2 [\rho ] = \sum_{\sigma_2} \braket{\sigma_2 \vert \rho \vert \sigma_2}~;
 \end{aligned}\end{equation}
-where $ \ket{\sigma_2}$ sums over the states $\ket{\uparrow}$ and $\ket{downarrow}$ of the second spin. this partial tracing operation $ \text{Tr}_2 $ codifies the measurement process, and the partially traced density matrix $ \rho_1 $ is termed a reduced density matrix (RDM) of the first spin, because it only captures information about the first spin (the second spin has been traced out).
+where $ \ket{\sigma_2}$ sums over the states $\ket{\uparrow}$ and $\ket{\downarrow}$ of the second spin. this partial tracing operation $ \text{Tr}_2 $ codifies the measurement process, and the partially traced density matrix $ \rho_1 $ is termed a reduced density matrix (RDM) of the first spin, because it only captures information about the first spin (the second spin has been traced out).
 
 To see the connection with mixedness, let us compute the RDM for the first spin explicitly:
 \begin{equation}\begin{aligned}

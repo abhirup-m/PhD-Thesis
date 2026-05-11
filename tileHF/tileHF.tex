@@ -1,6 +1,9 @@
 \chapter{\chapF}\label{sec:tileHF}
+As another application of the tiling approach, we will tackle the problem of heavy fermions in this chapter. The phenomenology of heavy fermion materials has been discussed in detail in the introduction. They involve localised \(f-\)electrons from rare earths and actinides hybridising with weakly correlated electrons from \(s\), \(p\) or \(d\) orbitals. In the phase where this hybridisation is strong and the \(f-\)electrons are Kondo screened by the conduction layer, the narrow bandwidth of the \(f-\)electrons leads to highly increased masses for the carriers. Lowering the hybridisation leads to a transition into a small Fermi volume phase where the \(f-\)electrons do not participate in transport. For systems belonging to the so called Kondo breakdown QCP class, the Kondo screening disappears completely at the transition, leading to a quantum critical point at zero temperature and non-Fermi liquid behaviour emanating from the QCP at finite temperature. 
+
+Given the work carried out in the previous chapter, we will approach this problem as follows. In order to model the two orbital nature of the heavy fermion system, we study a bilayer extended Hubbard model. By tuning the correlation strength of one of the layers (the \(f-\) layer), we will be able to interpolate between the heavy fermions limit where the \(f-\)layer is completely localised and other regimes where the \(f-\)layer has some itineracy. To get a feel for the various competing tendencies, we first study the infinite dimensional limit of the model through a two-impurity Kondo model. We then extend our investigation by considering a lattice-embedded version of the model that incorporates lattice geometries.
+
 \section{Bilayer extended Hubbard model: Impurity model}
-\cite{Mukherjee_2023}
 We approach the heavy-fermion problem by starting from a bilayer extended Hubbard model, consisting of two layers (\(f\) and \(c\)). Towards studying this lattice model, we adopt a two-layer impurity problem that hosts a correlated impurity site in each layer (\(S_f\) and \(S_d\)):
 \begin{equation}\begin{aligned}
 	H_\text{aux} = H_\text{1p} + H_f + H_d + H_{fd}~,
@@ -450,7 +453,7 @@ For large \(|W_f|\), the \(f-\)layer is sufficiently strongly correlated to form
 
 \begin{figure}[!htpb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{BL-RCPD-13-2502.pdf}
+	\includegraphics[width=0.6\textwidth]{BL-RCPD-13-2502.pdf}
 	\caption{}
 	\label{realCorrPD}
 \end{figure}
@@ -459,7 +462,8 @@ These conclusions are crystallised in the phase diagram in Fig.~\ref{realCorrPD}
 
 \begin{figure}[!htpb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{BL-I2-11-2099-f-d.pdf}
+	\includegraphics[width=0.49\textwidth]{BL-I2-11-2099-f-d.pdf}
+	\includegraphics[width=0.49\textwidth]{BL-I2-31-499-f0-d0.pdf}
 	\caption{}
 	\label{BL-I2}
 \end{figure}
@@ -475,37 +479,14 @@ Away from half-filling, if the chemical potential lies in one of the bands, the 
 	\centering
 	\includegraphics[width=\textwidth]{BL-SF-11-602--0.020000000000000004.pdf}
 	\caption{}
-	\label{}
+	% \label{}
 \end{figure}
 \begin{figure}[!htpb]
 	\centering
 	\includegraphics[width=\textwidth]{BL-SF-11-602--0.03.pdf}
 	\caption{}
-	\label{}
+	% \label{}
 \end{figure}
-
-\section{Numerical Implementation}
-Since the bath interaction doesn't renormalise, it's functional form remains unchanged and can be substituted into the RG equations. In fact, we can write the expressions in a compact matrix form for efficient computation:
-\begin{equation}\begin{aligned}
-	\frac{\Delta J_\alpha}{\Delta D} = -J_\alpha \mathcal{G}_\alpha J_\alpha^\dagger - 4\mathcal{W}_\alpha\text{Tr}\left[\mathcal{G}^\prime_\alpha\right]~,
-\end{aligned}\end{equation}
-where all objects are matrices. \(J_\alpha\) is the Kondo coupling matrix. \(\mathcal{G}_\alpha\) is a diagonal matrix with matrix elements 
-\begin{equation}\begin{aligned}
-\mathcal{G}_\alpha[q, q] = \begin{cases}
-	\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) + \mu/2 - J/4}\right),~{\bf q}\in\text{PS}~,\\
-\rho(q) \left(\frac{1}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 + 3J/4} + \frac{3}{8}\frac{1}{1/G_\alpha^{(0)}({\bf q}) - \mu/2 - J/4}\right),~{\bf q}\in\text{HS}~~,
-\end{cases}
-\end{aligned}\end{equation}
-if \(q\) is in the UV subspace and zero otherwise. \(\mathcal{W}_\alpha\) is the bath interaction matrix whose matrix elements are given by \(\mathcal{W}_\alpha[k, k^\prime] = \frac{W}{2}\left[\cos(k_x - k^\prime_x) + \cos(k_y - k^\prime_y)\right]\). Finally, \(\mathcal{G}^\prime_\alpha\) is another diagonal matrix whole matrix elements are defined as \(\mathcal{G}^\prime_\alpha[q,q] = \mathcal{G}[q, q] J_\alpha[q,\bar q]\).
-
-The RG equation for the inter-layer coupling \(J\) can be written as
-\begin{equation}\begin{aligned}
-	\frac{\Delta J}{\Delta D} &= \frac{1}{2} {\bf J} \cdot \mathcal{\bf G}~,
-\end{aligned}\end{equation}
-where \({\bf J}\) and \(\mathcal{\bf G}\) are vectors defined by the elements \({\bf J}[q] = J_f(\bar{\bf q},{\bf q}) J_d({\bf q},\bar{\bf q})\) and 
-\begin{equation}\begin{aligned}
-	\mathcal{\bf G}[q] = \rho({\bf q}) \left[\frac{1}{\omega - \frac{1}{2}\bar\epsilon_f({\bf q}) + \frac{1}{2}J_f({\bf q}) + W_f({\bf q}) - \frac{1}{4}J} + \frac{1}{\omega - \frac{1}{2}\bar\epsilon_d({\bf q}) + \frac{1}{2}J_d({\bf q}) + W_d({\bf q}) - \frac{1}{4}J}\right]~.
-\end{aligned}\end{equation}
 
 \section{Renormalisation Group Flows of Kondo Couplings: RG Phase Diagram}
 \begin{figure}[!t]
