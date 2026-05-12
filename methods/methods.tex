@@ -1456,111 +1456,113 @@ The decomposition of entanglement entropy into multipartite measures is now comp
 \end{aligned}\end{equation}
 where we have assumed \(N\) is even in order to drop the global phase factor \((-1)^N\).
 
-% \section{Wavefunction Renormalisation Group}
-%
-% \subsection{General idea}
-% A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions. This approach was pioneered through applications on the 2D Hubbard model in the form of the momentum-space entanglement renormalisation group (MERG) method, in order to characterise its various phases ~\cite{anirban_mott_2022,PatraEntanglement2023}, and has also been used to study a number of quantum impurity models~\cite{anirban_kondo,Patra2023MCK}.
-%
-% We will start with a very simple IR ground state wavefunction, and then go back towards the UV ground state by applying the inverse unitary operator \(U^\dagger\):
-% \begin{equation*}\begin{aligned}
-% 	U : \underbrace{\ket{1,2,...,N}}_\text{UV ground state} \rightarrow \ket{1,2,...,N-1}\ket{N} \rightarrow ... \rightarrow \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state}
-% \end{aligned}\end{equation*}
-% \begin{equation*}\begin{aligned}
-% 	U^\dagger : \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state} \rightarrow \ket{1,2,...,N^*+1}\ket{N^*+2}...\ket{N} \rightarrow ... \rightarrow\underbrace{\ket{1,,2,...,N}}_\text{UV ground state}
-% \end{aligned}\end{equation*}
-% The first process is the forward RG which we used to obtain the scaling equations.
-% The second process is the reverse RG which we will undertake now. The method has already been applied to study the renormalisation of entanglement in various models of strong correlation.
-% In general, we start with an IR wavefunction that consists a certain number of momentum states \(n_1\) still entangled with the impurity, and the remaining momentum states \(n_2\) disentangled from the impurity.
-% The former are said to be part of the emergent Kondo cloud, while the latter are said to be part of the integrals of motion (IOMs) and appear in direct product with the cloud+impurity system in the ground state wavefunction.
-% Each momentum state is tagged with two conduction bath levels, one above the Fermi surface and one below.
-% These will be represented as \(k,\pm\). If we represent the emergent cloud momentum states as \(\left\{k_i\right\} \) and the IOM states as \(\left\{q_i\right\}\), the ground state wavefunction can be written as 
-% \begin{equation}\begin{aligned}
-% 	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{q_i,-,\uparrow}\ket{q_i,-,\downarrow}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{q_i,+,\uparrow}\ket{q_i,+,\downarrow}\right)
-% \end{aligned}\end{equation}
-% Throughout, we have assumed that the IOMs below the Fermi surface are occupied while those above are unoccupied. This means:
-% \begin{equation}\begin{aligned}
-% 	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,-,\uparrow}=1}\ket{\hat n_{q_i,-,\downarrow}=1}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,+,\uparrow}=0}\ket{\hat n_{q_i,+,\downarrow}=0}\right)
-% \end{aligned}\end{equation}
-% \(\ket{\Phi}_\text{cloud}\) will be obtained by diagonalising a small system of \(n_1\) conduction bath \(k\) states. This completes the construction of the IR ground state \(\ket{\Psi}_0\). The algorithm of reverse RG then involves applying unitary transformations on this IR wavefunction; the unitary transformations will be the inverse of those that were applied during the forward RG algorithm. Since the forwards RG transformations decoupled \(k\) states and transformed them into the IOMS, the inverse transformations will take the momentum states in the IOMs and re-entangle them with the impurity+cloud system, one at a time. This is shown in fig.~\ref{rev-rg}.
-% \begin{figure}[!htbp]
-% 	\centering
-% 	\includegraphics[width=0.4\textwidth]{reverse-rg.png}
-% 	\caption{We start with a Hamiltonian with an impurity site (red) coupled with two conduction electrons (dark green), with four other decoupled electrons (bright green). The dotted rectangle represents the emergent window \(\left( -\Lambda_j, \Lambda_j \right) \) at each step; the electrons inside that rectangle are still entangled with the impurity, while the ones inside have been decoupled. The next step of reverse RG involves applying the inverse transformation on the Hamiltonian, which will couple two more electrons from the IOMS (hence four dark green circles in the second step), leading to an enlargement of the emergent window. The unitary varies for each step, hence the notation \(U_j\).}
-% 	\label{rev-rg}
-% \end{figure}
-%
-% The next step is to write down the unitaries that will take us from the IR ground state to the UV ground state. In the forward RG, we used the following unitary for decoupling the shell \(\epsilon_q\) and spin \(\beta\) is
-% \begin{equation}\begin{aligned}
-% 	U_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta} + \eta_{1\beta}^\dagger\right]~.
-% \end{aligned}\end{equation}
-% Here, the subscripts \(0\) and \(1\) indicate it decouples an electron above and below the Fermi surface respectively. The inverse transformation for re-entangling \(q\beta\) is
-% \begin{equation}\begin{aligned}
-% 	U^\dagger_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta}^\dagger + \eta_{1\beta}\right]~.
-% \end{aligned}\end{equation}
-%
-% The wavefunction after reversing one step of the RG will thus be
-% \begin{equation}\begin{aligned}
-% 	\ket{\Psi}_1 = U^\dagger_{q \uparrow}U^\dagger_{q \downarrow}\ket{\Psi}_0
-% \end{aligned}\end{equation}
-% Here, \(q\) is the first momentum state immediately outside the emergent cloud. Re-entangling further momentum states using their respective unitaries lead to the sequence of wavefunctions \(\ket{\Psi}_2, \ket{\Psi}_3\) and so on.
-% A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
-%
-% \subsection{Evolution equation for state tensor coefficients}
-% In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. At every step, we allow two states from the IOMS to interact with the already-entangled states (one above the Fermi energy and one below, in order to maintain particle-hole symmetry). After the \(j^\text{th}\) application of the reverse RG transformation, \(2j\) number of states are entangled with the impurity site, and the state can be represented as
-% \begin{equation}\begin{aligned}\label{zerothSiteRep}
-% 	\ket{\Psi_j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{2j}}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},I_{2j+1}}\ket{\nu_d}\ket{\nu_1}\ket{\nu_2}\ldots\ket{\nu_{2j}}\otimes\ket{I_{2j+1}}~,
-% \end{aligned}\end{equation}
-% where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = \ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
-%
-% We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
-% \begin{equation}\begin{aligned}
-% 	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}\mathcal{T}^{\mu_d}_{\nu_d}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+1}\mathcal{T}^{\mu_i}_{\nu_i}  + K^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+2}^\dagger\mathcal{T}^{\mu_i}_{\nu_i})~,
-% \end{aligned}\end{equation}
-% where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). We first obtain the action of the transformation \(U_j^\dagger\) on the basis states. We have
-% \begin{equation}\begin{aligned}
-% 	&\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\
-% 	&=\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} (-1)^{\mu_d + \sum_{k < i}\nu_i} \ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\ 
-% 	&=\mathcal{T}^{\nu_d}_{\mu_d} (-1)^{\mu_d + \sum_{k < i}\nu_i} (-1)^{\mu_d + \sum_{k}\nu_i}\ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}\\ 
-% 	&=(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}~,
-% \end{aligned}\end{equation}
-% and
-% \begin{equation}\begin{aligned}
-% 	\mathcal{T}^{\nu_d}_{\mu_d} c_{2j+1} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}} =(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{1_{2j+1}}\ket{0_{2j+2}}~.
-% \end{aligned}\end{equation}
-% Using these expressions, we construct the state at the \((j+1)^\text{th}\) step:
-% \begin{equation}\begin{aligned}
-% 	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
-% 					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
-% 					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
-% \end{aligned}\end{equation}
-% Gathering similar terms and normalising the state, we can write it as
-% \begin{equation}\begin{aligned}
-% 	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{2_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{2_{2j+1}}\ket{1_{2j+2}} \right.\\
-% 					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
-% \end{aligned}\end{equation}
-% where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
-% \begin{equation}\begin{aligned}
-% C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\\
-% C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}~.
-% \end{aligned}\end{equation}
-%
-% We can now read off the renormalisation of the state tensor coefficients:
-% \begin{equation}\begin{aligned}
-% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
-% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
-% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
-% \end{aligned}\end{equation}
-% We now make an important assumption: the coefficients \(K^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) and \(J^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) are uniform for the set of states \(S(\nu_i)\) and zero for other states. That gives
-% \begin{equation}\begin{aligned}
-% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}K\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
-% 	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}J\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
-% \end{aligned}\end{equation}
-%
-% One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
-% \begin{equation}\begin{aligned}
-% 	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}C^{(j)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j)}_{\nu_d,\ldots,\nu_k,\ldots}~,\\
-% 	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
-% \end{aligned}\end{equation}
+We have therefore successfully expressed the entanglement entropy as a hierarchy of multipartite information measures. This will be used in Chapters 4, 5 and 6 within out ``tiling" framework, where we map the physics of lattice models to that of quantum impurity models; there, this relation will prove useful in expressing the entanglement entropy of a subsystem of the lattice model in terms of a sum of multipartite information measures involving the impurity site and a collection of bath sites.
+
+\section{Wavefunction Renormalisation Group}
+
+\subsection{General idea}
+A reverse URG analysis involves studying the evolution of wavefunctions from the IR to the UV, by implementing inverse renormalisation group transformations. This is made possible by the fact that the IR fixed point Hamiltonians are often tractable and allow the computation of wavefunctions. Such an analysis gives insight into how states change as high-energy quantum fluctuations are resolved during the Hamiltonian renormalisation from the UV to the IR. It also allows studying the evolution of entanglement measures and correlation functions. This approach was pioneered through applications on the 2D Hubbard model in the form of the momentum-space entanglement renormalisation group (MERG) method, in order to characterise its various phases ~\cite{anirban_mott_2022,PatraEntanglement2023}, and has also been used to study a number of quantum impurity models~\cite{anirban_kondo,Patra2023MCK}.
+
+We will start with a very simple IR ground state wavefunction, and then go back towards the UV ground state by applying the inverse unitary operator \(U^\dagger\):
+\begin{equation*}\begin{aligned}
+	U : \underbrace{\ket{1,2,...,N}}_\text{UV ground state} \rightarrow \ket{1,2,...,N-1}\ket{N} \rightarrow ... \rightarrow \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state}
+\end{aligned}\end{equation*}
+\begin{equation*}\begin{aligned}
+	U^\dagger : \underbrace{\ket{1,2,...,N^*}\ket{N^*+1}...\ket{N}}_\text{IR ground state} \rightarrow \ket{1,2,...,N^*+1}\ket{N^*+2}...\ket{N} \rightarrow ... \rightarrow\underbrace{\ket{1,,2,...,N}}_\text{UV ground state}
+\end{aligned}\end{equation*}
+The first process is the forward RG which we used to obtain the scaling equations.
+The second process is the reverse RG which we will undertake now. The method has already been applied to study the renormalisation of entanglement in various models of strong correlation.
+In general, we start with an IR wavefunction that consists a certain number of momentum states \(n_1\) still entangled with the impurity, and the remaining momentum states \(n_2\) disentangled from the impurity.
+The former are said to be part of the emergent Kondo cloud, while the latter are said to be part of the integrals of motion (IOMs) and appear in direct product with the cloud+impurity system in the ground state wavefunction.
+Each momentum state is tagged with two conduction bath levels, one above the Fermi surface and one below.
+These will be represented as \(k,\pm\). If we represent the emergent cloud momentum states as \(\left\{k_i\right\} \) and the IOM states as \(\left\{q_i\right\}\), the ground state wavefunction can be written as 
+\begin{equation}\begin{aligned}
+	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{q_i,-,\uparrow}\ket{q_i,-,\downarrow}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{q_i,+,\uparrow}\ket{q_i,+,\downarrow}\right)
+\end{aligned}\end{equation}
+Throughout, we have assumed that the IOMs below the Fermi surface are occupied while those above are unoccupied. This means:
+\begin{equation}\begin{aligned}
+	\ket{\Psi}_0 = \left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,-,\uparrow}=1}\ket{\hat n_{q_i,-,\downarrow}=1}\right)\ket{\Phi}_\text{cloud}\left(\otimes_{i=1}^{n_2}\ket{\hat n_{q_i,+,\uparrow}=0}\ket{\hat n_{q_i,+,\downarrow}=0}\right)
+\end{aligned}\end{equation}
+\(\ket{\Phi}_\text{cloud}\) will be obtained by diagonalising a small system of \(n_1\) conduction bath \(k\) states. This completes the construction of the IR ground state \(\ket{\Psi}_0\). The algorithm of reverse RG then involves applying unitary transformations on this IR wavefunction; the unitary transformations will be the inverse of those that were applied during the forward RG algorithm. Since the forwards RG transformations decoupled \(k\) states and transformed them into the IOMS, the inverse transformations will take the momentum states in the IOMs and re-entangle them with the impurity+cloud system, one at a time. This is shown in fig.~\ref{rev-rg}.
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth]{reverse-rg.png}
+	\caption{We start with a Hamiltonian with an impurity site (red) coupled with two conduction electrons (dark green), with four other decoupled electrons (bright green). The dotted rectangle represents the emergent window \(\left( -\Lambda_j, \Lambda_j \right) \) at each step; the electrons inside that rectangle are still entangled with the impurity, while the ones inside have been decoupled. The next step of reverse RG involves applying the inverse transformation on the Hamiltonian, which will couple two more electrons from the IOMS (hence four dark green circles in the second step), leading to an enlargement of the emergent window. The unitary varies for each step, hence the notation \(U_j\).}
+	\label{rev-rg}
+\end{figure}
+
+The next step is to write down the unitaries that will take us from the IR ground state to the UV ground state. In the forward RG, we used the following unitary for decoupling the shell \(\epsilon_q\) and spin \(\beta\) is
+\begin{equation}\begin{aligned}
+	U_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta} + \eta_{1\beta}^\dagger\right]~.
+\end{aligned}\end{equation}
+Here, the subscripts \(0\) and \(1\) indicate it decouples an electron above and below the Fermi surface respectively. The inverse transformation for re-entangling \(q\beta\) is
+\begin{equation}\begin{aligned}
+	U^\dagger_{q\beta} = \frac{1}{\sqrt 2}\left[1 + \eta_{0 \beta}^\dagger + \eta_{1\beta}\right]~.
+\end{aligned}\end{equation}
+
+The wavefunction after reversing one step of the RG will thus be
+\begin{equation}\begin{aligned}
+	\ket{\Psi}_1 = U^\dagger_{q \uparrow}U^\dagger_{q \downarrow}\ket{\Psi}_0
+\end{aligned}\end{equation}
+Here, \(q\) is the first momentum state immediately outside the emergent cloud. Re-entangling further momentum states using their respective unitaries lead to the sequence of wavefunctions \(\ket{\Psi}_2, \ket{\Psi}_3\) and so on.
+A straightforward way of calculating entanglement and correlations across the RG flow is to create a second-quantised prototypical form of the IR state \(\ket{\Psi_0}\), and then apply the inverse unitary operators \(\left\{ U_i \right\} \) to this wavefunction in order to generate the family of states \(\ket{\Psi_i} = U_i \ket{\Psi_{i-1}}, i > 0\). Quantities like entanglement entropy and correlations can then be calculated by using this family of states. If the unitary is of a specific form, there is instead a more efficient method of doing this, which is what we will describe in the next subsection.
+
+\subsection{Evolution equation for state tensor coefficients}
+In the following, we restrict ourselves to the reverse RG analysis of an impurity problem hybridising with the local degree of freedom of a conduction bath. At every step, we allow two states from the IOMS to interact with the already-entangled states (one above the Fermi energy and one below, in order to maintain particle-hole symmetry). After the \(j^\text{th}\) application of the reverse RG transformation, \(2j\) number of states are entangled with the impurity site, and the state can be represented as
+\begin{equation}\begin{aligned}\label{zerothSiteRep}
+	\ket{\Psi_j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{2j}}~C^{(j)}_{\nu_d,\nu_1,\ldots,\nu_{2j},I_{2j+1}}\ket{\nu_d}\ket{\nu_1}\ket{\nu_2}\ldots\ket{\nu_{2j}}\otimes\ket{I_{2j+1}}~,
+\end{aligned}\end{equation}
+where \(\ket{\nu_d}\) and \(\ket{\nu_i} (i \in [1, 2j])\) sum over the configurations of the impurity site and the effective zeroth site configuration at the \(j^\text{th}\) step. \(\ket{I_{2j+1}}\) is the configuration of the integrals of motion from the \((2j+1)^\text{th}\) site and beyond. We define the product state \(\ket{\psi_{dz}(j)} = \ket{\nu_d}\ket{\nu_1}\ldots\ket{\nu_{2j}}\) for future reference.
+
+We consider a restricted form of RG evolution, where the unitary transformation from IR towards UV can be expressed at any step as
+\begin{equation}\begin{aligned}
+	U_j^\dagger = 1 + \sum_{i \in [1, 2j]}\sum_{\nu_d,\mu_d,\nu_i,\mu_i}\mathcal{T}^{\mu_d}_{\nu_d}(J^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+1}\mathcal{T}^{\mu_i}_{\nu_i}  + K^{\mu_d,\mu_i}_{\nu_d,\nu_i} c_{2j+2}^\dagger\mathcal{T}^{\mu_i}_{\nu_i})~,
+\end{aligned}\end{equation}
+where \(\mathcal{T}^\nu_\alpha = \ket{\nu}\bra{\alpha}\) is a transition operator and sums over all transition operators of the specific subspace (impurity or bath sites). We first obtain the action of the transformation \(U_j^\dagger\) on the basis states. We have
+\begin{equation}\begin{aligned}
+	&\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\
+	&=\mathcal{T}^{\nu_d}_{\mu_d} c^\dagger_{2j+2} (-1)^{\mu_d + \sum_{k < i}\nu_i} \ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}}\\ 
+	&=\mathcal{T}^{\nu_d}_{\mu_d} (-1)^{\mu_d + \sum_{k < i}\nu_i} (-1)^{\mu_d + \sum_{k}\nu_i}\ket{\mu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}\\ 
+	&=(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{2_{2j+1}}\ket{1_{2j+2}}~,
+\end{aligned}\end{equation}
+and
+\begin{equation}\begin{aligned}
+	\mathcal{T}^{\nu_d}_{\mu_d} c_{2j+1} \mathcal{T}^{\nu_i}_{\mu_i}\ket{\mu_d}\ldots\ket{\mu_i}\ldots\ket{2_{2j+1}}\ket{0_{2j+2}} =(-1)^{\sum_{k \geq i}\nu_i}\ket{\nu_d}\ldots\ket{\nu_i}\ldots\ket{1_{2j+1}}\ket{0_{2j+2}}~.
+\end{aligned}\end{equation}
+Using these expressions, we construct the state at the \((j+1)^\text{th}\) step:
+\begin{equation}\begin{aligned}
+	\ket{\Psi_{j+1}} =& \sum_{\nu_d,\nu_1,\ldots,\nu_j}~C^{(j)}_{\nu_d,\nu_1,\ldots,}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{1_{2j+1}}\ket{0_{2j+2}}\ket{I_{2j+3}} \\
+					  &+ \sum_i\sum_{\mu_d,\mu_i,\nu_d,\nu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\ket{\psi_{dz}(j)}\ket{2_{2j+1}}\ket{1_{2j+2}}\ket{I_{2j+3}} \\
+\end{aligned}\end{equation}
+Gathering similar terms and normalising the state, we can write it as
+\begin{equation}\begin{aligned}
+	\ket{\Psi_{j+1}} =& \frac{1}{L_j}\sum_{\nu_d,\{\nu_i\}}~\ket{\psi_{dz}(j)}\left[C^{(j)}_{\nu_d,\{\nu_i\},1_{2j+1},0_{2j+2},I_{j+1}}\ket{2_{2j+1}}\ket{0_{2j+2}} + C^{(j)}_{+,\nu_d,\{\nu_i\}}\ket{2_{2j+1}}\ket{1_{2j+2}} \right.\\
+					  &\left.+ C^{(j)}_{-,\nu_d,\{\nu_i\}}\ket{1_{2j+1}}\ket{0_{2j+2}}\right]\ket{I_{2j+3}}~,
+\end{aligned}\end{equation}
+where \(L_j^2 = \sum_{\nu_d,\{\nu_i\}}\left({C^{(j)}_{\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{+,\nu_d,\{\nu_i\}}}^2 + {C^{(j)}_{-,\nu_d,\{\nu_i\}}}^2\right) \) defines the normalisation factor, and
+\begin{equation}\begin{aligned}
+C_{+,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}\\
+C_{-,\nu_d,\{\nu_i\}} = \sum_{i,\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}(-1)^{\sum_{k\geq i}\nu_k}~.
+\end{aligned}\end{equation}
+
+We can now read off the renormalisation of the state tensor coefficients:
+\begin{equation}\begin{aligned}
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}C^{(j)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 0_{2j+2}, I_{2j+3}}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 2_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}K^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d,\mu_i}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}J^{\nu_d,\nu_i}_{\mu_d,\mu_i}~,\\
+\end{aligned}\end{equation}
+We now make an important assumption: the coefficients \(K^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) and \(J^{\nu_d,\nu_i}_{\mu_d,\mu_i}\) are uniform for the set of states \(S(\nu_i)\) and zero for other states. That gives
+\begin{equation}\begin{aligned}
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 1_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}K\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
+	C^{(j+1)}_{\nu_d, \nu_1,\ldots,\nu_{2j}, 1_{2j+1}, 0_{2j+2}, I_{2j+3}} &= \frac{1}{L_j}J\sum_{i}(-1)^{\sum_{k\geq i}\nu_k}\sum_{\mu_d \in S(\nu_d),\atop{\mu_i \in S(\nu_i)}}C^{(j)}_{\mu_d,\ldots,\mu_i,\ldots,\nu_{2j},1_{2j+1},0_{2j+2}}~,\\
+\end{aligned}\end{equation}
+
+One can also look at renormalisation of expectation values of operators; this is useful for tracking the evolution of correlations and entanglement measures. Consider an operator \(\mathcal{O}_{\mu_k}^{\nu_k}\) that acts on the \(k^\text{th}\) bath site. The expectation value of this operator at any step can be written as
+\begin{equation}\begin{aligned}
+	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j}}C^{(j)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j)}_{\nu_d,\ldots,\nu_k,\ldots}~,\\
+	\braket{\mathcal{O}_{\nu_k}^{\mu_k}}_{j+1} = \sum_{\nu_d,\nu_1,\ldots,\nu_{k-1},\nu_{k+1},\ldots,\nu_{2j+2}}C^{(j+1)}_{\nu_d,\ldots,\mu_k,\ldots}C^{(j+1)}_{\nu_d,\ldots,\nu_k,\ldots}
+\end{aligned}\end{equation}
 
 \section{Kondo model spectral function}
 We will now obtain forms for spectral functions for the single-channel Kondo model and a two-impurity Kondo model. The former will be used in our work on the extended Anderson impurity model (Chapter 3) and the lattice embedded impurity model (Chapter 5), while the latter will be used in our work on the heavy fermions (Chapter 6).
