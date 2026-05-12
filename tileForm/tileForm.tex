@@ -1,4 +1,5 @@
 \chapter{\chapD}\label{sec:tileForm}
+Having identified the appropriate auxiliary model in the limit of infinite dimensions in the previous chapter, we now focus on extending this approach to the more realistic case of low dimensions. Towards this, develop a ``tiling" framework, where we apply manybody translation operators to restore translation invariance and map the impurity model with the lattice model. By embedding the impurity model in well-defined lattices, our method incorporates non-trivial effects such as nesting and momentum-space anisotropy arising from lattice geometries. We leave the application of this method to a concrete problem for the next chapter.
 
 \section{What Is The Correct Auxiliary Model For Correlated Electrons on a 2D Square Lattice?}\label{identifyModel}
 As discussed in more detail in the previous chapter, it was necessary to extend the single-impurity Anderson model (SIAM) in order to obtain a phase transition on the impurity site. Without any modification, the standard Anderson model (at particle-hole symmetry) leads to the emergence of an \(\omega=0\) Kondo resonance in the impurity (\(d\sigma\)) spectral function at any value of the impurity correlation \(U_d\), at sufficiently low temperatures:
@@ -144,7 +145,6 @@ In the tight-binding approach to lattice problems, the full Hamiltonian is obtai
 \begin{equation}\begin{aligned}
 	T^\dagger(l{\bm a})\ket{\Psi_{n,{\bm K}}} = \sum_{i} e^{i {\bm K}\cdot{\bm r}_i} \ket{\psi_n(i + l)} = e^{-il{\bm K}\cdot{\bm a}}\ket{\Psi_{n,\bm K}}~.
 \end{aligned}\end{equation}
-% The definition and some properties of these global translation operations were provided in Appendix~\ref{translationOperators}. It was shown there that they share eigenstates with the total momentum operator. In a lattice model, this continuous symmetry gets lowered to its discrete form: the total {\it crystal} momentum is conserved by any scattering process. As a result, the eigenstates can be labelled using the combined index \(s = \left({\bm k}, n\right) \) where \({\bm k}\) is the total crystal momentum and \(n\) is a band index \(n\).
 
 As discussed earlier, the eigenstates \(\ket{\Psi_{n,\bm K}}\) of the lattice Hamiltonian obtained using eq.~\ref{tilingPrescription} enjoy the discrete translation symmetry of the lattice, and therefore enjoy a {\it many-body} Bloch's theorem~\cite{stoyanova}. This means that the {\it local} eigenstates \(\ket{\psi_n\left({\bm r}_d\right)}\) (with the impurity located at an arbitrary position \({\bm r}_d\)) of the unit cell auxiliary model Hamiltonian \({H}_\text{clust}({\bm r}_d)\) defined in eq.~\ref{clusterHamiltonian} can be used to construct eigenstates of the lattice Hamiltonian. The index \(n(=0,1,\ldots)\) in the subscript indicates that it is the \(n^\text{th}\) eigenstate of the auxiliary model. The following combination of the auxiliary model eigenstates satisfies a many-particle equivalent of Bloch's theorem~\cite{stoyanova}:
 \begin{equation}\begin{aligned}\label{eigenstateProposal}
@@ -489,3 +489,8 @@ For example, truncating the summation to \(n=3\), we have the explicit expressio
 \begin{equation}\begin{aligned}
 	S_\text{EE}^{(1)} &= \frac{N-1}{N}I_2^{(\text{tot})}(\bm r_d) - \frac{(N-1)(N-2)}{2N}I_3^{(\text{tot})}(\bm r_d)
 \end{aligned}\end{equation}
+
+\section{Discussions}
+This chapter was primarily devoted to motivating and developing the ``tiling" auxiliary model framework. Using an appropriately-chosen quantum impurity model and many-body translation operators, we demonstrated how one can reconstruct the full lattice model and its low-energy physics. More explicitly, this involves mappings between the two models that leverage the translation operators. The workflow suggested by such an approach is the following. The first step is to identify a quantum impurity model that has the appropriate "local phenomenology" for the lattice model we are targeting. The impurity model needs to be embedded in the appropriate lattice. We then use an impurity solver (in this case, the unitary RG method) to compute various properties of the impurity model. Finally, we use the tiling relations to reconstruct the physics of the lattice model. The embedding step ensures that the lattice effects are encoded in the impurity model couplings and hence in the tiled quantities.
+
+The next step is to apply it to non-trivial problems. We will do that in the next two chapters, by benchmarking the method against existing rigorous results and using it to obtain new insights on such problems.

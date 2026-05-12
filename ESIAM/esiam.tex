@@ -1,6 +1,7 @@
 \chapter{\chapC}\label{sec:ESIAM}
-\section{Introduction}
+In this chapter, we begin our investigations into Mott criticality by looking into one of the simplest examples: the Mott transition of the Hubbard model in infinite dimensions. In preparation for the development of a new auxiliary model approach, we devote this chapter to identifying the appropriate quantum impurity model for capturing this transition, without employing self-consistency. After identifying the model, we will analyse the mode using the unitary RG method and obtain a phase diagram which qualitatively captures the Mott MIT. This sets the stage for extending this approach to low dimensions in later chapters.
 
+\section{Introduction}
 The rich physics of metal-insulator transitions in strongly correlated systems has been an active subject of study for quite some time~\cite{Mott_RMP_1968,milligan_1985,imada1998metal}, yet much still remains to be understood. It involves diverse aspects such as spin and charge fluctuations, quasiparticle renormalisation effects, anomalous metallic phases and unconventional superconductivity, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
 Thus, the simplification is that the dynamics of any local site on the lattice is determined completely by a quantum impurity problem~\cite{georges1996,Logan_2015}.
 It must also be noted that this exact solution precludes any long-range order in the system, and corresponds to the case of a maximally frustrated Hubbard model involving long-range and frustrating inter-site hopping such that both the metallic and insulating phases remain paramagnetic~\cite{vucicevic_2013}.
@@ -99,7 +100,7 @@ The operators \(\eta_{(j)},\eta^\dagger_{(j)}\) behave as the many-particle anal
 	\label{omega}
 \end{eqnarray}
 \(H^i_{(j)}\) is the part of \(H_{(j)}\) that commutes with \(\hat n_j\) but does {\it not} commute with at least one \(\hat n_l\) for \(l < j\). The RG flow continues up to energy \(D^*\), where a fixed point is reached from the vanishing of the RG function. 
-Detailed comparisons of the URG with other methods (e.g., the functional RG, spectrum bifurcation RG etc.) can be found in Refs.~\cite{anirbanmott1,anirbanurg1}. More information on the unitary RG method is provided in Section 1 of the Supplementary Materials~\cite{supp_mat}.
+Detailed comparisons of the URG with other methods (e.g., the functional RG, spectrum bifurcation RG etc.) can be found in Refs.~\cite{anirbanmott1,anirbanurg1}. More information on the unitary RG method is provided in Chapter 2.
 
 \section{Derivation of renormalisation group equations for the extended-SIAM}
 
@@ -281,7 +282,7 @@ Indeed, the RG equation for $K$ is observed to be identical in form to that for 
 
 \subsection{URG equations for the e-SIAM}
 
-The derivation of the RG equations for the extended Anderson impurity model (e-SIAM) Hamiltonian is shown in Section 2 of the Supplementary Materials~\cite{supp_mat}. The bath coupling \(U_b\) is marginal. We provide below the RG equations of the remaining couplings for a given quantum fluctuation scale \(\omega\):
+The bath coupling \(U_b\) is marginal. The RG equations of the remaining couplings for a given quantum fluctuation scale \(\omega\) are:
 \begin{align}
 	\Delta U &= 4V^2 n_j\left(\frac{1}{d_1} - \frac{1}{d_0}\right) - n_j\frac{J^2}{d_2},\nonumber\\
 	\Delta V &= -\frac{3n_j V}{8}\left[J\left(\frac{1}{d_2} + \frac{1}{d_1}\right) +  \frac{4U_b}{3}\sum_{i=1}^4 \frac{1}{d_i}\right],\label{rg-eqn}\\
@@ -414,7 +415,7 @@ We will now show that a certain measure of entanglement behaves as an order para
 From this definition, if \(\ket{\psi_1}\) corresponds to a separable state, the entanglement content of the state \(\ket{\psi_2}\) is small if it's overlap with \(\ket{\psi_1}\) is large.
 For brevity, we will use the notation \(\varepsilon_\text{ss} \equiv \varepsilon\left(\psi_\text{ss},\psi^{(2)}_\text{gs}\right), \varepsilon_\text{ct} \equiv \varepsilon\left(\psi_\text{ct},\psi^{(2)}_\text{gs}\right)\) to represent the geometric entanglement between the e-SIAM ground-state \(\ket{\psi_\text{gs}}\) and the singlet state \(\ket{\psi_\text{ss}}\) or the charge triplet zero state \(\ket{\psi_\text{ct}}\).
 The latter two states are shown in Table \eqref{phases-table}.
-The entanglement measures $\varepsilon_{\text{ss}}$ and $\varepsilon_{\text{ct}}$ can be related to the impurity Greens function through the following equation (details can be found in Sec. 3 of the Supplementary Materials~\cite{supp_mat}):
+The entanglement measures $\varepsilon_{\text{ss}}$ and $\varepsilon_{\text{ct}}$ can be related to the impurity Greens function through the following equation (details can be found in Appendix 1 of this chapter):
 \begin{eqnarray}
 	G_d(\omega) = \sum_n &\left[\left(1 - \varepsilon_\text{ss} \right) G_{\Phi_\text{ss},\Phi_\text{ss}}(\omega,n) + \left(1 - \varepsilon_\text{ct} \right) G_{\Phi_\text{ct},\Phi_\text{ct}}(\omega,n) \right.\nonumber \\
 			     &\left.+ 2\sqrt{\left(1 - \varepsilon_\text{ss} \right)}\sqrt{\left(1 - \varepsilon_\text{ct} \right)} G_{\Phi_\text{ss},\Phi_\text{ct}}(\omega,n)\right]~,
@@ -430,15 +431,15 @@ with $r$ (and related correlation functions shown in the left panel of Fig.\eqre
 Indeed, we find that the geometric entanglement \(\varepsilon_\text{ct}\) with the charge sector increases towards unity as the transition at \(r_{c2}\) is approached, and remains unity after the transition. A more sensitive measure is the singlet entanglement \(\varepsilon_\text{ss}\): it initially decreases to zero at \(r_{c1}\) owing to the irrelevance of \(V\), but rises discontinuously to unity at the transition and becomes equal to the charge entanglement in the local moment phase.
 Therefore, \(\varepsilon_\text{ss}\) {\it acts as an order parameter} for the local MIT at \(r_{c2}\). We find that the cross-term \(\sqrt{\left(1 - \varepsilon_\text{ss} \right)}\sqrt{\left(1 - \varepsilon_\text{ct} \right)}\) decreases monotonically to zero with increasing \(r\) (not shown), displaying a continual decrease in the mixing of the spin and charge sectors and the {\it immobilisation of the doublons and holons on the impurity site}. 
 
-In general, any one-particle or two-particle fluctuation \(\left<O_1 O_2^\dagger \right>\) that acts on the combined Hilbert space of the impurity and the zeroth site can be expressed in terms of these entanglement measures \(\varepsilon_\text{ss},\varepsilon_\text{ct}\). The detailed derivations and expressions are given in Section 3 of the Supplementary Materials~\cite{supp_mat}. As a demonstration, consider the spin-spin correlation $\langle S_{d}^{+}S_{0}^{-}\rangle$ between the impurity and the zeroth site shown in the left panel of Fig.~\eqref{gstate-correlations}. The general expression given in Section 3 of the Supplementary Materials~\cite{supp_mat} is of the form
+In general, any one-particle or two-particle fluctuation \(\left<O_1 O_2^\dagger \right>\) that acts on the combined Hilbert space of the impurity and the zeroth site can be expressed in terms of these entanglement measures \(\varepsilon_\text{ss},\varepsilon_\text{ct}\). The detailed derivations and expressions are given in Appendix 1. As a demonstration, consider the spin-spin correlation $\langle S_{d}^{+}S_{0}^{-}\rangle$ between the impurity and the zeroth site shown in the left panel of Fig.~\eqref{gstate-correlations}. The general expression given in Appendix 1:
 \begin{eqnarray}
 	\braket{S_{d}^{+}S_{0}^{-}} =& \left(1 - \varepsilon_\text{ss}\right) \braket{\Phi_\text{ss} | S_d^+ S_0^- | \Phi_\text{ss}} + \left(1 - \varepsilon_\text{ct}\right) \braket{\Phi_\text{ct} | S_d^+ S_0^- | \Phi_\text{ct}} \nonumber \\
 				      &+ \sqrt{1 - \varepsilon_\text{ss}}\sqrt{1 - \varepsilon_\text{ct}}\left(\braket{\Phi_\text{ss} | S_d^+ S_0^- | \Phi_\text{ct}} + \braket{\Phi_\text{ct} | S_d^+ S_0^- | \Phi_\text{s}}\right)~.
 \end{eqnarray}
 
-From the expression given, we find that only the singlet overlap is non-zero, such that $\langle S_{d}^{+}S_{0}^{-}\rangle$ is directly proportional to the quantity \(1-\varepsilon_\text{ss}\). As the entanglement measure \(\varepsilon_\text{ss}\) increases towards the transition (right panel of Fig.~\eqref{gstate-correlations}), the quantity \(1 - \varepsilon_\text{ss}\) decreases, in turn leading to the decrease in the magnitude of the correlation observed in the left panel of Fig.~\eqref{gstate-correlations}. For another explicit connection between correlations and entanglement measures, we present relations between the quantum Fisher information (QFI)~\cite{Hauke2016} and many-particle Greens functions in Section 3 of the Supplementary Materials~\cite{supp_mat}. There, we also plot the QFI for a number of two-particle operators as a function of \(r\), notably the ones corresponding to the degree of compensation for the impurity (\(\braket{\vec{S}_d\cdot\vec{S}_0}\)) and the impurity magnetisation (\(\braket{S_d^z}\)).
+From the expression given, we find that only the singlet overlap is non-zero, such that $\langle S_{d}^{+}S_{0}^{-}\rangle$ is directly proportional to the quantity \(1-\varepsilon_\text{ss}\). As the entanglement measure \(\varepsilon_\text{ss}\) increases towards the transition (right panel of Fig.~\eqref{gstate-correlations}), the quantity \(1 - \varepsilon_\text{ss}\) decreases, in turn leading to the decrease in the magnitude of the correlation observed in the left panel of Fig.~\eqref{gstate-correlations}. For another explicit connection between correlations and entanglement measures, we present relations between the quantum Fisher information (QFI)~\cite{Hauke2016} and many-particle Greens functions in Appendix 1. There, we also plot the QFI for a number of two-particle operators as a function of \(r\), notably the ones corresponding to the degree of compensation for the impurity (\(\braket{\vec{S}_d\cdot\vec{S}_0}\)) and the impurity magnetisation (\(\braket{S_d^z}\)).
 These two quantities (and hence the corresponding QFI) are important because they track the local MIT and act as order parameters for the transition, and the QFI corresponding to these two operators quantify the quantum fluctuations present in the system corresponding to these order parameters.
-We show in Sec. 3 of the Supplementary Materials that the two phases on either side of the transition are characterised by distinct values of this pair of QFI: while the QFI corresponding to the degree of compensation is zero in the Kondo screened phase, it becomes non-zero in the local moment phase, and the opposite is true for the QFI arising from the impurity magnetisation.
+We show in Appendix 1 that the two phases on either side of the transition are characterised by distinct values of this pair of QFI: while the QFI corresponding to the degree of compensation is zero in the Kondo screened phase, it becomes non-zero in the local moment phase, and the opposite is true for the QFI arising from the impurity magnetisation.
 The phase precisely at the transition is distinct from those on either side because it displays a non-zero value for both of the QFI.
 While it is expected that a critical point would show enhanced fluctuations of multiple kinds (giving rise to universality), it is enlightening to find that this is also reflected in a measure of many-particle entanglement.
 
@@ -510,7 +511,7 @@ As is well-established, the DMFT self-consistency equation is equivalent to requ
 Such a condition is also used in the projective self-consistent technique of Moeller et al.~\cite{moeller_1995} for the states within the central Kondo resonance.
 We will now show that our model displays a qualitatively similar emergent feature.
 To proceed, by employing a one-step URG transformation, we integrate out the impurity site from the rest of the fixed-point Hamiltonian of eq.~\eqref{fixed-point-ham}.
-The details are shown in Sec. 4 of the Supplementary Materials~\cite{supp_mat}. The essential idea is similar to that of the Schrieffer-Wolff transformation: removing the impurity-bath couplings \(J\) and \(V\) generates an additional repulsive correlation \(\delta U_z^* \) on the zeroth site. The new low-energy model \(H_\text{Z}\) is therefore an Anderson impurity model with a net local correlation \(U_\text{Z}^* = \delta U_Z^* + U_b\) on the zeroth site (which is now the ``new impurity site"), and a single-particle hybridisation \(V_\text{Z}^* = -t\) coupling with a conduction bath formed by the remaining sites. This new impurity model is depicted schematically in the right panel of Fig.~\eqref{spin-charge-corr}.
+The details are shown in Appendix 2. The essential idea is similar to that of the Schrieffer-Wolff transformation: removing the impurity-bath couplings \(J\) and \(V\) generates an additional repulsive correlation \(\delta U_z^* \) on the zeroth site. The new low-energy model \(H_\text{Z}\) is therefore an Anderson impurity model with a net local correlation \(U_\text{Z}^* = \delta U_Z^* + U_b\) on the zeroth site (which is now the ``new impurity site"), and a single-particle hybridisation \(V_\text{Z}^* = -t\) coupling with a conduction bath formed by the remaining sites. This new impurity model is depicted schematically in the right panel of Fig.~\eqref{spin-charge-corr}.
 \begin{eqnarray}
 	H_\text{Z}^*  = \underbrace{-\frac{1}{2}U_\text{Z}^*\left(\hat n_{0\uparrow} - \hat n_{0\downarrow}\right)^2}_\text{new impurity = \(0^\text{th}\) site} + \underbrace{V_\text{Z}^*\sum_{\left<j,0 \right>}\left(c^\dagger_{0\sigma}c_{j\sigma} + \text{h.c.}\right)}_\text{hopping between \(0^\text{th}\) site \& new bath} + \underbrace{(-t) \sum_{\left<i,j \right>}\left(c^\dagger_{i\sigma}c_{j\sigma} + \text{h.c.}\right)}_\text{K.E. of new bath}~.
 \end{eqnarray}
@@ -584,7 +585,7 @@ However, fourth-order corrections lead to the appearance of scattering processes
 	H_\text{eff}^{(4)} = \frac{\gamma^4 \alpha_+^2 \beta^2}{\left( 1 - \alpha_+^2 \right) \left( E_+^\prime - E_\text{gs} \right) } \left[- C_\text{tot}^z C_\text{tot}^2 C_1^z + \sqrt{2}\mathcal{P}_\text{tot}^{4}\left(C_0^+ - C_d^+\right)C_1^- + \text{h.c.}\right]~,\label{holonLFL}
 \end{eqnarray}
 where \(E_+^\prime = \frac{U}{4} - \frac{3J}{8} + \sqrt{4V^2 + \left(\frac{U}{4} + \frac{3J}{8}\right)^2}\) is the energy of the state containing the charge isospin triplet zero, and \(\beta = \frac{2V}{\sqrt{4V^2 + \left(U + 3J/4\right)^2}}\). \(\mathcal{P}^4_\text{tot}\) projects on to the \(n_d + n_0 = 4\) subspace.
-The scattering processes in eq.~\eqref{holonLFL} are clearly non-Fermi liquid in nature as they allow the inter-conversion of the charge isospin eigenstates, and therefore reduce the lifetime of the quasiparticle excitations of the local Fermi liquid obtained in eq.~\eqref{holonLFL}. Additional details pertaining to the calculation of this effective Hamiltonian are present in Sec. 5 of the Supplementary Materials~\cite{supp_mat}.
+The scattering processes in eq.~\eqref{holonLFL} are clearly non-Fermi liquid in nature as they allow the inter-conversion of the charge isospin eigenstates, and therefore reduce the lifetime of the quasiparticle excitations of the local Fermi liquid obtained in eq.~\eqref{holonLFL}. Additional details pertaining to the calculation of this effective Hamiltonian are present in Appendix 3.
 
 \subsection{Hysteresis and the first-order line}
 
@@ -650,7 +651,7 @@ We recall that correlations between the impurity and the zeroth site are observe
 Instead, as shown in Fig.~\eqref{Uc2-ss}, non-trivial two-particle correlations arise between the impurity and bath zeroth sites with bath sites that are farther away.
 The spreading of the spin-spin correlations shown in the left panel of Fig.~\eqref{Uc2-ss} indicates a ``stretching" of the Kondo singlet state prior to its destruction. We will show later that these enhanced correlations also result in a diverging quasiparticle mass at \(r_{c2}\), indicating a breakdown of the local Fermi liquid metal. Further, the right panel of Fig.~\eqref{Uc2-ss} indicates that longer-ranged pairing correlations develop between the bath zeroth site and bath sites farther away upon approaching the transition.
 
-In general, within the metallic phase and away from \(r_{c1}\) or \(r_{c2}\), the impurity is strongly coupled to the bath zeroth site and the impurity-bath entanglement follows an area law characteristic of the local nature of the impurity problem. However, near the excited state and ground state transitions at \(r_{c1}\) or \(r_{c2}\) respectively, these results indicate a spreading of entanglement into the bath: more and more bath sites beyond the zeroth site get correlated with the impurity site as the ESQPT or the QCP is approached. This is corroborated in Fig. 3 of the Supplementary Materials~\cite{supp_mat}.
+In general, within the metallic phase and away from \(r_{c1}\) or \(r_{c2}\), the impurity is strongly coupled to the bath zeroth site and the impurity-bath entanglement follows an area law characteristic of the local nature of the impurity problem. However, near the excited state and ground state transitions at \(r_{c1}\) or \(r_{c2}\) respectively, these results indicate a spreading of entanglement into the bath: more and more bath sites beyond the zeroth site get correlated with the impurity site as the ESQPT or the QCP is approached. This is corroborated in Fig. 3 of the Appendices.
 This suggests a significant enhancement of the entanglement beyond the area law and is consistent with the critical quantum fluctuations observed in the various two-particle correlations. 
 
 The results of this subsection indicate that it might be possible to experimentally detect the signatures of such critical quantum fluctuations around the spinodals of the DMFT phase diagram even at \(T > 0\). We note that signatures of second-order criticality have been indeed observed recently in vanadium sesquioxide, in the form of critical slowing down and critical opalescence~\cite{satyaki_2020_PRL}. It is, therefore, tempting to speculate that these signatures arise from the presence of critical quantum fluctuations.
@@ -691,7 +692,7 @@ The death of the local Fermi liquid is also seen from the vanishing of the dynam
 \end{figure}
 This is motivated by the fact that the central peak of the impurity spectral function is a Lorentzian, and the bath becomes equivalent to the impurity site under self-consistency.
 
-We implement the same approach on the e-SIAM, such that the Schrieffer-Wolff transformation leads to a \(J-U_b\) model with a Lorentzian electronic DOS in the bath. The expression of the Kondo temperature for such a system has been derived in Sec. 6 of the Supplementary Materials~\cite{supp_mat}. Very close to the transition, we have \(r \to 0.25^{-}\), and the Kondo temperature is given by
+We implement the same approach on the e-SIAM, such that the Schrieffer-Wolff transformation leads to a \(J-U_b\) model with a Lorentzian electronic DOS in the bath. The expression of the Kondo temperature for such a system has been derived in Appendix 4. Very close to the transition, we have \(r \to 0.25^{-}\), and the Kondo temperature is given by
 \begin{eqnarray}
 	T_K = \frac{D_0}{k_B} \exp\left[-\frac{\ln\left( r_{c2} - r \right)}{4 U_b \rho_0}\right]~,
 \end{eqnarray}
@@ -718,7 +719,7 @@ In order to obtain an effective Hamiltonian for the excitations precisely at the
 \begin{eqnarray}
 \frac{1}{\sqrt 2}\left(\ket{\uparrow}_d\ket{\downarrow}_0 - \ket{\downarrow}_d\ket{\uparrow}_0\right)~,~ \ket{\sigma}_d\ket{0}_0~,~\ket{\sigma}\ket{2}_0~,~~~ (\sigma=\uparrow,\downarrow)~,
 \end{eqnarray}
-with all the states lying at zero energy. Here, the first ket (with subscript \(d\)) represents the impurity spin configuration while the second ket (with subscript \(0\)) represents the configuration of the bath zeroth site). We now diagonalise these states in the presence of the electron hopping \(t\) into the rest of the conduction bath, and obtain the effective Hamiltonian for the low-lying excitations mediated by \(t\). This is described in detail in Sec. 7 of the Supplementary Materials~\cite{supp_mat}. We note that the ground state is four-fold degenerate at energy \(-t\) in the presence of the hopping, and comprises the following states:
+with all the states lying at zero energy. Here, the first ket (with subscript \(d\)) represents the impurity spin configuration while the second ket (with subscript \(0\)) represents the configuration of the bath zeroth site). We now diagonalise these states in the presence of the electron hopping \(t\) into the rest of the conduction bath, and obtain the effective Hamiltonian for the low-lying excitations mediated by \(t\). This is described in detail in Appendix 5. We note that the ground state is four-fold degenerate at energy \(-t\) in the presence of the hopping, and comprises the following states:
 \begin{eqnarray}
 	\label{degenerate-nfl}
 	\ket{N_\text{tot}=2,S^z_\text{tot}=0}~,~\ket{N_\text{tot}=4,S^z_\text{tot}=0}~, ~\ket{N_\text{tot}=3,S^z_\text{tot}=\frac{1}{2}}~,~\ket{N_\text{tot}=3,S^z_\text{tot}=-\frac{1}{2}}~,
@@ -730,7 +731,7 @@ where \(N_\text{tot} = \hat n_d + \hat n_0 + \hat n_1\) and \(S^z_\text{tot} = S
 \end{itemize}
 The precise form of the effective Hamiltonian for this non-Fermi liquid, as well as the behaviour of various correlation functions, is obtained by considering the ground-state manifold in conjunction with the excited states at energy \(-t\). 
 
-Since the total Hamiltonian conserves the total spin \(S_\text{tot}^z\), the effective Hamiltonian separates into two sectors, \(S_\text{tot}^z = 0\) and \(|S_\text{tot}^z| = \frac{1}{2}\). Detailed calculations on obtaining this effective Hamiltonian from the RG fixed point theory are shown in Sec. 7 of the Supplementary Materials~\cite{supp_mat}. In order to highlight certain distinct features, we present simplified effective Hamiltonians only for the \(S_\text{tot}^z = 0\) and \(S_\text{tot}^z = \frac{1}{2}\) sectors. We first take a look at the \(S^z_\text{tot}=0\) sector:
+Since the total Hamiltonian conserves the total spin \(S_\text{tot}^z\), the effective Hamiltonian separates into two sectors, \(S_\text{tot}^z = 0\) and \(|S_\text{tot}^z| = \frac{1}{2}\). Detailed calculations on obtaining this effective Hamiltonian from the RG fixed point theory are shown in Appendix 5. In order to highlight certain distinct features, we present simplified effective Hamiltonians only for the \(S_\text{tot}^z = 0\) and \(S_\text{tot}^z = \frac{1}{2}\) sectors. We first take a look at the \(S^z_\text{tot}=0\) sector:
 \begin{eqnarray}
 	H_\text{eff}^{S^z_\text{tot}=0} = t\vec{S}_d\cdot\left(\vec{\mathcal{S}}_{1,-} + \vec{\mathcal{S}}_{3,-}\right)
 	\label{unscreened_sector1}~.
@@ -766,12 +767,12 @@ Finally, by mapping the quantum impurity problem of the e-SIAM onto that of a cl
 	\text{Re}\left[\Sigma_{dd}\right](\omega) \sim |\omega|^{\gamma_{dd}}, ~ ~\text{Re}\left[\Sigma_{00}\right](\omega) \sim |\omega|^{\gamma_{00}}~,\\
 \left<S_d^+\right> \sim |\omega|^{(\alpha_1 - 1)/2}, ~ ~\left<c^\dagger_{0 \uparrow} c^\dagger_{ 0\downarrow}\right> \sim |\omega|^{(\alpha_3 - 1)/2}~.
 \end{eqnarray}
-The precise forms of the exponents in terms of the conduction electron scattering phase shifts, as well as several other technical details of the calculation, are provided in Sec. 8 of the Supplementary Materials~\cite{supp_mat}. While the various exponents are found to be non-universal functions of the fixed point value of $J$ and the coupling $U_{b}$ for $r\to r_{c2}-$, we argue in subsection \eqref{excess} that they assume universal values precisely at the QCP ($r=r_{c2}$). The algebraic behaviour of these local correlations
+The precise forms of the exponents in terms of the conduction electron scattering phase shifts, as well as several other technical details of the calculation, are provided in Appendix 6. While the various exponents are found to be non-universal functions of the fixed point value of $J$ and the coupling $U_{b}$ for $r\to r_{c2}-$, we argue in subsection \eqref{excess} that they assume universal values precisely at the QCP ($r=r_{c2}$). The algebraic behaviour of these local correlations
 is reminiscent of critical behaviour ascribed to the class of local quantum criticality~\cite{Coleman_Si_2001,Si2001}. 
 
 
 \subsection{Impurity magnetisation and entanglement entropy}
-More indications of non-Fermi liquid behaviour at the QCP is obtained from a calculation of the impurity magnetisation and the impurity entanglement entropy (\(S_\text{EE}(d)\)) (shown in Sec. 9 of the Supplementary Materials~\cite{supp_mat}) for the symmetry-broken states \(\ket{S_\text{tot}^z = \sigma/2}\). This 
+More indications of non-Fermi liquid behaviour at the QCP is obtained from a calculation of the impurity magnetisation and the impurity entanglement entropy (\(S_\text{EE}(d)\)) (shown in Appendix 7) for the symmetry-broken states \(\ket{S_\text{tot}^z = \sigma/2}\). This 
 leads to a fractional entanglement entropy (in units of \(\log 2\)) for each of the two states:
 \begin{eqnarray}
 	\rho_\text{imp} &=& \begin{pmatrix} \frac{1}{2} + m_\text{imp}^z & 0 \\ 0 & \frac{1}{2} - m_\text{imp}^z \end{pmatrix} = \begin{pmatrix} \frac{3}{4} & 0 \\ 0 & \frac{1}{4} \end{pmatrix}~,\nonumber\\ 
@@ -780,7 +781,7 @@ leads to a fractional entanglement entropy (in units of \(\log 2\)) for each of 
 where the impurity magnetisation \(m_\text{imp}^z\) takes the value \(m_\text{imp}^z = 1/4\) at the QCP (i.e., half the value for a local moment).
 Further, \(S_\text{EE}(d)\) can be written in terms of an effective impurity degeneracy \(g_\text{imp}\), which we define using the impurity magnetisation: \(g_\text{imp} \equiv 1 + 2|m_\text{imp}^z|\), such that it takes the expected values of 1 and 2 in the local Fermi liquid and local moment phases (with \(m_\text{imp}^z\) having values 0 and \(\frac{1}{2}\) respectively). The effective degeneracy in the polarised subspace \(S_\text{tot}^z = \pm 1/2\) at the QCP then turns out to be \(3/2\), which is half-way between a unique state and a doublet. This corresponds to partial screening of the impurity degrees of freedom at the QCP, in contrast to complete screening in the metallic phase (\(g_\text{imp} = 1\)) and the absence of screening in the insulating phase (\(g_\text{imp} = 2\)).
 
-In Sec. 9 of the Supplementary Materials~\cite{supp_mat}, we show that the incomplete magnetisation (and hence the fractional value of \(S_\text{EE}\)) arises from the mixing of the local Fermi liquid ground-state \(\ket{\phi} = \otimes_{k <= k_F} \ket{k \uparrow}\ket{k \downarrow}\) and the gapless excitations above it, \(\ket{e}_\sigma = e^\dagger_\sigma \ket{\phi}, e \equiv \sum_{k \in FS} c^\dagger_{k\sigma}\), leading to the decay of the local Fermi liquid quasiparticles~\cite{varma2002singular}. This is captured by the modified ground-state \(\ket{-}\) and lowest-lying excited states \(\ket{+}\) at the QCP:
+In Appendix 7, we show that the incomplete magnetisation (and hence the fractional value of \(S_\text{EE}\)) arises from the mixing of the local Fermi liquid ground-state \(\ket{\phi} = \otimes_{k <= k_F} \ket{k \uparrow}\ket{k \downarrow}\) and the gapless excitations above it, \(\ket{e}_\sigma = e^\dagger_\sigma \ket{\phi}, e \equiv \sum_{k \in FS} c^\dagger_{k\sigma}\), leading to the decay of the local Fermi liquid quasiparticles~\cite{varma2002singular}. This is captured by the modified ground-state \(\ket{-}\) and lowest-lying excited states \(\ket{+}\) at the QCP:
 \begin{eqnarray}\label{new-ground-state}
 	\ket{\pm} = \frac{1}{\sqrt 2}\left(\ket{SS}\otimes\ket{e}_\sigma \pm \ket{LM}_\sigma\otimes\ket{\phi}\right)~.
 \end{eqnarray}
@@ -792,7 +793,7 @@ The orthogonality catastrophe faced by the infrared excitations of the conductio
 
 The values of the excess charge at the QCP and in the local moment phase lead to important corollaries. Firstly, the jump in the excess charge by unity in going from \(r < r_{c2}\) to \(r > r_{c2}\) is in fact a reduction in the Luttinger volume \(V_L\) of the conduction bath~\cite{luttinger1960fermi,martin_1982}. \(V_L\) counts the number of extended states present at and below the Fermi volume, and corresponds to a  topological quantum number~\cite{oshikawa2000topological,seki2017topological,Heath2020,anirbanurg1}. Since the excess charge \(n_\text{exc}\) calculated above is simply the impurity contribution to \(V_L\) at the Fermi surface, the difference in the excess charge across the transition implies that the two phases acquire different values for the invariant \(V_L\). Thus, $n_\text{exc}$ tracks the change ($\Delta V_{L}$) in the Luttinger volume, and the transition is topological in nature. Secondly, in a recent work, Sen et al.~\cite{sen_mitchell_2020} have shown that the Mott MIT of the infinite-dimensional Hubbard model proceeds through the dissociation of domain walls in a fictitious Su-Schrieffer-Heeger chain connected to the physical lattice sites. If one couples their observation with the fact that the two dissociated domain walls at the ends of the SSH chain are together known to host a single charge~\cite{SSHRMP1988,stone_1985}, it becomes evident that the fractional excess charge we obtain at the QCP corresponds to the state that is localised in the SSH chain near the physical lattice site as obtained by Sen et al. The well-known bulk-boundary correspondence of the SSH model (see, e.g., \cite{Asboth_2016}) suggests that the excess charge $n_\text{exc}$ and the change $\Delta V_{L}$ in the Luttinger volume are the respective topological invariants of the boundary and bulk in the e-SIAM that are tied to one another. Further, the appearance of a half-quantised $n_\text{exc}$ at the MIT of the e-SIAM corresponds, in the SSH model, to the dissociation of a domain wall-anti domain wall pair with each carrying a half charge~\cite{SSHRMP1988,stone_1985}.
 
-We show in Sec. 9 of the Supplementary Materials~\cite{supp_mat} that it is in fact  possible to connect the scattering phase shift ($\delta^{*}$), impurity magnetisation ($m_{\text{imp}}^{z}$), effective degeneracy ($\tilde{g}$) and excess charge ($n_{\text{exc}}$) in a single relation:
+We show in Appendix 7 that it is in fact  possible to connect the scattering phase shift ($\delta^{*}$), impurity magnetisation ($m_{\text{imp}}^{z}$), effective degeneracy ($\tilde{g}$) and excess charge ($n_{\text{exc}}$) in a single relation:
 \begin{eqnarray}\label{phase-mag}
 	\delta^* = \pi n_\text{exc} = \left[1 + \left(\frac{2-\tilde g}{\tilde g-1}\right)^2\right]^{-1} = \frac{4{m_{\text{imp}}^z}^2}{1 - 4|m_{\text{imp}}^z| + 8{m_{\text{imp}}^z}^2}~.
 \end{eqnarray}
@@ -813,7 +814,8 @@ Extensions of the present work involve analysing the mixed valence regime of the
 The phenomenon of electronic differentiation in \(k-\)space can perhaps be captured by considering cluster variants of the e-SIAM, i.e., multiple impurities connected to one another through single-particle hopping and/or RKKY-like interactions~\cite{Ferrero2007,imada2010unconventional}.
 In general, the presence of multiple and varied classes of correlations in the auxiliary model - localisation from Mott physics, delocalisation from spin and charge fluctuations, and pairing from local attractive correlations - makes this a strong candidate for an auxiliary model that carries the potential for describing the emergence of a variety of novel phases of correlated quantum matter.
 
-\section{Appendix: Expressing correlation functions in terms of entanglement}
+\section*{Appendix 1: Expressing correlation functions in terms of entanglement}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 1: Expressing correlation functions in terms of entanglement}
 \label{general-ent}
 
 We will first relate the impurity Greens function to the geometric entanglement. Given a ground state \(\ket{\Psi}_\text{gs}\) and a spectrum of energies \(\left\{ E_n \right\} \), the retarded impurity Greens function (in time domain) is defined as \(G_{d\sigma}(t) = -i\theta(t)\braket{\left\{c_{d\sigma}(t),c^\dagger_{d\sigma}\right\}}\). It can be given a spectral representation in terms of the eigenstates \(\left\{\ket{\Psi}_n\right\}\) of the e-SIAM:
@@ -879,108 +881,8 @@ Following an approach very similar to the one that led to eq.~\eqref{greens_func
 \end{eqnarray}
 where \(\left( O_2 \right)_{\text{ss},n} \) is the matrix element \(\braket{\Phi_\text{ss} | O_2 | \Psi_n}\), and similar definitions exist for \(\left( O_1 \right)_{\text{ss},n} \) and its \(\ket{\Phi_\text{ct}}\) counterparts.
 
-Closely related to geometric entanglement is the quantum Fisher information (QFI) \(F_Q\)~\cite{braunstein1994statistical,Hauke2016}, which quantifies how sensitive a state \(\rho\) is to unitary transformations generated by an observable \(\hat O\).
-For a pure state \(\rho = \ket{\psi}\bra{\psi}\), \(F_Q (\psi,\hat O)\) is defined in terms of the variance of the operator $\hat O$ (i.e., the connected correlation function):
-\begin{eqnarray}
-	F_Q(\psi,\hat O) = 4 \Delta (\hat O)^{2}= 4\left(\braket{\psi|\hat O^2|\psi} - \braket{\psi|\hat O|\psi}^2\right)~,
-\end{eqnarray}
-and it provides an upper bound on the precision that can be achieved in measuring the parameter \(\theta\) that is dual to the observable \(\hat O\): \(\mathcal{N}\left( \Delta \theta \right)^2 \geq F_Q^{-1} \), \(\mathcal{N}\) being the number of independent measurements~\cite{braunstein1994statistical,Hauke2016}. \(F_Q (\psi,\hat O)\) is thus a measure of the entanglement arising from quantum fluctuation content in $\ket{\psi}$ (considered with respect to an eigenstate of $\hat O$). This can be made more manifest by considering a traceless operator \(\hat M\) with eigenstates \(\left\{\ket{m}\right\}\). Without loss of generality, we can rescale the operator such that \(\sum m^2 = 1/2\). There are several examples of such operators in the context of the present work, such as the impurity magnetisation operator (\(S_d^z\)), the Kondo spin-flip operator (\(S_d^+ S_0^- + \text{h.c.}\)) and the Kondo isospin-flip operator (\(C_d^+ C_0^- + \text{h.c.}\)). If \(\varepsilon_m(\psi) \equiv 1 - |\braket{m | \psi}|^2\) is the geometric entanglement between a given state \(\ket{\psi}\) and the eigenstates of \(\hat M\), the QFI corresponding to \(\hat M\) in the state \(\psi\) can be written as
-\begin{eqnarray}\label{QFI-geo-ent}
-	F_Q(\psi,\hat M) = 4\left[\frac{1}{2} - \sum_m m^2\varepsilon_m - \left(\sum_m m\varepsilon_m\right)^2 \right] ~.
-\end{eqnarray}
-The total geometric entanglement \(\sum_m \varepsilon_m\) is constrained to be \(d_M - 1\), where \(d_M\) is the dimension of the operator \(\hat M\).
-Because each eigenvalue \(m\) has a magnitude of at most \(1/\sqrt 2\) (all \(m^2\) must add up to \(1/2\)), the maximum magnitude of the last two terms in eq.~\eqref{QFI-geo-ent} (and hence the minimum value of the QFI) is attained for the case when some of the \(\varepsilon_m\) are zero.
-However, because the eigenstates are orthogonal, only one of them can have perfect overlap with the state \(\ket{\psi}\) and only one \(\varepsilon_m\) can be zero at a time.
-The case of minimum QFI therefore corresponds to \(\varepsilon_{m^*} = 0, \varepsilon_{m\neq m^*}=1\), leading to \(F_Q = 0\).
-The opposite situation arises when all the geometric entanglement measures are non-zero and equal, \(\varepsilon_m = 1/d_M\), leading to a maximum QFI value of \(F_Q = 2/d_M\).
-A uniformly spread geometric entanglement distribution, therefore, leads to a larger QFI, while a more focused distribution leads to a smaller QFI.
-This sums up the relation between the quantum Fisher information and geometric entanglement.
-
-If the operator \(\hat M\) is such that its eigenstates are separable states from the perspective of a certain party, the vanishing QFI arises when \(\ket{\psi}\) has zero geometric entanglement with respect to one of the separable states, and the QFI saturates when \(\ket{\psi}\) has a finite geometric entanglement with all of the states.
-A large QFI can thus be associated with more entanglement. 
-Moreover, if the eigenstates of \(\hat M\) are symmetry-broken states, a vanishing QFI indicates that \(\ket{\psi}\) is very close to such a symmetry-broken state, while a large QFI indicates that \(\ket{\psi}\) is a uniform superposition of such symmetry-broken states and therefore preserves the symmetry as a whole. A larger QFI points towards the presence of more quantum fluctuations and the lack of susceptibility towards symmetry-breaking.
-
-In order to demonstrate these ideas in the present problem, we computed the QFI in the ground-state of the e-SIAM for a number of Hermitian operators, as a function of the parameter \(r=-U_b/J_0\).
-These are shown in the left panel of Fig.~\eqref{QFI-esiam} (left panel). 
-In order to explain the behaviour depicted in the figure, we point out again that the ground-states for \(r \ll r_{c2}\), \(r \lesssim r_{c2}\) and \(r > r_{c2}\) are \(\ket{\text{SS}} + \ket{\text{CT}}\), \(\ket{\text{SS}}\) and \(\ket{\text{LM}}\) respectively, where \(\ket{\text{SS}}\), \(\ket{\text{CT}}\) and $\ket{\text{LM}}$ are the spin-singlet state, charge triplet and local moment states respectively.
-We focus on the spin-flip QFI, corresponding to the operator \(\hat O = S_d^+ S_0^- + \text{h.c.}\).
-\begin{itemize}
-	\item For \(r < r_{c1}\), the ground-state involves both \(\ket{SS}\) and \(\ket{CT}\), meaning that neither of the two entanglement measures \(\varepsilon_\text{SS}\) or \(\varepsilon_\text{CT}\) will be zero.
-	As mentioned in the preceding paragraph, this leads to the maximal QFI, as can be seen in the figure as well.
-	\item At \(r = r_{c1}\), the charge triplet content vanishes and the ground-state is purely a singlet beyond that point.
-	As a result, in the range \(r_{c1} < r < r_{c2}\), the geometric entanglement corresponding to the singlet state is zero, leading to a minimal and vanishing QFI.
-	This is again shown in the figure.
-	\item Finally, for \(r > r_{c2}\), the local moment states become the ground-states, where the bath zeroth site displays all four configurations as a superposition, because of the hopping into the rest of the bath.
-	This state is again not an eigenstate of the spin-flip operator, and the geometric entanglement will be uniformly distributed across the states, none being zero.
-	This explains the large QFI in the local moment phase.
-\end{itemize}
-Similar explanations hold for the single-particle hopping FQI between the impurity and the zeroth site, and the charge isospin FQI between the zeroth site and the first site.
-In Fig.~\eqref{QFI-esiam} (right panel), we show the QFI for the same three operators very close to the MIT (i.e., for $r\lesssim r_{c2}$). 
-Two important quantities that track the local MIT and act as order parameters for the transition are the degree of compensation for the impurity (\(\braket{\vec{S}_d\cdot\vec{S}_0}\)) and the impurity magnetisation (\(\braket{S_d^z}\)), and the first two QFI (red and blue curves) in Fig.~\ref{QFI-esiam} are therefore particularly important because that they quantify the quantum fluctuations present in the system corresponding to these order parameters.
-Our analysis shows that the two phases on either side of the transition are characterised by distinct values of this pair of QFI: while the QFI corresponding to the degree of compensation zero in the Kondo screened phase, it becomes non-zero in the local moment phase, and the opposite is true for the QFI arising from the impurity magnetisation.
-The phase precisely at the transition is distinct from those on either side because it displays a non-zero value for both the QFI.
-While it is expected that a critical point would show enhanced fluctuations of multiple kinds (giving rise to universality), it is enlightening to find that this is also reflected in a measure of many-particle entanglement.
-
-All three QFIs are observed to saturate to finite, non-zero values at the MIT, indicating that the non-Fermi liquid state therein possesses quantum fluctuations of all three varieties. 
-
-We will now relate the QFI to some other measures of correlation. The QFI corresponding to an observable can be directly related to the static lesser Greens functions associated with that observable:
-\begin{eqnarray}
-	\label{lesser-QFI}
-	F_Q(\psi,\hat O_2) = 4\left(\braket{\hat O_2 \hat O_1^\dagger}\bigg|_{\hat O_1^\dagger=\hat O_2} - \braket{\hat O_2 \hat O_1^\dagger}^2\bigg|_{\hat O_1=1}\right) = 4\left[G^<_{O_2, O_2}(t\to \infty) - \left(G^<_{1, O_2}(t\to \infty)\right)^2\right]
-\end{eqnarray}
-In the context of the present work, eq.~\eqref{gen-entng} allows relating the QFI to the geometric entanglement measured with respect to the spin-singlet and charge triplet states. By combining eqs.~\eqref{gen-entng} and \eqref{lesser-QFI}, we get
-\begin{eqnarray}
-	F_Q(\psi,\hat O_2) &= 4\left[ \left(1 - \varepsilon_\text{ss}\right) \braket{\Phi_\text{ss} | \hat O_2^2 | \Phi_\text{ss}} + \left(1 - \varepsilon_\text{ct}\right) \braket{\Phi_\text{ct} | \hat O_2^2 | \Phi_\text{ct}} \right.\nonumber \\
-			   &\left.+ \sqrt{1 - \varepsilon_\text{ss}}\sqrt{1 - \varepsilon_\text{ct}}\left(\braket{\Phi_\text{ss} | \hat O_2^2 | \Phi_\text{ct}} + \braket{\Phi_\text{ct} | \hat O_2^2 | \Phi_\text{s}}\right) - \left\{\left(1 - \varepsilon_\text{ss}\right) \braket{\Phi_\text{ss} | \hat O_2 | \Phi_\text{ss}} \right.\right.\nonumber\\
-			   &\left.\left. + \left(1 - \varepsilon_\text{ct}\right) \braket{\Phi_\text{ct} | \hat O_2 | \Phi_\text{ct}} + \sqrt{1 - \varepsilon_\text{ss}}\sqrt{1 - \varepsilon_\text{ct}}\left(\braket{\Phi_\text{ss} | \hat O_2 | \Phi_\text{ct}} + \braket{\Phi_\text{ct} | \hat O_2 | \Phi_\text{s}}\right)\right\}^2 \right]~.
-\end{eqnarray}
-Further, the retarded Greens function defined above in eq.~\eqref{retarded} can very generally be related to the QFI.
-By using the simplified forms \(\frac{i}{2}G^R_{O_2,O_2}(t \to \infty) = \braket{\left(O_2\right)^2}\) and \(\frac{i}{2}G^R_{1,O_2}(t \to \infty) = \braket{O_2}\), we get
-\begin{eqnarray}
-	F_Q(\psi,\hat O_2) = 2iG^R_{O_2, O_2}(t\to \infty) + \left(G^R_{1, O_2}(t\to \infty)\right)^2~.
-\end{eqnarray}
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.48\textwidth]{QFI.pdf}
-	\includegraphics[width=0.48\textwidth]{rc2-QFI.pdf}
-	\caption{{\it Left:} Variation of the quantum Fisher information for three separate fluctuations, across the entire range of \(r\). {\it Right:} The QFI corresponding to the same three operators, but very close to the QCP at \(r_{c2}\).}
-	\label{QFI-esiam}
-\end{figure}
-
-For the sake of completeness, we generalise the above relations to finite temperatures by adopting the approach of Hauke et al.~\cite{Hauke2016}. For a mixed state at inverse temperature \(\beta\) characterised by the density matrix \(\rho = \sum_n f_n \ket{n}\bra{n}\) where \(\left(E_n,\ket{n}\right)\) are the eigenvalue-eigenstate pairs and \(f_n = e^{-\beta E_n}/\sum_n e^{-\beta E_n}\) are the Boltzmann weights, the FQI can be assigned a spectral representation of the form~\cite{Hauke2016}
-\begin{eqnarray}
-	F_Q(\rho, \hat O) = 2\sum_{m,n} \frac{\left(f_m - f_n\right)^2}{f_m + f_n}|\braket{m|\hat O|n}|^2~.
-\end{eqnarray}
-By using the identity \(\frac{f_m - f_n}{f_m + f_n} = \int_{-\infty}^\infty d\omega \delta(\omega + E_m - E_n)\tanh \left( \beta \omega/2 \right) \), the finite temperature FQI can be written in the form
-\begin{eqnarray}\label{fqi-spectral}
-	F_Q(\rho, \hat O) = 2\int_{-\infty}^\infty d\omega \tanh \left( \beta \omega/2 \right) \sum_{m,n} \left(f_m - f_n\right) \delta(\omega + E_m - E_n)|\braket{m|\hat O|n}|^2~.
-\end{eqnarray}
-In order to relate this with a correlation function, we now point out that the lesser Greens function \(G^<\) defined in eq.~\eqref{lesser-gf}, as well as the greater Greens function \(G^>\) that we will now define, also admit spectral representations in terms of the eigenstates \(\ket{n}\) of the full problem:
-\begin{eqnarray}\label{lesser-spectral}
-	G^<_{O^\dagger, O}(t) \equiv i\braket{\hat O^\dagger \hat O(t)} \implies & G^<_{O^\dagger, O}(\omega) = 2\pi i \sum_{m,n}f_n \delta(\omega + E_m - E_n) |\braket{m|\hat O^\dagger|n}|^2~,\\
-	G^>_{O^\dagger, O}(t) \equiv -i\braket{\hat O(t) \hat O^\dagger} \implies & G^>_{O^\dagger, O}(\omega) = -2\pi i \sum_{m,n}f_m \delta(\omega + E_m - E_n) |\braket{m|\hat O|n}|^2~.
-\end{eqnarray}
-If \(\hat O\) is a Hermitian operator, eqs.~\eqref{lesser-spectral} can be used to rewrite the QFI in terms of \(G^\lessgtr_{O^\dagger, O}(\omega)\). Indeed, by combining eqs.~\eqref{lesser-spectral} and eq.~\eqref{fqi-spectral} with the assumption \(\hat O = \hat O^\dagger\), we get
-\begin{eqnarray}
-	F_Q(\rho, \hat O) = -\frac{1}{\pi i}\int_{-\infty}^\infty d\omega \tanh \left( \beta \omega/2 \right)\left(G^>_{O, O}(\omega) + G^<_{O, O}(\omega)\right)~. 
-\end{eqnarray}
-This constitutes the general relation between the finite temperature QFI for a general Hermitian many-particle operator \(\hat O\) and the corresponding many-particle correlations at zero and finite frequencies.
-
-The Kubo linear response function associated with the operator \(\hat O(t)\) due to a perturbation from the same operator is associated with a correlation function/susceptibility \(\mathcal{C}_{\hat O}(t,t^\prime) = i\theta(t - t^\prime)\left< \left[\hat O(t), \hat O(t^\prime)\right] \right>\). By going to the frequency domain, the imaginary part of such a function can be related to the sum of the lesser and greater Greens functions:
-\begin{eqnarray}
-	\hspace*{2.2cm} \mathcal{C}_{\hat O}(\omega) &= i\int_0^\infty d(t-t^\prime) e^{i\omega(t-t^\prime)}\left( \left<\hat O(t) \hat O(t^\prime) \right> - \left<\hat O(t^\prime) \hat O(t) \right>\right)\nonumber \\
-	\implies \mathcal{C}_{\hat O}(\omega) - \mathcal{C}_{\hat O}(\omega)^* &= i\int_0^\infty d(t-t^\prime)\left( e^{i\omega(t-t^\prime)}-e^{-i\omega(t-t^\prime)} \right)\left( \left<\hat O(t) \hat O(t^\prime) \right> - \left<\hat O(t^\prime) \hat O(t) \right>\right)\nonumber\\
-						&= i\int_{-\infty}^{\infty}d(t-t^\prime) e^{i\omega(t-t^\prime)} \left( \left<\hat O(t) \hat O(t^\prime) \right> - \left<\hat O(t^\prime) \hat O(t) \right>\right)\nonumber \\
-						&= -\left( G^>_{O,O}(\omega) + G^<_{O,O}(\omega) \right) 
-\end{eqnarray}
-This allows us to connect the QFI with the imaginary part of the Kubo correlation function/susceptibility obtained in Ref.\cite{Hauke2016}:
-\begin{eqnarray}
-F_Q(\rho, \hat O) = \frac{1}{\pi i}\int_{-\infty}^\infty d\omega \tanh \left( \beta \omega/2 \right)\left(\mathcal{C}_{\hat O}(\omega) - \mathcal{C}_{\hat O}(\omega)^*\right) ~.
-\end{eqnarray}
-
-
-
-\section{Appendix: One-shot decoupling of impurity from zeroth site}
+\section*{Appendix 2: One-shot decoupling of impurity from zeroth site}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 2: One-shot decoupling of impurity from zeroth site}
 \label{app-imp-remove}
 We will decouple the impurity states from the fixed point Hamiltonian using a single URG transformation. This will, of course, generate correlations on the zeroth site. The resulting Hamiltonian will be an AIM with the hopping between the zeroth site and the rest of the chain acting as the effective hybridisation. Schematically, we will have
 \begin{eqnarray}
@@ -1059,7 +961,8 @@ The effective Hamiltonian for the zeroth site is therefore
 	H_\text{0+rest} = \underbrace{-\left(U^\prime + U_b\right)\left(\hat n_{0\uparrow} - \hat n_{0\downarrow}\right)^2}_\text{new correlated impurity} \underbrace{- t\sum_{j\in \text{n.n. of 0},\atop{\sigma}}\left(c^\dagger_{0\sigma}c_{j\sigma} + \text{h.c.}\right)}_\text{hopping between new impurity \& new bath} \underbrace{-t \sum_{\left<i,j \right>}\left(c^\dagger_{i\sigma}c_{j\sigma} + \text{h.c.}\right)}_\text{K.E. of new bath}~.
 \end{eqnarray}
 
-\section{Appendix: Effective Hamiltonian for the excitations within the Hubbard sidebands}
+\section*{Appendix 3: Effective Hamiltonian for the excitations within the Hubbard sidebands}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 3: Effective Hamiltonian for the excitations within the Hubbard sidebands}
 
 Beyond \(r_{c1}\), the Hubbard sidebands can be seen to separate from the central Kondo resonance in the impurity spectral function. These sidebands are broad, indicating that the impurity site is hybridising with the bath from within the sidebands, at high energies \(\omega \sim U/2\). These processes lead to the presence of gapless excitations within the rest of the bath, outside the Mott gap. To find the effective Hamiltonian for the rest of the bath (sites 1 and onwards), we will take the eigenstates of the two-site Hamiltonian \(H\)that reside within the sideband as our ground-states, and treat the hopping from the zeroth site to the rest of the bath as a perturbation. The two-site Hamiltonian is
 \begin{eqnarray}
@@ -1125,7 +1028,8 @@ The operator \(\mathcal{P}_\text{tot}^{4}\) acts on states belonging to the comb
 
 
 
-\section{Appendix: Behaviour of the Kondo scale $T_K$ close to the transition}
+\section*{Appendix 4: Behaviour of the Kondo scale $T_K$ close to the transition}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 4: Behaviour of the Kondo scale $T_K$ close to the transition}
 \label{app-Tk}
 Towards obtaining the emergent Kondo temperature scale $T_K$ close to the transition, we follow the approach used by Moeller et al. 1995~\cite{moeller_1995} and Held et al. 2013~\cite{held_2013}. Near the transition, they obtained a Kondo model from the full AIM by applying a Schrieffer-Wolff transition that removes the charge fluctuations of the impurity site and retains the physics of only the s-d coupling \(J\). This amounts to removing the side peaks from the impurity spectral function and focusing on the low-energy central peak. Held et al. then integrated the RG equation for this Kondo model by using a Lorentzian DOS in the bath. This is motivated by the fact that the central peak of the impurity spectral function is a Lorentzian, and the bath becomes equivalent to the impurity site under self-consistency. We implement the same approach but on our extended impurity model, such that the transformation then leads to a \(J-U_b\) model. The relevant RG equations are mentioned in Section IV of the main manuscript:
 \begin{eqnarray}
@@ -1162,7 +1066,8 @@ Note that the prefactor of the logarithm is positive because \(U_b\) is negative
 \end{eqnarray}
 
 
-\section{Appendix: Effective Hamiltonian for the low-lying excitations at the critical point}
+\section*{Appendix 5: Effective Hamiltonian for the low-lying excitations at the critical point}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 5: Effective Hamiltonian for the low-lying excitations at the critical point}
 \label{app-nfl}
 
 In order to obtain an effective Hamiltonian for the low-lying excitations in the bath, we will introduce a hopping term \(V\) between the zeroth site and the first site into the two-site Hamiltonian \(H_0\), and treat that term perturbatively. 
@@ -1343,7 +1248,8 @@ The effective Hamiltonian for the \(S_\text{tot}^z = -1/2\) sector is obtained b
 \end{eqnarray}
 The operators \(\mathcal{A}^z_{-\frac{1}{2}}\) and \(\mathcal{B}^\pm_{-\frac{1}{2}}\) are obtained by applying the above mentioned transformation on their \(S^z_\text{tot} = +1/2\) counterparts.
 
-\section{Appendix: Non-Fermi liquid exponents in self-energy and two-particle correlations}
+\section*{Appendix 6: Non-Fermi liquid exponents in self-energy and two-particle correlations}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 6: Non-Fermi liquid exponents in self-energy and two-particle correlations}
 The one-particle self-energies relating to the impurity and zeroth sites, as well as some relevant two-particle correlation functions, can be shown to follow power-law behaviour close to the Brinkman-Rice transition at \(r_{c2}\), by mapping the impurity model to a classical Coulomb gas, similar to the work of Anderson, Yuval and Hamman for the Kondo model~\cite{anderson1969exact} and that of Si and Kotliar for a periodic Anderson model~\cite{si_kotliar_1993}. Indeed, the latter work uses an auxiliary that is similar to our extended Anderson impurity model. In the following, we adapt their results to our model. These non-universal power-laws are signatures of the non-Fermi liquid excitations that emerge at \(r_{c2}\).
 
 Near \(r_{c2}\), extended SIAM can be reduced to a \(J-U_b\) model (shown in subsection V.A of the main manuscript). The conduction electrons scattering off the impurity suffer phase shifts because of the presence of the potentials \(J\) and \(U_b\). These phase shifts are given by \(\delta_\text{sp} = \arctan\left(\pi \rho_0 J/2\right)\) and \(\delta_\text{ch} = \arctan\left(\pi \rho_0 U_b/2\right)\)~\cite{si_kotliar_1993,giamarchi2004}, where \(\rho_0\) is the electronic density of states in the conduction bath.
@@ -1366,7 +1272,8 @@ where the exponents are given by
 \end{eqnarray}
 
 
-\section{Appendix: Entanglement entropy, magnetisation and phase shift, at the QCP}
+\section*{Appendix 7: Entanglement entropy, magnetisation and phase shift, at the QCP}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 7: Entanglement entropy, magnetisation and phase shift, at the QCP}
 As mentioned in the previous section, the polarised ground-states \(\ket{-}^{3,\pm\frac{1}{2}}\) of eq.~\eqref{new g-states} are special because they involve the strong-coupling ground-state as well as the local moment ground-state. The overall ground states, therefore, contain both entangled and non-entangled impurity contributions, leading to a departure from maximal entanglement. We will now calculate the impurity entanglement entropy \(S_\text{EE}(d)\) in this polarised ground-state(s) that emerges exactly at the QCP, and show that \(S_\text{EE}(d)\) has a fractional value (in units of \(\log 2\)). This turns out to be linked to the fact that the impurity is screened partially in these states, leading to an impurity magnetisation that is non-vanishing but only half of that in the local moment phase.
 
 The fractional entropy arises because of the singular scattering of the gapless excitations at the Fermi surface leading to the destruction of the local Fermi liquid. In order to access these processes, we will work with a {\it semi-continuous} conduction bath beyond the zeroth site (total number of lattice sites \(N \to \infty\)): \(H_\text{bath} = \sum_{k,\sigma} \epsilon(k) \psi^\dagger_\sigma(k)\psi^\dagger_\sigma(k)\). This conduction bath that is composed of the \(k-\)states formed from the Hilbert space of the lattice sites beyond the zeroth site will be referred to as the reduced conduction bath. This is in addition to the Hamiltonian for the impurity and zeroth sites: \(H_{d0} = J \vec{S}_d\cdot\vec{S}_0 - \frac{U_b}{2}\left(c_{0\uparrow}^\dagger c_{0\uparrow} - c_{0\downarrow}^\dagger c_{0\downarrow}\right)^2\), where \(\vec S_d\) is the spin operator for the impurity site, and \(c_{0\sigma}^\dagger\) creates an electron of spin \(\sigma\) at the zeroth site. The full Hamiltonian also involves a single-particle hopping term that couples these two Hamiltonians: \(H = H_{d0} + H_\text{bath} + H_\text{int}\), where
@@ -1419,7 +1326,8 @@ At the QCP, the excess charge acquires a fractional value of \(1/2\), indicating
 Equation \eqref{phase-mag} unifies the effect of several important quantities that lead to the frustration of the impurity and the destruction of the Kondo effect. The presence of \(U_b\) introduces local moment states into the spectrum and leads to states with non-vanishing impurity magnetisation \(m_d^z\) at the QCP; this non-zero \(m_d^z\) can be interpreted as an effective impurity degeneracy \(\tilde g\) that is only partially screened, resulting in only half the excess charge \(n_\text{exc}\) being contributed to the conduction bath. This reduction in the excess charge acts as a shift in the boundary conditions felt by the conduction electrons and manifests as a phase shift that is less than the unitarity limit of \(\pi\).
 
 
-\section{Appendix: Additional correlations near the ESQPT and the QCP}
+\section*{Appendix 8: Additional correlations near the ESQPT and the QCP}
+\addcontentsline{toc}{section}{\protect\numberline{}Appendix 8: Additional correlations near the ESQPT and the QCP}
 We have included some additional correlations for the extended SIAM here to highlight the features that are mentioned in the main manuscript. Left panel of Fig.~\eqref{fig1} shows the impurity and zeroth site double occupancy. Both vanish at \(r_{c1}\), indicating the emergence of the Kondo model. Very close to \(r_{c2}\), the zeroth site doublon occupancy picks up (see inset), showing the destruction of the Kondo cloud. Right panel of Fig.~\eqref{fig1} shows various measures of entanglement close to \(r_{c2}\). The impurity-bath mutual information (blue) decreases as the transition is approached, showing the breakdown of impurity screening. The impurity and first site MI (violet), the zeroth site and first site MI (red) and the impurity, zeroth site and first site tripartite information (grey) increase, showing the emergence of long-ranged correlations near the transition. Fig.~\eqref{fig2} shows the emergence of long-ranged intra-bath mutual information near \(r_{c1}\) and \(r_{c2}\), signalling critical behaviour near the ESQPT and QCP respectively. Intra-bath CDW correlations and impurity-bath Ising correlations in Fig.~\eqref{fig3} also show the previously-mentioned emergence of long-ranged correlations. 
 
 \begin{figure}[htpb]
