@@ -25,10 +25,10 @@ The emergence of Luttinger surfaces alters the anomaly structure associated with
 
 While we demonstrate our approach for an extended Hubbard model, the underlying framework is broadly applicable to correlated quantum systems. The impurity-plus-tiling construction accommodates multi-orbital degrees of freedom, frustrated geometries, and nontrivial band topology. By deriving lattice Hamiltonians directly from renormalized local dynamics - without relying on mean-field approximations - this method preserves nonlocal correlations and enhances momentum-space resolution. Coupled with the unitary renormalisation group method as the impurity solver, this approach provides access to one-particle as well as two-particle correlations, entanglement measures and several dynamical quantities, making the method very versatile. It thus provides a versatile and controlled route for engineering strongly correlated models, particularly in regimes where PG formation, NFL scaling, and Mott physics intersect.
 
-We now describe the layout of the work. In section \ref{auxurgsection}, we formulate the lattice-embedded auxiliary quantum impurity model and sketch the unitary renormalisation group (URG) method employed to analyse the impurity model. In Chapter~\ref{sec:tileForm}, we have already formulated the tiling procedure by which to map the impurity Hamiltonian, eigenstates and observables into a lattice model of strongly correlated electrons via the usage of many-body translation operators. Section \ref{kondobreakdownsection} displays the destruction of the Fermi liquid from the breakdown of Kondo screening, leading to a pseudogapped non-Fermi liquid phase of matter. The novel properties of this phase are rigorously established in section \ref{NFLproperties}. In section \ref{exactsolforMottCrit}, we demonstrate that the continuous transition between the pseudogap and Mott insulating phases is described by the exactly solvable Hatsugai-Kohmoto model. We demonstrate in section \ref{pseudogapasnovelphase} the universal organising principle that is responsible for the emergence of the pseudogap non-Fermi liquid phase. This also unveils the pseudogap as the strongly coupled long-range entangled parent metal of the Mott insulator. We conclude in section \ref{conclusions}. Finally, we present appendices containing the derivation of the URG analysis of the impurity model, and the exactly solvable model at the critical point.
+We now describe the layout of the chapter. In section \ref{auxurgsection}, we formulate the lattice-embedded auxiliary quantum impurity model and sketch the unitary renormalisation group (URG) method employed to analyse the impurity model. In Chapter~\ref{sec:tileForm}, we have already formulated the tiling procedure by which to map the impurity Hamiltonian, eigenstates and observables into a lattice model of strongly correlated electrons via the usage of many-body translation operators. Section \ref{kondobreakdownsection} displays the destruction of the Fermi liquid from the breakdown of Kondo screening, leading to a pseudogapped non-Fermi liquid phase of matter. The novel properties of this phase are rigorously established in section \ref{NFLproperties}. In section \ref{exactsolforMottCrit}, we demonstrate that the continuous transition between the pseudogap and Mott insulating phases is described by the exactly solvable Hatsugai-Kohmoto model. We demonstrate in section \ref{pseudogapasnovelphase} the universal organising principle that is responsible for the emergence of the pseudogap non-Fermi liquid phase. This also unveils the pseudogap as the strongly coupled long-range entangled parent metal of the Mott insulator. We conclude in section \ref{tileConclusions}.
 
 \section{Auxiliary Model and URG analysis}\label{auxurgsection}
-To capture the interplay between Kondo physics and Mott localization, our approach relies on a two-dimensional auxiliary model consisting of an Anderson impurity embedded in a minimally-correlated bath, which we solve the system using a unitary RG (URG) approach~\cite{anirbanurg1,anirbanurg2}. The impurity model and URG analysis are laid out in this section. In order to make contact with a lattice model, we construct a translation-invariant Hamiltonian from the impurity model through a many-body tiling procedure: this preserves non-local correlations, as well as allows for momentum-resolved self-energies and renormalized couplings generated from the impurity solution. For the impurity model chosen in this work, tiling results in an \textit{extended}-Hubbard Hamiltonian on a two-dimensional square lattice at particle-hole symmetry (half-filling). The interaction terms within the lattice model are a result of analogous correlations present in the auxiliary model. This is laid out next in Section~\ref{tilingsection}.
+To capture the interplay between Kondo physics and Mott localization, our approach relies on a two-dimensional auxiliary model consisting of an Anderson impurity embedded in a minimally-correlated bath, which we solve the system using a unitary RG (URG) approach~\cite{anirbanurg1,anirbanurg2}. The impurity model and URG analysis are laid out in this section. In order to make contact with a lattice model, we construct a translation-invariant Hamiltonian from the impurity model through a many-body tiling procedure: this preserves non-local correlations, as well as allows for momentum-resolved self-energies and renormalized couplings generated from the impurity solution. For the impurity model chosen in this work, tiling results in an \textit{extended}-Hubbard Hamiltonian on a two-dimensional square lattice at particle-hole symmetry (half-filling). The interaction terms within the lattice model are a result of analogous correlations present in the auxiliary model. This is laid out next in Section~\ref{tileRG}.
 
 \begin{figure}[htpb]
 	\centering
@@ -70,36 +70,8 @@ J_{{\bf k}, {\bf k}^\prime} = \frac{J}{2} \left[ \cos(k_x - k^\prime_x) + \cos(k
 \end{equation}
 which respects the $C_4$ symmetry of the square lattice.
 
-
-\subsection{The unitary renormalisation group method}
-In order to obtain the various low-energy phases of our impurity model, we perform a scaling analysis of the associated Hamiltonian using the recently developed unitary renormalisation group (URG) method ~[19,39,40].
-%\cite{anirbanurg1,anirbanurg2}. 
-The method has been applied successfully on a wide variety of problems of correlated fermions~\cite{santanukagome,1dhubjhep1,anirbanmott1,siddharthacpi,anirban_kondo,Patra_2023}. The method proceeds by resolving quantum fluctuations in high-energy degrees of freedom, leading to a low-energy Hamiltonian with renormalised couplings and new emergent degrees of freedom. Typically, for a system with Fermi energy \(\epsilon_F\) and bandwidth \(E_N\), the sequence of isoenergetic shells \(\left\{E_{(j)}\right\}, E_{j}\in \left[E_0, E_N\right] \) define the states whose quantum fluctuations we sequentially resolve. The momentum states lying on shells \(E_N\) that are far away from the Fermi surface comprise the UV states, while those on shells near the Fermi surface comprise the IR states.
-
-As a result of the URG transformations, the Hamiltonian \(H_{(j)}\) at a given RG step \(j\) involves scattering processes between the \(k-\)states that have energies lower than \(D_{(j+1)}\). The unitary transformation \(U_{(j)}\) is then defined so as to remove the number fluctuations of the currently most energetic set of states \(D_{(j)}\)~\cite{anirbanurg1,anirbanurg2}:
-\begin{eqnarray}
-	H_{(j-1)} = U_{(j)} H_{(j)} U^\dagger_{(j)}~, \text{such that} ~\left[H_{(j-1)}, \hat n_{j}\right] =0~.
-\end{eqnarray}
-The eigenvalue of $\hat{n}_{j}$ has, thus, been rendered an integral of motion (IOM) under the RG transformation.
-
-The unitary transformations can be expressed in terms of a generator \(\eta_{(j)}\) that has fermionic algebra~\cite{anirbanurg1,anirbanurg2}:
-\begin{eqnarray}
-	\label{unitary}
-	U_{(j)} = \frac{1}{\sqrt 2}\left(1 + \eta_{(j)} - \eta_{(j)}^\dagger\right)~,~ \quad\left\{ \eta_{(j)},\eta_{(j)}^\dagger \right\} = 1~,
-\end{eqnarray}
-where \(\left\{\cdot\right\}\) is the anticommutator. The unitary operator \(U_{(j)}\) that appears in Eq.~\eqref{unitary} can be cast into the well-known general form \(U = e^\mathcal{S}, \mathcal{S} = \frac{\pi}{4}\left( \eta^\dagger_{(j)} - \eta_{(j)} \right)\) that a unitary operator can take, defined by an anti-Hermitian operator \(\mathcal{S}\). The generator \(\eta_{(j)}\) is given by the expression\cite{anirbanurg1,anirbanurg2}
-\begin{eqnarray}
-	\eta^\dagger_{(j)} = \frac{1}{\hat \omega_{(j)} - \text{Tr}\left(H_{(j)} \hat n_{j}\right) } c^\dagger_{j} \text{Tr}\left(H_{(j)}c_{j}\right)~.
-\end{eqnarray}
-The operators \(\eta_{(j)},\eta^\dagger_{(j)}\) behave as the many-particle analogues of the single-particle field operators \(c_j,c^\dagger_j\) - they change the occupation number of the single-particle Fock space \(\ket{n_j}\).  The important operator \(\hat \omega_{(j)}\) originates from the quantum fluctuations that exist in the problem because of the non-commutation of the kinetic energy terms and the interaction terms in the Hamiltonian:
-\begin{eqnarray}
-	\hat \omega_{(j)} = H_{(j-1)} - H^i_{(j)}~.
-	\label{omega}
-\end{eqnarray}
-\(H^i_{(j)}\) is the part of \(H_{(j)}\) that commutes with \(\hat n_j\) but does {\it not} commute with at least one \(\hat n_l\) for \(l < j\). The RG flow continues up to energy \(D^*\), where a fixed point is reached from the vanishing of the RG function. 
-Detailed comparisons of the URG with other methods (e.g., the functional RG, spectrum bifurcation RG etc.) can be found in Refs.~\cite{anirbanmott1,anirbanurg1}.
-
 \section{Derivation of unitary RG equations for the lattice-embedded impurity model}\label{tileRG}
+In order to obtain the various low-energy phases of our impurity model, we perform a scaling analysis of the associated Hamiltonian using the recently developed unitary renormalisation group (URG) method. The method is described in detail in Chapter 2. 
 \subsection{RG scheme}
 At any given step \(j\) of the RG procedure, we decouple the states \(\left\{ {\bf q} \right\} \) on the isoenergetic surface of energy \(\varepsilon_j\). The diagonal Hamiltonian \(H_D\) for this step consists of all terms that do not change the occupancy of the states \(\left\{{\bf q}\right\}\):
 \begin{equation}\begin{aligned}
@@ -239,7 +211,7 @@ An identical contribution is obtained from the reversed term:
 
 \subsubsection*{Net renormalisation to the Kondo interaction}
 Combining the results from eqs.~\ref{kondoRenorm1}, \ref{kondoRenorm2}, \ref{kondoRenorm3} and \ref{kondoRenorm4}, as well as using the properties \(J_{{\bf \bar q}, {\bf k}_1} J_{{\bf k}_2,{\bf \bar q}} = J_{{\bf q}, {\bf k}_2} J_{{\bf k}_1,{\bf q}} = J_{{\bf k}_2, {\bf q}} J_{{\bf q},{\bf k}_1}\) and \(J_{{\bf q}, {\bf \bar q}} W_{{\bf \bar q}, {\bf k}_2, {\bf k}_1, {\bf q}} = J_{{\bf \bar q}, {\bf q}} W_{{\bf q}, {\bf k}_2, {\bf k}_1, {\bf \bar q}}\), the total renormalisation in the momentum-resolved Kondo coupling \(J^{(j)}\) at the \(j^\text{th}\) step amounts to
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{rgeq2}
 	\Delta J^{(j)}_{{\bf k}_1, {\bf k}_2} = -\sum_{{\bf q} \in \text{PS}} \frac{J^{(j)}_{{\bf k}_2,{\bf q}} J^{(j)}_{{\bf q},{\bf k}_1} + 4J^{(j)}_{{\bf q}, {\bf \bar q}} W_{{\bf \bar q}, {\bf k}_2, {\bf k}_1, {\bf q}}}{\omega - \frac{1}{2}|\varepsilon_j| + J^{(j)}_{{\bf q}}/4 + W_{{\bf q}}/2}
 \end{aligned}\end{equation}
 
@@ -283,7 +255,7 @@ H(\mathbf{r}_d) = H_{\text{imp}} + H_{\text{cbath}} + H_{\text{imp-cbath}}~.
 \label{auxmodel}
 \end{equation}
 The form of various terms in eq.\eqref{auxmodel}
-have been defined in eqs.\eqref{localrepulsion}, \eqref{impbathcoup} and \eqref{bathke} in Section~\ref{auxurgsection}. The tiling procedure is shown in detail in Section~\ref{hamiltonianTile}.
+have been defined in eqs.\eqref{localrepulsion}, \eqref{impbathcoup} and \eqref{bathke} in Section~\ref{auxurgsection}. The tiling procedure is shown in detail in Section~\ref{hamiltonianTile} of Chapter 4.
 
 A non-zero chemical potential in the bath and/or the impurity can be included to study the effects of doping. Crucially, the eigenstates of $\mathcal{H}_\text{tiled}$ obey a many-body generalization of Bloch’s theorem~\cite{stoyanova}, which allows for the exact computation of momentum-resolved observables (presented here for a $77\times 77$ {\bf k}-space Brillouin zone grid). We shall demonstrate below that the lattice embedding and tiling procedures provide a controlled route to capture low-energy NFL behavior and Mott criticality directly from a quantum impurity model.
 
@@ -307,7 +279,7 @@ For any $W/J$, the $\mathcal{C}_{4}$ lattice symmetry dictates that $J_{{\bf k}_
 
 Precisely at $W/J=(W/J)_{\text{PG}}$, the antinode joins this connected region of zeros in $J_{{\bf k}_1, {\bf k}_2}$, marking the decoupling of the antinodes from all other points in the neighbourhood of the FS. This is an interaction-driven Lifshitz transition of the FS, and marks the entry into a PG phase possessing Fermi arcs~\cite{WuFerrero2018}. Importantly, it coincides with an emergent two-channel Kondo (2CK) impurity model, where each channel corresponds to a pair of Fermi arcs on opposite faces of the conduction bath FS (see Subection~\ref{2CKEmerge}). The 2CK nature of the PG is guaranteed by the symmetry of $J_{{\bf k},{\bf k'}}$: 
 \begin{equation}
-\begin{aligned}
+	\begin{aligned}\label{hamiltonanSymms}
 J_{{\bf k},{\bf k'}}= -J_{{\bf k}+{\bf Q},{\bf k'}}=-J_{{\bf k},{\bf k'}+{\bf Q}}, \quad {\bf Q} = (\pi,\pi).
 \end{aligned}
 \end{equation}
@@ -321,13 +293,13 @@ As the bath interaction \(W\) is tuned through the L-PG phase, the four nodal po
 \end{itemize}
 The second class is tied to the first through a symmetry of the Hamiltonian (eq.~\ref{hamiltonanSymms}). The crucial feature of these processes is that each node only interacts with the other node directly opposite to it across the origin. That is, \(\left(\pi/2, \pi/2\right) \) and \(\left(-\pi/2, -\pi/2\right) \) only interact between themselves, while \(\left(\pi/2, -\pi/2\right) \) and \(\left(-\pi/2, \pi/2\right) \) form their own pair of connected regions. 
 
-Let \(S^\pm\) be the set of momentum states in a small window around nodes along \(k_x = \pm k_y\). As discussed immediately above, the Kondo spin-exchange term close to the transition does not lead to scattering of any \(k-\)state from \(S^+\) to \(S^-\). This is verified by calculating the ratio \(\text{max}\left\{ J_{k^+_1, k^-_2} \right\} / \text{max}\left\{ J_{k^+_1, k^+_2} \right\}\), where the maximum in the numerator is calculated from all the low-energy (fixed point) Kondo scattering processes that connect the two sets \(S^\pm\), while the denominator maximum is from within the set \(S^+\). This ratio vanishes (left panel of Fig.~\ref{channelDecoupling}) within the local pseudogap regime, indicating that no direct Kondo scattering process persists between the two sectors \(S^\pm\) at low energies, deep within the pseudogap regime. We call the value of \(W\) at which this ratio vanishes \(W^*\).
+Let \(S^\pm\) be the set of momentum states in a small window around nodes along \(k_x = \pm k_y\). As discussed immediately above, the Kondo spin-exchange term close to the transition does not lead to scattering of any \(k-\)state from \(S^+\) to \(S^-\). This is verified by calculating the ratio \(\text{max}\left\{ J_{k^+_1, k^-_2} \right\} / \text{max}\left\{ J_{k^+_1, k^+_2} \right\}\), where the maximum in the numerator is calculated from all the low-energy (fixed point) Kondo scattering processes that connect the two sets \(S^\pm\), while the denominator maximum is from within the set \(S^+\). This ratio vanishes (Fig.~\ref{channelDecoupling1}) within the local pseudogap regime, indicating that no direct Kondo scattering process persists between the two sectors \(S^\pm\) at low energies, deep within the pseudogap regime. We call the value of \(W\) at which this ratio vanishes \(W^*\).
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.45\textwidth]{quadrantMaxKondo-49.pdf}
 	\caption{Ratio between the maximum values of the fixed point values of the Kondo couplings for scattering processes between and within the regions \(S^+\) and \(S^-\). The vanishing of the fixed point ratio indicates that the pseudogap regime features a singular low-energy effective theory, where the Fermi surface neighbourhood splits into two disconnected regions with no explicit term in the Hamiltonian connecting them directly.}
-	\label{channelDecoupling}
+	\label{channelDecoupling1}
 \end{figure}
 
 The decoupling of the \(k-\)space regions \(S^\pm\) is captured by the following simplified low-energy Hamiltonian:
@@ -373,7 +345,7 @@ where $l_\text{min}$ is the minimum mean free path in metals (equal to one latti
 % The optical conductivity $\sigma (\omega)$ of the NFL thus undergoes a suppression as $\omega \to 0$, together with a shift of the Drude peak to finite $\omega$~\cite{Hussey2004,pustogow2021}. 
 The height of the zero-frequency peak rises by almost 4 orders of magnitude from the start of the PG till its end at the Mott transition point (Fig.~\hyperref[selfEnergy]{\ref*{selfEnergy}(c)}); the dramatic growth of the peak height very near the Mott critical point coincides with the coalescing of the finite-frequency poles of the self-energy into a single pole at zero-frequency, signalling the singular nodal NFL present at the Mott quantum critical point.
 
-To further probe the breakdown of coherent transport in the pseudogap (PG) regime, we examine the product of the impurity spectral function $A(\omega)$ and the scattering lifetime $\tau(\omega)$, which approximates the optical conductivity $\sigma(\omega)$ via a Drude-type relation. As shown in the main panel of Fig.~\ref{optical}, this quantity exhibits a sharp Drude peak at $\omega = 0$ in the Fermi liquid (FL) regime (blue), consistent with long-lived quasiparticles. In stark contrast, the PG regime (green, red, orange) shows a pronounced suppression of low-frequency conductivity and the emergence of a finite-frequency peak centered near $\omega/D \sim 0.3{-}0.4$ (where $D$ is the kinetic energy bandwidth).
+To further probe the breakdown of coherent transport in the pseudogap (PG) regime, we examine the product of the impurity spectral function $A(\omega)$ and the scattering lifetime $\tau(\omega)$, which approximates the optical conductivity $\sigma(\omega)$ via a Drude-type relation. As shown in the right panel of Fig.~\ref{ImpSpecFuncFits}, this quantity exhibits a sharp Drude peak at $\omega = 0$ in the Fermi liquid (FL) regime (blue), consistent with long-lived quasiparticles. In stark contrast, the PG regime (green, red, orange) shows a pronounced suppression of low-frequency conductivity and the emergence of a finite-frequency peak centered near $\omega/D \sim 0.3{-}0.4$ (where $D$ is the kinetic energy bandwidth).
 
 
 
@@ -505,7 +477,7 @@ At the values of \({\bf q}\) for which \(\varepsilon_{{\bf N}_1 + {\bf q}} > 0\)
 \end{aligned}\end{equation}
 
 The complete second-order renormalised Hamiltonian is
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{HKModel}
     \Delta \tilde H =& \sum_{{\bf q}, \sigma}\epsilon_{\bf q} r_{{\bf q},\sigma} + \mathcal{U}\sum_{{\bf q}, \sigma}r_{{\bf q} \sigma}r_{{\bf q} \bar\sigma} + \mathcal{U}\sum_{{\bf q}_1 \neq {\bf q}_2, \sigma}\left[r_{{\bf q}_1 \sigma}r_{{\bf q}_2 \bar\sigma} + \phi^\dagger_{{\bf q}_1,\bar\sigma}\phi^\dagger_{{\bf q}_1,\sigma}\phi_{{\bf q}_2, \sigma}\phi_{{\bf q}_2, \bar\sigma}\right]~.
 \end{aligned}\end{equation}
 where $\epsilon_{\bf q} = \text{sign}\left(\varepsilon_{{\bf N}_1 + {\bf q}}\right)\frac{\varepsilon_{{\bf N}_1 + {\bf q}}^2}{-W}$ and $\mathcal{U} = \frac{{J^*}^2}{4W}$.
@@ -614,7 +586,7 @@ Second, they signal a divergent electronic self-energy as a function of the wave
 
 Thus, the drastic change in nature of the real-space excitations - from locally well-defined Landau quasiparticles of the FL to the increasingly nonlocal excitations of the NFL Fermi arcs in the PG phase - appears to be dictated by a topological principle and, therefore, robust under renormalisation. This signals the NFL Fermi arcs of the PG as an emergent phase of strongly interacting quantum matter - which we dub the {\it Mott metal} - that is the parent metal of the MI. Such an identification of the pseudogap as a distinct phase is backed up by angle-resolved photoemission spectroscopy (ARPES) experiments~\cite{Hashimoto2014}; the anomalous momentum, temperature and doping dependence of the gap function observed in the cuprates suggests that the pseudogap maybe described by an order parameter distinct from that of the superconductor~\cite{Hashimoto2012,Vishik2009}. The same topological principle connects the nonlocal unparticle-like gapless excitations~\cite{Georgi2007PRL,Georgi2007,Phillips2013Unparticles,PhillipsLectures2014} of the scale-invariant nodal NFL of the HK model observed precisely at the Mott critical point to those of the rest of the PG phase, e.g., a universal scaling of $\Sigma''_{{\bf k}}(\omega)\sim (a + \omega^{2})^{-1}$ (Fig.~\hyperref[selfEnergy]{\ref*{selfEnergy}(b)}) and local density of states $A_{d}(\omega) \sim \omega^{2}$ (Fig.~\hyperref[ImpSpecFuncFits]{\ref*{ImpSpecFuncFits}}) of the NFL throughout the PG phase, such that the value of $\Sigma''_{{\bf k}}(\omega=0)$ value continues to grow upon violating the MIR bound (Fig.~\hyperref[selfEnergy]{\ref*{selfEnergy}(c)}). 
 
-\section{Conclusions}\label{conclusions}
+\section{Conclusions}\label{tileConclusions}
 Our analysis reveals that the Mott transition proceeds via a continuous evolution through a PG regime characterized by a singular NFL metal - the Mott metal - with deconfined holon–doublon excitations confined to nodal Fermi arcs, and a scaling of it's spectral features with universal power-law exponents. As the system approaches criticality, this metallic phase exhibits increasingly non-local correlations and a divergent self-energy, signalling the breakdown of Landau quasiparticles, formation of local moments and the onset of long-range quantum entanglement. Anchored in two-channel Kondo dynamics at intermediate scales and governed by Hatsugai–Kohmoto physics near the critical endpoint, the Mott metal provides a unified framework for understanding anomalous metallicity in strongly correlated systems. It's fate under finite doping presents a compelling direction for future investigation. More complicated models can be studied by suitably extending the tiling approach and choosing an appropriate auxiliary model. Electron-phonon coupling can be taken into account by studying an Anderson-Holstein model that couples the impurity site to local lattice modes~\cite{ACHewson_2002}. The effects of disorder can be studied by averaging quantities over various disorder configurations of the conduction bath. The versatility of the unitary RG solver and the impurity model-based construction makes it convenient to explore a large variety of lattice models.
 
 \section{Appendix: Effective action for the Hubbard-Heisenberg model and the eSIAM}
@@ -689,7 +661,7 @@ One can also write down an effective action purely for the local site \(0\). The
 \end{aligned}\end{equation}
 
 \subsection{Local theory for the extended SIAM}
-The Hamiltonian for the extended SIAM model is shown in eq.~\ref{siam_attr}. We will denote the impurity with the label \(d\) and the bath sites with the label \(c\). Among the bath sites, we will represent the site coupled to the impurity with \(z\). The full action has the form
+The Hamiltonian for the extended SIAM model is shown in Chapter 3. We will denote the impurity with the label \(d\) and the bath sites with the label \(c\). Among the bath sites, we will represent the site coupled to the impurity with \(z\). The full action has the form
 \begin{equation}\begin{aligned}
 	S_\text{ES} &= \sum_{d,c}\sum_\sigma \int_0^\beta\mathrm{d\tau}~c^\dagger_{i\sigma}(\tau)\partial_\tau c_{i\sigma}(\tau) - t\sum_{\left<i,j \right> \in c,\sigma}\int_0^\beta\mathrm{d\tau}~\left[c^\dagger_{i\sigma}(\tau)c_{j\sigma}(\tau) + \text{h.c.}\right] \\
 	&- V\sum_{\sigma}\int_0^\beta\mathrm{d\tau}~\left[c^\dagger_{d\sigma}(\tau)c_{z\sigma}(\tau) + \text{h.c.}\right] + J\int_0^\beta\mathrm{d\tau} \vec{S}_d(\tau)\cdot\vec{S}_{z}(\tau) \\

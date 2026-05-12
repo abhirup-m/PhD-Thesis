@@ -117,7 +117,7 @@ while the diagonal part is given by \(H_D = \epsilon_{\vec q} \tau_{q\uparrow} +
 Note that we have ignored potential scattering terms in the off-diagonal part \(T_{\vec q\beta}\). In order to allow both spin-flip and charge transfer scattering processes, we start from initial states with \(\tau_{q \uparrow} = -\tau_{q \downarrow}\). As a result, the contribution to \(H_D\) from the kinetic energy is \(\epsilon_q \tau_{q \uparrow} = \left(\pm D\right)\times\left(\pm\frac{1}{2}\right) = D/2\), while the contribution from \(U_b\) is \(-\frac{1}{2}U_b\left(\pm\frac{1}{2} - \left( \mp\frac{1}{2} \right) \right)^2 = -U_b/2 \).
 
 \subsection{Renormalisation of \(U_b\)}
-Renormalisation to the bath interaction \(U_b\) can arise purely from itself, because of the lack of any impurity operators. We show in Section~\ref{tileRG} that this coupling is in fact marginal. 
+Renormalisation to the bath interaction \(U_b\) can arise purely from itself, because of the lack of any impurity operators. We show in Section~\ref{tileRG} of Chapter 5 that this coupling is in fact marginal. 
 % \(U_b\) can renormalise only via itself. The relevant renormalisation term in the particle sector is
 % \begin{eqnarray}
 % 	U_b^2 \sum_{q\beta}\sum_{k_1,k_2,k_3,\atop{k_1^\prime,k_2^\prime,k_3^\prime}} c^\dagger_{q\beta}c_{k_1\beta}c^\dagger_{k_3\overline\beta}c_{k_1^\prime\overline\beta}\frac{1}{\omega - H_D}c^\dagger_{k_2^\prime\overline\beta}c_{k_3^\prime\overline\beta}c^\dagger_{k_2\beta}c_{q\beta}~.
@@ -263,10 +263,10 @@ The corresponding terms in the hole sector are
 In summary, the renormalisation in the couplings takes the form:
 \begin{eqnarray}
 	\Delta U &= 4V^2 n_j\left(\frac{1}{d_1} - \frac{1}{d_0}\right) - n_j\frac{J^2}{d_2},\quad &\Delta V = -\frac{3n_j V}{8}\left[J\left(\frac{1}{d_2} + \frac{1}{d_1}\right) +  \frac{4U_b}{3}\sum_{i=1}^4 \frac{1}{d_i}\right],\nonumber \\
-	\Delta J &= -\frac{n_j J\left(J + 4U_b\right)}{d_2}~,\quad &\Delta U_b = 0\label{rg-eqn}~,
+	\Delta J &= -\frac{n_j J\left(J + 4U_b\right)}{d_2}~,\quad &\Delta U_b = 0~,
 \end{eqnarray}
 where the denominators \(d_i\) are given by
-\begin{eqnarray}\label{rg-eqtn1}
+\begin{eqnarray}
 	d_0 = \omega - \frac{D}{2} + \frac{U_b}{2} - \frac{U}{2},~d_1 = \omega - \frac{D}{2} + \frac{U_b}{2} + \frac{U}{2} + \frac{J}{4}~,\\
 	d_2 = \omega - \frac{D}{2} + \frac{U_b}{2} + \frac{J}{4}~,d_3 = \omega - \frac{D}{2} + \frac{U_b}{2}~.
 \end{eqnarray}
@@ -794,7 +794,7 @@ The orthogonality catastrophe faced by the infrared excitations of the conductio
 The values of the excess charge at the QCP and in the local moment phase lead to important corollaries. Firstly, the jump in the excess charge by unity in going from \(r < r_{c2}\) to \(r > r_{c2}\) is in fact a reduction in the Luttinger volume \(V_L\) of the conduction bath~\cite{luttinger1960fermi,martin_1982}. \(V_L\) counts the number of extended states present at and below the Fermi volume, and corresponds to a  topological quantum number~\cite{oshikawa2000topological,seki2017topological,Heath2020,anirbanurg1}. Since the excess charge \(n_\text{exc}\) calculated above is simply the impurity contribution to \(V_L\) at the Fermi surface, the difference in the excess charge across the transition implies that the two phases acquire different values for the invariant \(V_L\). Thus, $n_\text{exc}$ tracks the change ($\Delta V_{L}$) in the Luttinger volume, and the transition is topological in nature. Secondly, in a recent work, Sen et al.~\cite{sen_mitchell_2020} have shown that the Mott MIT of the infinite-dimensional Hubbard model proceeds through the dissociation of domain walls in a fictitious Su-Schrieffer-Heeger chain connected to the physical lattice sites. If one couples their observation with the fact that the two dissociated domain walls at the ends of the SSH chain are together known to host a single charge~\cite{SSHRMP1988,stone_1985}, it becomes evident that the fractional excess charge we obtain at the QCP corresponds to the state that is localised in the SSH chain near the physical lattice site as obtained by Sen et al. The well-known bulk-boundary correspondence of the SSH model (see, e.g., \cite{Asboth_2016}) suggests that the excess charge $n_\text{exc}$ and the change $\Delta V_{L}$ in the Luttinger volume are the respective topological invariants of the boundary and bulk in the e-SIAM that are tied to one another. Further, the appearance of a half-quantised $n_\text{exc}$ at the MIT of the e-SIAM corresponds, in the SSH model, to the dissociation of a domain wall-anti domain wall pair with each carrying a half charge~\cite{SSHRMP1988,stone_1985}.
 
 We show in Appendix 7 that it is in fact  possible to connect the scattering phase shift ($\delta^{*}$), impurity magnetisation ($m_{\text{imp}}^{z}$), effective degeneracy ($\tilde{g}$) and excess charge ($n_{\text{exc}}$) in a single relation:
-\begin{eqnarray}\label{phase-mag}
+\begin{eqnarray}
 	\delta^* = \pi n_\text{exc} = \left[1 + \left(\frac{2-\tilde g}{\tilde g-1}\right)^2\right]^{-1} = \frac{4{m_{\text{imp}}^z}^2}{1 - 4|m_{\text{imp}}^z| + 8{m_{\text{imp}}^z}^2}~.
 \end{eqnarray}
 As we now discuss, this provides a unified picture of the effect of frustration on the impurity spin. As we have seen earlier, the presence of \(U_b\) in the Hamiltonian of the e-SIAM introduces local moment states into the spectrum and leads to states with non-vanishing impurity magnetisation at the QCP. This non-zero magnetisation can be interpreted as a partial screening of the impurity spin, in turn resulting in an effective impurity degeneracy \((1 < \tilde g < 2\) between that of a unique screened state and an unscreened local moment. The partial screening also manifests in only half the excess charge being contributed to the conduction bath. This reduction in the excess charge acts as a change in the boundary conditions felt by the conduction electrons coupled to the impurity and manifests as a phase shift that is less than the unitarity limit of \(\pi\). 
@@ -870,7 +870,6 @@ Substituting this in the static lesser Greens function gives
 \end{eqnarray}
 This can be extended to generalised retarded Greens functions \(G^R_{O_1^\dagger,O_2}(t) \equiv -i\theta(t) \braket{\left\{O_1^\dagger(t), O_2\right\}}\), whose spectral representation is of the form
 \begin{eqnarray}
-	\label{retarded}
 	G^R_{O_1^\dagger,O_2}(\omega) = \frac{1}{Z}\sum_n \left[ \frac{\braket{\Psi_\text{gs} | O_2 | \Psi_n}\braket{\Psi_n | O_1^\dagger | \Psi_\text{gs}}}{\omega + E_\text{gs} - E_n} + \frac{\braket{\Psi_n | O_2 | \Psi_\text{gs}}\braket{\Psi_\text{gs} | O_1^\dagger | \Psi_n}}{\omega - E_\text{gs} + E_n}\right] ~.
 \end{eqnarray}
 Following an approach very similar to the one that led to eq.~\eqref{greens_func_entng}, we can cast the generalised Greens function in terms of the geometric entanglement measures:
@@ -1320,10 +1319,10 @@ The general form \(\ket{\psi_\text{gs}(g)}\) of polarised interpolating ground-s
 	n_\text{exc} = \frac{1}{(2-\tilde g)^2 + (\tilde g-1)^2}\left[(2-\tilde g)^2 n_\text{exc}^\text{SS} + (\tilde g - 1)^2n_\text{exc}^\text{LM}\right] = \left[1 + \left(\frac{2-\tilde g}{\tilde g-1}\right)^2\right]^{-1}~.
 \end{eqnarray}
 At the QCP, the excess charge acquires a fractional value of \(1/2\), indicating once more that only half of the impurity remains coupled with the bath at the transition. The Friedel sum rule can be used to equate this excess charge with the phase shift \(\delta^*\) suffered by conduction electrons as they scatter off the impurity, at the fixed point:
-\begin{eqnarray}\label{phase-mag}
+\begin{eqnarray}\label{phase-mag-app}
 	\delta^* = \pi n_\text{exc} = \left[1 + \left(\frac{2-\tilde g}{\tilde g-1}\right)^2\right]^{-1} = \frac{4{m_d^z}^2}{1 - 4|m_d^z| + 8{m_d^z}^2}~.
 \end{eqnarray}
-Equation \eqref{phase-mag} unifies the effect of several important quantities that lead to the frustration of the impurity and the destruction of the Kondo effect. The presence of \(U_b\) introduces local moment states into the spectrum and leads to states with non-vanishing impurity magnetisation \(m_d^z\) at the QCP; this non-zero \(m_d^z\) can be interpreted as an effective impurity degeneracy \(\tilde g\) that is only partially screened, resulting in only half the excess charge \(n_\text{exc}\) being contributed to the conduction bath. This reduction in the excess charge acts as a shift in the boundary conditions felt by the conduction electrons and manifests as a phase shift that is less than the unitarity limit of \(\pi\).
+Equation \eqref{phase-mag-app} unifies the effect of several important quantities that lead to the frustration of the impurity and the destruction of the Kondo effect. The presence of \(U_b\) introduces local moment states into the spectrum and leads to states with non-vanishing impurity magnetisation \(m_d^z\) at the QCP; this non-zero \(m_d^z\) can be interpreted as an effective impurity degeneracy \(\tilde g\) that is only partially screened, resulting in only half the excess charge \(n_\text{exc}\) being contributed to the conduction bath. This reduction in the excess charge acts as a shift in the boundary conditions felt by the conduction electrons and manifests as a phase shift that is less than the unitarity limit of \(\pi\).
 
 
 \section*{Appendix 8: Additional correlations near the ESQPT and the QCP}
