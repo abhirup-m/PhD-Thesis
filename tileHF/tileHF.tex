@@ -1,10 +1,17 @@
 \chapter{\chapF}\label{sec:tileHF}
 As another application of the tiling approach, we will tackle the problem of heavy fermions in this chapter. The phenomenology of heavy fermion materials has been discussed in detail in the introduction. They involve localised \(f-\)electrons from rare earths and actinides hybridising with weakly correlated electrons from \(s\), \(p\) or \(d\) orbitals. In the phase where this hybridisation is strong and the \(f-\)electrons are Kondo screened by the conduction layer, the narrow bandwidth of the \(f-\)electrons leads to highly increased masses for the carriers. Lowering the hybridisation leads to a transition into a small Fermi volume phase where the \(f-\)electrons do not participate in transport. For systems belonging to the so called Kondo breakdown QCP class, the Kondo screening disappears completely at the transition, leading to a quantum critical point at zero temperature and non-Fermi liquid behaviour emanating from the QCP at finite temperature. 
 
-Given the work carried out in the previous chapter, we will approach this problem as follows. In order to model the two orbital nature of the heavy fermion system, we study a bilayer extended Hubbard model. By tuning the correlation strength of one of the layers (the \(f-\) layer), we will be able to interpolate between the heavy fermions limit where the \(f-\)layer is completely localised and other regimes where the \(f-\)layer has some itineracy. To get a feel for the various competing tendencies, we first study the infinite dimensional limit of the model through a two-impurity Kondo model. We then extend our investigation by considering a lattice-embedded version of the model that incorporates lattice geometries.
+In this regard, we are broadly interested in the following questions:
+\begin{itemize}
+	\item {\it What additional phases emerge upon tuning the correlation of the \(f-\)layer?} This allows us to investigate a larger parameter regime, and is likely to be important for capturing exotic phenomenology such as symmetry-preserved spin liquid phases in heavy fermion materials.
+	\item {\it Does the transition from the small to large Fermi surface phases involve changes in entanglement patters?} Given the proximity of strange metal behaviour to the quantum critical point in such systems, entanglement is likely to be a key characteristic that demarcates various phases and marks the quantum critical nature of the transition.
+	\item {\it In the presence of a strong correlation on a 2D square lattice, does the heavy fermion transfer display momentum-space anisotropy?} This is an important question not just because of our observation of a momentum-anisotropic Mott metal-pseudogap phase within the extended Hubbard model in a previous work, but also because such a feature would imply an overarching universality of fermionic metal-insulator transitions.
+\end{itemize}
+
+Given the work carried out in the previous chapter, we will approach this problem as follows. In order to model the two orbital nature of the heavy fermion system, we study a bilayer extended Hubbard model. By tuning the correlation strength of one of the layers (the \(f-\) layer), we will be able to interpolate between the heavy fermions limit where the \(f-\)layer is completely localised and other regimes where the \(f-\)layer has some itineracy. To get a feel for the various competing tendencies, we first study the infinite dimensional limit of the model through a two-impurity Kondo model. We then extend our investigation by considering a lattice-embedded version of the model that incorporates lattice geometries. We will restrict ourselves to the case of half-filling in this work, and investigate the doped case in a future work.
 
 \section{Bilayer extended Hubbard model: Impurity model}
-We approach the heavy-fermion problem by starting from a bilayer extended Hubbard model, consisting of two layers (\(f\) and \(c\)). Towards studying this lattice model, we adopt a two-layer impurity problem that hosts a correlated impurity site in each layer (\(S_f\) and \(S_d\)):
+We approach the heavy-fermion problem by starting from a bilayer extended Hubbard model, consisting of two layers (\(f\) and \(c\)). Towards studying this lattice model, we adopt a two-layer impurity problem (Fig.~\ref{twoImpurity}) that hosts a correlated impurity site in each layer (\(S_f\) and \(S_d\)):
 \begin{equation}\begin{aligned}
 	H_\text{aux} = H_\text{1p} + H_f + H_d + H_{fd}~,
 \end{aligned}\end{equation}
@@ -22,6 +29,12 @@ where \(c^\dagger_{\nu,\sigma,\alpha}\) can refer to creation operator for eithe
 \begin{equation}\begin{aligned}
 	H_{fc} = -V_\perp\sum_{\sigma}\left(c^\dagger_{d,\sigma} c_{f,\sigma} + \text{h.c.}\right)~.
 \end{aligned}\end{equation}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{twoImpurity.pdf}
+	\caption{The primary workhorse for this chapter is the two impurity auxiliary model. Each impurity hybridises with its own conduction bath. In order to simulate the correlated nature of the \(f-\)layer of a lattice model, we will tune the bath correlation \(W_f\) to strong values. The impurities interact with each other through the spin-exchange coupling \(J_\perp\).}
+	\label{twoImpurity}
+\end{figure}
 
 \section{Tiling Into Bilayer Extended Hubbard Model}
 Tiling the impurity model leads to a bilayer extended Hubbard model on the 2D square lattice. In order to tile our auxiliary model to restore translation invariance, we identify the cluster which acts as the ``unit" cell of translation. As discussed in the text surrounding eq.~\ref{clusterHamiltonian}, a good choice for the unit cell is the impurity site and it's surrounding correlated environment. Placing the impurity sites at \(\bm r_d\) in each layer, we get
@@ -35,7 +48,14 @@ The details of tiling a cluster Hamiltonian were already shown in Sec.~\ref{hami
 				   & -\frac{2V}{Z}\sum_{\langle i,j \rangle ,\sigma}\left(f^\dagger_{i,\sigma}f_{j,\sigma} + \text{h.c.}\right) - \frac{U_f - W_f}{2}\sum_i \left(n_{i,\uparrow,f} - n_{i,\downarrow,f}\right)^2 + \frac{2J}{Z} \sum_{\langle i,j \rangle}{\bm S}_{i,f}\cdot{\bm S}_{j,f}\\
 				   & - V_\perp \sum_{i,\sigma}(f^\dagger_{i,\sigma} c_{i,\sigma} + \text{h.c.})
 \end{aligned}\end{equation}
-Tiling the impurity model therefore leads to a bilayer extended Hubbard model, with effective couplings that depend on the auxiliary model couplings. The value of \(\eta_d\) defines the effective chemical potential of the \(d-\)layer; a non-zero value moves the layer away from half-filling. The \(f-\)layer is pinned at half-filling.
+Tiling the impurity model therefore leads to a bilayer extended Hubbard model (Fig.~\ref{bilayerHubbard}), with effective couplings that depend on the auxiliary model couplings. The value of \(\eta_d\) defines the effective chemical potential of the \(d-\)layer; a non-zero value moves the layer away from half-filling. The \(f-\)layer is pinned at half-filling.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{bilayerHubbard.pdf}
+	\caption{Bilayer Hubbard model reconstructed from tiling the two-impurity auxiliary model. The correlated \(f-\)layer (orange) hosts a stronger correlation \(U_f\) compared to that of the conduction layer (violet) \(U_d\). The two layers are connected by an inter-orbital hybridisation \(V_\perp\).}
+	\label{bilayerHubbard}
+\end{figure}
 
 
 Following Sec.~\ref{tileKspaceGreen}, the retarded \(k-\)space Greens function in either layer can be expressed in terms of  auxiliary model Greens functions:
@@ -518,20 +538,29 @@ To further understand the nature of the states that are occupied in the Kondo in
 	\label{plusminus}
 \end{figure}
 
-We next focus on the \(k-\)space spectral functions, in order to identify any momentum-space differentiation arising from the inter-layer hybridisation. We have already seen within our earlier work on the extended Hubbard mode in two dimension~\cite{mukherjee2026} that tuning the bath correlation \(|W|\) leads to a pseudogapping transition that starts with the selecting gapping of the antinodes and ends with the gapping of the nodes. In order to investigate similar phenomena here, we obtain the lattice nodal and antinodal spectral functions, as a function of \(W_f\) and \(J_\perp\) (Fig.~\ref{SFK}). 
-
-Prompted by this, we calculate the difference between the nodal and antinodal spectral functions at zero frequency, to get a more complete picture of the \(k-\)space differentiation for various parameter regimes. From Fig.~\ref{SFKMAP}, we find that at small \(|W_f|\), the differentiation increases as \(J_\perp\) is increased, which means that hybridisation gap opens at different values of \(J_\perp\) for different points on the Fermi surface. In contrast, at large \(|W_f|\), the differentiation is suppressed at large \(J_\perp\), which suggests that the hybridisation gap there opens uniformly over the Fermi surface.
+We next focus on the \(k-\)space spectral functions, in order to identify any momentum-space differentiation arising from the inter-layer hybridisation. We have already seen within our earlier work on the extended Hubbard mode in two dimension~\cite{mukherjee2026} that tuning the bath correlation \(|W|\) leads to a pseudogapping transition that starts with the selecting gapping of the antinodes and ends with the gapping of the nodes. In order to investigate similar phenomena here, we obtain the lattice nodal and antinodal spectral functions, as a function of \(W_f\) and \(J_\perp\) (Fig.~\ref{SFK}). Going from the top panel to the bottom panel corresponds to increasing the correlation of the \(f-\)layer, and within each row, the left and right panels capture the density of states at the node and antinode respectively. Finally, within each panel, we show how the density of states varies as the inter-layer hybridisation \(J_\perp\) is increased.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=\textwidth]{SFK-33-399.pdf}
-	\caption{Spectral functions of the nodal (left) and antinodal (right) \(k-\)space point in the \(f-\)layer. \(|W_f|\) increases from the top panel to the bottom panel, while \(J_\perp\) increases within each panel. For small \(|W_f\), the effect of \(J_\perp\) is to create a pseudogap at both \(k-\)points. As }
+	\caption{Spectral functions of the nodal (left) and antinodal (right) \(k-\)space point in the \(f-\)layer. \(|W_f|\) increases from the top panel to the bottom panel, while \(J_\perp\) increases within each panel. For small \(|W_f\), the effect of \(J_\perp\) is to create a hybridisation gap in the central resonance of both layers. For large \(|W_f|\), the \(f-\)layer is a Mott insulator, and introducing \(J_\perp\) then leads to weak metallic processes due to virtual tunneling into the \(d-\)layer. These processes again acquire a hybridisation gap at large \(J_\perp\).}
 	\label{SFK}
 \end{figure}
+
+We find that the anisotropy between the two \(k-\)space points is maximal at small \(|W_f|\) as \(J_\perp\) is increased, as seen by comparing the purple curves in the two panels. More precisely, we find that the inter-layer hybridisation affects the antinodal point more strongly, leading to the opening of a hybridisation gap at the antinodal point first. In contrast, at larger values of \(|W_f|\), the anisotropy is greater at small \(J_\perp\), and this anisotropy is due primarily to the bath correlation.
+
+Prompted by this, we calculate the anisotropy between the nodal and antinodal spectral functions at zero frequency, to get a more concrete picture of the \(k-\)space differentiation in the complete parameter regime. Fig.~\ref{SFKMAP} backs up our conclusions from the previous calculation (Fig.~\ref{SFK}). We find that at small \(|W_f|\), the anisotropy increases as \(J_\perp\) is increased, which means that hybridisation gap opens at different values of \(J_\perp\) for different points on the Fermi surface. The journey from the degenerate decoupled metal at \(J_\perp / J_f \ll 1\) to the Kondo insulator at \(J_\perp/J_f > 1\) there passes through a pseudogap in terms of the hybridisation gap. In contrast, at large \(|W_f|\), the differentiation is suppressed at large \(J_\perp\), which suggests that the hybridisation gap there opens uniformly over the Fermi surface.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{SFK-MAP-33-399.pdf}
-	\caption{Difference in the \(\omega=0\) values of the nodal and antinodal spectral functions for the lattice model. For small \(|W_f|\), we can see an increase in momentum-space differentiation as \(J_\perp\) is increased. For large \(|W_f|\), it is instead restricted to small \(J_\perp\). At larger values of \(|W_f|\), the differentiation disappears (gray patch).}
+	\caption{Anisotropy in the \(\omega=0\) values between the nodal and antinodal spectral functions for the lattice model. For small \(|W_f|\), we can see an increase in momentum-space differentiation as \(J_\perp\) is increased. For large \(|W_f|\), it is instead restricted to small \(J_\perp\). At larger values of \(|W_f|\), the differentiation disappears (gray patch) because both the node and the antinode gap out.}
 	\label{SFKMAP}
 \end{figure}
+
+\section{Conclusions}
+In this chapter, we have investigated specific aspects of the heavy fermions problem at half-filling by approaching it from a more general model -- the two-orbital Hubbard model. We first study the appropriate auxiliary model -- a two-impurity Kondo model -- and then apply the tiling method developed in the earlier chapters to calculate lattice quantities. We have investigated various properties of the models by varying the bath correlation \(W_f\) in the correlated \(f-\)layer and the inter-orbital hybridisation \(J_\perp\). Consolidating all the measures leads to a phase diagram with several competing states.
+
+For large \(J_\perp\), the state is always a Kondo insulator due to particle-hole symmetry, but the nature of the Kondo insulator changes depending on the correlation of the \(f-\)layer. Interestingly, for small \(W_f\), the Kondo insulator displays momentum-space anisotropy in terms of a selective opening of the hybridisation gap at various parts of the Fermi surface. The transition into the Kondo insulator is marked by an increase in the mutual information between the layers, and we find evidence of long-range entanglement in the vicinity of the transition.
+
+This investigation leads to a number of interesting avenues for further studies. The presence of long-range entanglement at the transition might be relevant to the observation of strange metallic behaviour in heavy-fermion compunds at high temperatures above the quantum critical point. Moreover, the momentum-anisotropic entry into the Kondo insulator observed here is likely to affect the small to large Fermi surface transition observed in the Kondo breakdown QCP class of heavy fermion systems away from half-filling. Finally, more studies need to be carried out on the small \(J_\perp\) region of the phase diagram at small as well as large \(W_f\) to identify the possibility of symmetry preserved spin liquid of fractionalised Fermi liquid phases.
