@@ -1,0 +1,23 @@
+This thesis reports (i) the development of a new auxiliary model method for studying translation-invariant models of strongly-interacting electrons, and (ii) an explicit demonstration of the holographic principle in the form of a simple and tractable exact holographic mapping for a free fermion system with emphasis on the signatures at a critical Fermi surface.
+Together, these results shed light on how a system of electrons behaves as it undergoes a correlation-driven metal-insulator transition on a lattice.
+The auxiliary model method allows us to create a mapping between a lattice model and an impurity model in terms of the Hamiltonian, eigenstates, Greens functions and entanglement measures.
+This mapping ensures that such lattice model quantities can be computed indirectly from similar computations within the auxiliary impurity model.
+The mapping makes use of translation operators and a many-body Bloch's theorem to recreate the lattice model via repeated ``tiling operations" on the impurity model.
+In contrast to other auxiliary model methods such as dynamical mean-field theory and its cluster variants, this approach does not involve a self-consistency loop, making it more transparent.
+It also provides significantly more k-space resolution, which is necessary for studying phenomena such as the pseudogap observed in the copper-oxide high-Tc superconductors.
+Within our work on the holographic principle, we demonstrate the emergence of a holographic dimension in a system of 2D non-interacting Dirac fermions placed on a torus, by studying the scaling of multipartite entanglement measures under a sequence of renormalisation group (RG) transformations applied in momentum space.
+Geometric measures defined in this emergent space can be related to the RG beta function of the spectral gap, hence establishing a holographic connection between the spatial geometry of the emergent dimension and the entanglement properties of the boundary quantum theory.
+We prove analytically that changing the boundedness of the holographic space involves a topological transition accompanied by a critical Fermi surface in the boundary theory.
+We go on to show that this results in the formation of a quantum wormhole geometry that connects the UV and the IR of the emergent dimension.
+
+This thesis reports (i) the development of a new auxiliary model method for studying translation-invariant models of strongly-interacting electrons, and (ii) an explicit demonstration of the holographic principle in the form of a simple and tractable exact holographic mapping (EHM) for a free fermion system with emphasis on the signatures at a critical Fermi surface.
+Together, these results shed light on how a system of electrons behaves as it undergoes a correlation-driven metal-insulator transition on a lattice.
+The auxiliary model method allows us to create a mapping between a lattice model and an auxiliary impurity model in terms of the Hamiltonian, eigenstates, Greens functions and entanglement measures, among other things.
+This mapping ensures that such lattice model quantities can be computed indirectly from similar computations within the auxiliary impurity model.
+The mapping makes use of translation operators and a many-body version of Bloch’s theorem to recreate the lattice model via repeated “tiling” operations on the impurity model.
+In contrast to other auxiliary model methods such as dynamical mean-field theory (DMFT) and its cluster variants (C-DMFT), this approach does not involve a self-consistency loop, making it more transparent.
+It also provides significantly more 𝑘−space resolution which is necessary for studying phenomena such as the pseudogap observed in the copper-oxide high-𝑇𝑐 superconductors.
+Within our work on the holographic principle, we demonstrate the emergence of a holographic dimension in a system of 2D non-interacting Dirac fermions placed on a torus, by studying the scaling of multipartite entanglement measures under a sequence of renormalisation group (RG) transformations applied in momentum space.
+Geometric measures defined in this emergent space can be related to the RG beta function of the spectral gap, hence establishing a holographic connection between the spatial geometry of the emergent spatial dimension and the entanglement properties of the boundary quantum theory.
+We prove, analytically, that changing the boundedness of the holographic space involves a topological transition accompanied by a critical Fermi surface in the boundary theory.
+We go on to show that this results in the formation of a quantum wormhole geometry that connects the UV and the IR of the emergent dimension.

@@ -306,7 +306,9 @@ The decoupling of the \(k-\)space regions \(S^\pm\) is captured by the following
 \begin{equation}\begin{aligned}\label{twoChannel}
 H_\text{eff} = H(S^+) + H(S^-);~H(S) = \sum_{{\bf q}\in S,\sigma}\varepsilon_{\bf q}c^\dagger_{{\bf q}\sigma}c_{{\bf q}\sigma} + \sum_{{\bf q}_1\in S,{\bf q}_2\in S}\sum_{\alpha,\beta}J^*({\bf q}_1,{\bf q}_2){\bf S}_d\cdot {\bf \sigma}_{\alpha\beta}c^\dagger_{{\bf q}_1\alpha}c_{{\bf q}_2\beta}~,
 \end{aligned}\end{equation}
-where \(H(S^\pm)\) represents the dynamics of momentum states residing in regions \(S^\pm\). The only source of information transfer between the two regions is the fact that they interact with the same impurity local moment. Eq.\ref{twoChannel} tells us that the low-energy dynamics of the embedded eSIAM close to the Kondo-breakdown transition is governed by an emergent {\bf two-channel Kondo model}, with the conduction bath states in the sets \(S^\pm\) making up the two channels.
+where \(H(S^\pm)\) represents the dynamics of momentum states residing in regions \(S^\pm\). The only source of information transfer between the two regions is the fact that they interact with the same impurity local moment. Eq.\ref{twoChannel} tells us that the low-energy dynamics of the embedded eSIAM close to the Kondo-breakdown transition is governed by an emergent {\bf two-channel Kondo model}, with the conduction bath states in the sets \(S^\pm\) making up the two channels. 
+
+The emergence of such two-channel Kondo physics in the pseudogap phase is indicative that the metallic excitations in such a phase are likely to be of the non-Fermi liquid kind. We will elaborate more in this in the coming sections.
 
 \subsection{Momentum-resolved Dynamical Spectral Weight Transfer}
 Passage through the PG phase is accompanied by a highly structured transfer of spectral weight across the FS. Strong charge fluctuations develop between the nodal and antinodal regions of the FS in the PG regime of the impurity model (Fig.~\hyperref[chargeCorr]{\ref*{chargeCorr}(a)}), as captured by the correlator:
@@ -351,7 +353,7 @@ To further probe the breakdown of coherent transport in the pseudogap (PG) regim
 
 \begin{figure*}[!ht]
     \centering
-    \includegraphics[width=\textwidth]{fig4.pdf}
+    \includegraphics[width=\textwidth]{fig4_mod.pdf}
     \caption{(a) Suppression of quasiparticle residue ($Z_\text{imp}$) as the impurity model is tuned towards the Mott transition. An initial drastic fall in $Z_\text{imp}$ is observed for $W/J \lesssim (W/J)_\text{PG}$ from $0.3$ to around $0.05$, signalling the destruction of the FL with unravelling of Kondo screening. A steady decrease in $Z_{imp}$ is observed in passage through the PG, and is vanishingly small close to the Mott transition due to a divergent self-energy. Inset shows the growth of unscreened impurity magnetic moment in the pseudogap phase, signalling the breakdown of Kondo screening. (b) Impurity Spectral function in the FL and PG phases. The evolution of the central peak from Kondo resonance to pseudogap is accompanied by dynamical spectral weight transfer to the Hubbard side bands at finite frequencies $\omega\simeq \pm 3$ (in units of the bandwidth). (c) Zoom-in of the central (Kondo) resonance of the impurity spectral function. While undisturbed in the Fermi liquid phase, it splits into a pseudogap in the PG phase, with its height diminishing rapidly as the Mott transition is approached.
     }
     \label{channelDecoupling}
@@ -655,7 +657,7 @@ The effective action for the \(0,\bar 0\) system, in the limit of large coordina
 \end{aligned}\end{equation}
 
 One can also write down an effective action purely for the local site \(0\). The sites \(\bar 0\) will now be a part of the environment action \(S^{(0)}\) instead of the system action, but since the system is thermodynamically large, the cavity action can be assumed to remain the same, such the expectation values are calculated in the same system. As a result, the hybridisation and susceptibility functions remain unchanged. \(S_\text{int}\) is now made of terms that connect \(0\) and \(\bar 0\), so the transformation from \(S^{(0,\bar 0)}\) can be made by replacing the set \(\left\{ j \right\} \) with the set \(\bar 0\), and the set \(\bar 0\) itself will be replaced by the local site \(0\). We quote the final form of the local effective action:
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{hubAction}
 	S^{0}_\text{eff} =& \sum_\sigma \int_0^\beta\mathrm{d\tau}~c^\dagger_{0\sigma}(\tau)\partial_\tau c_{0\sigma}(\tau) - \frac{U}{2}\int_0^\beta\mathrm{d\tau}~\left(n_{0\uparrow}(\tau) - n_{0\downarrow}(\tau)\right)^2 \\
 			  &+ \int_0^\beta\mathrm{d\tau}\mathrm{d\tau^\prime}~\left[\sum_{\sigma}\Delta_{00,\sigma}(\tau - \tau^\prime)c^\dagger_{i\sigma}(\tau)c_{i^\prime\sigma}(\tau^\prime) + \chi_{00}(\tau - \tau^\prime)\vec{S}_{i}(\tau)\cdot\vec{S}_{i^\prime}(\tau^\prime)\right]
 \end{aligned}\end{equation}
@@ -676,7 +678,7 @@ As in the Hubbard-Heisenberg model, we first obtain an effective action for the 
 This hybridisation \(\Delta_{zz,\sigma}\) is calculated in the cavity model of the eSIAM, obtained by removing the impurity and the zeroth site from the full model; it is a completely non-interacting system.
 
 One can go one step further and also remove the zeroth site in order to obtain a theory for the impurity site. With this choice, the cavity model now also includes the zeroth site, and hence contains the correlation term associated with \(W\). The one-particle connection \(V\) will lead to a modified hybridisation \(\mathcal{F}\) for this effective theory; the Kondo terms will generate a susceptibility. The resultant action is
-\begin{equation}\begin{aligned}
+\begin{equation}\begin{aligned}\label{esiamAction}
 	S^{d}_\text{eff} =& \sum_\sigma \int_0^\beta\mathrm{d\tau}~c^\dagger_{d\sigma}(\tau)\partial_\tau c_{d\sigma}(\tau) - \frac{U}{2}\int_0^\beta\mathrm{d\tau}~\left(n_{d\uparrow}(\tau) - n_{d\downarrow}(\tau)\right)^2 \\
 			  &+ \int_0^\beta\mathrm{d\tau}\mathrm{d\tau^\prime}~\left[\sum_{\sigma}\mathcal{F}_{\sigma}(\tau - \tau^\prime)c^\dagger_{i\sigma}(\tau)c_{i^\prime\sigma}(\tau^\prime) + \chi_{d}(\tau - \tau^\prime)\vec{S}_{i}(\tau)\cdot\vec{S}_{i^\prime}(\tau^\prime)\right]
 \end{aligned}\end{equation}
@@ -689,3 +691,4 @@ with the average computed in the interacting cavity model that has the impurity 
 	\chi_{d}(\tau - \tau^\prime) = J^2\vec{S}_{z}(\tau)\cdot\vec{S}_{z}(\tau^\prime)~.
 \end{aligned}\end{equation}
 
+This shows that the action of the impurity obtain from the extended Anderson impurity model we are considering (eq.~\ref{esiamAction}) is equivalent to the local action of the extended Hubbard model (eq.~\ref{hubAction}) in the limit of infinite coordination number. The approach adopted in the tiling framework developed here is to search for similar equivalences between auxiliary models and lattice models, but in the more complicated case of finite dimensions. This will necessarily introduce non-local correlations into the problem (which can be ignored in \(d=\infty\)), and the method developed here provides means to incorporate such correlations.

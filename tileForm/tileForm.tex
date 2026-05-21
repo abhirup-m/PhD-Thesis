@@ -29,14 +29,14 @@ As a concrete example, we take the extended SIAM defined in eq.~\ref{eSIAM}, and
 \end{aligned}\end{equation}
 where \(Z\) is the coordination number of the lattice, and the second summation \(\sum_{\langle i, r_d \rangle}\) is carried out over all sites \(i\) that are nearest-neighbour to the site \(r_d\). Note that the one-particle hybridisation \(V\) and the spin-exchange coupling \(J_K\) have their {\it symmetry lowered} from the \(s-\)wave spherical symmetry of the continuum impurity models to a \(C_4\)-symmetry consistent with the underlying lattice. This feature is crucial in explaining the phenomenology of the various low-dimensional materials.
 
-Various enhancements can be applied to such a model. The lattice can be modified to study different materials. More complicated geometries such as a two-layer model can be studied using a two-impurity auxiliary model, where each impurity couples with it's own conduction bath as well as to each other.
+Various enhancements can be applied to such a model. The lattice can be modified to study different materials. More complicated geometries such as a two-layer model can be studied using a two-impurity auxiliary model, where each impurity couples with it's own conduction bath as well as to each other. Such a two-impurity auxiliary model will in fact be utilised during our investigation of the physics of heavy fermion systems in Chapter 6.
 
 \section{Mapping Auxiliary Model To Lattice Model}
 In this subsection, we provide an explicit example of constructing a lattice model from a lattice-embedded impurity model. This will involve the use of many-body lattice translation operators, so we begin with a brief discussion of them.
 
 \subsection{Many-body translation operators}\label{translationOperators}
 
-In order to create the bulk model, we need to translate the local auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bm a})\) that translate all positions by a vector \({\bm a}\). In terms of many-body states and operators, their action is defined as 
+In order to create the bulk model, we need to translate the local auxiliary model over the entire lattice. For this, we define {\it many-particle global} translation operators \(T({\bm a})\) that translate all positions by a vector \({\bm a}\). In terms of many-body states and operators, their action is defined as ~\cite{Calais_1995,stoyanova}
 \begin{equation}\begin{aligned}\label{translationDefinition}
 	&T^\dagger({\bm a}) \ket{{\bm r}_1, {\bm r}_2,\ldots} = \ket{{\bm r}_1 + {\bm a}}\otimes\ket{{\bm r}_2 + {\bm a}}\ldots\otimes\ket{{\bm r}_n + {\bm a}}\\
 	&T^\dagger({\bm a}) \mathcal{O}\left({\bm r}_1, {\bm r}_2,\ldots\right)T({\bm a}) = \mathcal{O}\left({\bm r}_1 + {\bm a}, {\bm r}_2 + {\bm a},\ldots\right)~,
@@ -146,7 +146,7 @@ In the tight-binding approach to lattice problems, the full Hamiltonian is obtai
 	T^\dagger(l{\bm a})\ket{\Psi_{n,{\bm K}}} = \sum_{i} e^{i {\bm K}\cdot{\bm r}_i} \ket{\psi_n(i + l)} = e^{-il{\bm K}\cdot{\bm a}}\ket{\Psi_{n,\bm K}}~.
 \end{aligned}\end{equation}
 
-As discussed earlier, the eigenstates \(\ket{\Psi_{n,\bm K}}\) of the lattice Hamiltonian obtained using eq.~\ref{tilingPrescription} enjoy the discrete translation symmetry of the lattice, and therefore enjoy a {\it many-body} Bloch's theorem~\cite{stoyanova}. This means that the {\it local} eigenstates \(\ket{\psi_n\left({\bm r}_d\right)}\) (with the impurity located at an arbitrary position \({\bm r}_d\)) of the unit cell auxiliary model Hamiltonian \({H}_\text{clust}({\bm r}_d)\) defined in eq.~\ref{clusterHamiltonian} can be used to construct eigenstates of the lattice Hamiltonian. The index \(n(=0,1,\ldots)\) in the subscript indicates that it is the \(n^\text{th}\) eigenstate of the auxiliary model. The following combination of the auxiliary model eigenstates satisfies a many-particle equivalent of Bloch's theorem~\cite{stoyanova}:
+As discussed earlier, the eigenstates \(\ket{\Psi_{n,\bm K}}\) of the lattice Hamiltonian obtained using eq.~\ref{tilingPrescription} enjoy the discrete translation symmetry of the lattice, and therefore enjoy a {\it many-body} Bloch's theorem~\cite{Calais_1995,stoyanova}. This means that the {\it local} eigenstates \(\ket{\psi_n\left({\bm r}_d\right)}\) (with the impurity located at an arbitrary position \({\bm r}_d\)) of the unit cell auxiliary model Hamiltonian \({H}_\text{clust}({\bm r}_d)\) defined in eq.~\ref{clusterHamiltonian} can be used to construct eigenstates of the lattice Hamiltonian. The index \(n(=0,1,\ldots)\) in the subscript indicates that it is the \(n^\text{th}\) eigenstate of the auxiliary model. The following combination of the auxiliary model eigenstates satisfies a many-particle equivalent of Bloch's theorem~\cite{Calais_1995,stoyanova}:
 \begin{equation}\begin{aligned}\label{eigenstateProposal}
 	\ket{\Psi_{s}} \equiv \ket{\Psi_{{\bm K}, n}} &= \frac{1}{\sqrt N}\sum_{{\bm r}_d} e^{i {\bm K}\cdot{\bm r}_d} \ket{\psi_{n}\left({\bm r}_d\right)}~,
 \end{aligned}\end{equation}

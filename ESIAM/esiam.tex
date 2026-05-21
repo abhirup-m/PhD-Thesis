@@ -1,5 +1,5 @@
 \chapter{\chapC}\label{sec:ESIAM}
-In this chapter, we begin our investigations into Mott criticality by looking into one of the simplest examples: the Mott transition of the Hubbard model in infinite dimensions. In preparation for the development of a new auxiliary model approach, we devote this chapter to identifying the appropriate quantum impurity model for capturing this transition, without employing self-consistency. After identifying the model, we will analyse the mode using the unitary RG method and obtain a phase diagram which qualitatively captures the Mott MIT. This sets the stage for extending this approach to low dimensions in later chapters.
+In this chapter, we begin our investigations into Mott criticality by looking into one of the simplest examples: the Mott transition of the Hubbard model in infinite dimensions. In preparation for the development of a new auxiliary model approach, we devote this chapter to identifying the appropriate quantum impurity model for capturing this transition, without employing self-consistency. After identifying the model, we will analyse the model using the unitary RG method and obtain a phase diagram which qualitatively captures the Mott MIT. This sets the stage for extending this approach to low dimensions in later chapters.
 
 \section{Introduction}
 The rich physics of metal-insulator transitions in strongly correlated systems has been an active subject of study for quite some time~\cite{Mott_RMP_1968,milligan_1985,imada1998metal}, yet much still remains to be understood. It involves diverse aspects such as spin and charge fluctuations, quasiparticle renormalisation effects, anomalous metallic phases and unconventional superconductivity, and has been studied using an equally diverse array of methods like mean-field theory, renormalisation group approaches, numerical techniques like exact diagonalisation, quantum Monte Carlo and dynamical mean-field theory, and many others. In particular, dynamical mean-field theory (DMFT)~\cite{kuramoto1987,Cox1988,metzner_volhardt_1989,zhang_1993,georges1996,parcollet_2004,maier_2005,kotliar_2006,ohashi_2008} obtains an exact solution of the Mott metal-insulator transition (MIT) for the 1/2-filled Hubbard model~\cite{Mott_1949,gutzwiller_1963,kanamori_1963,hubbard1963electron,brinkman_rice_1970} on the Bethe lattice with infinite coordination number, in terms of an Anderson impurity model with a self-consistently determined bath obtained by requiring, in an iterative manner, that its local Greens function be equal to that of the impurity site. The above-mentioned transition can be captured by the local spectral function through (i) the continuous appearance of a Mott gap, followed by (ii) the sharpening and vanishing of the central Kondo resonance. These two features are often referred to, respectively, as the Mott-Hubbard~\cite{hubbard1963electron} and Brinkman-Rice~\cite{brinkman_rice_1970} scenarios of the Mott MIT. The exact nature of the solution arises from the fact that all non-local contributions to the lattice self-energy are observed to vanish upon taking the limit of an infinite coordination number for the lattice model. 
@@ -262,7 +262,7 @@ The corresponding terms in the hole sector are
 \subsection{Final URG equations}
 In summary, the renormalisation in the couplings takes the form:
 \begin{eqnarray}
-	\Delta U &= 4V^2 n_j\left(\frac{1}{d_1} - \frac{1}{d_0}\right) - n_j\frac{J^2}{d_2},\quad &\Delta V = -\frac{3n_j V}{8}\left[J\left(\frac{1}{d_2} + \frac{1}{d_1}\right) +  \frac{4U_b}{3}\sum_{i=1}^4 \frac{1}{d_i}\right],\nonumber \\
+	\Delta U &= 4V^2 n_j\left(\frac{1}{d_1} - \frac{1}{d_0}\right) - n_j\frac{J^2}{d_2},\quad &\Delta V = -\frac{3n_j VJ}{8}\left(\frac{1}{d_2} + \frac{1}{d_1}\right),\nonumber \\
 	\Delta J &= -\frac{n_j J\left(J + 4U_b\right)}{d_2}~,\quad &\Delta U_b = 0~,
 \end{eqnarray}
 where the denominators \(d_i\) are given by
@@ -285,7 +285,7 @@ Indeed, the RG equation for $K$ is observed to be identical in form to that for 
 The bath coupling \(U_b\) is marginal. The RG equations of the remaining couplings for a given quantum fluctuation scale \(\omega\) are:
 \begin{align}
 	\Delta U &= 4V^2 n_j\left(\frac{1}{d_1} - \frac{1}{d_0}\right) - n_j\frac{J^2}{d_2},\nonumber\\
-	\Delta V &= -\frac{3n_j V}{8}\left[J\left(\frac{1}{d_2} + \frac{1}{d_1}\right) +  \frac{4U_b}{3}\sum_{i=1}^4 \frac{1}{d_i}\right],\label{rg-eqn}\\
+	\Delta V &= -\frac{3n_j VJ}{8}\left(\frac{1}{d_2} + \frac{1}{d_1}\right),\label{rg-eqn}\\
 	\Delta J &= -\frac{n_j J\left(J + 4U_b\right)}{d_2}~,\nonumber
 \end{align}
 where the denominators \(d_i\) are given by
@@ -813,7 +813,7 @@ We stress here that the e-SIAM analysed in this work represents an impurity mode
 Extensions of the present work involve analysing the mixed valence regime of the impurity site (i.e., away from half-filling) within the e-SIAM auxiliary model. This allows the possibility that the finite-temperature critical end-point of the DMFT first-order transition could turn into a quantum critical point from the merging of the $T=0$ ESQPT and QPT observed in the present work. Recent DMFT calculations~\cite{vucicevic2015} show a shrinking of the coexistence region with hole doping but fall short of revealing a QCP. If such a QCP does exist, can it harbour pair fluctuations between the impurity and zeroth bath sites that become dominant upon doping, signalling thereby a putative superconducting instability of a related bulk model? We recall that a superconducting state of matter was indeed observed to be emergent from a QCP in the hole-doped Hubbard model at $T=0$ via a unitary RG treatment in Refs.\cite{anirbanmott2,Mukherjee_mott_merg}.
 The phenomenon of electronic differentiation in \(k-\)space can perhaps be captured by considering cluster variants of the e-SIAM, i.e., multiple impurities connected to one another through single-particle hopping and/or RKKY-like interactions~\cite{Ferrero2007,imada2010unconventional}.
 In general, the presence of multiple and varied classes of correlations in the auxiliary model - localisation from Mott physics, delocalisation from spin and charge fluctuations, and pairing from local attractive correlations - makes this a strong candidate for an auxiliary model that carries the potential for describing the emergence of a variety of novel phases of correlated quantum matter.
-
+\clearpage
 \section*{Appendix 1: Expressing correlation functions in terms of entanglement}
 \addcontentsline{toc}{section}{\protect\numberline{}Appendix 1: Expressing correlation functions in terms of entanglement}
 \label{general-ent}
