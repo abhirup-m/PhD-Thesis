@@ -1,0 +1,164 @@
+\documentclass[10pt]{revtex4-2}
+\usepackage{amsmath,amssymb,braket,newtxtext}
+\usepackage[hidelinks]{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+% \usepackage[margin=1.5cm,bottom=1.5cm]{geometry}
+\newcommand{\shat}{\hat{\mathbf{s}}}
+\newcommand{\question}[1]{\par \noindent {\bf Question.\quad}{#1}\\}
+\newcommand{\response}[1]{\par \noindent {\bf Response.\quad}{\color{blue}{#1}}\\[1em]}
+
+\begin{document}
+
+\title{RESPONSE TO REVIEWER REPORTS FOR PHD THESIS}
+\author{Abhirup Mukherjee (18IP014)}
+\maketitle
+\vspace{-20pt}
+\hrulefill
+\vspace{10pt}
+
+% We thank the Editorial Board Member and all referees for their careful reading of our manuscript and for their constructive comments and questions. We are encouraged by the overall positive reception of our work, including the acknowledgement of its relevance, technical soundness, and suitability for publication in New Journal of Physics. Below, we present our responses ({\color{blue}in blue}) to the points raised by the referees.
+
+\section*{Response to Prof. Pinaki Majumdar}
+\question{The authors proposed the possibility that the pseudogap phase is a distinct quantum phase characterized by the so-called Mott metal. I recommend sending the manuscript to reviewers.}
+\response{We thank the Board Member for recommending an expert review of our manuscript.}
+
+\section*{Response to Prof. Subhendra D. Mahanti}
+\question{What is the physical difference between “Insulator with spin mixing between impurity spin and bath spin” and “Mott Insulator”. Explain}
+
+\question{What is the physics of charge isospin Kondo coupling 𝐾 between the impurity and the bath: needs to be explained better.}
+
+\response{
+We first note that the effects of a charge isospin Kondo coupling haven't been explored within the thesis, and have only been mentioned in passing.
+
+While the usual Kondo effect describes the screening of an impurity magnetic moment by the local spin density of the conduction bath, one can also envisage a scenario where it is the charge degrees of freedom of the impurity that is screened by the bath. This can happen, for example, if the local correlation on the impurity site is negative. That makes the \(n=0\) and \(n=2\) configurations (unoccupied and doubly occupied) lower in energy. One can then define an {\it isospin} \(C_d\) from this doublet of states, as well as a similar isospin for the doublet of states in the bath. Isospin-flip fluctuations will then involve transitions where an unoccupied state on the impurity scatters to a double occupied state while the bath simultaneously scatters in the opposite manner. It is worth noting that during the Schrieffer-Wolff transformation from the Anderson impurity model to the Kondo model, such charge Kondo terms are also generated but they reside in the high-energy part of the effective theory.
+}
+
+\question{I have a problem with chapter 4 section 4.2.2, Periodization of Auxiliary Model into Extended
+Hubbard Model using the lattice translation operator on the impurity cluster model. The operator \(c_{r_d,\sigma}\) is a destruction operator for an impurity electron located at the lattice site \(r_d\) (originally site
+0 of the impurity model). Also, in the impurity model there is a destruction operator associated
+with bath electrons associated with the same site, \(c_{0,\sigma}\). There are N such bath destruction
+operators for N lattice sites. The number of fermion destruction operators is therefore N+1.
+When one translates the impurity over the N lattice sites there are 2N fermion destruction
+operators, not N as given in equations 2.6 and 2.7. What am I missing. I would have expected a
+2-band extended Hubbard model, one for the “impurity” and the other for the bath.}
+
+\response{If the total number of lattice sites is \(N\), then the number of bath operators is \(N-1\) because the impurity site is "embedded" in the lattice and forms the \(N^\text{th}\) operator. This is necessary in order for the impurity couplings to be sensitive to the lattice details. Applying translation operators does not double the number of operators because the same operators transform into one another.}
+
+\question{All the discussions are associated with an extended 2D Hubbard model. Are you assuming
+that the solution of this Hamiltonian is simply the periodic translation of the solution of the
+impurity embedded in a 2D lattice. Is this an ansatz or are there some justifications for this
+approach?}
+
+\response{Indeed, there's a set of arguments that relate the impurity model to the extended Hubbard model on the 2D square lattice. First, we show that the lattice model can be obtained by repeated translation of the impurity model (eq. 2.11). This motivates a form of the eigenstates of the lattice model in terms of those of the impurity model (eq. 2.20), via a many-body Blochs's theorem. Combining these two properties, we show that the lattice model Greens function can be expressed in terms of auxiliary mode quantities (eq. 4.23). This final relation is what allows us to reconstruct the low-energy physics of the lattice model.}
+
+\question{The novel feature is the condition of sufficiently large attractive W. It is not clear to me how such an attractive interaction appears in a simple 2D Hubbard model. But the most interesting observation is the appearance of a third fixed point, pseudo gap fixed point in a finite range of W.}
+
+\response{We feel that the attractive bath interaction \(W \) is best not understood as a microscopic coupling, but rather as an emergent effective coupling. It captures the tendency of the conduction electrons to favour unoccupied or double occupied states (relative to the singly-occupied states). Perhaps in a more illuminating sense, just as the Coulomb repulsion \(U\) represents the tendency that competes with the hopping processes in the simple Hubbard model, the bath correlation \(W\) represents the tendency that competes with the local Fermi liquid excitations that propagate out of the impurity site. In this sense, it is a proxy for the hubbard U in the neighbourhood of the impurity site; both compete against delocalisation processes.}
+
+\question{{\color{red}Is the pseudo gap fixed point associated with insulating and spin mixing as discussed in the previous chapter.} Can you describe the spin density distribution and spin-spin correlation
+function associated with this fixed point. What role does the lattice symmetry play in the
+nature of this pseudo gap fixed point. What will happen if the 2D lattice is triangular or
+hexagonal?}
+
+\response{The unitary RG, as a matter of principle, does not allow for spontaneous symmetry breaking (SSB) because unitary transformations preserve all symmetries. One way of searching for SSB phases within such a formalism is to put in an explicit symmetry breaking term in the Hamiltonian and then study whether it is relevant under RG flow. We haven't carried out such an analysis within this thesis, and as a result, we don't find any such phase. Accordingly, in the absence of any magnetic order, there is no spin density in the system in any phase. The spin-spin correlation, however, shows long-ranged behaviour in the pseudogap phase (Fig. 5.13).
+
+\par With regards to the role of lattice symmetry, we haven't checked whether our conclusions hold in other dimensions or other lattices. It sounds reasonable that changing the lattice symmetries will affect many of the results. However, a recently growing body of work~\cite{Huang2022,lanave2025,bai2026localcurrentalgebrahk} suggests that the result that the Hatsugai-Kohmoto model is the parent metal of the Mott insulator can be grounded on more robust ideas such as the breaking of generalised symmetries and anomalies of the Luttinger-Ward functional. These indicate that our results are likely to extend beyond just the 2D square lattice.
+}
+
+\question{I had some problem with the strong conclusion “Thus, the drastic change in nature of the
+real-space excitations- from locally well-defined Landau quasiparticles of the FL to the
+increasingly nonlocal excitations of the NFL Fermi arcs in the PG phase-appears to be
+dictated by a topological principle and, therefore, robust under renormalization. This
+signals the NFL Fermi arcs of the PG as an emergent phase of strongly interacting
+quantum matter- which we dub the Mott metal- that is the parent metal of the MI.”
+What is the role of lattice dimensionality (D=2 vs 3) and lattice geometry (square vs triangular or Kagome’) on this conclusion?}
+
+\response{
+	As mentioned in the previous response, very strictly speaking our results apply only to the case of the 2D square lattice. However, a recently growing body of work~\cite{Huang2022,lanave2025,bai2026localcurrentalgebrahk} suggests that the result that the Hatsugai-Kohmoto model is the parent metal of the Mott insulator can be grounded on more robust ideas such as the breaking of generalised symmetries and anomalies of the Luttinger-Ward functional. These indicate that our results are likely to extend beyond just the 2D square lattice.
+}
+
+\question{What happens for large \(W_f\) and one increases \(J_\perp\)?}
+
+\response{
+	For large \(W_f\), the \(f-\)layer becomes a Mott insulator. The pseudogap phase shrinks to a smaller region due to the lack of non-Fermi liquid behaviour in the \(f-\)layer. Increasing \(J_\perp\) brings about a Kondo insulator.
+}
+
+\question{He thinks the appearance of long-range correlation at the transition from Fermi liquid to a different phase might be relevant to the observation of strange metallic behavior in heavy-fermion systems at high temperatures above the quantum critical point. But all the calculations are at T=0K.}
+
+\response{
+	While it is true that our results are all at \(T=0\), it stands to reason that some of these phases will have finite-temperature effects. For example, the pseudogap non-Fermi liquid behaviour we see near the transition arises from the quantum critical fluctuations; these fluctuations can survive up to certain temperatures and have finite temperature counterparts.
+}
+
+\section*{Response to Referee 3}
+\question{While I found that the URG is acceptable for treating electron correlation problems, the principal model studied in this manuscript (Eq. (15)) looks like an artefact, because the spin exchange  (the second term in Eq. (15)) is actually can be generated by the hopping and local interaction terms. In general, the spin exchange is roughly proportional to $t^2/U$ (t, U here correspond to the ones with tilde symbol in Eq. (15)). Therefore, the studied model already double-counts the spin exchange.}
+\response{We thank the referee for the question. The Hamiltonian in eq.~(15) of the original manuscript describes an extended Hubbard model, also known as the $t-J-U$ model elsewhere in the literature  (see, e.g., ~\cite{spalek20221}). Indeed, in Ref.\cite{spalek20221}, the nearest-neighbour spin-exchange coupling \(J\) in such a model is shown as arising from inter-band superexchange processes in a more complete multi-band model. For instance, in the 3-band Emery-Reiter model for the cuprates, couplings between the copper and oxygen ligand atoms are shown to contribute to the inter-copper atom exchange upon integrating out the dynamics of the ligand atoms for any value of the on-site repulsion $U$ on the copper sites. Importantly, such processes are distinct from the ones that lead to a $t^2/U$ spin-exchange contribution arising from hopping processes within a single band of copper atoms in the limit of $U\to\infty$. As a result, the coupling \(J\) in the $t-U-J$ model is not an overcounting of processes; rather, it represents a distinct physical mechanism. 
+\par
+We have now clarified this point in the manuscript, below eq.~(16).}
+
+\question{In addition, it is not clear what real materials or systems can be described by the studied model. The authors have to clarify these points before the manuscript can be acceptable for publication.}
+\response{We are grateful to the referee for this point. Given the minimal nature of the model studied here, we expect the conclusions derived here to apply to a large class of strongly correlated electronic systems on a 2D square lattice, with the cuprates, nickelates, ruthenates and organic charge transfer salts being candidates. We have substantially improved in our manuscript a discussion of the agreement between the properties of various phases observed in the present work with the phenomenology of such materials. Moreover, by considering a suitably chosen multiband version of the model studied here, it should be possible to describe heavy fermion materials as well, and will be taken up elsewhere.}
+
+\section*{Response to Referee 4}
+
+\question{The Authors consider the model with nearest-neighbor hopping (t') integrals only, which is also reflected in the target lattice model. It is well known that t' is highly relevant to the physics of systems exhibiting pseudogap (such as high-Tc cuprates). Is it possible to incorporate those terms within the present method and is there any qualitative change expected?}
+\response{We thank the referee for this question. It is certainly possible to incorporate a next-nearest nearest-neighbour hopping term within our approach, by suitably modifying the impurity model: the impurity-bath hybridisation will extend to beyond the nearest sites, and the conduction bath dispersion will have to be modified. Nevertheless, we would like to note that our extended Hubbard model is already able to capture aspects of the physics of the cuprate superconductor, such as the strange metal, pseudogap and Mott insulating phases, albeit from the perspective of a model at $1/2$-filling. Incorporating the effects of longer ranged hopping would require a separate work, and we leave that for the future.
+}
+
+\question{The Hamiltonian term $H_\text{coup}$ [Eq. (3)] incorporates both hybridization and Kondo-type exchange. Within an impurity model, the former Kondo term is typically derived by canonical perturbation expansion from he model containing V-term, so (technically) including both may be regarded as double-counting. Can, for instance, either V or J term be neglected in the analysis? What would be the consequences for PG state?}
+\response{We are grateful to the referee for bringing this up. We believe that an answer can be gleaned by first considering the extended Hubbard model Hamiltonian (eq.~(15) of the manuscript), also known as the $t-J-U$ model elsewhere in the literature~\cite{spalek20221} (we thank deeply the referee for pointing out this reference!). Indeed, in Ref.\cite{spalek20221}, the nearest-neighbour spin-exchange coupling \(J\) in such a model can be regarded as arising from inter-band superexchange processes in a more complete multi-band model. For instance, in the 3-band Emery-Reiter model for the cuprates, hybridisation between the copper and oxygen ligand atoms are shown to contribute to the inter-copper atom exchange upon integrating out the dynamics of the ligand atoms for any value of the on-site repulsion $U$ on the copper sites. Importantly, such processes are distinct from the ones that lead to a $t^2/U$ spin-exchange contribution arising from hopping processes within a single band of copper atoms in the limit of $U\to\infty$. As a result, the coupling \(J\) in the $t-U-J$ model is not an overcounting of processes; rather, it represents a distinct physical mechanism. We have now clarified this point in the manuscript, below eq.~(16).
+\par
+In the corresponding auxiliary model approach, such a multi-band model corresponds to working with a more complicated impurity model that incorporates the presence of the transition and ligand orbitals with hybridisation between them. Analogous to the multi-band lattice model, this hybridisation contributes, upon integrating out the dynamics of the ligand orbitals (for any value of the on-site repulsion $U$ on the transition atom orbital sites), to a Kondo exchange between the impurity site transition atom orbital and transition atom orbitals in the conduction bath. In this way, we believe that the Kondo coupling \(J\) in the impurity model is not an overcounting of processes; rather, it represents a physical mechanism distinct from the direct electron hopping $V$ between impurity and conduction bath sites.
+ %and then allowing for hopping processes that connect the impurity sites. 
+%Such processes are distinct from the ones that lead to a $t^2/U$ spin-exchange contribution arising from hopping processes within a single band. As a result, the coupling \(J\) is not an overcounting of processes, but represents a distinct physical mechanism.
+\par
+As to the question of whether \(V\) or \(J\) can be neglected within the complete $V-J-U$ impurity model, we have assumed in our treatment that the on-site repulsion \(U\) on the impurity site in the problem is large enough so that the single-particle hybridization \(V\) can be integrated out from the impurity problem (via a Scrieffer-Wolff transformation), permitting thereby a study the Kondo regime of the lattice-embedded impurity model. If instead one starts with a simpler \(V-U\) model, the Kondo coupling is similarly generated in the regime of large \(U\) that is pertinent to the Mott transition; this leads naturally to the $J-U$ model studied within our present treatment. 
+\par
+It is important to note that an emergent $J-U$ model was also observed in a detailed URG analysis of an extended single impurity Anderson model conducted previously by us in Ref.\cite{Mukherjee_2023}, where the impurity was embedded within a conduction bath in infinite dimensions. That analysis displayed various regimes for the couplings $U$, $V$ and $J$, and offered deep insight into the well-known phenomenology of the Mott transition in infinite dimensions observed from single-site DMFT. That model did not, however, display the pseudogap phase observed by us in the present work for an extended single impurity Anderson model embedded within a 2D square lattice.
+\par
+In this way, we don't foresee any difference within our present analysis (in the overall outcomes for the pseudogap phase) upon either considering directly the effects of both $V$ and $J$, or focusing on that of $J$ alone (as in our present study).
+}
+
+\question{Technical remarks: In Eq. (3), J should be probably a function of Z to reproduce k-dependen form of J in Eq. (5). Apparently in Eq. (A1) of the first Appendix this is the case.}
+\response{We thank the referee for bringing this up. The symbol \(Z\) in eq.~(3) represents the four sites that surround the impurity site in the lattice-embedded impurity model. So, if the impurity site is located at \(r_d\), \(Z\) takes the values \(r_d \pm a_1\) and \(r_d \pm a_2\) where \(a_1=a\hat x\) and \(a_2=a \hat y\) are the primitive vectors on the square lattice. Since we have assumed that the impurity site hybridises with equal strength with all four nearest-neighbour sites, the Kondo coupling is in fact {\it independent} of \(Z\).
+
+In eq.~(A1) of our manuscript, the Kondo coupling \(J\) is written in momentum space. Since the coupling is local in real-space, it does acquire a \(k-\)dependence, which is reflected through the subscript \(q\) in that equation. In summary, it appears that the equations are correct as stated in the manuscript.
+}
+
+\question{Also, it is not immediately clear to me why the impurity creation and annihilation operators disappear from the impurity model (1) following tiling procedure in Sec. III, resulting in single-band Hamiltonian (15). This could be explained in grater detail in the manuscript.}
+\response{
+	We thank the referee for this question. The disappearance of the impurity operators from the impurity model in eq.~(1) to the tiled model in eq.~(15) can be understood from the definition of the tiled lattice Hamiltonian given in eq.~(11). Indeed, the tiled Hamiltonian of eq.~(15) is obtained by translating the impurity Hamiltonian of eq.~(1) over all sites of the lattice. This is equivalent to considering distinct representations of the impurity model where the impurity site is placed at any arbitrary site \(\bf r\), and then by summing over all such representations. This results in the single impurity index \(r_d\) in eq.~(1) being replaced by the lattice variable \(r\) (and which sums over all lattice sites) in eq.~(15). We have now explicitly clarified this in the manuscript below eq.~(14).
+}
+\question{The lattice model of Eq. (15), referred to by the Authors as extended-Hubbard, has been extensively studied in literature in the context of high-Tc superconductors as the t-J-U model. See, e.g., https://doi.org/10.1103/PhysRevB.95.024506 or a review https://doi.org/10.1016/j.physrep.2022.02.003 and references therein. Comparison with previous work on t-J-U model would benefit the manuscript.}
+\response{
+	We are deeply grateful to the referee for this comment, and for pointing us towards these references. While noting the fact that most of the existing literature on the \(t-J-U\) model has focused on systems away from half-filling and with superconducting instabilities (and hence not directly relevant to the present work), we have now added comparisons of our results to existing results in the literature wherever applicable (and citing the appropriate papers). We have listed the comparisons here for the referee's convenience:
+	\begin{itemize}
+		\item Above eq.(34) of manuscript: reports of a pseudogap in the local density of states in a three-band \(t-U-J\) model~\cite{Koikegami_2023}, that are in agreement with our observations, and
+		\item Below eq.(34) of manuscript: reports of the universality of the effective mass in the nodal direction~\cite{spalek2017}, that are consistent with the universality of our self-energy exponents in the pseudogap.
+	\end{itemize}~
+}
+
+\question{Whereas the Authors work is clearly relevant to specific materials, such and layered copper oxides, nickelates, and possibly several other systems, the discussion of specific experimental consequences is limited. The manuscript would benefit from more direct and detailed relation to specific materials in the introduction and/or summary section.}
+\response{We thank the referee for pointing this out. We have improved substantially our discussion in this regard by mentioning several experimental observations throughout the paper that are relevant to our results. These include:
+\begin{itemize}
+	\item Above eq.(32) of manuscript: observations of reduced Hall coefficient from transport measurements in $Sr_{2-x}La_x Ir O_4$ crystals~\cite{Hsu2024}, with relevance to our observation of partial Fermi surface gapping in the pseudogap,
+	\item At the end of first paragraph of Sec.V A: mass renormalisation of quasiparticles at the Fermi surface as observed in cuprates and nickelates~\cite{Kim2003,Wenjie2025}, with relevance to our results on suppression of quasiparticle residue in the PG,
+	\item At the end of the penultimate paragraph of Sec.V B: suppression of low frequency optical conductivity in cuprates, nickelates, ruthenates and molecular charge-transfer salts~\cite{Dagotto1994RMP,Coslovich2013,Lee2007,
+Pustogow2021}, in agreement with our results on the optical conductivity, 
+	\item In paragraphs above eq.(38): preformed Cooper pairs in copper oxides from studies of the proximity effect~\cite{Yuli2009}, in connection to the presence of pairing terms in our effective Hamiltonian at the critical point, 
+	\item In paragraphs above eq.(38): we note that our finding of a critical nodal metal with pairing fluctuations is in agreement with very recent experimental results on the relation between a nodal metal and a robust superconducting gap in the innermost CuO$_{2}$ plane of a trilayer cuprate material.~\cite{ideta2025}, and
+	\item Final paragraph of Sec. VII: our arguments for the pseudogap being a distinct phase of matter is backed up by angle-resolved photoemission spectroscopy (ARPES) experiments~\cite{Hashimoto2014}: the anomalous momentum, temperature and doping dependence of the gap function observed in the cuprates suggests that the pseudogap maybe described by an order parameter distinct from that of the superconductor~\cite{Hashimoto2012,Vishik2009}.	
+\end{itemize}
+We hope that this will highlight the significance our results in relation to experiments on such materials.}
+
+\section{Additional changes}
+We have made the following additional changes to the manuscript:
+\begin{itemize}
+	\item We have improved the inset figure of panel (a) in Fig. 4 for the impurity magnetisation (computed earlier for a smaller system size (49 x 49)) to that for a larger system size (77 x 77, same as the rest of the manuscript). The updated plot shows more clearly the dramatic rise of the impurity magnetisation towards the end of the pseudogap phase, and upon approaching the Mott critical point. This highlights the near complete breakdown of Kondo screening at Mott criticality as observed by us.
+	\item We have added references to two works~(\cite{si_kotliar_1993,kotliarsi_1993}) from the past that adopt an impurity model-based approach towards heavy fermions that are philosophically similar to ours.
+	\item We have also fixed a typographical error below eq. (36) regarding the definition of the operator \(r_{q\sigma}\).
+\end{itemize}
+
+\bibliography{tilingProject.bib}
+\bibliographystyle{apsrev4-2}
+\end{document}
