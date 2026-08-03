@@ -20,6 +20,8 @@
 \hrulefill
 \vspace{10pt}
 
+I thank Prof. Pinaki Majumdar and Prof. Subhendra D. Mahanti for their detailed feedback and questions. It has helped me improve the presentation of the thesis appreciably. Below I respond to their comments and questions systematically. The responses are marked in blue.
+
 \section*{Response to Prof. Pinaki Majumdar}
 \newcounter{question}
 
@@ -63,9 +65,10 @@ diagram of Fig.5.4 is fascinating, what are the corresponding Hubbard parameters
 \response{
 	We agree that our finding of metallic phases at half-filling is in contrast to earlier works on the 2D half-filled Hubbard model. Figuring out whether this is because of the extended nature of our model (the additional coupling \(J\)) or because of conflicts between the methods will require further investigation.
 
-	It is worth noting that a prior work using the URG on the half-filled 2D Hubbard model on the square lattice ~\cite{anirbanmott1} obtained a Mott insulating ground state at all values of the local repulsion \(U\), and instead obtained a metallic (marginal Fermi liquid) phase at a higher value of the {\it unitary RG quantum fluctuation scale $\omega$} (see figure). As seen in the figure below, the non-Fermi liquid (white) transitions into the Mott insulator (dark blue) through a pseudogap (shaded blue)~\cite{anirbanmott1}.
+	It is worth noting that a prior work using the URG on the half-filled 2D Hubbard model on the square lattice ~\cite{anirbanmott1} obtained a Mott insulating ground state at all values of the local repulsion \(U\), and instead obtained a metallic (marginal Fermi liquid) phase at a higher value of the {\it unitary RG quantum fluctuation scale $\omega$} (see figure). As seen in the figure below, the non-Fermi liquid (white) transitions into the Mott insulator (dark blue) through a pseudogap (shaded blue)~\cite{anirbanmott1}. While not observed in the work, the Fermi liquid likely lies at yet higher values of \(4-\omega\).
 	\begin{figure}[!h]
 		\includegraphics[width=0.4\textwidth]{PD.jpg}
+		\caption{Transition from a non-Fermi liquid phase (white) to a Mott insulator (dark blue) through a pseudogap (shaded blue), upon lowering the effective quantum fluctuation scale \(4-\omega\), via a unitary RG treatment of the Hubbard model on the 2D square lattice at half-filling. Taken from ~\cite{anirbanmott1}.}
 	\end{figure}
 
 	The scale \(\omega\) is roughly tied to the non-commutativity of the delocalisation terms (kinetic energy) and the localisation term (local correlation) within the Hamiltonian, and appears naturally in the formalism due to the presence of multiple energy scales within a many-body problem. The work~\cite{anirbanmott1} investigated the phase diagram as a function of these energy scales, and observed a transition from a metallic phase to a Mott insulating phase, at all values of \(U\). It is therefore tempting to speculate that tuning the ratio \(W/J\) within the auxiliary model effectively tunes the quantum fluctuation scale \(\omega\) for the lattice model. Some support for this idea can be gleaned by thinking of the bath interaction \(W\) as the localisation term and the Kondo coupling \(J\) as the delocalisation term; their non-commutativity gives rise to multiple energy scales \(\omega\) which is then being tuned within the auxiliary model. Of course, this requires further investigation to makes things concrete.
@@ -181,7 +184,7 @@ have any correspondence with them?}
 \setcounter{question}{0}
 \section*{Response to Prof. Subhendra D. Mahanti}
 \question{What is the physical difference between “Insulator with spin mixing between impurity spin and bath spin” and “Mott Insulator”. Explain}
-\response{This needs some clarification. The regime with "spin mixing" lying in the parameter range \(r_{c1} < r < r_{c2}\) that you're referring to is NOT an insulator; it has gapless metallic excitations. Within our impurity model, it defines the region of the phase diagram where the one-particle hybridisation \(V\) between the impurity and bath is irrelevant while the Kondo coupling \(J\) is relevant. The relevant Kondo coupling (which is the "spin-mixing" alluded to in the question) then leads to Kondo screening and the emergence of low-energy gapless local Fermi liquid excitations; through self-consistency, this then leads to the gapless metallic excitations within the \(D=\infty\) Hubbard model. More precisely, this region describes the coexistence phase of the half-filled \(D=\infty\) Hubbard model, shrunk down to \(T=0\). In that respect, this phase is completely distinct from the Mott insulator because it is still a metal.
+\response{This needs some clarification. The regime with "spin mixing" lying in the parameter range \(r_{c1} < r < r_{c2}\) that you're referring to is {\it not} an insulator; it has gapless metallic excitations. Within our impurity model, it defines the region of the phase diagram where the one-particle hybridisation \(V\) between the impurity and bath is irrelevant while the Kondo coupling \(J\) is relevant. The relevant Kondo coupling (which is the "spin-mixing" alluded to in the question) then leads to Kondo screening and the emergence of low-energy gapless local Fermi liquid excitations; through self-consistency, this then leads to the gapless metallic excitations within the \(D=\infty\) Hubbard model. More precisely, this region describes the coexistence phase of the half-filled \(D=\infty\) Hubbard model, shrunk down to \(T=0\). In that respect, this phase is completely distinct from the Mott insulator because it is still a metal.
 }
 
 \question{What is the physics of charge isospin Kondo coupling K between the impurity and the bath: needs to be explained better.}
@@ -201,12 +204,13 @@ When one translates the impurity over the N lattice sites there are 2N fermion d
 operators, not N as given in equations 2.6 and 2.7. What am I missing. I would have expected a
 2-band extended Hubbard model, one for the “impurity” and the other for the bath.}
 
-\response{If the total number of lattice sites is \(N\), then the number of bath operators is \(N-1\) because the impurity site is "embedded" in the lattice and forms the \(N^\text{th}\) operator. This is necessary in order for the impurity couplings to be sensitive to the lattice details. Applying translation operators does not double the number of operators because the same operators transform into one another: \(c(r) \to c(r + a), c(r + a) \to c(r + 2a) \ldots c(r+Na) \to c(r)\).
+\response{If the total number of lattice sites is \(N\), then the number of bath operators is \(N-1\) because the impurity site is "embedded" in the lattice and forms the \(N^\text{th}\) operator. This is necessary in order for the impurity couplings to be sensitive to the lattice details. Applying translation operators does not double the number of operators because the same operators transform into one another: \(c(r) \to c(r + a), c(r + a) \to c(r + 2a) \ldots c(r+Na) \to c(r)\) (see Fig.~\ref{tiling}).
 }
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{tilingPlan.pdf}
 	\caption{Depiction of the tiling procedure. Note that each site of the auxiliary model gets mapped to some other site during any given translation operation. This preserves the total number of sites to \(N\).}
+	\label{tiling}
 \end{figure}
 
 \question{All the discussions are associated with an extended 2D Hubbard model. Are you assuming
@@ -254,7 +258,7 @@ What is the role of lattice dimensionality (D=2 vs 3) and lattice geometry (squa
 \question{He thinks the appearance of long-range correlation at the transition from Fermi liquid to a different phase might be relevant to the observation of strange metallic behavior in heavy-fermion systems at high temperatures above the quantum critical point. But all the calculations are at T=0K.}
 
 \response{
-	While it is true that our results are all at \(T=0\), it stands to reason that the characteristics of these phases will survive against thermal fluctuations up to some finite temperature. For example, the pseudogap non-Fermi liquid behaviour we see near the transition arises from the quantum critical fluctuations; these fluctuations can survive up to certain temperatures and have finite temperature counterparts.
+	While it is true that our results are all at \(T=0\), it stands to reason that the characteristics of these phases will survive against thermal fluctuations up to some finite temperature. For example, the pseudogap non-Fermi liquid behaviour we see near the transition arises from the quantum critical fluctuations; these fluctuations can survive up to certain temperatures and have finite temperature counterparts. We are presently investigating this in the \(D=\infty\) Hubbard model at half-filling, by extending the unitary RG treatment to finite temperatures.
 }
 
 \bibliography{tilingProject.bib}
