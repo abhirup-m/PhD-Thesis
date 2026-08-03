@@ -1,5 +1,5 @@
 \documentclass[10pt]{revtex4-2}
-\usepackage{amsmath,amssymb,braket,newtxtext}
+\usepackage{amsmath,amssymb,braket,newtxtext,graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{color}
 \usepackage{xcolor}
@@ -47,14 +47,28 @@ by Krishnamurthy, Wilkins and Wilson. Does the URG work at the same level?}
 features as well. Methods like DMFT - more about which later - capture both the
 low energy and the Hubbard band features. What about the present method?}
 
-\response{The unitary {\it can} obtain high-energy features as well. This is done by using the renormalised couplings at various points along the RG flow. Renormalised Hamiltonians closer to the UV theory affect the high-frequency spectral features while those closer to the IR fixed point affect the  low frequency features. By combining the results from various points along the RG flow, one can reconstruct dynamical quantities like the spectral function and self-energy as well as thermodynamic quantities~\cite{Mukherjee_2023,mukherjee2026} such as the temperature dependence of the impurity susceptibility~\cite{anirban_kondo}. We are currently using such a strategy (as part of a more involved program) to reconstruct the finite temperature phase diagram of the particle-hole symmetric Hubbard model in the limit of infinite dimensions, and the results are quite promising.
+\response{In addition to studying the low-energy physics, the unitary RG method can be used to obtain high-energy features as well. This is done by using the renormalised couplings at various points along the RG flow. Renormalised Hamiltonians closer to the UV theory affect the high-frequency spectral features while those closer to the IR fixed point affect the  low frequency features. By combining the results from various points along the RG flow, one can reconstruct dynamical quantities like the spectral function and self-energy as well as thermodynamic quantities~\cite{Mukherjee_2023,mukherjee2026} such as the temperature dependence of the impurity susceptibility~\cite{anirban_kondo}. We are currently using such a strategy (as part of a more involved program) to reconstruct the finite temperature phase diagram of the particle-hole symmetric Hubbard model in the limit of infinite dimensions, and the results are quite promising.
+
+	Apart from dynamical quantities, the Hamiltonians along the RG flow have also been used to obtain effective theories at various energies:
+	\begin{itemize}
+		\item Close to the IR, the method has allowed us to obtained benchmarks such as the local Fermi liquid and local non-Fermi liquid theories for the single-channel and two-channel Kondo models~\cite{anirban_kondo,Patra2023MCK}, as well as new results such as the effective theories for the \(T=0\) quantum critical points of the Hubbard model in \(D=\infty\) and \(D=2\) ~\cite{Mukherjee_2023,mukherjee2026}. 
+		\item Away from the IR, we have obtained an effective theory for charge delocalisation within the Hubbard sidebands for \(D=\infty\)~\cite{Mukherjee_2023}.
+	\end{itemize}~
 }
 
-\question{\color{red}The lattice ‘phase diagram’ at half filling is just a line, with U/t as axis. It goes from a Slater insulator at small U/t to the Heisenberg-Mott insulator at large U/t.
+\question{The lattice ‘phase diagram’ at half filling is just a line, with U/t as axis. It goes from a Slater insulator at small U/t to the Heisenberg-Mott insulator at large U/t.
 There is no room for a metal, pseudogapped or otherwise, at T = 0. While the flow
 diagram of Fig.5.4 is fascinating, what are the corresponding Hubbard parameters?
 }
 \response{
+	We agree that our finding of metallic phases at half-filling is in contrast to earlier works on the 2D half-filled Hubbard model. Figuring out whether this is because of the extended nature of our model (the additional coupling \(J\)) or because of conflicts between the methods will require further investigation.
+
+	It is worth noting that a prior work using the URG on the half-filled 2D Hubbard model on the square lattice ~\cite{anirbanmott1} obtained a Mott insulating ground state at all values of the local repulsion \(U\), and instead obtained a metallic (marginal Fermi liquid) phase at a higher value of the {\it unitary RG quantum fluctuation scale $\omega$} (see figure). As seen in the figure below, the non-Fermi liquid (white) transitions into the Mott insulator (dark blue) through a pseudogap (shaded blue)~\cite{anirbanmott1}.
+	\begin{figure}[!h]
+		\includegraphics[width=0.4\textwidth]{PD.jpg}
+	\end{figure}
+
+	The scale \(\omega\) is roughly tied to the non-commutativity of the delocalisation terms (kinetic energy) and the localisation term (local correlation) within the Hamiltonian, and appears naturally in the formalism due to the presence of multiple energy scales within a many-body problem. The work~\cite{anirbanmott1} investigated the phase diagram as a function of these energy scales, and observed a transition from a metallic phase to a Mott insulating phase, at all values of \(U\). It is therefore tempting to speculate that tuning the ratio \(W/J\) within the auxiliary model effectively tunes the quantum fluctuation scale \(\omega\) for the lattice model. Some support for this idea can be gleaned by thinking of the bath interaction \(W\) as the localisation term and the Kondo coupling \(J\) as the delocalisation term; their non-commutativity gives rise to multiple energy scales \(\omega\) which is then being tuned within the auxiliary model. Of course, this requires further investigation to makes things concrete.
 }
 
 \question{Exactly which limitations of current impurity-based approaches motivate the present construction?}
@@ -65,8 +79,7 @@ diagram of Fig.5.4 is fascinating, what are the corresponding Hubbard parameters
 		\item the sensitivity of static and dynamical quantities obtained from cluster methods to periodisation schemes,
 		\item the increased computational cost required to obtain sufficient resolution in frequency, and
 		\item the additional errors incurred in order to operate in phases with long-ranged correlations, which might be necessary to obtain spin liquid or other fractionalised phases that might be relevant to the physics of the cuprates and heavy fermions.
-	\end{itemize} 
-We have now addressed this point better within the thesis.
+	\end{itemize}~
 }
 
 \question{However, for a reader the starting question would be what
@@ -95,6 +108,15 @@ volving quantities such as the ground-state energy, double occupancy, quasiparti
 weight, spectral function, self-energy, and spin correlation would have helped estab-
 lish the validity of the auxiliary Hamiltonian description.
 }
+
+\response{
+	Carrying out quantitative benchmarks has been party difficult due to the lack of a sufficient number of results on the extended Hubbard model that has been studied here. We list some comparisons to earlier work here (they are already part of the thesis):
+	\begin{itemize}
+		\item reports of a pseudogap in the local density of states in a three-band t-U-J model~\cite{Koikegami_2023} that are in agreement with our observations, and
+		\item reports of the universality of the effective mass in the nodal direction~\cite{spalek2017}, that are consistent with the universality of our self-energy exponents in the pseudogap.
+	\end{itemize}~
+}
+
 \question{
 Uniqueness of the reconstruction: In principle, one could imagine alternative em-
 bedded clusters of different size or geometry while employing the same translation-
@@ -156,8 +178,11 @@ have any correspondence with them?}
 \response{While Logan and coworkers have a series of works on the periodic Anderson model, we focus on~\cite{Smith2003}, where they deal with the particle-hole symmetric case that is pertinent to this thesis. The results obtained here agree qualitatively with those obtained in~\cite{Smith2003}, in terms of the opening of the gap and the movement of the Hubbard satellite peaks; more work is necessary in order to compare quantitative claims such as scaling of certain quantities as a function of frequency.
 }
 
+\setcounter{question}{0}
 \section*{Response to Prof. Subhendra D. Mahanti}
 \question{What is the physical difference between “Insulator with spin mixing between impurity spin and bath spin” and “Mott Insulator”. Explain}
+\response{This needs some clarification. The regime with "spin mixing" lying in the parameter range \(r_{c1} < r < r_{c2}\) that you're referring to is NOT an insulator; it has gapless metallic excitations. Within our impurity model, it defines the region of the phase diagram where the one-particle hybridisation \(V\) between the impurity and bath is irrelevant while the Kondo coupling \(J\) is relevant. The relevant Kondo coupling (which is the "spin-mixing" alluded to in the question) then leads to Kondo screening and the emergence of low-energy gapless local Fermi liquid excitations; through self-consistency, this then leads to the gapless metallic excitations within the \(D=\infty\) Hubbard model. More precisely, this region describes the coexistence phase of the half-filled \(D=\infty\) Hubbard model, shrunk down to \(T=0\). In that respect, this phase is completely distinct from the Mott insulator because it is still a metal.
+}
 
 \question{What is the physics of charge isospin Kondo coupling K between the impurity and the bath: needs to be explained better.}
 
@@ -176,25 +201,33 @@ When one translates the impurity over the N lattice sites there are 2N fermion d
 operators, not N as given in equations 2.6 and 2.7. What am I missing. I would have expected a
 2-band extended Hubbard model, one for the “impurity” and the other for the bath.}
 
-\response{If the total number of lattice sites is \(N\), then the number of bath operators is \(N-1\) because the impurity site is "embedded" in the lattice and forms the \(N^\text{th}\) operator. This is necessary in order for the impurity couplings to be sensitive to the lattice details. Applying translation operators does not double the number of operators because the same operators transform into one another: \(c(r) \to c(r + a), c(r + a) \to c(r + 2a) \ldots c(r+Na) \to c(r)\).}
+\response{If the total number of lattice sites is \(N\), then the number of bath operators is \(N-1\) because the impurity site is "embedded" in the lattice and forms the \(N^\text{th}\) operator. This is necessary in order for the impurity couplings to be sensitive to the lattice details. Applying translation operators does not double the number of operators because the same operators transform into one another: \(c(r) \to c(r + a), c(r + a) \to c(r + 2a) \ldots c(r+Na) \to c(r)\).
+}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{tilingPlan.pdf}
+	\caption{Depiction of the tiling procedure. Note that each site of the auxiliary model gets mapped to some other site during any given translation operation. This preserves the total number of sites to \(N\).}
+\end{figure}
 
 \question{All the discussions are associated with an extended 2D Hubbard model. Are you assuming
 that the solution of this Hamiltonian is simply the periodic translation of the solution of the
 impurity embedded in a 2D lattice. Is this an ansatz or are there some justifications for this
 approach?}
 
-\response{Indeed, there's a set of arguments that relate the impurity model to the extended Hubbard model on the 2D square lattice. First, we show that the lattice model can be obtained by repeated translation of the impurity model (eq. 2.11). This motivates a form of the eigenstates of the lattice model in terms of those of the impurity model (eq. 2.20), via a many-body Blochs's theorem. Combining these two properties, we show that the lattice model Greens function can be expressed in terms of auxiliary mode quantities (eq. 4.23). This final relation is what allows us to reconstruct the low-energy physics of the lattice model.}
+\response{Indeed, there's a set of arguments that relate the impurity model to the extended Hubbard model on the 2D square lattice. First, we show that the lattice model can be obtained by repeated translation of the impurity model (eq. 2.11). This motivates a form of the eigenstates of the lattice model in terms of those of the impurity model (eq. 2.20), via a many-body Blochs's theorem. Combining these two properties, we show that the lattice model Greens function can be expressed in terms of auxiliary mode quantities (eq. 4.23). This final relation is what allows us to reconstruct the low-energy physics of the lattice model from the properties of the IR fixed point theory of the auxiliary model obtained via the URG analysis.}
 
 \question{The novel feature is the condition of sufficiently large attractive W. It is not clear to me how such an attractive interaction appears in a simple 2D Hubbard model. But the most interesting observation is the appearance of a third fixed point, pseudo gap fixed point in a finite range of W.}
 
-\response{We feel that the attractive bath interaction \(W \) is best not understood as a microscopic coupling, but rather as an emergent effective coupling. It captures the tendency of the conduction electrons to favour unoccupied or double occupied states (relative to the singly-occupied states). Perhaps in a more illuminating sense, just as the Coulomb repulsion \(U\) represents the tendency that competes with the hopping processes in the simple Hubbard model, the bath correlation \(W\) represents the tendency that competes with the local Fermi liquid excitations that propagate out of the impurity site. In this sense, it is a proxy for the hubbard U in the neighbourhood of the impurity site; both compete against delocalisation processes.}
+\response{We feel that the attractive bath interaction \(W \) is best not understood as a microscopic coupling, but rather as an emergent effective coupling in the strong coupling limit of the local repulsion \(U\). It captures the tendency of the conduction electrons to favour unoccupied or double occupied states (relative to the singly-occupied states). Perhaps in a more illuminating sense, just as the Coulomb repulsion \(U\) represents the tendency that competes with the hopping processes in the simple Hubbard model, the bath correlation \(W\) represents the tendency for local charge fluctuations that competes with the local Fermi liquid excitations that propagate out of the impurity site arising from Kondo screening. In this sense, it is a proxy for the hubbard U in the neighbourhood of the impurity site; both compete against delocalisation processes. In this regard, we note that similar emergent nonlocal nearest-neighbor attraction was obtained in the half-filled 2D Hubbard model for low temperatures at sufficiently large values of the local repulsion~\cite{gazizovaleblanc2023}.}
 
-\question{{\color{red}Is the pseudo gap fixed point associated with insulating and spin mixing as discussed in the previous chapter.} Can you describe the spin density distribution and spin-spin correlation
+\question{Can you describe the spin density distribution and spin-spin correlation
 function associated with this fixed point. What role does the lattice symmetry play in the
 nature of this pseudo gap fixed point. What will happen if the 2D lattice is triangular or
 hexagonal?}
 
-\response{The unitary RG, as a matter of principle, does not allow for spontaneous symmetry breaking (SSB) because unitary transformations preserve all symmetries. One way of searching for SSB phases within such a formalism is to put in an explicit symmetry breaking term in the Hamiltonian and then study whether it is relevant under RG flow. We haven't carried out such an analysis within this thesis, and as a result, we don't find any such phase. Accordingly, in the absence of any magnetic order, there is no spin density in the system in any phase. The spin-spin correlation, however, shows long-ranged behaviour in the pseudogap phase (Fig. 5.13).
+\response{Firstly, the pseudogap phase can be thought of as a coexistence of insulating and metallic regions, the former residing around the antinodes and the latter around the nodes. With regards to the spin mixing -- yes, the spin-flip fluctuations between the impurity and the bath zeroth site become {\it critical} (in the sense of a phase transition) and determine the features of the pseudogap phase, such as the long-range multipartite entanglement observed, as well as the emergence of a non-Fermi liquid Hatsugai-Kohmoto Hamiltonian. Whether the nature of this physics bears any connection to the "spin-mixed" coexistence region observed in the Chapter 3 is an interesting but more involved question, and needs further investigation.
+
+\par Coming to the question about the spin correlations, the unitary RG -- as a matter of principle -- does not allow for spontaneous symmetry breaking (SSB) because unitary transformations preserve all symmetries. As a result, we don't find any magnetically ordered phase. Accordingly, in the absence of any magnetic order, the spin density in the system vanishes in any phase. The spin-spin correlation, however, shows long-ranged behaviour in the pseudogap phase (Fig. 5.13).
 
 \par With regards to the role of lattice symmetry, we haven't checked whether our conclusions hold in other dimensions or other lattices. It sounds reasonable that changing the lattice symmetries will affect many of the results. However, a recently growing body of work~\cite{Huang2022,lanave2025,bai2026localcurrentalgebrahk} suggests that the result that the Hatsugai-Kohmoto model is the parent metal of the Mott insulator can be grounded on more robust ideas such as the breaking of generalised symmetries and anomalies of the Luttinger-Ward functional. These indicate that our results are likely to extend beyond just the 2D square lattice.
 }
@@ -209,7 +242,7 @@ What is the role of lattice dimensionality (D=2 vs 3) and lattice geometry (squa
 }
 
 \response{
-	As mentioned in the previous response, very strictly speaking our results apply only to the case of the 2D square lattice. However, a recently growing body of work~\cite{Huang2022,lanave2025,bai2026localcurrentalgebrahk} suggests that the result that the Hatsugai-Kohmoto model is the parent metal of the Mott insulator can be grounded on more robust ideas such as the breaking of generalised symmetries and anomalies of the Luttinger-Ward functional. These indicate that our results are likely to extend beyond just the 2D square lattice.
+	As mentioned in the previous response, very strictly speaking our results apply only to the case of the 2D square lattice. However, a recently growing body of work~\cite{Huang2022,lanave2025,bai2026localcurrentalgebrahk} suggests that the result that the Hatsugai-Kohmoto model is the parent metal of the Mott insulator can be grounded on more robust ideas such as the breaking of generalised symmetries associated with an anomaly of the Luttinger-Ward functional~\cite{lanave2025}. These indicate that our results are likely to extend beyond just the 2D square lattice.
 }
 
 \question{What happens for large \(W_f\) and one increases \(J_\perp\)?}
@@ -221,16 +254,8 @@ What is the role of lattice dimensionality (D=2 vs 3) and lattice geometry (squa
 \question{He thinks the appearance of long-range correlation at the transition from Fermi liquid to a different phase might be relevant to the observation of strange metallic behavior in heavy-fermion systems at high temperatures above the quantum critical point. But all the calculations are at T=0K.}
 
 \response{
-	While it is true that our results are all at \(T=0\), it stands to reason that some of these phases will have finite-temperature effects. For example, the pseudogap non-Fermi liquid behaviour we see near the transition arises from the quantum critical fluctuations; these fluctuations can survive up to certain temperatures and have finite temperature counterparts.
+	While it is true that our results are all at \(T=0\), it stands to reason that the characteristics of these phases will survive against thermal fluctuations up to some finite temperature. For example, the pseudogap non-Fermi liquid behaviour we see near the transition arises from the quantum critical fluctuations; these fluctuations can survive up to certain temperatures and have finite temperature counterparts.
 }
-
-\section{Additional changes}
-We have made the following additional changes to the manuscript:
-\begin{itemize}
-	\item We have improved the inset figure of panel (a) in Fig. 4 for the impurity magnetisation (computed earlier for a smaller system size (49 x 49)) to that for a larger system size (77 x 77, same as the rest of the manuscript). The updated plot shows more clearly the dramatic rise of the impurity magnetisation towards the end of the pseudogap phase, and upon approaching the Mott critical point. This highlights the near complete breakdown of Kondo screening at Mott criticality as observed by us.
-	\item We have added references to two works~(\cite{si_kotliar_1993,kotliarsi_1993}) from the past that adopt an impurity model-based approach towards heavy fermions that are philosophically similar to ours.
-	\item We have also fixed a typographical error below eq. (36) regarding the definition of the operator \(r_{q\sigma}\).
-\end{itemize}
 
 \bibliography{tilingProject.bib}
 \bibliographystyle{apsrev4-2}
