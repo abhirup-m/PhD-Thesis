@@ -5,7 +5,10 @@
 \usepackage{xcolor}
 % \usepackage[margin=1.5cm,bottom=1.5cm]{geometry}
 \newcommand{\shat}{\hat{\mathbf{s}}}
-\newcommand{\question}[1]{\par \noindent {\bf Question.\quad}{#1}\\}
+\newcommand{\question}[1]{%
+\refstepcounter{question}
+\par \noindent {\bf Question \thequestion.\quad}{#1}\\%
+}
 \newcommand{\response}[1]{\par \noindent {\bf Response.\quad}{\color{blue}{#1}}\\[1em]}
 
 \begin{document}
@@ -18,6 +21,62 @@
 \vspace{10pt}
 
 \section*{Response to Prof. Pinaki Majumdar}
+\newcounter{question}
+
+\question{Is there an unique impurity model, in terms of geometry, that describes the lattice? The thesis uses a 1 + 4 geometry, one can also imagine a 1 + 8 or 1 + 12 .. geometry.}
+
+\response{Strictly speaking, our approach does not pin down a unique impurity model given some lattice model. Nevertheless, a controlled hierarchy can indeed be designed for systematically increasing the accuracy of our procedure. Instead of increasing the number of correlated bath sites (1+4 to 1+8), the idea is to increase the number of correlated impurity sites. The cluster beyond 1+4 would be one where there are five impurity sites and the appropriate number of correlated bath sites surrounding them. The complexity of solving such an impurity model is of course higher. This has now been explained better in the thesis.}
+
+\question{For a particular choice of geometry there are more than two parameters. The
+geometry used in the thesis has an interaction JK and an attraction W . Are these
+uniquely determined by the U and t?}
+
+\response{
+Actually, the lattice model that our chosen auxiliary model maps on to is an extended Hubbard model that naturally involves a nearest-neighbour spin-exchange coupling \(J\) in additional to the terms in the "standard" Hubbard model. This coupling \(J\) uniquely determines the auxiliary model Kondo coupling \(J_K\). The coupling \(W\) is however not uniquely determined by \(U\). See the response to Q\ref{unique} for more details.
+}
+
+\question{\label{nrg} The impurity model is much more complicated than the usual single impurity Anderson model (SIAM). The URG is used to solve it. Is that an exact RG or is some
+truncation involved? The original SIAM was solved ‘exactly’ through numerical RG
+by Krishnamurthy, Wilkins and Wilson. Does the URG work at the same level?}
+
+\response{
+	While the extended impurity model (eSIAM) is more complicated than the usual SIAM, it can be solved to a large extent using more "standard" approaches like numerical RG; obtaining specific quantities might be more easy or difficult depending on the specifics. Getting to the actual question, the unitary RG involves a hierarchy of contributions arising from a cluster expansion of the renormalised Hamiltonian into scattering vertices of various orders~\cite{anirbanurg1}. These describe scattering processes involving four electrons, six electrons and so on; such terms are generated during the RG flow. In practise, one has to truncate the expansion and restrict the RG equation to a finite order of vertices. In terms of concrete results, the unitary RG treatment of the single channel Kondo model~\cite{anirban_kondo} is able to capture all major numerical RG results, such as the flow to the strong coupling fixed point, thermodynamic quantities such as the impurity contributions to the magnetic susceptibility and specific heat, and the Wilson ratio. Similar benchmarking was also carried out for the two-channel Kondo model~\cite{Patra2023MCK}.
+}
+
+\question{The RG focuses on low energy physics, while the spectral function has high energy
+features as well. Methods like DMFT - more about which later - capture both the
+low energy and the Hubbard band features. What about the present method?}
+
+\response{The unitary {\it can} obtain high-energy features as well. This is done by using the renormalised couplings at various points along the RG flow. Renormalised Hamiltonians closer to the UV theory affect the high-frequency spectral features while those closer to the IR fixed point affect the  low frequency features. By combining the results from various points along the RG flow, one can reconstruct dynamical quantities like the spectral function and self-energy as well as thermodynamic quantities~\cite{Mukherjee_2023,mukherjee2026} such as the temperature dependence of the impurity susceptibility~\cite{anirban_kondo}. We are currently using such a strategy (as part of a more involved program) to reconstruct the finite temperature phase diagram of the particle-hole symmetric Hubbard model in the limit of infinite dimensions, and the results are quite promising.
+}
+
+\question{\color{red}The lattice ‘phase diagram’ at half filling is just a line, with U/t as axis. It goes from a Slater insulator at small U/t to the Heisenberg-Mott insulator at large U/t.
+There is no room for a metal, pseudogapped or otherwise, at T = 0. While the flow
+diagram of Fig.5.4 is fascinating, what are the corresponding Hubbard parameters?
+}
+\response{
+}
+
+\question{Exactly which limitations of current impurity-based approaches motivate the present construction?}
+
+\response{A number of limitations of the current impurity-based methods were laid out in Sec 1.4 of the thesis. These include
+	\begin{itemize}
+		\item the inability of dynamical mean-field approximation-based methods to expose the underlying self-consistent impurity model Hamiltonian, often rendering the physics opaque,
+		\item the sensitivity of static and dynamical quantities obtained from cluster methods to periodisation schemes,
+		\item the increased computational cost required to obtain sufficient resolution in frequency, and
+		\item the additional errors incurred in order to operate in phases with long-ranged correlations, which might be necessary to obtain spin liquid or other fractionalised phases that might be relevant to the physics of the cuprates and heavy fermions.
+	\end{itemize} 
+We have now addressed this point better within the thesis.
+}
+
+\question{However, for a reader the starting question would be what
+is the controlled approximation? Successful many-body methods are associated with a
+identifiable control parameter or asymptotic limit: for example, for the Wilson NRG it
+is the logarithmic energy-scale separation, for DMFT it is the locality of the self energy
+as \(d \to \infty\), for tensor-network methods it is the low-entanglement structure, etc. What controls the URG for the extended impurity models?}
+
+\response{This was discussed in the response under Q\ref{nrg}. The unitary RG involves a hierarchy of contributions arising from a cluster expansion of the renormalised Hamiltonian into scattering vertices of various orders~\cite{anirbanurg1}. These describe scattering processes involving four electrons, six electrons and so on; such terms are generated during the RG flow. In practise, one has to truncate the expansion and restrict the RG equation to a finite order of vertices
+}
 
 \question{One qualitative question: while the 1 + 4 cluster, for example, and the associated translation
 operators preserve the symmetry of the 2D lattice (modulo any long range order), does
@@ -27,8 +86,61 @@ the process adopted generate the exact Greens functions of the lattice model?}
 	In principle, the process lays out a hierarchy of contributions to the Greens function that would capture the lattice Greens function exactly. In practise, we have restricted the calculations to the first few terms; this is supported by the local nature of the impurity correlation that helps the higher terms drop off. The method of accounting for the additional terms are shown in eqs. 4.24 and 4.25.
 }
 
+\question{
+Benchmarks: The 2D Hubbard model has been investigated using a variety of
+high-accuracy numerical methods, including auxiliary-field quantum Monte Carlo,
+tensor-network approaches, exact diagonalisation, dynamical cluster approximation,
+cellular DMFT, variational cluster approximation, etc. Benchmark comparisons in-
+volving quantities such as the ground-state energy, double occupancy, quasiparticle
+weight, spectral function, self-energy, and spin correlation would have helped estab-
+lish the validity of the auxiliary Hamiltonian description.
+}
+\question{
+Uniqueness of the reconstruction: In principle, one could imagine alternative em-
+bedded clusters of different size or geometry while employing the same translation-
+operator formalism. For example, one might consider 1 + 4, 1 + 8, or larger auxiliary
+clusters. If the formalism defines a systematically controlled hierarchy, progressively
+larger clusters should converge towards identical lattice observables. Discussion of
+such a convergence hierarchy would be useful.
+}
+\response{A controlled hierarchy can indeed be designed for systematically increasing the accuracy of our procedure. Instead of increasing the number of correlated bath sites (1+4 to 1+8), the idea is to increase the number of correlated impurity sites. The cluster beyond 1+4 would be one where there are five impurity sites and the appropriate number of correlated bath sites surrounding them. The complexity of solving such an impurity model is of course higher. This has now been explained better in the thesis.
+}
+
+\question{\label{unique} Interpretation of the Auxiliary Phase Diagram: The RG flows reveal a remarkably
+rich fixed-point structure. Viewed as the phase diagram of the auxiliary Hamiltonian, these results constitute an interesting contribution to quantum impurity physics. The interpretation as the phase diagram of the square-lattice Hubbard
+model is less straightforward. The microscopic Hubbard model is specified by the
+parameters (t, U ), whereas the auxiliary Hamiltonian is described by the larger parameter set (Ud , W, JK , V, . . .). Although the relation
+U = Ud − W
+connects the two descriptions, it does not uniquely determine the auxiliary Hamiltonian from the microscopic Hubbard interaction. The mapping from the Hubbard
+model to the auxiliary-cluster description appears non unique.
+}
+
+\response{Yes, it is true that the program laid out in the thesis does not map a lattice model to a unique impurity model. Nevertheless, we expect the qualitative features of the lattice model such as the nature of the phases and effective theories to be reconstructed through our tiling procedure. In other words, the primary goal of this approach is to discover the broad theories associated with lattice models of a certain kind (the extended Hubbard model, in this case) by mapping them to impurity models of the appropriate kind. As a final point, we would add that the appropriate impurity model is also determined by the phenomenology of the lattice model or the material that we are studying.
+}
+
+\question{Role of the Auxiliary Couplings: The phase diagram is organised in terms of auxiliary couplings such as W and J. These quantities determine the infrared fixed-point structure and therefore the physical interpretation of the various phases. Are
+uniquely determined by the microscopic Hubbard Hamiltonian?
+}
+\response{
+	I believe the earlier response addresses this question.
+}
+
+\question{Relation to the half-filled Hubbard Model: The calculations are performed at half
+filling. For the nearest-neighbour square-lattice Hubbard model, long-range anti-
+ferromagnetic order is expected at zero temperature owing to perfect Fermi-surface
+nesting. The phase diagram presented here instead emphasises Fermi-liquid, pseudogap-
+metal and Mott-insulating fixed points. Has magnetic symmetry breaking been deliberately excluded? Similarly, the interpretation of the pseudogap phase requires
+clarification, since pseudogap behaviour is usually discussed in the context of doped
+cuprates rather than the half-filled nearest-neighbour Hubbard model.
+}
+
+\response{Spontaneous symmetry breaking has indeed been deliberately excluded, because the unitary RG method preserves all symmetries of the problem. In an earlier work involving the URG (not involving me), the potential for SSB in the system had been investigated by allowing for a small symmetry breaking field in the microscopic Hamiltonian and then checking its RG flow. Such an investigation has not been carried out in the present set of works. As a result, we only obtain symmetry-preserved insulators.
+
+	\par With regards to the pseudogap at half-filling, we note that non-Fermi liquids with partially-gapped Fermi surfaces have been observed within the nearest-neighbour Hubbard model {\it at half-filling} from DCA~\cite{werner2009momentum} and $\Sigma$DDMC~\cite{simkovic_2020}, albeit at finite temperatures above the Mott insulating ground state. Our auxiliary model approach allows us to study the effects of such phases at zero temperature, by tuning additional couplings. Simulating our approach at finite temperatures should presumable lead to similar finite temperature phase diagrams; more work is needed in that regard.
+}
+
 \question{Maybe one could have had simpler notation for the electronic operators, I struggled to figure out what \(c_{Z,\sigma,f}\) might be.}
-\response{We have now better explained the notation within the thesis.
+\response{We have now explained the notation in more detail within the thesis.
 }
 
 \question{The standard model for heavy fermions is the Anderson lattice. If eqn3.2 is the lattice model here, I guess the Anderson lattice corresponds to Ud = 0, W = 0 and J = 0. Yet the phase diagrams are plotted in terms of these parameters. How do we connect to Anderson lattice results?
@@ -47,7 +159,7 @@ have any correspondence with them?}
 \section*{Response to Prof. Subhendra D. Mahanti}
 \question{What is the physical difference between “Insulator with spin mixing between impurity spin and bath spin” and “Mott Insulator”. Explain}
 
-\question{What is the physics of charge isospin Kondo coupling 𝐾 between the impurity and the bath: needs to be explained better.}
+\question{What is the physics of charge isospin Kondo coupling K between the impurity and the bath: needs to be explained better.}
 
 \response{
 We first note that the effects of a charge isospin Kondo coupling hase not been explored within the thesis, and have only been mentioned in passing.
