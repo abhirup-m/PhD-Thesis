@@ -727,6 +727,19 @@ By comparing with the term in the original Hamiltonian (eq.~\ref{+-term}), we ca
 \end{aligned}\end{equation}
 This is the URG equation for the Kondo coupling \(J\). It differs from the perturbative ``Poor Man's scaling" equations~\cite{anderson1970poor} through the appearance of the Kondo coupling in the denominator. Expanding the URG equation in powers of \(J/\epsilon_j\) recovers the perturbative form.
 
+{\color{\hicol}\section{Some comments on the unitary RG program}
+\begin{itemize}
+	\item In addition to studying the low-energy physics, the unitary RG method can be used to obtain high-energy features as well. This is done by using the renormalised couplings at various points along the RG flow. Renormalised Hamiltonians closer to the UV theory affect the high-frequency spectral features while those closer to the IR fixed point affect the  low frequency features. By combining the results from various points along the RG flow, one can reconstruct dynamical quantities like the spectral function and self-energy as well as thermodynamic quantities~\cite{Mukherjee_2023,mukherjee2026} such as the temperature dependence of the impurity susceptibility~\cite{anirban_kondo}. We are currently using such a strategy (as part of a more involved program) to reconstruct the finite temperature phase diagram of the particle-hole symmetric Hubbard model in the limit of infinite dimensions, and the results are quite promising.
+
+	Apart from dynamical quantities, the Hamiltonians along the RG flow have also been used to obtain effective theories at various energies:
+	\begin{itemize}
+		\item Close to the IR, the method has allowed us to obtained benchmarks such as the local Fermi liquid and local non-Fermi liquid theories for the single-channel and two-channel Kondo models~\cite{anirban_kondo,Patra2023MCK}, as well as new results such as the effective theories for the \(T=0\) quantum critical points of the Hubbard model in \(D=\infty\) and \(D=2\) ~\cite{Mukherjee_2023,mukherjee2026}. 
+		\item Away from the IR, we have obtained an effective theory for charge delocalisation within the Hubbard sidebands for \(D=\infty\)~\cite{Mukherjee_2023}.
+	\end{itemize}
+	\item Coming to the question of a small parameter, the unitary RG involves a hierarchy of contributions arising from a cluster expansion of the renormalised Hamiltonian into scattering vertices of various orders~\cite{anirbanurg1}. These describe scattering processes involving four electrons, six electrons and so on; such terms are generated during the RG flow. In practise, one has to truncate the expansion and restrict the RG equation to a finite order of vertices.
+\end{itemize}
+
+}
 \section{Comparison of renormalisation group approaches based on canonical transformations}
 We have considered three canonical transformations in this section: the Poor Man's scaling (PMS), the Schrieffer-Wolff transformation (SWT) and the continuous unitary transformation renormalization group (CUT-RG). PMS and SWT are more or less identical; they differ in the context in which they are used. PMS is used when there is an entire spectrum of energies in the model, ranging from a low energy limit to a high energy; it is then employed to decouple the highest energy modes in an iterative fashion. SWT is used when the Hamiltonian can be split into one high and one low energy part, and we need to decouple these two modes. It is clear when seen from this perspective that SWT is like a one-shot PMS; it decouples the UV from the IR in one step, compared to the iterative approach of PMS. However, as has been shown in the previous subsections, both PMS and SWT can be formalized in an identical fashion, so that one can be switched for the other in both contexts.
 

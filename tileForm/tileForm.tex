@@ -490,6 +490,14 @@ For example, truncating the summation to \(n=3\), we have the explicit expressio
 	S_\text{EE}^{(1)} &= \frac{N-1}{N}I_2^{(\text{tot})}(\bm r_d) - \frac{(N-1)(N-2)}{2N}I_3^{(\text{tot})}(\bm r_d)
 \end{aligned}\end{equation}
 
+{\color{\hicol}
+\section{Some Comments}
+\begin{itemize}
+	\item Strictly speaking, our approach does not pin down a unique impurity model given some lattice model. Nevertheless, a controlled hierarchy can indeed be designed for systematically increasing the accuracy of our procedure, by increasing the number of correlated impurity sites. The cluster beyond 1+4 would be one where there are five impurity sites and the appropriate number of correlated bath sites surrounding them. The complexity of solving such an impurity model is of course higher.
+	\item Given the lack of a unique mapping between the auxiliary model couplings and the lattice model couplings, the program laid out in the thesis does not map a lattice model to a unique impurity model. Nevertheless, we expect the qualitative features of the lattice model such as the nature of the phases and effective theories to be reconstructed through our tiling procedure. In other words, the primary goal of this approach is to discover the broad theories associated with lattice models of a certain kind (the extended Hubbard model, in this case) by mapping them to impurity models of the appropriate kind. We would also add that the appropriate impurity model is also determined by the phenomenology of the lattice model or the material that we are studying.
+\end{itemize}
+
+}
 \section{Discussions}
 This chapter was primarily devoted to motivating and developing the ``tiling" auxiliary model framework. Using an appropriately-chosen quantum impurity model and many-body translation operators, we demonstrated how one can reconstruct the full lattice model and its low-energy physics. More explicitly, this involves mappings between the two models that leverage the translation operators. The workflow suggested by such an approach is the following. The first step is to identify a quantum impurity model that has the appropriate "local phenomenology" for the lattice model we are targeting. The impurity model needs to be embedded in the appropriate lattice. We then use an impurity solver (in this case, the unitary RG method) to compute various properties of the impurity model. Finally, we use the tiling relations to reconstruct the physics of the lattice model. The embedding step ensures that the lattice effects are encoded in the impurity model couplings and hence in the tiled quantities.
 
